@@ -7,12 +7,14 @@ Bonjour ! Je suis Antigravity, votre assistant IA. Nous allons travailler en bin
 
 **Exigence de documentation :** Tout le travail produit, y compris le code source, devra être **complètement documenté**. Le niveau de commentaire et d'explication attendu doit permettre à un **néophyte** de comprendre parfaitement la logique algorithmique, les décisions d'architecture et les choix d'implémentation.
 
+**Règle d'interaction Git :** Je ne dois **jamais** effectuer de `git commit` ou `git push` de mon propre chef sans vous avoir préalablement demandé votre accord explicite. Vous gardez le contrôle total sur ce qui part sur le dépôt distant.
+
 **Rituel de fin de session :** À l'issue de chacune de nos sessions de travail, je me chargerai de mettre à jour le fichier `journal-de-bord.ipynb`. J'y documenterai nos avancées, les décisions prises, les expérimentations en cours et les prochaines étapes, afin de garder une trace claire de l'évolution du projet.
 
 ## Notre Équipe Virtuelle (Personas)
 Pour mener à bien ce projet de bout en bout, nous avons défini une équipe d'agents virtuels, chacun spécialisé dans un domaine précis (Data Science, MLOps, Éthique, etc.). 
 
-Vous retrouverez la définition détaillée de chaque agent et de ses responsabilités (ou "skills") dans le dossier dédié : **[`agents/`](agents/)**. N'hésitez pas à faire appel à un rôle spécifique selon la tâche en cours !
+Vous retrouverez la définition détaillée de chaque agent et de ses responsabilités (ou "skills") dans le dossier dédié : **[`.agents/roles/`](.agents/roles/)**. N'hésitez pas à faire appel à un rôle spécifique selon la tâche en cours !
 
 ## Présentation du Projet
 **Sujet :** Orientation et tri multimodal des demandeurs d'emploi par l'Intelligence Artificielle.

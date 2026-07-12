@@ -5,11 +5,13 @@ Ce fichier centralise l'ensemble des documents, scripts et ressources utiles pou
 ## Documents du Projet
 - [Sujet de l'examen](sujet.md) : Cahier des charges complet et détails de la mission.
 - [Agent Context](agent.md) : Description du contexte projet et de la collaboration avec l'assistant IA.
+- [Workflow Multi-Agents](.agents/workflows/workflow.md) : Définition des phases du projet et de l'orchestration des agents.
 - [Journal de bord](journal-de-bord.ipynb) : Suivi des expérimentations et notes.
 - [Cas d'usage](cas-usage.ipynb) : Notebook principal pour l'exploration et la modélisation.
 
 ## Répertoires
-- `agents/` : Dossier contenant les définitions et les responsabilités de notre équipe d'agents virtuels ([Data Scientist](agents/data_scientist.md), [ML Engineer](agents/ml_engineer.md), [Ethicien](agents/ethicien.md), [Tech Lead](agents/tech_lead.md)).
+- `.agents/roles/` : Dossier caché contenant les définitions et les responsabilités de notre équipe d'agents virtuels ([Data Scientist](.agents/roles/data_scientist.md), [ML Engineer](.agents/roles/ml_engineer.md), [Ethicien](.agents/roles/ethicien.md), [Tech Lead](.agents/roles/tech_lead.md)).
+- `.agents/skills/` : Dossier caché contenant les standards techniques et les recettes (Clean Code, NLP, Déséquilibre des classes, Explicabilité, FastAPI).
 - `data/` : Contient les jeux de données tabulaires et textuelles pour l'entraînement.
 
 ## Technologies & Librairies (Documentation)
