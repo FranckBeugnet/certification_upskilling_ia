@@ -81,6 +81,10 @@ Voici les liens utiles vers les technologies que nous allons utiliser :
 - [06 Menaces robustesse essentiel](docs/06_Menaces_robustesse_essentiel.md)
 - [fiche modele acerox](docs/fiche_modele_acerox.md)
 
+- [Antiseche Hyperparametres Ml](docs/antiseche_hyperparametres_ml.pdf)
+- [Conventions Commit](docs/conventions_commit.md)
+- [Fiche Feuille De Route Cas Usage](docs/fiche_feuille_de_route_cas_usage.pdf)
+
 ## Liens Officiels Extraits
 - **AI Act européen** : https://artificialintelligenceact.eu/the-act/
 - **Alembic — Auto Generating Migrations** : https://alembic.sqlalchemy.org/en/latest/autogenerate.html

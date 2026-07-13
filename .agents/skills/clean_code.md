@@ -16,18 +16,18 @@ Garantir un code lisible, documenté, maintenable et aligné sur les standards d
 3. **Qualité & Formatage :**
    - S'assurer que le code est propre. Dans les scripts purs, l'utilisation implicite de linter/formater (Black, Ruff, Flake8) est la norme.
 
-## 📓 Règle d'or pour le Notebook (cas-usage.ipynb)
+## 📓 Règle d'or pour le Notebook (cas-usage.ipynb) et le Journal de bord
 - Le notebook de certification n'est pas un brouillon, c'est un livrable pédagogique.
 - **Commentaires pour néophytes :** Le code doit être ponctué de blocs Markdown ou de commentaires en ligne expliquant la *logique algorithmique* (Pourquoi fait-on ce `merge` ? Pourquoi utilise-t-on un `StandardScaler` ?).
 - **Zéro cellule orpheline :** Aucune cellule de code ne doit afficher de résultat sans qu'il y ait une ligne d'explication ou de conclusion associée. L'approche est "Récit de données" (Data Storytelling).
+- **Journal de bord continu :** Remplir `journal-de-bord.ipynb` à chaque session de travail (Fait, Bloqué, Décidé, Pourquoi). C'est le socle de l'argumentaire métier final.
 
 ## 🌿 Standards Git (Conventional Commits)
-Pour garantir un historique propre, les commits doivent suivre la convention :
-- `feat:` : Ajout d'une nouvelle fonctionnalité (ex: `feat: ajout route predict fastapi`).
-- `fix:` : Correction d'un bug ou d'une erreur.
-- `docs:` : Mise à jour de la documentation ou du journal de bord.
-- `chore:` : Tâches de maintenance (mise à jour `.gitignore`, dépendances).
-- `refactor:` : Réécriture de code sans changement de fonctionnalité.
+Pour garantir un historique propre, les commits doivent suivre la convention stricte `type(scope): description` :
+- **type** : `feat` (nouvelle fonctionnalité), `fix` (correction), `docs` (documentation), `chore` (maintenance), `refactor` (réorganisation), `test` (tests).
+- **scope** : Indiquer la zone touchée (ex: `api`, `model`, `docker`, `eda`, `notebook`).
+- **description** : En anglais, à l'impératif présent, max 72 caractères, sans point final (ex: `feat(api): add predict endpoint`).
+- **Une seule intention par commit.** Pas de commit "fourre-tout" (`git add .` à l'aveugle est proscrit).
 
 ## 🤝 Collaboration & Pair-Programming
 - **Pair-coding Git :** Privilégier les branches (ex: `feat/nom-feature`) et les Pull Requests pour les revues de code croisées en binôme.

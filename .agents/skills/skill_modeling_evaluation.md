@@ -17,7 +17,11 @@ S'assurer que les modèles sont correctement entraînés, évalués avec les mé
    - Si utilisation de SMOTE : **CRITIQUE : Il ne doit être appliqué QUE sur le jeu d'entraînement**, à l'intérieur du pipeline de validation croisée (`imblearn.pipeline.Pipeline`). Ne jamais faire un SMOTE avant le split.
 
 ## 🛠️ Règles d'implémentation - Modèles Avancés
-1. **Machine Learning Classique :** RandomForest, XGBoost, LightGBM. Penser au tuning d'hyperparamètres (GridSearch/RandomSearch).
+1. **Machine Learning Classique & Réglage d'Hyperparamètres :** 
+   - **Baseline d'abord :** Toujours établir une baseline avec les paramètres par défaut avant toute optimisation.
+   - **Cibler l'impact :** Régler 2 à 3 hyperparamètres à fort impact un par un (ex: `learning_rate` en priorité pour les réseaux/boosting, `max_depth` pour les arbres).
+   - **Stratégie de recherche :** Privilégier `RandomSearch` (plus efficace) ou l'optimisation bayésienne (ex: Optuna) plutôt que `GridSearch` (qui explose sur les grands espaces).
+   - **Diagnostic Biais/Variance :** Comparer l'erreur train vs validation. Si sous-apprentissage (biais élevé), augmenter la complexité. Si sur-apprentissage (variance élevée), augmenter la régularisation (ex: baisse de profondeur, hausse du L1/L2).
 2. **Transfer Learning / Zero-shot (NLP/Vision) :** Pour les données non-structurées, privilégier le fine-tuning de modèles pré-entraînés (ex: CamemBERT pour le NLP français, Zero-shot CLIP) plutôt que de repartir de zéro, afin de gagner en performance et en temps.
 
 ## 📊 Métriques d'Évaluation
