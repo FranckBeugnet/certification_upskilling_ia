@@ -24,3 +24,172 @@ Voici les liens utiles vers les technologies que nous allons utiliser :
 ## Cadre Légal et Éthique
 - [RGPD (CNIL)](https://www.cnil.fr/fr/reglement-europeen-protection-donnees) : Règles de protection des données personnelles.
 - [Loi pour une République Numérique](https://www.legifrance.gouv.fr/loda/id/JORFTEXT000033202746/) : Transparence et non-discrimination des algorithmes.
+
+## Cours (Dossier docs)
+- [01 Audit ethique complet essentiel](docs/01_Audit_ethique_complet_essentiel.md)
+- [01 Audit qualite pandas essentiel](docs/01_Audit_qualite_pandas_essentiel.md)
+- [01 CNN from scratch essentiel](docs/01_CNN_from_scratch_essentiel.md)
+- [01 DockerCompose essentiel](docs/01_DockerCompose_essentiel.md)
+- [01 EDA saisonnalite essentiel](docs/01_EDA_saisonnalite_essentiel.md)
+- [01 Entretien client essentiel](docs/01_Entretien_client_essentiel.md)
+- [01 FastAPI Pydantic ml essentiel](docs/01_FastAPI_Pydantic_ml_essentiel.md)
+- [01 FastAPI essentiel](docs/01_FastAPI_essentiel.md)
+- [01 Pandas Sklearn split essentiel](docs/01_Pandas_Sklearn_split_essentiel.md)
+- [01 SQLAlchemy ORM essentiel](docs/01_SQLAlchemy_ORM_essentiel.md)
+- [02 Alembic migration essentiel](docs/02_Alembic_migration_essentiel.md)
+- [02 Cartographie sources essentiel](docs/02_Cartographie_sources_essentiel.md)
+- [02 Datasheet Gebru complet essentiel](docs/02_Datasheet_Gebru_complet_essentiel.md)
+- [02 Disparate impact essentiel](docs/02_Disparate_impact_essentiel.md)
+- [02 Docker essentiel](docs/02_Docker_essentiel.md)
+- [02 Dockerfile Python essentiel](docs/02_Dockerfile_Python_essentiel.md)
+- [02 HuggingFace Transformers essentiel](docs/02_HuggingFace_Transformers_essentiel.md)
+- [02 Metrics classif desequilibree essentiel](docs/02_Metrics_classif_desequilibree_essentiel.md)
+- [02 Split temporel vs stratifie essentiel](docs/02_Split_temporel_vs_stratifie_essentiel.md)
+- [02 Transfer learning essentiel](docs/02_Transfer_learning_essentiel.md)
+- [03 ColumnTransformer Pipeline essentiel](docs/03_ColumnTransformer_Pipeline_essentiel.md)
+- [03 Ingestion idempotente essentiel](docs/03_Ingestion_idempotente_essentiel.md)
+- [03 Loguru essentiel](docs/03_Loguru_essentiel.md)
+- [03 Metriques regression essentiel](docs/03_Metriques_regression_essentiel.md)
+- [03 Pytest TestClient essentiel](docs/03_Pytest_TestClient_essentiel.md)
+- [03 RandomForest hyperparams essentiel](docs/03_RandomForest_hyperparams_essentiel.md)
+- [03 Risques RGPD multisources essentiel](docs/03_Risques_RGPD_multisources_essentiel.md)
+- [03 Streamlit essentiel](docs/03_Streamlit_essentiel.md)
+- [03 Zero shot CLIP essentiel](docs/03_Zero_shot_CLIP_essentiel.md)
+- [03 spaCy NER PII essentiel](docs/03_spaCy_NER_PII_essentiel.md)
+- [04 API Integration essentiel](docs/04_API_Integration_essentiel.md)
+- [04 Benchmark methodologie essentiel](docs/04_Benchmark_methodologie_essentiel.md)
+- [04 Comparaison economique essentiel](docs/04_Comparaison_economique_essentiel.md)
+- [04 Loguru middleware essentiel](docs/04_Loguru_middleware_essentiel.md)
+- [04 Parquet pyarrow essentiel](docs/04_Parquet_pyarrow_essentiel.md)
+- [04 Pytest API essentiel](docs/04_Pytest_API_essentiel.md)
+- [04 Schema Mermaid flux essentiel](docs/04_Schema_Mermaid_flux_essentiel.md)
+- [04 Strategies anonymisation essentiel copy](docs/04_Strategies_anonymisation_essentiel copy.md)
+- [04 Strategies anonymisation essentiel](docs/04_Strategies_anonymisation_essentiel.md)
+- [04 Tests pipeline essentiel](docs/04_Tests_pipeline_essentiel.md)
+- [04 Tracage experiments md essentiel](docs/04_Tracage_experiments_md_essentiel.md)
+- [05 Datasheet Gebru essentiel](docs/05_Datasheet_Gebru_essentiel.md)
+- [05 Grille decision C4 essentiel](docs/05_Grille_decision_C4_essentiel.md)
+- [05 Note identification essentiel](docs/05_Note_identification_essentiel.md)
+- [05 Pair coding async essentiel](docs/05_Pair_coding_async_essentiel.md)
+- [05 Pair coding git essentiel](docs/05_Pair_coding_git_essentiel.md)
+- [05 Persistance modele joblib essentiel](docs/05_Persistance_modele_joblib_essentiel.md)
+- [05 Presidio alternative essentiel copy](docs/05_Presidio_alternative_essentiel copy.md)
+- [05 Presidio alternative essentiel](docs/05_Presidio_alternative_essentiel.md)
+- [05 Versionning modele essentiel](docs/05_Versionning_modele_essentiel.md)
+- [06 Git binome essentiel](docs/06_Git_binome_essentiel.md)
+- [06 Grille decision approche essentiel](docs/06_Grille_decision_approche_essentiel.md)
+- [06 Menaces robustesse essentiel](docs/06_Menaces_robustesse_essentiel.md)
+- [fiche modele acerox](docs/fiche_modele_acerox.md)
+
+## Liens Officiels Extraits
+- **AI Act européen** : https://artificialintelligenceact.eu/the-act/
+- **Alembic — Auto Generating Migrations** : https://alembic.sqlalchemy.org/en/latest/autogenerate.html
+- **Alembic — Tutorial** : https://alembic.sqlalchemy.org/en/latest/tutorial.html
+- **Atlassian — Distributed teams** : https://www.atlassian.com/agile/distributed-teams/asynchronous-communication
+- **Atlassian — Pair programming** : https://www.atlassian.com/agile/software-development/pair-programming
+- **Atlassian — Writing meaningful technical documents** : https://www.atlassian.com/work-management/knowledge-sharing/documentation
+- **Barocas, Hardt, Narayanan — *Fairness and ML*** : https://fairmlbook.org/
+- **CLIP overview** : https://huggingface.co/docs/transformers/model_doc/clip
+- **CNIL — Comprendre le RGPD** : https://www.cnil.fr/fr/comprendre-le-rgpd
+- **CNIL — Gestion des ressources humaines** : https://www.cnil.fr/fr/la-gestion-des-ressources-humaines
+- **CNIL — IA et données personnelles** : https://www.cnil.fr/fr/intelligence-artificielle/ia-comment-etre-en-conformite-avec-le-rgpd
+- **CNIL — Pseudonymisation** : https://www.cnil.fr/fr/technologies/lanonymisation-de-donnees-personnelles
+- **CNIL — Pseudonymisation** : https://www.cnil.fr/fr/tag/pseudonymisation
+- **CS231n — Convolutional Networks** : https://cs231n.github.io/convolutional-networks/
+- **ChromaDB** : https://docs.trychroma.com/
+- **Conventional Commits** : https://www.conventionalcommits.org/
+- **Crenshaw (1989) — Intersectionnalité** : https://chicagounbound.uchicago.edu/uclf/vol1989/iss1/8/
+- **DeepPCB (GitHub)** : https://github.com/tangsanli5201/DeepPCB
+- **Doc officielle** : https://fastapi.tiangolo.com/
+- **Doc officielle Docker** : https://docs.docker.com/
+- **Doc officielle Loguru** : https://loguru.readthedocs.io/
+- **Doc officielle pytest** : https://docs.pytest.org/
+- **Docker Compose** : https://docs.docker.com/compose/
+- **Docker — Best practices for writing Dockerfiles** : https://docs.docker.com/develop/develop-images/dockerfile_best-practices/
+- **Docker — Multi-stage builds** : https://docs.docker.com/develop/develop-images/multistage-build/
+- **Dockerfile reference** : https://docs.docker.com/reference/dockerfile/
+- **Déployer FastAPI dans Docker** : https://fastapi.tiangolo.com/deployment/docker/
+- **EEOC (US) — Employment Tests & Selection Procedures (règle des 4/5)** : https://www.eeoc.gov/laws/guidance/employment-tests-and-selection-procedures
+- **Erika Hall — Just Enough Research** : https://www.mulebooks.com/just-enough-research
+- **Fairlearn** : https://fairlearn.org/main/user_guide/index.html
+- **Fairlearn — Disparity metrics** : https://fairlearn.org/main/user_guide/assessment/common_fairness_metrics.html
+- **FastAPI lifespan** : https://fastapi.tiangolo.com/advanced/events/#lifespan
+- **FastAPI sur GitHub** : https://github.com/fastapi/fastapi
+- **FastAPI — Lifespan events** : https://fastapi.tiangolo.com/advanced/events/
+- **FastAPI — Middleware** : https://fastapi.tiangolo.com/tutorial/middleware/
+- **FastAPI — Sebastián Ramírez talks** : https://www.youtube.com/playlist?list=PLcyqfHQz_GExf6jvFRyHQfVyCSP6dRpAj
+- **FastAPI — examples** : https://github.com/tiangolo/fastapi/tree/master/docs_src
+- **Gebru et al. (2018) — *Datasheets for Datasets*** : https://arxiv.org/abs/1803.09010
+- **Git tagging** : https://git-scm.com/book/en/v2/Git-Basics-Tagging
+- **GitHub PR best practices** : https://github.blog/2015-01-21-how-to-write-the-perfect-pull-request/
+- **GitHub — Co-authored commits** : https://docs.github.com/fr/pull-requests/committing-changes-to-your-project/creating-and-editing-commits/creating-a-commit-with-multiple-authors
+- **GitHub — Creating diagrams in Markdown** : https://docs.github.com/fr/get-started/writing-on-github/working-with-advanced-formatting/creating-diagrams
+- **GitHub — Fork a repo** : https://docs.github.com/fr/get-started/quickstart/fork-a-repo
+- **Google ML Crash Course — Classification** : https://developers.google.com/machine-learning/crash-course/classification
+- **Hugging Face Transformers** : https://huggingface.co/docs/transformers/index
+- **Kaggle — PCB Defect Detection** : https://www.kaggle.com/datasets/akhatova/pcb-defects
+- **Lending Club — données originelles (legacy URL)** : https://www.lendingclub.com/info/download-data.action
+- **Loguru sur GitHub** : https://github.com/Delgan/loguru
+- **Loguru — Features (GitHub)** : https://github.com/Delgan/loguru#features
+- **Loguru — Quickstart** : https://loguru.readthedocs.io/en/stable/overview.html
+- **MAE vs RMSE** : https://medium.com/human-in-a-machine-world/mae-and-rmse-which-metric-is-better-e60ac3bde13d
+- **MLflow — Tracking (bonus)** : https://mlflow.org/docs/latest/tracking.html
+- **Martin Fowler — Continuous Delivery for ML (CD4ML)** : https://martinfowler.com/articles/cd4ml.html
+- **Martin Fowler — Evolutionary Database Design** : https://martinfowler.com/articles/evodb.html
+- **Mermaid Live Editor** : https://mermaid.live
+- **Mermaid — Flowchart syntax** : https://mermaid.js.org/syntax/flowchart.html
+- **Microsoft Presidio — doc** : https://microsoft.github.io/presidio/
+- **Mitchell et al. (2019) — *Model Cards for Model Reporting*** : https://arxiv.org/abs/1810.03993
+- **OpenAI CLIP paper (2021)** : https://arxiv.org/abs/2103.00020
+- **Prompt engineering for CLIP** : https://github.com/openai/CLIP/blob/main/notebooks/Prompt_Engineering_for_ImageNet.ipynb
+- **PyArrow — Parquet format** : https://arrow.apache.org/docs/python/parquet.html
+- **Pydantic v2** : https://docs.pydantic.dev/latest/
+- **Pydantic v2 — Fields** : https://docs.pydantic.dev/latest/concepts/fields/
+- **Quickstart** : https://pytorch.org/tutorials/beginner/basics/quickstart_tutorial.html
+- **RGPD considérant 26** : https://gdpr-info.eu/recitals/no-26/
+- **Reproducibility checklist (Joelle Pineau, McGill)** : https://www.cs.mcgill.ca/~jpineau/ReproducibilityChecklist.pdf
+- **SQLAlchemy 2.0 — ORM Quickstart** : https://docs.sqlalchemy.org/en/20/orm/quickstart.html
+- **SQLAlchemy — migration 1.x → 2.x** : https://docs.sqlalchemy.org/en/20/changelog/migration_20.html
+- **Semantic Versioning 2.0** : https://semver.org/
+- **Snyk — 10 Docker Security Best Practices** : https://snyk.io/blog/10-docker-image-security-best-practices/
+- **Starlette — BaseHTTPMiddleware** : https://www.starlette.io/middleware/#basehttpmiddleware
+- **StatQuest — ROC and AUC, Clearly Explained** : https://www.youtube.com/watch?v=4jRBRDbJemM
+- **StatQuest — Random Forests, Clearly Explained** : https://www.youtube.com/watch?v=J4Wdy0Wc_xQ
+- **Streamlit** : https://docs.streamlit.io
+- **Streamlit Cheatsheet** : https://docs.streamlit.io/library/cheatsheet
+- **Testing FastAPI** : https://fastapi.tiangolo.com/tutorial/testing/
+- **The Twelve-Factor App — Logs** : https://12factor.net/logs
+- **Transfer learning tutorial** : https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html
+- **Tutoriel pas à pas** : https://fastapi.tiangolo.com/tutorial/
+- **UCI Bike Sharing** : https://archive.ics.uci.edu/dataset/275/bike+sharing+dataset
+- **UCI — Adult Income / Census** : https://archive.ics.uci.edu/dataset/2/adult
+- **UCI — German Credit Data (Statlog)** : https://archive.ics.uci.edu/dataset/144/statlog+german+credit+data
+- **`openai/clip-vit-base-patch32` model card** : https://huggingface.co/openai/clip-vit-base-patch32
+- **httpx** : https://www.python-httpx.org/
+- **httpx — Async Quickstart** : https://www.python-httpx.org/quickstart/
+- **joblib — Persistence** : https://joblib.readthedocs.io/en/latest/persistence.html
+- **pandas — Getting started** : https://pandas.pydata.org/docs/getting_started/intro_tutorials/index.html
+- **pandas — IO tools** : https://pandas.pydata.org/docs/user_guide/io.html
+- **pandas — Parquet I/O** : https://pandas.pydata.org/docs/user_guide/io.html#io-parquet
+- **pytest — Fixtures** : https://docs.pytest.org/en/stable/how-to/fixtures.html
+- **pytest — fixtures** : https://docs.pytest.org/en/stable/explanation/fixtures.html
+- **pytest — monkeypatch** : https://docs.pytest.org/en/stable/how-to/monkeypatch.html
+- **scikit-learn — Choosing the right estimator** : https://scikit-learn.org/stable/machine_learning_map.html
+- **scikit-learn — Classification report** : https://scikit-learn.org/stable/modules/model_evaluation.html#classification-report
+- **scikit-learn — Cross-validation** : https://scikit-learn.org/stable/modules/cross_validation.html
+- **scikit-learn — HistGradientBoostingRegressor** : https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.HistGradientBoostingRegressor.html
+- **scikit-learn — Model persistence** : https://scikit-learn.org/stable/model_persistence.html
+- **scikit-learn — RandomForestClassifier** : https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html
+- **scikit-learn — Regression metrics** : https://scikit-learn.org/stable/modules/model_evaluation.html#regression-metrics
+- **scikit-learn — TimeSeriesSplit** : https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.TimeSeriesSplit.html
+- **scikit-learn — `ColumnTransformer`** : https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html
+- **scikit-learn — `OneHotEncoder`** : https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html
+- **scikit-learn — `OrdinalEncoder`** : https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OrdinalEncoder.html
+- **scikit-learn — `Pipeline`** : https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html
+- **scikit-learn — `train_test_split`** : https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html
+- **scikit-learn — examples** : https://github.com/scikit-learn/scikit-learn/tree/main/examples
+- **seaborn — tutorial** : https://seaborn.pydata.org/tutorial.html
+- **spaCy — Liste des modèles** : https://spacy.io/models
+- **spaCy — NER** : https://spacy.io/usage/linguistic-features#named-entities
+- **torchvision.models** : https://pytorch.org/vision/stable/models.html
+- **ydata-profiling** : https://github.com/ydataai/ydata-profiling

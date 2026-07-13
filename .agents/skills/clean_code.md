@@ -28,3 +28,7 @@ Pour garantir un historique propre, les commits doivent suivre la convention :
 - `docs:` : Mise à jour de la documentation ou du journal de bord.
 - `chore:` : Tâches de maintenance (mise à jour `.gitignore`, dépendances).
 - `refactor:` : Réécriture de code sans changement de fonctionnalité.
+
+## 🤝 Collaboration & Pair-Programming
+- **Pair-coding Git :** Privilégier les branches (ex: `feat/nom-feature`) et les Pull Requests pour les revues de code croisées en binôme.
+- **Pair-coding asynchrone :** Lors de travail asynchrone, s'assurer que les commits sont fréquents et documentés (issues, commentaires) pour garantir un transfert de contexte optimal à l'autre membre de l'équipe.
