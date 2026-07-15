@@ -11,8 +11,8 @@
 - Création des Rôles, des Skills techniques (MLOps, Explicabilité, Clean Code) et des Workflows.
 - Ajout de l'exigence d'une base de données SQLite pour l'historique de l'API.
 - Ajout de l'exigence d'une interface UI via Streamlit.
-- **Phase 1 terminée :** Cadrage métier réalisé, dictionnaire de variables documenté dans `cas-usage.ipynb`, variables sensibles identifiées (`nationalite_hors_ue`, `age`).
-- **Initiation EDA :** Chargement des données et premier aperçu du déséquilibre des classes cibles (Notebook mis à jour).
+- **Phase 1 terminée :** Cadrage métier réalisé.
+- **Phase 2 terminée :** Identification et acquisition des données complétées dans `cas-usage.ipynb`. Intégration du hachage MD5 pour la reproductibilité, précision des unités dans le dictionnaire, et ajout d'un encart éthique sur le calcul du Disparate Impact.
 - Journal de bord mis à jour avec les décisions de la session.
 
 ## 🚧 Bloquants ou Points d'attention
@@ -20,5 +20,5 @@
 - *Rappel d'interaction :* Interdiction absolue de faire un `git push` sans l'accord explicite de l'utilisateur.
 
 ## 🎯 Objectif immédiat (Prochaine action attendue)
-1. Le Data Scientist doit approfondir l'EDA (Section 3 du notebook) : analyse des corrélations, détection de PII, etc.
-2. Préparer les scénarios de modélisation (avec et sans variables sensibles).
+1. Le Data Scientist doit approfondir l'EDA (Partie 3 du notebook) : exécution des cellules existantes, analyse des corrélations, détection des valeurs aberrantes et des PII.
+2. Préparer les scénarios de préparation des données (Partie 4).
