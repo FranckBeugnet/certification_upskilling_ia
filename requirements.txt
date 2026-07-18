@@ -1,0 +1,25 @@
+# --- Data Science & Modélisation ---
+pandas==2.3.3
+numpy==2.4.1
+scikit-learn==1.8.0
+lightgbm==4.6.0
+joblib==1.5.3
+
+# --- Visualisation ---
+matplotlib==3.10.8
+seaborn==0.13.2
+
+# --- Environnement de développement ---
+jupyter
+nbconvert==7.17.1
+
+# --- Suivi des expérimentations (MLOps) ---
+mlflow==3.14.0
+
+# --- Déploiement API ---
+fastapi==0.139.2
+uvicorn==0.41.0
+pydantic==2.12.5
+
+# --- Interface Graphique (Web App) ---
+streamlit

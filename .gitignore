@@ -71,3 +71,9 @@ venv.bak/
 
 # MLflow
 mlruns/
+
+# MLflow
+mlflow.db
+mlruns/
+scratch/
+scratch_*.txt
