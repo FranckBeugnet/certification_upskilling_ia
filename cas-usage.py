@@ -885,7 +885,8 @@ display(df_cv_results)
 # **Pour le LightGBM :**
 # 1. **`n_estimators` [50, 100] (Nombre d'arbres)** : On le teste à `50` (la moitié) et `100` (le défaut). L'objectif est de lui demander de comprendre les règles générales avec peu d'arbres, sans se perdre dans les détails aberrants.
 # 2. **`learning_rate` [0.05, 0.1] (Vitesse d'apprentissage)** : C'est la puissance de correction de chaque nouvel arbre. Un apprentissage lent (`0.05`) force la prudence, tandis que la norme (`0.1`) permet d'aller vite.
-# 3. **`max_depth` [-1, 5] (Profondeur)** : `-1` signifie "aucune limite" (risque maximal d'overfitting sur le texte). `5` force l'arbre à s'arrêter très tôt, garantissant qu'il ne prendra en compte que les signaux majeurs (âge, absence de transport).
+# 3. **`num_leaves` [15, 31] (Nombre de feuilles)** : Au lieu de limiter bêtement la profondeur (`max_depth`), on limite le nombre total de feuilles. Face à un grand nombre de mots (TF-IDF), cela force l'algorithme à ne conserver que les combinaisons les plus pertinentes.
+# 4. **`min_child_samples` [20, 50] (Échantillons minimums par feuille)** : Ce réglage est vital pour la robustesse. En forçant chaque règle terminale à s'appliquer à au moins 20 ou 50 usagers, on interdit au modèle de créer des exceptions "sur-mesure" pour une ou deux personnes, bloquant ainsi le surapprentissage.
 # 
 # **Pour le Random Forest :**
 # 1. **`n_estimators` [100, 200]** : Le Random Forest crée des arbres "au hasard" et vote. Contrairement au Boosting, plus de forêts réduisent l'erreur. On double la norme pour voir s'il lisse mieux les erreurs du texte.
@@ -918,7 +919,8 @@ pipe_lgb = Pipeline([
 param_grid_lgb = {
     'clf__n_estimators': [50, 100],
     'clf__learning_rate': [0.05, 0.1],
-    'clf__max_depth': [-1, 5]
+    'clf__num_leaves': [15, 31],
+    'clf__min_child_samples': [20, 50]
 }
 
 # === Pipeline Random Forest ===
@@ -971,28 +973,53 @@ print("="*50)
 # In[42]:
 
 
-from sklearn.metrics import classification_report, accuracy_score, ConfusionMatrixDisplay
+from sklearn.metrics import classification_report, accuracy_score, ConfusionMatrixDisplay, f1_score, confusion_matrix
 import matplotlib.pyplot as plt
+import tempfile
+import os
 
-y_pred = final_model.predict(X_test)
+with mlflow.start_run(run_name="Evaluation_Finale_TestSet"):
+    y_pred = final_model.predict(X_test)
+    
+    # Calcul des métriques
+    acc = accuracy_score(y_test, y_pred)
+    f1_test = f1_score(y_test, y_pred, average="macro")
+    cm = confusion_matrix(y_test, y_pred)
+    fn_classe2 = cm[2, 0] + cm[2, 1]
+    
+    # Logging MLflow
+    mlflow.log_metric("accuracy_test", acc)
+    mlflow.log_metric("f1_macro_test", f1_test)
+    mlflow.log_metric("fn_classe2_test", fn_classe2)
+    mlflow.set_tag("candidate", "production")
+    
+    # Sauvegarde du modèle final
+    mlflow.sklearn.log_model(final_model, "production_model_S1", serialization_format="cloudpickle")
 
-print("=== Résultats sur l'ensemble de Test ===")
-print(f"Accuracy : {accuracy_score(y_test, y_pred):.4f}")
-print("Rapport de classification :")
-print(classification_report(y_test, y_pred))
+    print("=== Résultats sur l'ensemble de Test ===")
+    print(f"Accuracy : {acc:.4f}")
+    print("Rapport de classification :")
+    print(classification_report(y_test, y_pred))
 
-# Affichage de la matrice de confusion
-fig, ax = plt.subplots(figsize=(6, 6))
-ConfusionMatrixDisplay.from_predictions(
-    y_test, 
-    y_pred, 
-    display_labels=["Rapide (<6m)", "Moyen (6-12m)", "Risque (>12m)"],
-    cmap="Blues", 
-    ax=ax,
-    colorbar=False
-)
-plt.title("Matrice de Confusion Finale (Scénario 1)")
-plt.show()
+    # Affichage de la matrice de confusion
+    fig, ax = plt.subplots(figsize=(6, 6))
+    ConfusionMatrixDisplay.from_predictions(
+        y_test, 
+        y_pred, 
+        display_labels=["Rapide (<6m)", "Moyen (6-12m)", "Risque (>12m)"],
+        cmap="Blues", 
+        ax=ax,
+        colorbar=False
+    )
+    plt.title("Matrice de Confusion Finale (Scénario 1)")
+    
+    # Sauvegarde de l'image et log dans MLflow
+    with tempfile.TemporaryDirectory() as tmp_dir:
+        cm_path = os.path.join(tmp_dir, "confusion_matrix.png")
+        fig.savefig(cm_path)
+        mlflow.log_artifact(cm_path)
+        
+    plt.show()
 
 
 # ### 5.6 Synthèse finale et Analyse de la Matrice de Confusion
