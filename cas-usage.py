@@ -289,7 +289,63 @@ df.shape, df.columns.tolist()
 # 
 # > 💡 **Le Code ROME** : Le Répertoire Opérationnel des Métiers et des Emplois (ROME) est la nomenclature utilisée par France Travail pour classer les métiers. Il est composé d'une lettre (grande famille) et de 4 chiffres. C'est une information clé mais à forte cardinalité.
 # 
-# ### 2.4 📝 Synthèse acquisition
+# ### 2.4 Datasheet du Dataset (selon Gebru et al., 2018)
+# 
+# > **Modèle Gebru et al. (2018) — Format 7 sections (1 page max).**  
+# > Document de traçabilité d'ingénierie et d'audit éthique/qualité.  
+# > **Public cible :** DPO, Équipe Métier & Équipe Data Science — lisible par un non-data-scientist.
+# 
+# #### 1. Motivation
+# Ce dataset est fourni pour prototyper un cas d'usage d'orientation et de tri multimodal des demandeurs d'emploi (système expert d'aiguillage).
+# - **Source principale :** `dataset_trajectoire_emploi.csv` (historique d'accompagnement usagers).
+# - **Objectif initial :** Estimer le risque de délai de retour à l'emploi (`classe_retour_emploi`) à partir de caractéristiques socio-économiques, géographiques et textuelles.
+# - **Objectif de cette version "clean" :** Fournir un dataset consolidé, relisible et documenté pour audit qualité/éthique et expérimentation contrôlée sous les exigences de l'AI Act.
+# 
+# #### 2. Composition
+# 
+# | Aspect | Valeur |
+# |---|---|
+# | Nombre de lignes | 2500 |
+# | Nombre de colonnes | 10 colonnes |
+# | Cible | `classe_retour_emploi` : `0` (<6 mois), `1` (6-12 mois), `2` (>12 mois) |
+# | Distribution cible | `0` : 44.0 % / `1` : 38.0 % / `2` : 18.0 % (déséquilibre) |
+# | Variables sensibles | `age` ⚠️ (âgisme), `nationalite_hors_ue` ⚠️ (origine), `synthese_entretien` ⚠️ (PII) |
+# | Valeurs manquantes | `niveau_diplome` (imputées par modalité majoritaire) |
+# 
+# #### 3. Processus de collecte
+# - Représente un historique de dossiers de demandeurs d'emploi suivis en agence.
+# - **Biais de sélection probable :** Seules les personnes inscrites à l'agence sont représentées (pas la population générale).
+# - **Biais historique probable :** La cible `classe_retour_emploi` peut refléter des discriminations ou des pratiques métiers antérieures.
+# 
+# #### 4. Préprocessing appliqué
+# - **Imputation des manquants :**
+#   - numériques : médiane (`SimpleImputer(strategy="median")`),
+#   - catégorielles/ordinales : modalité la plus fréquente (`SimpleImputer(strategy="most_frequent")`).
+# - **Encodage des catégorielles :**
+#   - nominales (`departement`, `famille_rome`, `est_allocataire`) : `OneHotEncoder(handle_unknown="ignore", drop="first")`,
+#   - ordinales (`niveau_diplome`) : `OrdinalEncoder` avec ordre hiérarchique explicite.
+# - **Normalisation des numériques :** `StandardScaler` (`age`, `anciennete_poste_ans`).
+# - **Traitement NLP :** Extraction de texte et `TfidfVectorizer` (stop words français, max 1000 features).
+# - **Scénarios Éthiques :** En Mode S2 (Éthique), retrait des variables sensibles `age` et `nationalite_hors_ue` (*Privacy by Design*).
+# 
+# #### 5. Usages prévus / à éviter
+# **Usages prévus :**
+# - Outil d'aide à la décision (système d'aiguillage) sous supervision humaine (Human-In-The-Loop).
+# - Audit de qualité de données et détection de biais éthiques (Disparate Impact).
+# 
+# **Usages à éviter :**
+# - Décision 100% automatisée sans contrôle humain (interdit par l'AI Act / RGPD Art. 22).
+# - Profilage répressif ou exclusion automatique d'allocataires.
+# 
+# #### 6. Distribution
+# - **Transmis à :** Équipe Data Science, Équipe Métier, DPO.
+# - **Format :** CSV / Parquet local avec accès contrôlé.
+# 
+# #### 7. Maintenance
+# - **Mainteneur :** Franck BEUGNET.
+# - **Version :** v1.0.0 — 2026-07-23.
+# 
+# ### 2.5 📝 Synthèse acquisition
 # 
 # Jeu de données hybride de 2500 échantillons avec présence confirmée de données sensibles (`nationalite_hors_ue`, `age`) et potentiellement identifiantes (`synthese_entretien`). Une vigilance sera apportée sur les valeurs manquantes (ex: `niveau_diplome`).
 # 
