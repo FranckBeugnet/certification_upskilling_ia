@@ -620,7 +620,7 @@ from sklearn.model_selection import train_test_split
 # drop solution for training
 X = df.drop(columns=["classe_retour_emploi"])
 # solution
-y = df["classe_retour_emploi"]
+y = df["classe_retour_emploi"].astype(np.int32)
 
 # Split 80/20 with stratification
 X_train, X_test, y_train, y_test = train_test_split(
@@ -941,7 +941,7 @@ mlflow.set_experiment("certif_ia_modelisation")
 # === Pipeline LightGBM ===
 pipe_lgb = Pipeline([
     ("preprocessor", preprocessors["S1"]),
-    ("clf", LGBMClassifier(class_weight="balanced", random_state=42, verbose=-1))
+    ("clf", LGBMClassifier(class_weight="balanced", random_state=42, verbose=-1, n_jobs=1))
 ])
 param_grid_lgb = {
     'clf__n_estimators': [50, 100],
@@ -1312,7 +1312,7 @@ print("="*50)
 best_lgb_params = search_lgb.best_params_
 final_pipeline_s2 = Pipeline([
     ("preprocessor", preprocessors["S2"]),
-    ("clf", LGBMClassifier(class_weight="balanced", random_state=42, verbose=-1))
+    ("clf", LGBMClassifier(class_weight="balanced", random_state=42, verbose=-1, n_jobs=1))
 ])
 # On applique les meilleurs paramètres trouvés via set_params (qui accepte le préfixe 'clf__')
 final_pipeline_s2.set_params(**best_lgb_params)
