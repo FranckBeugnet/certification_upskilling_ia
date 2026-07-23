@@ -127,11 +127,18 @@
 
 
 # Imports standards
+import os
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 from pathlib import Path
+from IPython.display import display
+import warnings
+
+# Prévention des erreurs de comptage de cœurs Joblib/Loky sur Windows
+os.environ["LOKY_MAX_CPU_COUNT"] = str(os.cpu_count() or 4)
+warnings.filterwarnings("ignore", category=UserWarning, module="sklearn")
 
 # Reproductibilité
 RANDOM_STATE = 42
@@ -777,7 +784,7 @@ import os
 
 os.makedirs("models", exist_ok=True)
 for sc in preprocessors.keys():
-    joblib.dump(preprocessors[sc], f"models/preprocessor_{sc}.pkl")
+    joblib.dump(preprocessors[sc], f"models/preprocessor_{sc}.joblib")
 print("✅ Pipelines de pré-traitement (S1, S2, S3, S4) sauvegardés avec succès dans models/")
 
 
@@ -797,11 +804,8 @@ print("✅ Pipelines de pré-traitement (S1, S2, S3, S4) sauvegardés avec succ�
 # 4. **Construction d'une démarche d'audit éthique** :
 #    Enfin, la structuration formelle de nos 4 scénarios d'entraînement est la base de notre future analyse critique (Section 6). Le scénario **S2 (Éthique)**, en retirant l'âge et la nationalité, nous permettra de comparer les performances brutes avec les performances 'sans biais potentiel', répondant ainsi directement aux exigences réglementaires de l'AI Act et au principe de non-discrimination algorithmique.
 
-5. **Filtrage du bruit sémantique (NLP)** :
-   L'injection d'une liste de Stop Words français dans le TF-IDF a permis d'éliminer le bruit de fond (les mots de liaison) qui polluait l'espace vectoriel. Cela a considérablement amélioré la pertinence des mots-clés extraits, garantissant une meilleure explicabilité finale du modèle.
-
-5. **Filtrage du bruit sémantique (NLP)** :
-   L'injection d'une liste de Stop Words français dans le TF-IDF a permis d'éliminer le bruit de fond (les mots de liaison) qui polluait l'espace vectoriel. Cela a considérablement amélioré la pertinence des mots-clés extraits, garantissant une meilleure explicabilité finale du modèle.
+# 5. **Filtrage du bruit sémantique (NLP)** :
+#    L'injection d'une liste de Stop Words français dans le TF-IDF a permis d'éliminer le bruit de fond (les mots de liaison) qui polluait l'espace vectoriel. Cela a considérablement amélioré la pertinence des mots-clés extraits, garantissant une meilleure explicabilité finale du modèle.
 # 
 
 # ---
@@ -847,7 +851,7 @@ import pandas as pd
 models = {
     "LogisticRegression": LogisticRegression(class_weight="balanced", max_iter=1000, random_state=42),
     "RandomForest": RandomForestClassifier(class_weight="balanced", random_state=42),
-    "LightGBM": LGBMClassifier(class_weight="balanced", random_state=42, n_jobs=-1, verbose=-1)
+    "LightGBM": LGBMClassifier(class_weight="balanced", random_state=42, n_jobs=1, verbose=-1)
 }
 
 cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
@@ -861,7 +865,7 @@ for name, model in models.items():
     ])
 
     # Nous utilisons f1_macro pour garantir l'impact des classes minoritaires
-    scores = cross_val_score(pipe, X_train, y_train, cv=cv, scoring="f1_macro", n_jobs=-1)
+    scores = cross_val_score(pipe, X_train, y_train, cv=cv, scoring="f1_macro", n_jobs=1)
 
     cv_results.append({
         "Modèle": name,
@@ -943,11 +947,11 @@ param_grid_rf = {
 }
 
 print("Démarrage du Duel Final (Hyperparameter Tuning) avec MLflow...")
-mlflow.sklearn.autolog(log_models=False, log_datasets=False) # Autolog pour capturer les params
+mlflow.sklearn.autolog(disable=True) # Désactivé pendant GridSearchCV pour éviter les conflits SQLite sur les sub-runs
 
 # Lancement de l'optimisation LightGBM
 with mlflow.start_run(run_name="LightGBM_HyperTuning"):
-    search_lgb = GridSearchCV(pipe_lgb, param_grid=param_grid_lgb, cv=cv, scoring="f1_macro", n_jobs=-1, verbose=0)
+    search_lgb = GridSearchCV(pipe_lgb, param_grid=param_grid_lgb, cv=cv, scoring="f1_macro", n_jobs=1, verbose=0)
     search_lgb.fit(X_train, y_train)
     mlflow.log_params(search_lgb.best_params_)
     mlflow.log_metric("best_cv_f1_macro", search_lgb.best_score_)
@@ -957,7 +961,7 @@ with mlflow.start_run(run_name="LightGBM_HyperTuning"):
 
 # Lancement de l'optimisation RandomForest
 with mlflow.start_run(run_name="RandomForest_HyperTuning"):
-    search_rf = GridSearchCV(pipe_rf, param_grid=param_grid_rf, cv=cv, scoring="f1_macro", n_jobs=-1, verbose=0)
+    search_rf = GridSearchCV(pipe_rf, param_grid=param_grid_rf, cv=cv, scoring="f1_macro", n_jobs=1, verbose=0)
     search_rf.fit(X_train, y_train)
     mlflow.log_params(search_rf.best_params_)
     mlflow.log_metric("best_cv_f1_macro", search_rf.best_score_)
@@ -1342,8 +1346,73 @@ ConfusionMatrixDisplay.from_predictions(
 plt.title("Matrice de Confusion Finale (Scénario 2 - Éthique)")
 plt.show()
 
+# ### 6.8 Sauvegarde des artefacts locaux (Joblib + JSON)
+# 
+# Pour assurer une traçabilité complète de l'artefact (Model Card technique), nous exportons 
+# le modèle final ainsi que ses métadonnées et performances dans un fichier JSON.
+
+print("\n" + "="*50)
+print("💾 Sauvegarde de l'artefact S2 et de ses métadonnées...")
+print("="*50)
+
+import json
+from datetime import datetime
+import sklearn
+import sys
+import hashlib
+from pathlib import Path
+
+# Récupération de l'empreinte du dataset source
+dataset_path = Path("data/dataset_synthetique_parcours_emploi.csv")
+dataset_hash = hashlib.md5(dataset_path.read_bytes()).hexdigest() if dataset_path.exists() else "non_disponible"
+
+# Récupération des noms des features du scénario S2
+num_s2, cat_nom_s2, cat_ord_s2, text_s2 = get_scenario_features("S2")
+
+metadata = {
+    "model_name": "modele_risque_chomage_S2",
+    "model_version": "v1.0.0",
+    "config_name": "S2_Ethique",
+    "created_at": datetime.now().isoformat(),
+    "sklearn_version": sklearn.__version__,
+    "python_version": sys.version.split()[0],
+    "dataset_md5": dataset_hash,
+    "hyperparameters": best_lgb_params,
+    "metrics_test_internal": {
+        "f1_macro": float(f1_test_s2),
+        "accuracy": float(acc_s2),
+        "fn_classe2": int(fn_classe2_s2),
+        "confusion_matrix": cm_s2.tolist()
+    },
+    "feature_columns": {
+        "numeric": num_s2,
+        "categorical_nominal": cat_nom_s2,
+        "categorical_ordinal": cat_ord_s2,
+        "text": text_s2
+    },
+    "target": {
+        "column": "classe_retour_emploi",
+        "mapping": {
+            "Rapide": 0,
+            "Moyen": 1,
+            "Risque longue durée": 2
+        }
+    }
+}
+
+# Sauvegarde du modèle (Joblib)
+joblib.dump(final_pipeline_s2, "models/pipeline_production.joblib")
+
+# Sauvegarde des métadonnées (JSON)
+with open("models/pipeline_production.json", "w", encoding="utf-8") as f:
+    json.dump(metadata, f, indent=4, ensure_ascii=False)
+
+print("✅ Modèle sauvegardé : models/pipeline_production.joblib")
+print("✅ Métadonnées sauvegardées : models/pipeline_production.json")
+
+
 # Fin du chapitre 6
-# ### 6.8 Synthèse de l'Évaluation S2 (Le coût de l'Éthique)
+# ### 6.9 Synthèse de l'Évaluation S2 (Le coût de l'Éthique)
 #
 # La comparaison entre la Matrice de Confusion du S1 (Chapitre 5.6) et celle du S2 (ci-dessus) illustre parfaitement le concept du **coût de l'éthique** en Machine Learning :
 #

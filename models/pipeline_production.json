@@ -1,0 +1,61 @@
+{
+    "model_name": "modele_risque_chomage_S2",
+    "model_version": "v1.0.0",
+    "config_name": "S2_Ethique",
+    "created_at": "2026-07-23T10:31:06.570919",
+    "sklearn_version": "1.5.1",
+    "python_version": "3.12.10",
+    "dataset_md5": "non_disponible",
+    "hyperparameters": {
+        "clf__learning_rate": 0.05,
+        "clf__min_child_samples": 20,
+        "clf__n_estimators": 100,
+        "clf__num_leaves": 15
+    },
+    "metrics_test_internal": {
+        "f1_macro": 0.6268575590119095,
+        "accuracy": 0.644,
+        "fn_classe2": 33,
+        "confusion_matrix": [
+            [
+                124,
+                35,
+                28
+            ],
+            [
+                40,
+                141,
+                42
+            ],
+            [
+                10,
+                23,
+                57
+            ]
+        ]
+    },
+    "feature_columns": {
+        "numeric": [
+            "anciennete_poste_ans"
+        ],
+        "categorical_nominal": [
+            "est_allocataire",
+            "departement",
+            "famille_rome"
+        ],
+        "categorical_ordinal": [
+            "niveau_diplome"
+        ],
+        "text": [
+            "synthese_entretien"
+        ]
+    },
+    "target": {
+        "column": "classe_retour_emploi",
+        "mapping": {
+            "Rapide": 0,
+            "Moyen": 1,
+            "Risque longue durée": 2
+        }
+    }
+}
