@@ -1534,15 +1534,6 @@ print("2. Escalade (HITL) : L'interface UI invite automatiquement le conseiller 
 # 
 # **Compétences** : C6 (implémenter le modèle), C7 (architecture cible)
 # 
-# 🎯 Transformer le modèle en **service exploitable** : API, UI, conteneurs, tracking d'expériences.
-# 
-# > ⚠️ **Cette section ne contient PAS le code de l'API/UI.** Le code vit dans le **repo Git** associé.  
-# > Dans le notebook, on met uniquement :
-# > 1. **Description architecturale** (texte)
-# > 2. **1 schéma** d'architecture (Mermaid, draw.io export, ou image)
-# > 3. **Lien vers le repo Git** + dossiers concernés
-# > 4. **Captures d'écran clés** (UI, dashboard, OpenAPI Swagger, workflow CI/CD vert)
-# > 5. **Justifications des choix techniques** (pourquoi FastAPI plutôt que Flask, pourquoi MLflow plutôt que `experiments.md`, etc.)
 # 
 # ⚠️ Attendus certif (présents dans le repo, **référencés** dans cette section du notebook) :  
 # - API FastAPI avec routes `/predict`, `/train`, `/health`  
