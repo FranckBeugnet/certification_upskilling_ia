@@ -61,11 +61,7 @@ certification_upskilling_ia/
 Assurez-vous de disposer de Python 3.12+ et de Git.
 
 ```bash
-# 1. Cloner le dépôt
-git clone https://github.com/FranckBeugnet/certification_upskilling_ia.git
-cd certification_upskilling_ia
-
-# 2. Créer et activer un environnement virtuel
+# Créer et activer un environnement virtuel
 python -m venv venv
 # Sur Windows :
 venv\Scripts\activate
