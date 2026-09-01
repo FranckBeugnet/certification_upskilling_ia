@@ -1,0 +1,72 @@
+0: # Journal de bord
+
+Ce journal documente l'avancée du projet de Certification IA.
+---
+1: ## 📅 Session du 2026-07-12
+
+### 🔧 Étapes / Actions réalisées
+
+---
+2: ## 📅 Session du 2026-07-13
+
+**Fait :**
+
+---
+3: ## 📅 Session du 2026-07-15
+
+**Fait :**
+
+---
+4: ### 📅 Session EDA - Partie 3 (2026-07-15)
+
+**Fait :**
+
+---
+5: ### 📅 Fin de Session EDA - Audit et Clôture (2026-07-15)
+
+**Fait :**
+
+---
+6: ### 📅 Session Préparation des données (Partie 4) - 2026-07-16
+
+**Fait :**
+
+---
+7: ### 🗓️ Session Modélisation - Phase 5 (Suite et fin de session) - 2026-07-18
+
+**Fait :**
+
+---
+8: ### Session du 19/07/2026 : Clôture Phase 5 & 6 (Arbitrages, Éthique & Explicabilité)
+
+**Actions réalisées :**
+
+---
+9: ### Jour 10 - 19/07/2026
+
+**Objectifs du jour :** Audit méthodologique final, consolidation de la narration éthique, et préparation à l'industrialisation.
+
+---
+10: ### 📅 Session du 2026-07-23 : Optimisation, Standardisation MLOps & Sauvegarde de l'Artefact (Partie 6.9)
+
+**Fait :**
+
+---
+11: ### Session du 2026-07-23 (Suite) : Industrialisation & Résolution de Bug
+
+**Fait :**
+
+---
+12: ### Session du 2026-07-24 : Regards Critiques & Éthique de l'IA
+
+**Fait :**
+
+---
+13: ## Mise en place du Monitoring API (Prometheus & Grafana)
+*Date : 2026-09-01*
+
+
+---
+14: ## Enrichissement de la documentation et du MLOps (Chapitre 9 & Annexes)
+*Date : 2026-09-01*
+
