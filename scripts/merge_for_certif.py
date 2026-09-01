@@ -32,14 +32,14 @@ def merge_notebooks(main_path, journal_path, out_path):
     for i, cell in enumerate(main_nb['cells']):
         if cell['cell_type'] == 'markdown':
             source = "".join(cell['source'])
-            if '### C. Journal de bord' in source:
+            if 'Journal de bord' in source and source.startswith('### '):
                 start_idx = i
             # On cherche la fin de la section (soit l'Annexe C, soit la ligne de séparation --- après l'export PDF)
             elif start_idx != -1 and end_idx == -1 and ('## Annexe C' in source or (source.strip() == '---' and i > start_idx + 1)):
                 end_idx = i
 
     if start_idx == -1:
-        print("Erreur : Impossible de trouver '### C. Journal de bord' dans le notebook principal.")
+        print("Erreur : Impossible de trouver '### Journal de bord' dans le notebook principal.")
         sys.exit(1)
         
     if end_idx == -1:
@@ -48,9 +48,9 @@ def merge_notebooks(main_path, journal_path, out_path):
     print(f"Section trouvée entre les cellules {start_idx} et {end_idx}.")
     
     # 3. Préparer les cellules finales
-    # On garde la cellule de titre "C. Journal de bord" mais on la nettoie de ses instructions
+    # On garde la cellule de titre "Journal de bord" mais on la nettoie de ses instructions
     title_cell = main_nb['cells'][start_idx]
-    title_cell['source'] = ['### C. Journal de bord\n', '\n', '*Journal de bord intégré automatiquement pour la certification.*\n']
+    title_cell['source'] = ['### D. Journal de bord\n', '\n', '*Journal de bord intégré automatiquement pour la certification.*\n']
 
     final_cells = main_nb['cells'][:start_idx + 1] + journal_cells + main_nb['cells'][end_idx:]
     
@@ -70,8 +70,17 @@ def merge_notebooks(main_path, journal_path, out_path):
         print(f"Erreur lors de la conversion HTML : {e}")
 
 if __name__ == "__main__":
-    if len(sys.argv) != 4:
-        print("Usage: python merge_for_certif.py <main_notebook> <journal_notebook> <output_notebook>")
+    main_nb = "cas-usage.ipynb"
+    journal_nb = "journal-de-bord.ipynb"
+    out_nb = "rendu_certif.ipynb"
+
+    if len(sys.argv) == 4:
+        main_nb = sys.argv[1]
+        journal_nb = sys.argv[2]
+        out_nb = sys.argv[3]
+    elif len(sys.argv) > 1:
+        print("Usage: python merge_for_certif.py [main_notebook] [journal_notebook] [output_notebook]")
+        print("Sans arguments, utilise les valeurs par défaut du projet.")
         sys.exit(1)
         
-    merge_notebooks(sys.argv[1], sys.argv[2], sys.argv[3])
+    merge_notebooks(main_nb, journal_nb, out_nb)
