@@ -25,31 +25,62 @@ Conçu selon les exigences d'audit et d'éthique de l'**AI Act** et du **RGPD**,
 
 ```text
 certification_upskilling_ia/
-├── api/                        # Service Backend REST (FastAPI)
+├── api/                         # Service backend FastAPI
 │   ├── __init__.py
-│   ├── main.py                 # Application FastAPI & endpoints (/predict, /health, /train)
-│   └── schemas.py              # Schémas de validation Pydantic v2
-├── ui/                         # Interface Frontend Conseiller (Streamlit)
-│   └── app.py                  # Dashboard interactif conseillers & visualisations
-├── models/                     # Artefacts de production sérialisés
-│   ├── pipeline_production.joblib  # Pipeline complet S2 (LightGBM + Preprocessor NLP)
-│   ├── pipeline_production.json    # Fichier de métadonnées (Model Card technique)
-│   └── preprocessor_S*.joblib      # Scénarios de prétraitement
-├── data/                       # Jeu de données & documentation
-│   ├── dataset_trajectoire_emploi.csv  # Dataset source usagers
-│   └── DATASHEET.md            # Fiche d'identité de la donnée (Gebru et al., 2018)
-├── tests/                      # Suite de tests automatisés (Pytest)
-│   ├── test_api.py             # Tests unitaires & intégration API
-│   └── test_pipeline.py        # Tests de chargement et prédiction modèle
-├── .github/workflows/          # Pipeline CI/CD GitHub Actions
-│   └── ci.yml
-├── Dockerfile                  # Image Docker multi-stage build Python 3.12
-├── docker-compose.yml          # Orchestration multi-services (API + UI)
-├── cas-usage.ipynb             # Notebook de synthèse & démonstration
-├── cas-usage.py                # Script Python miroir reproductible
-├── journal-de-bord.ipynb       # Journal de suivi des sessions de travail
-├── requirements.txt            # Dépendances Python versionnées
-└── README.md                   # Documentation principale du dépôt
+│   ├── main.py                  # Points d'entrée API (/predict, /health, /train)
+│   └── schemas.py               # Schémas Pydantic v2 pour validation
+├── ui/                          # Interface conseiller Streamlit
+│   └── app.py                   # Dashboard décisionnel et visualisations
+├── data/                        # Données sources et documentation de référence
+│   ├── dataset_trajectoire_emploi.csv
+│   ├── DATASHEET.md
+│   └── ...
+├── docs/                        # Supports de cours, audits, méthodologie
+│   ├── 01_*.md
+│   ├── 02_*.md
+│   ├── 03_*.md
+│   ├── 04_*.md
+│   └── 05_*.md
+├── models/                      # Artefacts et modèles de production
+│   ├── pipeline_production.joblib
+│   ├── pipeline_production.json
+│   ├── preprocessor_S1.joblib
+│   ├── preprocessor_S2.joblib
+│   ├── preprocessor_S3.joblib
+│   └── preprocessor_S4.joblib
+├── mlruns/                      # Expériences et artefacts MLflow
+│   └── ...
+├── tests/                       # Suite de tests Python (Pytest)
+│   ├── __init__.py
+│   ├── test_api.py
+│   └── test_pipeline.py
+├── .github/                     # CI/CD GitHub Actions
+│   └── workflows/
+│       └── ci.yml
+├── .agents/                     # Configuration d'agents / rôles / compétences
+│   ├── memory/
+│   ├── roles/
+│   ├── skills/
+│   └── workflows/
+├── Dockerfile                   # Image Docker du projet
+├── docker-compose.yml           # Orchestration API + UI
+├── cas-usage.ipynb              # Notebook de démonstration et synthèse
+├── cas-usage.py                 # Script Python reproductible
+├── journal-de-bord.ipynb        # Journal de travail / suivi du projet
+├── fix_jobs.py                  # Script utilitaire pour jobs/traçabilité
+├── update_nb.py                 # Script de mise à jour notebooks
+├── index.md                     # Index documentaire du dépôt
+├── sujet.md                     # Sujet officiel du cas d'usage
+├── agent.md                     # Documentation de l'agent/assistant
+├── requirements.txt             # Dépendances Python du projet
+├── README.md                    # Documentation principale du dépôt
+├── diagramme.png                # Schéma d'architecture / flux
+├── mlflow.db                    # Base SQLite locale MLflow
+├── .gitignore
+├── .pytest_cache/               # Cache de test local (généré)
+├── venv/                        # Environnement virtuel local (généré)
+├── __pycache__/                # Cache Python local (généré)
+└── .git/                        # Dossier Git (non source, local)
 ```
 
 ---
