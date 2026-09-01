@@ -25,3 +25,6 @@ httpx
 
 # --- Interface Graphique (Web App) ---
 streamlit>=1.30.0
+
+# --- Monitoring ---
+prometheus-fastapi-instrumentator

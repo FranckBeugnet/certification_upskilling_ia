@@ -11,7 +11,8 @@ from datetime import datetime
 from contextlib import asynccontextmanager
 from fastapi import FastAPI, HTTPException, Depends
 from fastapi.security.api_key import APIKeyHeader
-
+from prometheus_fastapi_instrumentator import Instrumentator
+from prometheus_client import Counter, Histogram
 from api.schemas import (
     UsagerInput,
     PredictionOutput,
@@ -53,6 +54,26 @@ app = FastAPI(
     description="Service REST d'orientation et de tri multimodal des demandeurs d'emploi (Conforme AI Act / S2 Éthique)",
     version="1.0.0",
     lifespan=lifespan
+)
+
+Instrumentator().instrument(app).expose(app)
+
+# --- Métriques Métiers Prometheus ---
+PREDICTION_COUNTER = Counter(
+    "api_predictions_total",
+    "Nombre total de prédictions réalisées par classe",
+    ["predicted_class"]
+)
+
+FALLBACK_COUNTER = Counter(
+    "api_fallback_total",
+    "Nombre total de prédictions ayant nécessité une escalade humaine (fallback)"
+)
+
+CONFIDENCE_HISTOGRAM = Histogram(
+    "api_prediction_confidence",
+    "Distribution des scores de confiance des prédictions",
+    buckets=[0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.65, 0.7, 0.8, 0.9, 1.0]
 )
 
 # Sécurité pour l'endpoint /train
@@ -110,8 +131,13 @@ def predict(usager: UsagerInput):
         
         if fallback:
             message = f"⚠️ Confiance insuffisante ({confidence:.1%}). Escalade requise vers un conseiller humain."
+            FALLBACK_COUNTER.inc()
         else:
             message = f"✅ Orientation suggérée : {LABELS_MAPPING[prediction_class]} (Confiance : {confidence:.1%})"
+            
+        # Incrémentation des métriques métiers
+        PREDICTION_COUNTER.labels(predicted_class=LABELS_MAPPING[prediction_class]).inc()
+        CONFIDENCE_HISTOGRAM.observe(confidence)
             
         return PredictionOutput(
             prediction=prediction_class,

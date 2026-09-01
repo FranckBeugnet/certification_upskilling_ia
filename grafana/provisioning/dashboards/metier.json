@@ -1,0 +1,55 @@
+{
+  "title": "Monitoring Métier - Orientation Demandeurs d'Emploi",
+  "uid": "metier-orientation",
+  "panels": [
+    {
+      "type": "stat",
+      "title": "Total Prédictions",
+      "gridPos": { "h": 8, "w": 6, "x": 0, "y": 0 },
+      "targets": [
+        {
+          "expr": "sum(api_predictions_total)",
+          "refId": "A"
+        }
+      ]
+    },
+    {
+      "type": "stat",
+      "title": "Escalades Humaines (Fallback)",
+      "gridPos": { "h": 8, "w": 6, "x": 6, "y": 0 },
+      "targets": [
+        {
+          "expr": "sum(api_fallback_total)",
+          "refId": "A"
+        }
+      ]
+    },
+    {
+      "type": "barchart",
+      "title": "Prédictions par classe d'orientation",
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 0 },
+      "targets": [
+        {
+          "expr": "sum by (predicted_class) (api_predictions_total)",
+          "legendFormat": "{{predicted_class}}",
+          "refId": "A"
+        }
+      ]
+    },
+    {
+      "type": "timeseries",
+      "title": "Évolution du taux d'escalade",
+      "gridPos": { "h": 9, "w": 24, "x": 0, "y": 8 },
+      "targets": [
+        {
+          "expr": "rate(api_fallback_total[5m]) / rate(api_predictions_total[5m])",
+          "legendFormat": "Taux de Fallback",
+          "refId": "A"
+        }
+      ]
+    }
+  ],
+  "schemaVersion": 38,
+  "timezone": "browser",
+  "refresh": "5s"
+}
