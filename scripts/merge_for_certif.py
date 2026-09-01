@@ -1,6 +1,7 @@
 import sys
 import json
 import os
+import subprocess
 
 def merge_notebooks(main_path, journal_path, out_path):
     if not os.path.exists(main_path):
@@ -59,7 +60,14 @@ def merge_notebooks(main_path, journal_path, out_path):
     with open(out_path, 'w', encoding='utf-8') as f:
         json.dump(main_nb, f, indent=1, ensure_ascii=False)
         
-    print("Fusion terminée avec succès ! 🎉")
+    print("Fusion terminée avec succès ! Lancement de la conversion HTML...")
+    
+    # 4. Générer la version HTML du fichier fusionné
+    try:
+        subprocess.run([sys.executable, "-m", "jupyter", "nbconvert", "--to", "html", out_path], check=True)
+        print(f"Export HTML réussi : {out_path.replace('.ipynb', '.html')}")
+    except subprocess.CalledProcessError as e:
+        print(f"Erreur lors de la conversion HTML : {e}")
 
 if __name__ == "__main__":
     if len(sys.argv) != 4:
