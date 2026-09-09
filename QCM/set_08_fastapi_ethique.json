@@ -1,0 +1,112 @@
+[
+  {
+    "question": "Dans le mini-cours FastAPI, quelle est la 'Règle d'or du service ML' concernant Pydantic ?",
+    "options": [
+      "Le schéma Pydantic doit toujours accepter n'importe quel type de données en entrée",
+      "Le schéma Pydantic est le contrat avec le modèle : il doit refléter 'feature_columns' à l'identique (noms, types, bornes)",
+      "Pydantic ne sert qu'à définir les variables d'environnement du serveur",
+      "Le schéma Pydantic doit générer le modèle de Machine Learning dynamiquement"
+    ],
+    "answer": "Le schéma Pydantic est le contrat avec le modèle : il doit refléter 'feature_columns' à l'identique (noms, types, bornes)",
+    "explanation": "Toute divergence entre le schéma FastAPI et les colonnes attendues par le modèle (feature_columns) se paie en prédictions silencieusement faussées."
+  },
+  {
+    "question": "Selon le cours, quelle erreur HTTP doit-on renvoyer si un client envoie une valeur hors des bornes autorisées (ex: montant du prêt négatif) ?",
+    "options": [
+      "200 OK avec une prédiction nulle",
+      "422 Unprocessable Entity",
+      "500 Internal Server Error",
+      "503 Service Unavailable"
+    ],
+    "answer": "422 Unprocessable Entity",
+    "explanation": "Le code 422 indique que l'input est mal formé (champ manquant, type invalide, hors bornes) et que c'est au client API de corriger sa requête."
+  },
+  {
+    "question": "Quel est le risque de configurer le CORS de FastAPI avec 'allow_origins=[\"*\"]' et 'allow_credentials=True' en production ?",
+    "options": [
+      "C'est la configuration recommandée et la plus sécurisée",
+      "Cette combinaison est interdite par la spécification CORS et rend l'API hautement vulnérable",
+      "Cela empêche FastAPI de charger le modèle ML",
+      "Cela limite la taille du payload à 1 Mo"
+    ],
+    "answer": "Cette combinaison est interdite par la spécification CORS et rend l'API hautement vulnérable",
+    "explanation": "La spécification CORS interdit d'autoriser toutes les origines (*) tout en acceptant les credentials. Il faut toujours lister explicitement les domaines clients attendus en prod."
+  },
+  {
+    "question": "Dans le code FastAPI, pourquoi utilise-t-on la fonction 'lifespan' (ou les events de démarrage) pour charger le fichier '.joblib' ?",
+    "options": [
+      "Pour supprimer le fichier après la prédiction",
+      "Pour charger le modèle une seule fois au démarrage de l'application, évitant ainsi 200 ms de latence à chaque requête",
+      "Pour empêcher les attaques par déni de service (DDoS)",
+      "Pour générer la documentation Swagger automatiquement"
+    ],
+    "answer": "Pour charger le modèle une seule fois au démarrage de l'application, évitant ainsi 200 ms de latence à chaque requête",
+    "explanation": "Charger le modèle à l'intérieur de la route `/predict` entraînerait une pénalité de désérialisation à chaque appel API."
+  },
+  {
+    "question": "Dans le cours d'audit éthique, qu'est-ce que 'l'intersectionnalité' lorsqu'on calcule le Disparate Impact (DI) ?",
+    "options": [
+      "Calculer le DI sur une seule variable sensible à la fois",
+      "Calculer le DI sur le croisement de 2 variables sensibles (ex: sex × race) pour révéler des biais structurels parfois invisibles isolément",
+      "Croiser les prédictions du modèle avec les labels réels",
+      "Remplacer les valeurs manquantes par la moyenne croisée"
+    ],
+    "answer": "Calculer le DI sur le croisement de 2 variables sensibles (ex: sex × race) pour révéler des biais structurels parfois invisibles isolément",
+    "explanation": "Certains sous-groupes (comme les femmes d'une certaine minorité) peuvent être fortement pénalisés au croisement, alors que le DI est acceptable sur chaque variable isolée."
+  },
+  {
+    "question": "Que signifie un Disparate Impact (DI) inférieur à 0.8 dans le contexte de l'audit éthique ?",
+    "options": [
+      "Que le modèle est parfaitement équitable",
+      "Que le groupe minoritaire est fortement avantagé par rapport au groupe majoritaire",
+      "Que le groupe minoritaire est désavantagé de manière significative (règle des 4/5)",
+      "Que l'algorithme a planté et nécessite un redémarrage"
+    ],
+    "answer": "Que le groupe minoritaire est désavantagé de manière significative (règle des 4/5)",
+    "explanation": "La règle empirique des 4/5 (0.8) lève une alerte (signal) indiquant un désavantage. Cependant, ce ratio est un indicateur de disparité, pas une preuve formelle de discrimination."
+  },
+  {
+    "question": "Selon le support de cours, pourquoi faut-il faire attention aux 'modalités à faible support' (ex: moins de 30 observations) lors d'un calcul de DI intersectionnel ?",
+    "options": [
+      "Parce que Pandas ne peut pas diviser par un nombre inférieur à 30",
+      "Parce que le DI devient statistiquement instable et fragile : il peut varier fortement selon le découpage des données",
+      "Parce que la loi RGPD l'interdit strictement",
+      "Parce qu'elles causent une erreur '500 Internal Server Error' dans l'API"
+    ],
+    "answer": "Parce que le DI devient statistiquement instable et fragile : il peut varier fortement selon le découpage des données",
+    "explanation": "Avec un échantillon minuscule, un simple hasard modifie drastiquement le ratio. Ces résultats sont exploratoires et ne doivent pas être décisionnels seuls."
+  },
+  {
+    "question": "Piège fréquent FastAPI : Que se passe-t-il si un payload contient '36 months ' (avec un espace) alors que le modèle a été entraîné sur '36 months' (sans espace) et utilise un OneHotEncoder(handle_unknown='ignore') ?",
+    "options": [
+      "FastAPI corrige automatiquement l'espace en trop",
+      "Le modèle plante avec une erreur 500",
+      "La variable est ignorée (encodée avec des 0), ce qui produit une prédiction silencieusement biaisée et stable sur tous les appels",
+      "L'API retourne automatiquement un code 422"
+    ],
+    "answer": "La variable est ignorée (encodée avec des 0), ce qui produit une prédiction silencieusement biaisée et stable sur tous les appels",
+    "explanation": "C'est un piège classique : si la modalité n'est pas reconnue par l'encodeur sklearn, elle est ignorée sans erreur. D'où l'importance d'une validation stricte (Regex/Literal) dans Pydantic."
+  },
+  {
+    "question": "À quoi sert l'endpoint '/info' demandé dans le cours FastAPI ?",
+    "options": [
+      "À fournir les logs système complets du serveur",
+      "À retourner des métadonnées métier (nom du modèle, version, métriques d'entraînement) issues du fichier JSON associé",
+      "À permettre aux utilisateurs de modifier le code de l'API",
+      "À afficher la documentation Swagger"
+    ],
+    "answer": "À retourner des métadonnées métier (nom du modèle, version, métriques d'entraînement) issues du fichier JSON associé",
+    "explanation": "L'endpoint `/info` permet à l'équipe IT de vérifier en production quelle version du modèle tourne exactement et avec quelles performances d'origine."
+  },
+  {
+    "question": "Dans le mini-cours sur l'audit éthique, quelle affirmation sur le Disparate Impact (DI) est explicitement rappelée ?",
+    "options": [
+      "Le DI est une preuve absolue de discrimination juridique",
+      "Le DI calcule le biais du modèle déployé en production en temps réel",
+      "Le DI est un indicateur de disparité, pas une preuve de discrimination ; il nécessite le contexte métier pour être interprété",
+      "Le DI ne doit jamais être inférieur à 1.5"
+    ],
+    "answer": "Le DI est un indicateur de disparité, pas une preuve de discrimination ; il nécessite le contexte métier pour être interprété",
+    "explanation": "Une disparité statistique peut avoir des causes démographiques légitimes (le dataset reflète le monde réel). Établir une discrimination implique de l'intention ou un manquement éthique/légal."
+  }
+]

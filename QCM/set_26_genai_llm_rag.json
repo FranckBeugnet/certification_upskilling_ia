@@ -1,0 +1,112 @@
+[
+  {
+    "question": "Quelle est la principale différence entre un LLM et un SLM (Small Language Model) ?",
+    "options": [
+      "Le SLM ne parle qu'anglais",
+      "Le SLM (1-3B paramètres) est beaucoup plus léger, moins coûteux, peut tourner en local, et suffit souvent pour des tâches ciblées (classification, extraction) contrairement au LLM (7B+) lourd et généraliste",
+      "Le LLM est open-source, le SLM est propriétaire",
+      "Le SLM ne génère que du code informatique"
+    ],
+    "answer": "Le SLM (1-3B paramètres) est beaucoup plus léger, moins coûteux, peut tourner en local, et suffit souvent pour des tâches ciblées (classification, extraction) contrairement au LLM (7B+) lourd et généraliste",
+    "explanation": "La sobriété impose de s'arrêter au niveau de complexité le plus bas. Un SLM est souvent un meilleur choix industriel qu'un énorme LLM en API."
+  },
+  {
+    "question": "Qu'est-ce que l'architecture RAG (Retrieval-Augmented Generation) ?",
+    "options": [
+      "Une méthode pour réduire la taille du modèle en supprimant des neurones",
+      "Une technique où le LLM recherche (Retrieval) des informations pertinentes dans un corpus de documents internes avant de générer sa réponse (Augmented Generation), limitant ainsi les hallucinations",
+      "Un réseau de neurones spécialisé dans la traduction",
+      "Un outil de monitoring d'infrastructure"
+    ],
+    "answer": "Une technique où le LLM recherche (Retrieval) des informations pertinentes dans un corpus de documents internes avant de générer sa réponse (Augmented Generation), limitant ainsi les hallucinations",
+    "explanation": "Le RAG est pertinent quand on a besoin que le modèle réponde de manière ancrée sur une base documentaire métier précise qu'il ne connaissait pas lors de son entraînement."
+  },
+  {
+    "question": "Dans quel cas l'utilisation de 'Agents' (Multi-agents LLM orchestrés) est-elle considérée comme un piège de sur-engineering ?",
+    "options": [
+      "Quand le workflow est complexe et multi-étapes",
+      "Quand la décision est atomique (ex: classifier simplement une image ou un texte en une seule étape)",
+      "Quand on utilise LangGraph",
+      "Quand le client a un gros budget"
+    ],
+    "answer": "Quand la décision est atomique (ex: classifier simplement une image ou un texte en une seule étape)",
+    "explanation": "Mettre en place des agents ajoute de la latence, du coût et des points de panne. Si une seule prédiction suffit, les agents ne rapportent que de la complexité."
+  },
+  {
+    "question": "En GenAI, qu'est-ce que l'approche 'Zero-shot' ?",
+    "options": [
+      "Le fait que le modèle réponde en 0 seconde",
+      "Demander au modèle de résoudre une tâche en lui fournissant uniquement l'instruction (le prompt) sans aucun exemple préalable",
+      "Le fait de supprimer tous les poids du modèle",
+      "Une méthode pour pirater le système"
+    ],
+    "answer": "Demander au modèle de résoudre une tâche en lui fournissant uniquement l'instruction (le prompt) sans aucun exemple préalable",
+    "explanation": "C'est utile au démarrage à froid quand on n'a pas de données labellisées, mais un modèle supervisé classique fera souvent mieux s'il dispose de données d'entraînement."
+  },
+  {
+    "question": "Quel est le garde-fou explicite imposé par le parcours de certification concernant la GenAI ?",
+    "options": [
+      "Il faut utiliser la GenAI dans chaque projet",
+      "Il faut toujours partir de la solution la plus simple (ex: ML classique), et ne monter en GenAI que si le besoin l'exige (génération de langage) et qu'un gain est prouvé et chiffré",
+      "Il faut toujours utiliser des agents",
+      "La GenAI est interdite"
+    ],
+    "answer": "Il faut toujours partir de la solution la plus simple (ex: ML classique), et ne monter en GenAI que si le besoin l'exige (génération de langage) et qu'un gain est prouvé et chiffré",
+    "explanation": "En conception, un choix GenAI non justifié ou disproportionné par rapport au besoin est pénalisé."
+  },
+  {
+    "question": "Que signifie le terme 'Hallucination' dans le contexte des LLMs ?",
+    "options": [
+      "Le fait que le modèle voit des images dans le texte",
+      "Le modèle affirme avec aplomb et cohérence grammaticale une information qui est factuellement fausse ou inventée",
+      "Le modèle refuse de répondre à une question éthique",
+      "Le temps d'attente dû au réseau"
+    ],
+    "answer": "Le modèle affirme avec aplomb et cohérence grammaticale une information qui est factuellement fausse ou inventée",
+    "explanation": "C'est le plus grand risque des LLM. Un RAG sans 'fallback' (abstention si rien n'est trouvé dans les documents) aggrave souvent ce problème."
+  },
+  {
+    "question": "Qu'est-ce qu'un 'Vector Store' dans une architecture RAG ?",
+    "options": [
+      "Un logiciel de dessin vectoriel",
+      "Une base de données (ex: ChromaDB, FAISS) spécialisée dans l'indexation et la recherche rapide par similarité d'embeddings (vecteurs mathématiques) représentant les textes",
+      "Un entrepôt physique de serveurs",
+      "Une librairie pour accélérer Pandas"
+    ],
+    "answer": "Une base de données (ex: ChromaDB, FAISS) spécialisée dans l'indexation et la recherche rapide par similarité d'embeddings (vecteurs mathématiques) représentant les textes",
+    "explanation": "C'est la pièce maîtresse du 'Retrieval' : elle permet de trouver instantanément les paragraphes de la FAQ les plus proches sémantiquement de la question posée."
+  },
+  {
+    "question": "Pour une tâche de tri de tickets (classification) sur laquelle on possède déjà 10 000 exemples labellisés, quelle approche est généralement la plus pertinente économiquement ?",
+    "options": [
+      "Un agent multi-LLM GPT-4",
+      "Un modèle supervisé classique ou un SLM fine-tuné localement",
+      "Un RAG avec Mistral Large",
+      "Aucune, c'est impossible"
+    ],
+    "answer": "Un modèle supervisé classique ou un SLM fine-tuné localement",
+    "explanation": "Un supervisé bat souvent un LLM zero-shot généraliste sur une tâche fermée, et coûte 10x à 100x moins cher en inférence."
+  },
+  {
+    "question": "Dans le lexique GenAI, qu'est-ce qu'un 'Token' ?",
+    "options": [
+      "Un mot de passe administrateur",
+      "L'unité fondamentale de texte traitée par le modèle (représentant environ 3/4 d'un mot en anglais) et qui sert d'unité de facturation pour les API",
+      "Un conteneur Docker",
+      "Le score de précision du modèle"
+    ],
+    "answer": "L'unité fondamentale de texte traitée par le modèle (représentant environ 3/4 d'un mot en anglais) et qui sert d'unité de facturation pour les API",
+    "explanation": "Quand on estime un coût LLM, on compte les 'tokens in' (le prompt) et les 'tokens out' (la réponse)."
+  },
+  {
+    "question": "Pourquoi le parcours insiste-t-il sur la nécessité de justifier ce que l'on n'a PAS mis dans l'architecture (ex: 'pas d'agent car...') ?",
+    "options": [
+      "Pour remplir la page de documentation",
+      "C'est la marque d'un choix réfléchi, différenciant un ingénieur qui comprend le besoin métier d'un profil qui applique aveuglément les modes techniques",
+      "Pour faire baisser le budget cloud",
+      "Pour des raisons de cybersécurité uniquement"
+    ],
+    "answer": "C'est la marque d'un choix réfléchi, différenciant un ingénieur qui comprend le besoin métier d'un profil qui applique aveuglément les modes techniques",
+    "explanation": "Expliciter les absences (ex: pas de vector DB, pas d'agent) prouve qu'on a envisagé les options et consciemment choisi la sobriété."
+  }
+]

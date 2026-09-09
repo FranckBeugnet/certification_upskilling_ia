@@ -1,0 +1,112 @@
+[
+  {
+    "question": "Quel est le rôle principal d'un intégrateur IA lors d'un entretien client initial ?",
+    "options": [
+      "Coder le modèle en direct devant le client",
+      "Être un traducteur entre 2 mondes : transformer une demande floue en une spécification technique exploitable",
+      "Vendre la solution la plus coûteuse possible",
+      "Se substituer au juriste de l'entreprise"
+    ],
+    "answer": "Être un traducteur entre 2 mondes : transformer une demande floue en une spécification technique exploitable",
+    "explanation": "Le client mélange souvent ce qu'il veut et ce qui est possible. L'intégrateur doit faire le pont pour éviter de développer une solution inutile."
+  },
+  {
+    "question": "Dans la grille universelle de l'entretien client (M3-B1), combien de catégories de questions principales sont recommandées ?",
+    "options": [
+      "10 (uniquement techniques)",
+      "5 (Besoin métier, Sources, Volumétrie, Contraintes, Critères de succès)",
+      "3 (Budget, Délais, Qualité)",
+      "1 seule : Que voulez-vous ?"
+    ],
+    "answer": "5 (Besoin métier, Sources, Volumétrie, Contraintes, Critères de succès)",
+    "explanation": "Poser entre 8 et 12 questions bien réparties dans ces 5 catégories suffit généralement pour un premier entretien de 30 minutes."
+  },
+  {
+    "question": "Qu'est-ce que la 'Posture du miroir' lors d'un entretien client ?",
+    "options": [
+      "Répéter exactement les mêmes phrases que le client",
+      "Ne pas donner la solution, mais poser des questions (ex: 'Vous l'avez choisi pour quelle raison ?') qui aident le client à formuler son propre besoin",
+      "S'habiller de la même manière que le client",
+      "Le contredire systématiquement"
+    ],
+    "answer": "Ne pas donner la solution, mais poser des questions (ex: 'Vous l'avez choisi pour quelle raison ?') qui aident le client à formuler son propre besoin",
+    "explanation": "L'objectif est d'écouter, pas de prescrire une solution technique trop tôt avant d'avoir compris le vrai besoin."
+  },
+  {
+    "question": "Dans le mini-cours sur la Comparaison Économique, quels sont les 4 grands critères d'arbitrage entre plusieurs modèles ML ?",
+    "options": [
+      "Couleur de l'interface, Police d'écriture, Langue, Pays",
+      "Coût d'entraînement, Coût d'inférence (latence), Précision attendue, Maintenance",
+      "Lignes de code, Poids du fichier texte, Nombre d'auteurs, Date de création",
+      "Quantité de RAM, Quantité de ROM, Adresse MAC, Adresse IP"
+    ],
+    "answer": "Coût d'entraînement, Coût d'inférence (latence), Précision attendue, Maintenance",
+    "explanation": "La précision seule ne suffit pas en entreprise. Un modèle très précis mais trop lent ou trop cher à entraîner peut être rejeté au profit d'un modèle plus simple."
+  },
+  {
+    "question": "Comment faire pour estimer le coût d'inférence ou d'entraînement d'un modèle (ex: CLIP ou ResNet) si l'on n'a pas le temps de l'implémenter entièrement ?",
+    "options": [
+      "Inventer des chiffres au hasard",
+      "Utiliser des benchmarks publics reconnus, extrapoler depuis d'autres modèles, ou créer un mini-prototype de 10 lignes juste pour mesurer la latence",
+      "Demander directement au client de deviner",
+      "Laisser la colonne vide dans le tableau"
+    ],
+    "answer": "Utiliser des benchmarks publics reconnus, extrapoler depuis d'autres modèles, ou créer un mini-prototype de 10 lignes juste pour mesurer la latence",
+    "explanation": "L'important est de toujours citer ses sources (ex: 'Selon la documentation HuggingFace...') pour justifier les estimations."
+  },
+  {
+    "question": "Lorsqu'on rédige un verdict comparatif structuré, quelle section est absolument indispensable pour agir en tant que 'consultant' plutôt qu'en 'oracle' ?",
+    "options": [
+      "Un lien vers le dépôt GitHub",
+      "Une 'Condition de changement d'avis' (ex: 'Si le client veut un MVP sans données labellisées, on passera sur l'option B')",
+      "Le prix exact de la mission",
+      "Un diagramme UML"
+    ],
+    "answer": "Une 'Condition de changement d'avis' (ex: 'Si le client veut un MVP sans données labellisées, on passera sur l'option B')",
+    "explanation": "Cela prouve que l'on comprend les compromis (trade-offs) et que la recommandation dépend du contexte actuel du client, qui peut évoluer."
+  },
+  {
+    "question": "Dans la Grille de Décision C4, si l'on dispose de très peu de données (ex: moins de 1 000 lignes), vers quelle famille d'algorithmes faut-il s'orienter en priorité ?",
+    "options": [
+      "Des réseaux de neurones profonds (Deep Learning from scratch)",
+      "Des modèles linéaires simples (Ridge, Lasso) ou des Foundation Models en mode Zero-shot",
+      "Un algorithme K-Means",
+      "Un modèle Boosting très complexe"
+    ],
+    "answer": "Des modèles linéaires simples (Ridge, Lasso) ou des Foundation Models en mode Zero-shot",
+    "explanation": "Les modèles complexes risqueraient de faire un overfitting sévère sur un si petit volume de données."
+  },
+  {
+    "question": "Quel piège fréquent faut-il éviter lors de la comparaison des modèles dans la Grille C4 ?",
+    "options": [
+      "Choisir le modèle avec le meilleur MAE (Mean Absolute Error) sans regarder la latence ni la complexité",
+      "Citer des benchmarks publics",
+      "Faire un tableau comparatif avec plus de 3 colonnes",
+      "Préparer les questions avant la réunion"
+    ],
+    "answer": "Choisir le modèle avec le meilleur MAE (Mean Absolute Error) sans regarder la latence ni la complexité",
+    "explanation": "Un modèle 1% plus précis mais 50 fois plus lent peut être le pire choix métier possible. Tout est question de compromis."
+  },
+  {
+    "question": "Quelle technique de communication est recommandée quand le client est vague ou hors-sujet pendant l'entretien ?",
+    "options": [
+      "Le couper immédiatement",
+      "Utiliser la relance en reformulant ('Si je comprends bien, vous voulez X parce que Y. C'est ça ?')",
+      "Ne rien dire et passer à la question suivante",
+      "Arrêter l'entretien"
+    ],
+    "answer": "Utiliser la relance en reformulant ('Si je comprends bien, vous voulez X parce que Y. C'est ça ?')",
+    "explanation": "La reformulation force le client à valider ou à corriger l'interprétation, ce qui fait émerger les vraies contraintes cachées."
+  },
+  {
+    "question": "Que signifie la distinction entre 'Demande' et 'Besoin' lors du recueil client ?",
+    "options": [
+      "La demande est écrite, le besoin est oral",
+      "La demande est le budget, le besoin est le planning",
+      "La demande est ce que le client DIT vouloir (ex: 'Je veux du Deep Learning'), le besoin est ce qu'il cherche VRAIMENT (ex: 'Je veux automatiser la facturation')",
+      "Il n'y a aucune différence"
+    ],
+    "answer": "La demande est ce que le client DIT vouloir (ex: 'Je veux du Deep Learning'), le besoin est ce qu'il cherche VRAIMENT (ex: 'Je veux automatiser la facturation')",
+    "explanation": "Le client est expert de son problème, pas de la solution. L'intégrateur écoute la demande pour en déduire le besoin réel."
+  }
+]

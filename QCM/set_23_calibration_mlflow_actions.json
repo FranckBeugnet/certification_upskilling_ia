@@ -1,0 +1,112 @@
+[
+  {
+    "question": "Dans Scikit-Learn, à quoi sert l'hyperparamètre 'max_depth' dans un arbre de décision ou une Random Forest ?",
+    "options": [
+      "À définir le nombre total d'arbres",
+      "À contrôler la profondeur maximale de chaque arbre, ce qui est crucial pour éviter l'overfitting (surapprentissage)",
+      "À calculer la profondeur du réseau de neurones",
+      "À supprimer les colonnes contenant trop de valeurs manquantes"
+    ],
+    "answer": "À contrôler la profondeur maximale de chaque arbre, ce qui est crucial pour éviter l'overfitting (surapprentissage)",
+    "explanation": "Un arbre sans limite de profondeur va continuer à se diviser jusqu'à ce que chaque feuille ne contienne qu'un seul exemple (overfitting pur). Le limiter permet de généraliser."
+  },
+  {
+    "question": "Qu'est-ce que la 'Calibration' d'un modèle de classification ?",
+    "options": [
+      "Le nettoyage de l'écran d'affichage",
+      "L'ajustement des probabilités prédites pour qu'elles reflètent la vraie fréquence des événements (ex: si le modèle dit 80% de chances de pluie, il doit effectivement pleuvoir 80% du temps dans ces cas-là)",
+      "La conversion des textes en nombres",
+      "La suppression des variables corrélées"
+    ],
+    "answer": "L'ajustement des probabilités prédites pour qu'elles reflètent la vraie fréquence des événements (ex: si le modèle dit 80% de chances de pluie, il doit effectivement pleuvoir 80% du temps dans ces cas-là)",
+    "explanation": "Les modèles comme Random Forest ou SVM ne sont pas bien calibrés par défaut (ils sont souvent trop ou pas assez confiants). Des méthodes comme la régression isotonique ou la calibration de Platt permettent de corriger cela."
+  },
+  {
+    "question": "Lorsqu'on utilise GitHub Actions, où doivent être stockés les fichiers de workflow (YAML) pour qu'ils soient reconnus automatiquement par GitHub ?",
+    "options": [
+      "À la racine du projet dans un fichier 'actions.yaml'",
+      "Dans le répertoire caché '.github/workflows/'",
+      "Dans le répertoire 'src/'",
+      "Dans la base de données SQL"
+    ],
+    "answer": "Dans le répertoire caché '.github/workflows/'",
+    "explanation": "C'est la convention stricte de GitHub. Dès qu'un fichier YAML y est poussé, GitHub l'analyse et l'exécute selon les déclencheurs (triggers) définis (ex: `on: push`)."
+  },
+  {
+    "question": "Qu'est-ce que le 'Data Leakage' temporel dans les séries temporelles ?",
+    "options": [
+      "Un retard dans l'envoi des données à l'API",
+      "Le fait d'utiliser des données du futur (par exemple via une cross-validation classique aléatoire) pour prédire le passé lors de l'entraînement",
+      "La suppression par erreur de lignes contenant des dates",
+      "L'utilisation d'heures d'été au lieu d'heures d'hiver"
+    ],
+    "answer": "Le fait d'utiliser des données du futur (par exemple via une cross-validation classique aléatoire) pour prédire le passé lors de l'entraînement",
+    "explanation": "Pour les séries temporelles, il faut utiliser un split chronologique (ex: TimeSeriesSplit de sklearn) pour toujours entraîner sur le passé et tester sur le futur."
+  },
+  {
+    "question": "Dans le contexte de MLflow, quelle est la principale différence entre 'log_param()' et 'log_metric()' ?",
+    "options": [
+      "Il n'y en a aucune, ce sont des synonymes",
+      "'log_param()' enregistre une configuration d'entrée (ex: learning_rate=0.01) qui ne change pas pendant le run, tandis que 'log_metric()' enregistre un résultat (ex: accuracy=0.95) qui peut évoluer (ex: à chaque epoch)",
+      "'log_param()' est pour Python, 'log_metric()' est pour SQL",
+      "'log_param()' est public, 'log_metric()' est privé"
+    ],
+    "answer": "'log_param()' enregistre une configuration d'entrée (ex: learning_rate=0.01) qui ne change pas pendant le run, tandis que 'log_metric()' enregistre un résultat (ex: accuracy=0.95) qui peut évoluer (ex: à chaque epoch)",
+    "explanation": "Les métriques peuvent être tracées sous forme de courbes temporelles dans l'interface de MLflow."
+  },
+  {
+    "question": "À quoi sert la technique du 'Feature Importance' (Importance des variables) dans les modèles basés sur les arbres (ex: RandomForest) ?",
+    "options": [
+      "À chiffrer les variables importantes pour le RGPD",
+      "À quantifier la contribution de chaque variable d'entrée à la capacité prédictive globale du modèle (ex: l'âge explique 40% de la décision)",
+      "À supprimer aléatoirement des colonnes pour éviter l'overfitting",
+      "À calculer le temps d'inférence"
+    ],
+    "answer": "À quantifier la contribution de chaque variable d'entrée à la capacité prédictive globale du modèle (ex: l'âge explique 40% de la décision)",
+    "explanation": "C'est un outil fondamental pour l'explicabilité globale d'un modèle boîte noire, souvent visuellement représenté par un diagramme en barres."
+  },
+  {
+    "question": "Qu'est-ce que le 'Concept Drift' par opposition au 'Data Drift' ?",
+    "options": [
+      "Le Concept Drift signifie que le code source du modèle a changé",
+      "Le Concept Drift implique que la relation cible a changé (la définition de ce qu'on cherche à prédire évolue), alors que le Data Drift implique que seule la distribution des variables d'entrée a changé",
+      "C'est exactement la même chose",
+      "Le Concept Drift est causé par un serveur trop lent"
+    ],
+    "answer": "Le Concept Drift implique que la relation cible a changé (la définition de ce qu'on cherche à prédire évolue), alors que le Data Drift implique que seule la distribution des variables d'entrée a changé",
+    "explanation": "Par exemple, ce qui était considéré comme une 'fraude' en 2020 (Concept) pourrait ne plus l'être en 2024 suite à une nouvelle loi."
+  },
+  {
+    "question": "Que permet de faire un fichier 'docker-compose.yml' par rapport à un 'Dockerfile' ?",
+    "options": [
+      "Il remplace le code Python",
+      "Le Dockerfile construit une seule image isolée, tandis que docker-compose.yml orchestre le lancement et la connexion de PLUSIEURS conteneurs ensemble (ex: une API + une Base de données)",
+      "Il est utilisé uniquement pour déployer sur Kubernetes",
+      "Il sert à tester le code en local sans Docker"
+    ],
+    "answer": "Le Dockerfile construit une seule image isolée, tandis que docker-compose.yml orchestre le lancement et la connexion de PLUSIEURS conteneurs ensemble (ex: une API + une Base de données)",
+    "explanation": "Docker Compose crée automatiquement un réseau virtuel (bridge) permettant aux conteneurs du même projet de communiquer entre eux."
+  },
+  {
+    "question": "En Python, que fait l'outil de formatage 'Black' ?",
+    "options": [
+      "Il supprime les virus du code",
+      "Il formate automatiquement le code source (indentations, longueurs de lignes, guillemets) selon des règles très strictes et non configurables pour assurer une uniformité parfaite dans l'équipe",
+      "Il convertit le Python en langage C",
+      "Il assombrit le thème de l'éditeur de texte"
+    ],
+    "answer": "Il formate automatiquement le code source (indentations, longueurs de lignes, guillemets) selon des règles très strictes et non configurables pour assurer une uniformité parfaite dans l'équipe",
+    "explanation": "En évitant les débats interminables sur le style du code lors des revues (Code Reviews), Black fait gagner un temps précieux aux développeurs."
+  },
+  {
+    "question": "Dans le cycle de vie d'un modèle (MLOps), à quel moment doit-on idéalement concevoir la stratégie de monitoring ?",
+    "options": [
+      "Des mois après le déploiement, quand le client se plaint",
+      "Dès la phase de conception (Design), avant même de commencer à entraîner le modèle, pour identifier les métriques clés à tracer",
+      "Uniquement pendant la phase d'entraînement du Deep Learning",
+      "C'est inutile si le modèle fait 99% d'accuracy"
+    ],
+    "answer": "Dès la phase de conception (Design), avant même de commencer à entraîner le modèle, pour identifier les métriques clés à tracer",
+    "explanation": "Un modèle sans monitoring est une bombe à retardement. Prévoir l'observabilité dès le départ garantit qu'on saura quand il commencera à dériver (Drift)."
+  }
+]

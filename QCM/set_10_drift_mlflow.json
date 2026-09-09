@@ -1,0 +1,112 @@
+[
+  {
+    "question": "En surveillance (monitoring) de modèle, qu'appelle-t-on le 'Data Drift' ?",
+    "options": [
+      "Le décalage de la relation entre les entrées et la cible",
+      "Le changement statistique de la distribution des variables d'entrée (features) entre l'entraînement et la production",
+      "La corruption du fichier du modèle sur le disque",
+      "Le piratage des données"
+    ],
+    "answer": "Le changement statistique de la distribution des variables d'entrée (features) entre l'entraînement et la production",
+    "explanation": "Le Data Drift (ou Covariate Shift) survient quand la population analysée évolue (ex: la moyenne d'âge des clients passe de 30 à 45 ans)."
+  },
+  {
+    "question": "Comment le 'Concept Drift' se distingue-t-il du Data Drift ?",
+    "options": [
+      "Il n'y a aucune différence, c'est un synonyme",
+      "Le Concept Drift correspond à un changement de la définition même de la cible : la relation fondamentale entre les variables d'entrée et la variable cible évolue",
+      "Le Concept Drift concerne uniquement les variables catégorielles",
+      "Le Concept Drift est causé par un bug de l'API"
+    ],
+    "answer": "Le Concept Drift correspond à un changement de la définition même de la cible : la relation fondamentale entre les variables d'entrée et la variable cible évolue",
+    "explanation": "Exemple de Concept Drift : avec l'inflation, un salaire de 3000€ qui classait un client 'Haut revenu' en 2010 ne le classe plus 'Haut revenu' en 2024, même si la distribution des salaires n'a pas bougé."
+  },
+  {
+    "question": "Lequel de ces scénarios est un exemple de Data Drift sévère ?",
+    "options": [
+      "Le modèle a été entraîné sur des données de jeunes diplômés, mais l'équipe marketing déploie soudain la campagne ciblée sur des retraités",
+      "L'économie s'effondre et les règles d'octroi de crédit de la banque changent du tout au tout",
+      "Le serveur FastAPI tombe en panne de mémoire",
+      "Le format CSV est remplacé par Parquet"
+    ],
+    "answer": "Le modèle a été entraîné sur des données de jeunes diplômés, mais l'équipe marketing déploie soudain la campagne ciblée sur des retraités",
+    "explanation": "Ici la distribution de la variable d'entrée 'âge' change brutalement. C'est un Data Drift."
+  },
+  {
+    "question": "Quel composant de MLflow est principalement utilisé pour enregistrer les paramètres d'entraînement, les métriques et les modèles générés ?",
+    "options": [
+      "MLflow Models",
+      "MLflow Tracking",
+      "MLflow Registry",
+      "MLflow Deployments"
+    ],
+    "answer": "MLflow Tracking",
+    "explanation": "MLflow Tracking est l'API et l'interface utilisateur (UI) permettant de tracer et comparer les expérimentations."
+  },
+  {
+    "question": "À quoi sert le 'MLflow Model Registry' ?",
+    "options": [
+      "À stocker les mots de passe de la base de données",
+      "À offrir un référentiel centralisé pour gérer le cycle de vie des modèles (Staging, Production, Archived)",
+      "À nettoyer les données aberrantes",
+      "À orchestrer les conteneurs Docker"
+    ],
+    "answer": "À offrir un référentiel centralisé pour gérer le cycle de vie des modèles (Staging, Production, Archived)",
+    "explanation": "Le Model Registry permet de versionner les modèles et de gérer leur transition vers les environnements de production en toute sécurité."
+  },
+  {
+    "question": "Quelle fonctionnalité de MLflow permet d'empaqueter du code Data Science dans un format reproductible ?",
+    "options": [
+      "MLflow Projects",
+      "MLflow Tracking",
+      "Docker Compose",
+      "Pytest"
+    ],
+    "answer": "MLflow Projects",
+    "explanation": "Un MLflow Project est une convention de formatage (avec un fichier MLproject) spécifiant l'environnement Conda/Docker et les points d'entrée d'exécution."
+  },
+  {
+    "question": "Comment s'appelle l'intégration (souvent appelée 'autolog') de MLflow qui trace automatiquement les paramètres et métriques pour Scikit-Learn ?",
+    "options": [
+      "mlflow.sklearn.autolog()",
+      "mlflow.auto_track()",
+      "sklearn.mlflow()",
+      "mlflow.spy()"
+    ],
+    "answer": "mlflow.sklearn.autolog()",
+    "explanation": "L'autologging permet de ne pas avoir à écrire manuellement `mlflow.log_param()` ou `mlflow.log_metric()` pour chaque élément du modèle."
+  },
+  {
+    "question": "Quel indicateur MLOps peut-on utiliser en production pour détecter un Drift avant même de connaître les vrais labels (Ground Truth) ?",
+    "options": [
+      "La précision (Accuracy)",
+      "Le Population Stability Index (PSI) sur les variables d'entrée et la distribution des probabilités prédites",
+      "Le Recall (Rappel)",
+      "Le RMSE"
+    ],
+    "answer": "Le Population Stability Index (PSI) sur les variables d'entrée et la distribution des probabilités prédites",
+    "explanation": "Puisque les vrais labels (ex: remboursement de crédit) mettent des mois à arriver, le PSI permet d'alerter immédiatement si la population servie aujourd'hui diffère trop de celle de l'entraînement."
+  },
+  {
+    "question": "Qu'est-ce qu'un artefact (Artifact) dans la terminologie MLflow ?",
+    "options": [
+      "Un vieux serveur décommissionné",
+      "N'importe quel fichier ou dossier de sortie (le modèle sérialisé, une image PNG de la matrice de confusion, un fichier texte)",
+      "Un paramètre d'apprentissage (learning rate)",
+      "Un script malveillant"
+    ],
+    "answer": "N'importe quel fichier ou dossier de sortie (le modèle sérialisé, une image PNG de la matrice de confusion, un fichier texte)",
+    "explanation": "MLflow Tracking permet de lier des artefacts spécifiques à une exécution (run) donnée."
+  },
+  {
+    "question": "Lorsqu'on observe un Concept Drift sévère, quelle est généralement l'action à entreprendre ?",
+    "options": [
+      "Redémarrer le serveur",
+      "Réentraîner le modèle sur des données récentes pour apprendre la nouvelle relation, et éventuellement écarter les données trop anciennes",
+      "Diminuer le nombre d'arbres dans la RandomForest",
+      "Changer le langage de programmation"
+    ],
+    "answer": "Réentraîner le modèle sur des données récentes pour apprendre la nouvelle relation, et éventuellement écarter les données trop anciennes",
+    "explanation": "Puisque les règles du jeu ont changé, les vieilles données perturbent l'apprentissage. Il faut recycler le modèle sur la nouvelle réalité."
+  }
+]

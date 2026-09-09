@@ -1,0 +1,112 @@
+[
+  {
+    "question": "Dans le contexte de GitHub Actions, qu'est-ce qu'un 'Runner' ?",
+    "options": [
+      "Un script qui exécute les tests en boucle sur le PC du développeur",
+      "Un serveur ou une machine virtuelle chargée d'exécuter les jobs définis dans vos workflows CI/CD",
+      "Un outil de Machine Learning qui cherche les hyperparamètres",
+      "Une commande Docker pour démarrer un conteneur"
+    ],
+    "answer": "Un serveur ou une machine virtuelle chargée d'exécuter les jobs définis dans vos workflows CI/CD",
+    "explanation": "GitHub fournit des 'Runners hosted' gratuits, mais vous pouvez aussi configurer des 'Self-hosted runners' (vos propres serveurs) si vous avez des contraintes de sécurité."
+  },
+  {
+    "question": "Lors d'un audit de modèle avec la matrice de confusion, qu'est-ce qu'un Faux Négatif (False Negative) ?",
+    "options": [
+      "Le modèle a prédit la classe Négative, et il avait raison",
+      "Le modèle a prédit la classe Positive, mais la vraie classe était Négative",
+      "Le modèle a prédit la classe Négative (ex: pas de maladie), mais la vraie classe était Positive (le patient est malade)",
+      "Un cas que le modèle a refusé de prédire"
+    ],
+    "answer": "Le modèle a prédit la classe Négative (ex: pas de maladie), mais la vraie classe était Positive (le patient est malade)",
+    "explanation": "Dans les cas médicaux ou de fraude critique, les Faux Négatifs sont souvent très coûteux (on manque une détection vitale), et on cherche à maximiser le 'Rappel' pour les réduire."
+  },
+  {
+    "question": "En MLOps, quelle pratique permet d'isoler les dépendances d'un projet Python (comme FastAPI et Scikit-Learn) ?",
+    "options": [
+      "Installer toutes les bibliothèques avec `pip install` au niveau du système global (sudo pip install)",
+      "Utiliser un environnement virtuel (ex: venv, conda, poetry) contenant uniquement les packages requis, listés dans un requirements.txt",
+      "Supprimer toutes les dépendances avant de lancer le code",
+      "Exécuter le code dans un navigateur web"
+    ],
+    "answer": "Utiliser un environnement virtuel (ex: venv, conda, poetry) contenant uniquement les packages requis, listés dans un requirements.txt",
+    "explanation": "L'isolation empêche les conflits de version entre différents projets (ex: un projet demande Pandas 1.0, l'autre Pandas 2.0)."
+  },
+  {
+    "question": "Qu'est-ce que l'opération 'One-Hot Encoding' en Machine Learning ?",
+    "options": [
+      "Compresser un réseau de neurones",
+      "Transformer une variable catégorielle (ex: 'Couleur': Rouge, Vert, Bleu) en plusieurs colonnes binaires (0 ou 1), une pour chaque catégorie",
+      "Normaliser une variable numérique entre 0 et 1",
+      "Créer une API REST avec un seul endpoint"
+    ],
+    "answer": "Transformer une variable catégorielle (ex: 'Couleur': Rouge, Vert, Bleu) en plusieurs colonnes binaires (0 ou 1), une pour chaque catégorie",
+    "explanation": "Les algorithmes mathématiques (comme la régression logistique) ne peuvent pas lire de texte. Le One-Hot Encoding permet de vectoriser ces modalités catégorielles sans imposer d'ordre artificiel."
+  },
+  {
+    "question": "Pourquoi divise-t-on généralement les données en Train, Validation et Test (plutôt que juste Train et Test) lors de l'entraînement de modèles de Deep Learning ou lors d'un hyperparameter tuning intensif ?",
+    "options": [
+      "Parce que c'est une convention imposée par Python",
+      "Pour garder un set (Validation) dédié à l'optimisation des hyperparamètres pendant l'apprentissage, et un set vierge (Test) qui ne servira qu'une seule fois à la toute fin pour évaluer la vraie performance, sans biais.",
+      "Pour réduire la taille du jeu d'entraînement et accélérer le calcul",
+      "Pour pallier au problème de valeurs manquantes"
+    ],
+    "answer": "Pour garder un set (Validation) dédié à l'optimisation des hyperparamètres pendant l'apprentissage, et un set vierge (Test) qui ne servira qu'une seule fois à la toute fin pour évaluer la vraie performance, sans biais.",
+    "explanation": "Si on tune les hyperparamètres (comme l'architecture du réseau) sur le jeu de test, on 'overfit indirectement' sur le jeu de test. Le jeu de test final doit rester inconnu de l'expérimentateur."
+  },
+  {
+    "question": "Que fait la fonction d'activation 'ReLU' (Rectified Linear Unit) dans un réseau de neurones ?",
+    "options": [
+      "Elle transforme toutes les valeurs en probabilités entre 0 et 1",
+      "Elle laisse passer les valeurs positives telles quelles et met à zéro toutes les valeurs négatives",
+      "Elle calcule l'exponentielle de l'entrée",
+      "Elle supprime les neurones avec des poids trop élevés"
+    ],
+    "answer": "Elle laisse passer les valeurs positives telles quelles et met à zéro toutes les valeurs négatives",
+    "explanation": "ReLU, bien que très simple (`f(x) = max(0, x)`), est incroyablement efficace, rapide à calculer, et permet d'éviter en grande partie le problème de la disparition du gradient par rapport aux fonctions Sigmoïde ou Tanh."
+  },
+  {
+    "question": "Qu'est-ce qu'une attaque par 'Inférence de l'appartenance' (Membership Inference Attack) en sécurité IA ?",
+    "options": [
+      "Infiltrer l'API pour lancer des commandes Bash malveillantes",
+      "Exploiter les réponses d'un modèle ML pour déterminer si l'enregistrement d'une personne spécifique faisait partie (ou non) du jeu de données d'entraînement privé",
+      "Voler les mots de passe des développeurs",
+      "Faire crasher le serveur Docker avec des millions de requêtes"
+    ],
+    "answer": "Exploiter les réponses d'un modèle ML pour déterminer si l'enregistrement d'une personne spécifique faisait partie (ou non) du jeu de données d'entraînement privé",
+    "explanation": "C'est un risque majeur de confidentialité (RGPD). Un modèle overfitté 'se souvient' très bien de ses données d'entraînement, trahissant ainsi l'appartenance d'individus à la base de données privée."
+  },
+  {
+    "question": "Quel composant d'une architecture Big Data est optimisé pour stocker les logs d'événements et les requêter quasi instantanément via des index inversés (ex: pour le monitoring) ?",
+    "options": [
+      "SQLite",
+      "Elasticsearch",
+      "Pandas DataFrame",
+      "HDFS"
+    ],
+    "answer": "Elasticsearch",
+    "explanation": "Dans la stack ELK classique (Elasticsearch, Logstash, Kibana), Elasticsearch sert de moteur de recherche et d'analyse distribué, idéal pour l'exploration de logs massifs."
+  },
+  {
+    "question": "Dans le contexte du DevOps/MLOps, que représente l'IaC (Infrastructure as Code) ?",
+    "options": [
+      "Un réseau de neurones qui génère du code source HTML",
+      "Le fait de définir, provisionner et gérer l'infrastructure réseau et serveur via des fichiers de code (ex: Terraform, Ansible) versionnés dans Git",
+      "Une base de données relationnelle structurée",
+      "Un standard de chiffrement de bout en bout"
+    ],
+    "answer": "Le fait de définir, provisionner et gérer l'infrastructure réseau et serveur via des fichiers de code (ex: Terraform, Ansible) versionnés dans Git",
+    "explanation": "L'IaC permet de créer des environnements (Serveurs, BDD, Réseaux) de manière reproductible, automatisée et traçable, évitant les clics manuels dans l'interface du Cloud."
+  },
+  {
+    "question": "Lorsqu'on utilise 'Docker Compose', à quoi correspond la commande 'docker-compose build' ?",
+    "options": [
+      "Elle crée le code source Python",
+      "Elle lit le ou les Dockerfiles définis dans le yaml et compile les images de conteneurs pour chaque service",
+      "Elle déploie l'application en production sur le Cloud",
+      "Elle arrête tous les conteneurs"
+    ],
+    "answer": "Elle lit le ou les Dockerfiles définis dans le yaml et compile les images de conteneurs pour chaque service",
+    "explanation": "Avant de lancer les conteneurs avec 'up', Docker Compose doit s'assurer que les images existent (ou les reconstruire si le code source a changé)."
+  }
+]

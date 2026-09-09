@@ -1,0 +1,112 @@
+[
+  {
+    "question": "À quoi sert Docker Compose ?",
+    "options": [
+      "Compiler du code Python",
+      "Orchestrer et lancer plusieurs conteneurs Docker",
+      "Générer des modèles de Machine Learning",
+      "Gérer les versions du code source (comme Git)"
+    ],
+    "answer": "Orchestrer et lancer plusieurs conteneurs Docker",
+    "explanation": "Docker Compose est un outil permettant de définir et d'exécuter des applications Docker multi-conteneurs à l'aide d'un fichier YAML."
+  },
+  {
+    "question": "Dans FastAPI, quel outil est utilisé en natif pour la validation des données ?",
+    "options": [
+      "Marshmallow",
+      "Django ORM",
+      "Pydantic",
+      "Cerberus"
+    ],
+    "answer": "Pydantic",
+    "explanation": "FastAPI repose sur Pydantic pour la validation des données et la gestion des paramètres grâce aux annotations de types Python."
+  },
+  {
+    "question": "Que permet de faire MLflow dans un projet de Data Science ?",
+    "options": [
+      "Créer des dashboards interactifs pour les utilisateurs finaux",
+      "Gérer le cycle de vie du ML, incluant le suivi des expérimentations et le registre de modèles",
+      "Héberger des bases de données relationnelles",
+      "Automatiser le déploiement d'infrastructure (IaC)"
+    ],
+    "answer": "Gérer le cycle de vie du ML, incluant le suivi des expérimentations et le registre de modèles",
+    "explanation": "MLflow Tracking permet de tracer les paramètres, métriques et artefacts de vos expérimentations."
+  },
+  {
+    "question": "Dans le contexte de GitHub Actions, qu'est-ce qu'un 'Workflow' ?",
+    "options": [
+      "Un ticket (issue) assigné à un développeur",
+      "Un diagramme d'architecture",
+      "Une procédure automatisée configurable composée d'un ou plusieurs jobs",
+      "Une branche Git spécifique"
+    ],
+    "answer": "Une procédure automatisée configurable composée d'un ou plusieurs jobs",
+    "explanation": "Un workflow est un processus automatisé défini dans un fichier YAML pour l'intégration et le déploiement continus (CI/CD)."
+  },
+  {
+    "question": "Quel est l'avantage principal d'utiliser TestClient avec FastAPI et Pytest ?",
+    "options": [
+      "Il déploie automatiquement l'API en production",
+      "Il permet de tester les endpoints de l'API sans avoir à démarrer un serveur Uvicorn",
+      "Il génère automatiquement la documentation Swagger",
+      "Il protège l'API contre les attaques DDOS"
+    ],
+    "answer": "Il permet de tester les endpoints de l'API sans avoir à démarrer un serveur Uvicorn",
+    "explanation": "TestClient (basé sur HTTPX) permet de simuler des requêtes HTTP vers votre application FastAPI de manière très rapide pour les tests unitaires."
+  },
+  {
+    "question": "Quel composant est souvent utilisé avec FastAPI pour exposer des métriques à Prometheus ?",
+    "options": [
+      "Un middleware spécifique (ex: prometheus-fastapi-instrumentator)",
+      "Un script Bash en arrière-plan",
+      "Une base de données Redis",
+      "Jupyter Notebook"
+    ],
+    "answer": "Un middleware spécifique (ex: prometheus-fastapi-instrumentator)",
+    "explanation": "On utilise généralement un middleware ou un instrumentator pour exposer automatiquement les métriques HTTP au format Prometheus sur un point d'accès (souvent /metrics)."
+  },
+  {
+    "question": "Quel est le but d'un fichier Dockerfile ?",
+    "options": [
+      "Orchestrer plusieurs conteneurs",
+      "Stocker des mots de passe en toute sécurité",
+      "Définir les étapes pour construire une image Docker",
+      "Créer un réseau virtuel pour les conteneurs"
+    ],
+    "answer": "Définir les étapes pour construire une image Docker",
+    "explanation": "Le Dockerfile contient une série d'instructions (FROM, RUN, COPY, etc.) pour assembler une image Docker."
+  },
+  {
+    "question": "Pourquoi utilise-t-on la bibliothèque Loguru au lieu du module logging standard ?",
+    "options": [
+      "Parce qu'elle est développée par Google",
+      "Pour sa simplicité d'utilisation, sa coloration syntaxique native et sa configuration plus intuitive",
+      "Parce qu'elle est obligatoire avec FastAPI",
+      "Parce qu'elle exécute le code plus rapidement"
+    ],
+    "answer": "Pour sa simplicité d'utilisation, sa coloration syntaxique native et sa configuration plus intuitive",
+    "explanation": "Loguru offre une approche 'zéro configuration' avec une coloration automatique, une rotation des logs simplifiée et une syntaxe plus lisible."
+  },
+  {
+    "question": "Qu'est-ce qu'Alembic dans l'écosystème Python ?",
+    "options": [
+      "Un outil de migration de base de données utilisé avec SQLAlchemy",
+      "Un modèle de Machine Learning pour la traduction",
+      "Un framework de tests e2e",
+      "Une bibliothèque de visualisation de données"
+    ],
+    "answer": "Un outil de migration de base de données utilisé avec SQLAlchemy",
+    "explanation": "Alembic permet de gérer les évolutions du schéma de base de données (migrations) de manière contrôlée avec SQLAlchemy."
+  },
+  {
+    "question": "Quelle commande Docker Compose permet de démarrer tous les services en arrière-plan ?",
+    "options": [
+      "docker-compose start background",
+      "docker-compose up -d",
+      "docker-compose run all",
+      "docker-compose build --detach"
+    ],
+    "answer": "docker-compose up -d",
+    "explanation": "L'option '-d' (detach) permet de lancer les conteneurs en arrière-plan sans bloquer le terminal."
+  }
+]

@@ -1,0 +1,112 @@
+[
+  {
+    "question": "En Python, que renvoie l'exécution de la méthode 'df.shape' sur un objet DataFrame Pandas ?",
+    "options": [
+      "Une erreur, car shape est une propriété et non une méthode",
+      "Un tuple (nombre_de_lignes, nombre_de_colonnes) représentant les dimensions du DataFrame",
+      "Un nouveau DataFrame contenant uniquement les colonnes numériques",
+      "La liste des types de données de chaque colonne"
+    ],
+    "answer": "Un tuple (nombre_de_lignes, nombre_de_colonnes) représentant les dimensions du DataFrame",
+    "explanation": "C'est effectivement un attribut (une propriété sans parenthèses) très utilisé en début d'EDA pour évaluer la taille du jeu de données."
+  },
+  {
+    "question": "Quel est l'objectif du 'Continuous Training' (Entraînement continu) dans une boucle MLOps complète ?",
+    "options": [
+      "Forcer les data scientists à coder sans pause",
+      "Automatiser le pipeline pour réentraîner le modèle sur des données fraîches dès que l'orchestrateur détecte une baisse de performance (Data Drift)",
+      "Vérifier le code source en temps réel",
+      "Déployer le modèle sur différents serveurs simultanément"
+    ],
+    "answer": "Automatiser le pipeline pour réentraîner le modèle sur des données fraîches dès que l'orchestrateur détecte une baisse de performance (Data Drift)",
+    "explanation": "C'est l'étape ultime de l'automatisation MLOps (CT) : le système se maintient à jour sans (ou avec très peu) d'intervention humaine."
+  },
+  {
+    "question": "Pourquoi est-il risqué de développer sur la branche 'main' (ou 'master') d'un dépôt Git en équipe ?",
+    "options": [
+      "Parce que Git bloque l'accès à la branche main pour plus d'une personne",
+      "La branche main doit toujours représenter l'état stable et déployable en production ; y pousser directement risque d'introduire du code cassé pour tout le monde",
+      "Parce que les commits sur main consomment plus d'espace de stockage",
+      "Ce n'est pas risqué, c'est la meilleure pratique"
+    ],
+    "answer": "La branche main doit toujours représenter l'état stable et déployable en production ; y pousser directement risque d'introduire du code cassé pour tout le monde",
+    "explanation": "On crée donc des branches de fonctionnalité (feature branches) qu'on fusionne (merge) sur main uniquement après une revue de code (Pull Request) réussie."
+  },
+  {
+    "question": "Qu'est-ce que 'l'Explosion du Gradient' (Gradient Exploding) dans les réseaux de neurones profonds ?",
+    "options": [
+      "Une technique pour accélérer la formation du réseau",
+      "Un problème où les gradients deviennent trop grands et provoquent des NaN (Not a Number), rendant l'apprentissage instable ou cassé",
+      "La disparition progressive du signal d'apprentissage",
+      "Un outil de visualisation dans TensorBoard"
+    ],
+    "answer": "Un problème où les gradients deviennent trop grands et provoquent des NaN (Not a Number), rendant l'apprentissage instable ou cassé",
+    "explanation": "Cela arrive souvent dans les longs RNN. On le contre via des techniques comme le 'Gradient Clipping' (écrêtage des gradients)."
+  },
+  {
+    "question": "Quelle est la principale utilité du module 'pydantic-settings' (souvent utilisé avec FastAPI) ?",
+    "options": [
+      "Générer la documentation API",
+      "Déclarer des variables d'environnement dans une classe Pydantic, les valider avec des types stricts, et les charger depuis un fichier '.env'",
+      "Créer des bases de données de test",
+      "Orchestrer des conteneurs Docker"
+    ],
+    "answer": "Déclarer des variables d'environnement dans une classe Pydantic, les valider avec des types stricts, et les charger depuis un fichier '.env'",
+    "explanation": "Cela permet de s'assurer au lancement que l'application possède bien tous les secrets et URL de base de données requis (ex: `DATABASE_URL: str`), sous peine de crasher immédiatement."
+  },
+  {
+    "question": "En surveillance MLOps, quelle différence y a-t-il entre surveiller les 'Métriques Système' et les 'Métriques Métier' ?",
+    "options": [
+      "Il n'y en a pas, c'est la même chose",
+      "Les métriques système concernent le CPU/RAM/Latence, tandis que les métriques métier concernent l'impact de l'algorithme (ex: taux de clics, revenus générés, précision des prédictions)",
+      "Les métriques système sont pour Pandas, les métier pour SQL",
+      "Les métriques système sont gérées par Pytest, les métier par Docker"
+    ],
+    "answer": "Les métriques système concernent le CPU/RAM/Latence, tandis que les métriques métier concernent l'impact de l'algorithme (ex: taux de clics, revenus générés, précision des prédictions)",
+    "explanation": "Un modèle ML peut parfaitement fonctionner d'un point de vue informatique (latence 10ms, CPU à 5%), tout en prédisant n'importe quoi et en ruinant l'entreprise."
+  },
+  {
+    "question": "Dans le contexte des modèles de langage (LLMs) comme GPT, qu'est-ce que le 'Prompt Engineering' ?",
+    "options": [
+      "Modifier le code source de l'algorithme",
+      "La discipline consistant à formuler, optimiser et affiner la requête textuelle (le prompt) pour obtenir la meilleure réponse possible de la part du modèle",
+      "Un métier consistant à répondre très vite aux emails",
+      "Une bibliothèque Python d'analyse de données"
+    ],
+    "answer": "La discipline consistant à formuler, optimiser et affiner la requête textuelle (le prompt) pour obtenir la meilleure réponse possible de la part du modèle",
+    "explanation": "Le prompt engineering inclut des techniques comme le 'Few-Shot prompting' (donner quelques exemples dans la requête) ou 'Chain of Thought' (demander au modèle de réfléchir étape par étape)."
+  },
+  {
+    "question": "Qu'est-ce que le framework 'PyTorch' ?",
+    "options": [
+      "Un outil de manipulation de tableaux 2D similaire à Pandas",
+      "Une bibliothèque logicielle open-source très populaire développée par le laboratoire d'IA de Meta, spécialisée dans le Deep Learning et le calcul sur GPU",
+      "Un moteur de base de données relationnelle",
+      "Un serveur web équivalent à Nginx"
+    ],
+    "answer": "Une bibliothèque logicielle open-source très populaire développée par le laboratoire d'IA de Meta, spécialisée dans le Deep Learning et le calcul sur GPU",
+    "explanation": "C'est l'un des frameworks Deep Learning les plus utilisés au monde, notamment en recherche et dans l'écosystème HuggingFace, en concurrence directe avec TensorFlow."
+  },
+  {
+    "question": "Qu'est-ce qu'une 'API Gateway' (Passerelle API) dans une architecture Cloud / Microservices ?",
+    "options": [
+      "Le câble réseau reliant les serveurs",
+      "Un point d'entrée unique qui reçoit tous les appels clients, gère l'authentification, la limitation de taux (Rate Limiting) et route la requête vers le bon microservice derrière",
+      "Une base de données centralisée",
+      "L'interface graphique d'administration"
+    ],
+    "answer": "Un point d'entrée unique qui reçoit tous les appels clients, gère l'authentification, la limitation de taux (Rate Limiting) et route la requête vers le bon microservice derrière",
+    "explanation": "Au lieu de laisser le client attaquer directement FastAPI, l'API Gateway protège l'application de manière professionnelle (ex: Kong, AWS API Gateway)."
+  },
+  {
+    "question": "Dans le développement Python, quelle est la fonction principale d'un outil de 'Linting' comme Flake8 ou Ruff ?",
+    "options": [
+      "Optimiser le temps de calcul de l'algorithme",
+      "Analyser le code statiquement pour détecter les erreurs de syntaxe, les variables inutilisées et vérifier le respect des conventions de style (PEP 8)",
+      "Compiler le code Python en exécutable",
+      "Déployer le code sur le cloud"
+    ],
+    "answer": "Analyser le code statiquement pour détecter les erreurs de syntaxe, les variables inutilisées et vérifier le respect des conventions de style (PEP 8)",
+    "explanation": "Le linter maintient le code propre et lisible pour toute l'équipe. Il est souvent exécuté automatiquement dans la chaîne de CI (GitHub Actions)."
+  }
+]

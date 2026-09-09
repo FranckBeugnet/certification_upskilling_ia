@@ -1,0 +1,112 @@
+[
+  {
+    "question": "En observabilité, quel est le langage de requête utilisé par Grafana pour interroger les métriques stockées dans Prometheus ?",
+    "options": [
+      "SQL",
+      "PromQL (Prometheus Query Language)",
+      "GraphQL",
+      "Cypher"
+    ],
+    "answer": "PromQL (Prometheus Query Language)",
+    "explanation": "PromQL permet d'agréger et de sélectionner les données de séries temporelles en temps réel pour alimenter les graphiques Grafana."
+  },
+  {
+    "question": "Quel composant d'architecture est souvent placé devant une API FastAPI en production pour gérer le chiffrement HTTPS et la répartition de charge (Load Balancing) ?",
+    "options": [
+      "Un Reverse Proxy (ex: Nginx, Traefik)",
+      "Un Feature Store",
+      "Un Model Registry",
+      "Un serveur SMTP"
+    ],
+    "answer": "Un Reverse Proxy (ex: Nginx, Traefik)",
+    "explanation": "Uvicorn (le serveur ASGI de FastAPI) n'est pas conçu pour être exposé directement sur Internet sans un reverse proxy solide pour le protéger et gérer les certificats."
+  },
+  {
+    "question": "Dans le contexte des données personnelles (RGPD), qu'est-ce que la 'Pseudonymisation' par opposition à l'Anonymisation ?",
+    "options": [
+      "La pseudonymisation chiffre les données de manière irréversible",
+      "La pseudonymisation remplace les identifiants directs par un pseudonyme (ex: un hash), mais permet de retrouver l'individu si on possède la clé secrète, contrairement à l'anonymisation qui est définitive",
+      "L'anonymisation n'est pas légale selon le RGPD",
+      "C'est la même chose"
+    ],
+    "answer": "La pseudonymisation remplace les identifiants directs par un pseudonyme (ex: un hash), mais permet de retrouver l'individu si on possède la clé secrète, contrairement à l'anonymisation qui est définitive",
+    "explanation": "Les données pseudonymisées sont toujours considérées comme des données personnelles soumises au RGPD."
+  },
+  {
+    "question": "Qu'est-ce que le 'K-Fold Cross Validation' (Validation croisée à K plis) ?",
+    "options": [
+      "Une technique pour compresser les données en K fichiers",
+      "Une méthode d'évaluation où le dataset est divisé en K sous-ensembles : le modèle est entraîné K fois, chaque fois en utilisant K-1 sous-ensembles pour l'entraînement et 1 pour le test",
+      "Une erreur courante en Python",
+      "Un algorithme de clustering"
+    ],
+    "answer": "Une méthode d'évaluation où le dataset est divisé en K sous-ensembles : le modèle est entraîné K fois, chaque fois en utilisant K-1 sous-ensembles pour l'entraînement et 1 pour le test",
+    "explanation": "Cela permet d'obtenir une estimation plus fiable des performances du modèle, particulièrement utile quand le jeu de données est petit."
+  },
+  {
+    "question": "En traitement du langage naturel (NLP), que signifie l'acronyme NER ?",
+    "options": [
+      "Network Error Rate",
+      "Named Entity Recognition (Reconnaissance d'Entités Nommées)",
+      "Neural Evaluation Routine",
+      "Natural Extraction Requirement"
+    ],
+    "answer": "Named Entity Recognition (Reconnaissance d'Entités Nommées)",
+    "explanation": "Le NER consiste à détecter et classifier les éléments clés d'un texte (personnes, lieux, organisations, dates), crucial pour l'anonymisation (outil spaCy/Presidio)."
+  },
+  {
+    "question": "Quel est l'avantage du 'Zero-Shot Learning' (Apprentissage Zero-Shot) avec des modèles de fondation comme CLIP ?",
+    "options": [
+      "Il ne consomme pas d'électricité",
+      "Le modèle peut accomplir une tâche de classification sur des classes qu'il n'a jamais vues pendant son entraînement, grâce à sa compréhension sémantique",
+      "Il s'entraîne instantanément en zéro seconde",
+      "Il nécessite une intervention humaine pour chaque image"
+    ],
+    "answer": "Le modèle peut accomplir une tâche de classification sur des classes qu'il n'a jamais vues pendant son entraînement, grâce à sa compréhension sémantique",
+    "explanation": "CLIP relie le texte et l'image. Si on lui demande 'cherche une photo de chien astronaute', il peut le faire sans avoir jamais été explicitement entraîné avec ce label."
+  },
+  {
+    "question": "Dans FastAPI, que renvoie par défaut une route si la fonction de l'endpoint se termine sans instruction 'return' explicite ?",
+    "options": [
+      "Une erreur 500",
+      "Une erreur 422",
+      "null",
+      "Le code source de la fonction"
+    ],
+    "answer": "null",
+    "explanation": "En Python, une fonction sans `return` renvoie implicitement `None`, que FastAPI sérialise en JSON sous la forme `null`."
+  },
+  {
+    "question": "Qu'est-ce que 'Alembic' ?",
+    "options": [
+      "Un algorithme de chiffrement",
+      "Un outil léger de migration de base de données utilisé en conjonction avec SQLAlchemy en Python",
+      "Un module de Machine Learning pour les séries temporelles",
+      "Une interface graphique pour PostgreSQL"
+    ],
+    "answer": "Un outil léger de migration de base de données utilisé en conjonction avec SQLAlchemy en Python",
+    "explanation": "Alembic génère des scripts de migration (fichiers Python) permettant de faire évoluer le schéma de la base de données (ajout de colonne, modification de type) de manière versionnée et reproductible."
+  },
+  {
+    "question": "Quelle métrique d'évaluation est particulièrement inadaptée (trompeuse) pour évaluer un modèle prédisant des fraudes très rares (0,1% des cas) ?",
+    "options": [
+      "L'aire sous la courbe Precision-Recall (PR-AUC)",
+      "L'exactitude (Accuracy)",
+      "Le F1-Score",
+      "Le Recall"
+    ],
+    "answer": "L'exactitude (Accuracy)",
+    "explanation": "Un modèle qui prédit toujours 'non fraude' aura une exactitude de 99,9 %, ce qui semble excellent mais est inutile. Il faut utiliser l'AUC-ROC ou le F1-Score."
+  },
+  {
+    "question": "En Git, quelle est la bonne pratique avant de fusionner (merge) le code d'un collègue sur la branche principale (main/master) ?",
+    "options": [
+      "Lui faire confiance aveuglément",
+      "Effectuer une Revue de Code (Code Review / Pull Request) pour vérifier la qualité, la logique et la présence de tests",
+      "Supprimer ses propres commits",
+      "Redémarrer le serveur Git"
+    ],
+    "answer": "Effectuer une Revue de Code (Code Review / Pull Request) pour vérifier la qualité, la logique et la présence de tests",
+    "explanation": "La revue de code est le principal filet de sécurité en équipe pour détecter les bugs et assurer le respect des conventions du projet."
+  }
+]

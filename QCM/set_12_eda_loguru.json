@@ -1,0 +1,112 @@
+[
+  {
+    "question": "En Analyse Exploratoire des Données (EDA), qu'est-ce que la saisonnalité dans une série temporelle ?",
+    "options": [
+      "Le fait qu'un modèle soit entraîné en été ou en hiver",
+      "Un motif répétitif et prévisible qui se produit à des intervalles réguliers (ex: pics de ventes tous les mois de décembre)",
+      "Une erreur systématique du capteur de données",
+      "Une méthode de normalisation des dates"
+    ],
+    "answer": "Un motif répétitif et prévisible qui se produit à des intervalles réguliers (ex: pics de ventes tous les mois de décembre)",
+    "explanation": "L'identification de la saisonnalité lors de l'EDA est cruciale car elle permet d'ajouter des features spécifiques (ex: 'mois_de_lannee') pour aider le modèle à l'apprendre."
+  },
+  {
+    "question": "Pourquoi la librairie 'Loguru' est-elle souvent préférée à 'logging' par défaut en Python ?",
+    "options": [
+      "Parce qu'elle chiffre les logs de manière quantique",
+      "Pour son approche 'zero-configuration', sa coloration syntaxique native, et la simplicité de paramétrage de la rotation des fichiers",
+      "Parce qu'elle empêche les crashs de l'application",
+      "Parce qu'elle est développée par la fondation Linux"
+    ],
+    "answer": "Pour son approche 'zero-configuration', sa coloration syntaxique native, et la simplicité de paramétrage de la rotation des fichiers",
+    "explanation": "Au lieu de dizaines de lignes de configuration avec le module standard, `from loguru import logger` suffit pour avoir des logs professionnels."
+  },
+  {
+    "question": "Quel est le risque de sauvegarder un modèle complexe avec des tableaux Numpy volumineux via le module 'pickle' standard ?",
+    "options": [
+      "Il n'y a aucun risque, pickle est le plus optimisé",
+      "Pickle n'est pas optimisé pour les grands tableaux Numpy, la sauvegarde et le chargement peuvent être lents et le fichier final très lourd",
+      "Pickle supprime les hyperparamètres du modèle",
+      "Pickle n'est pas compatible avec Windows"
+    ],
+    "answer": "Pickle n'est pas optimisé pour les grands tableaux Numpy, la sauvegarde et le chargement peuvent être lents et le fichier final très lourd",
+    "explanation": "C'est pour cela que l'on utilise `joblib`, qui est spécialement conçu pour gérer efficacement les matrices Numpy sous-jacentes aux modèles Scikit-Learn."
+  },
+  {
+    "question": "Que signifie l'avertissement de sécurité classique concernant 'pickle' ou 'joblib' ?",
+    "options": [
+      "Ils partagent le modèle sur internet par défaut",
+      "Ils peuvent exécuter du code arbitraire lors du chargement : il ne faut jamais charger un modèle provenant d'une source non fiable",
+      "Ils effacent le disque dur si le modèle est trop gros",
+      "Ils exposent les mots de passe de la BDD en clair"
+    ],
+    "answer": "Ils peuvent exécuter du code arbitraire lors du chargement : il ne faut jamais charger un modèle provenant d'une source non fiable",
+    "explanation": "Le format n'étant pas sécurisé par défaut, un attaquant pourrait forger un fichier .joblib contenant un script malveillant qui s'exécutera au moment du `joblib.load()`."
+  },
+  {
+    "question": "Dans le contexte des APIs, qu'est-ce qu'un 'Middleware' ?",
+    "options": [
+      "Un logiciel installé sur le poste client",
+      "Une couche de code intermédiaire qui s'exécute entre la réception de la requête et la route finale (ex: pour mesurer le temps de réponse ou logger toutes les requêtes)",
+      "Un type de base de données relationnelle",
+      "L'interface graphique d'administration"
+    ],
+    "answer": "Une couche de code intermédiaire qui s'exécute entre la réception de la requête et la route finale (ex: pour mesurer le temps de réponse ou logger toutes les requêtes)",
+    "explanation": "Dans FastAPI, on utilise souvent un middleware avec Loguru pour tracer l'URL appelée, le temps de traitement et le statut de retour de chaque requête API."
+  },
+  {
+    "question": "Lors du benchmark d'algorithmes (ex: comparaison RandomForest vs XGBoost), quelle est la meilleure pratique pour s'assurer que la comparaison est juste ?",
+    "options": [
+      "Tester les algorithmes sur des ordinateurs différents",
+      "Évaluer tous les algorithmes sur le même jeu de test (holdout) en utilisant des conditions de prétraitement identiques (Pipelines) et la même graine aléatoire",
+      "Toujours utiliser l'Accuracy comme seule métrique de comparaison",
+      "Prendre uniquement le modèle qui s'entraîne le plus vite"
+    ],
+    "answer": "Évaluer tous les algorithmes sur le même jeu de test (holdout) en utilisant des conditions de prétraitement identiques (Pipelines) et la même graine aléatoire",
+    "explanation": "La rigueur méthodologique (comparer des pommes avec des pommes) est indispensable pour choisir le meilleur modèle."
+  },
+  {
+    "question": "En MLOps, qu'est-ce que la 'Reproductibilité' ?",
+    "options": [
+      "La capacité de l'API à répondre sous les 100 millisecondes",
+      "La capacité à recréer un modèle exact (même code, même environnement, mêmes données, mêmes hyperparamètres) aboutissant aux mêmes performances",
+      "Le fait qu'un utilisateur puisse créer plusieurs comptes",
+      "La réplication des bases de données en temps réel"
+    ],
+    "answer": "La capacité à recréer un modèle exact (même code, même environnement, mêmes données, mêmes hyperparamètres) aboutissant aux mêmes performances",
+    "explanation": "Les outils comme MLflow (tracking des hyperparamètres), Docker (environnement) et Git (code) visent tous à garantir cette reproductibilité fondamentale."
+  },
+  {
+    "question": "Qu'est-ce qu'un 'Baseline' (modèle de référence) en Machine Learning ?",
+    "options": [
+      "Le modèle le plus complexe et coûteux de l'état de l'art",
+      "Un modèle très simple, souvent heuristique (ex: prédire toujours la classe majoritaire), servant de point de comparaison minimal pour évaluer la vraie valeur ajoutée d'un modèle ML",
+      "La couche de base d'un réseau de neurones",
+      "Le prix payé pour les serveurs AWS"
+    ],
+    "answer": "Un modèle très simple, souvent heuristique (ex: prédire toujours la classe majoritaire), servant de point de comparaison minimal pour évaluer la vraie valeur ajoutée d'un modèle ML",
+    "explanation": "Si un modèle complexe fait 90% de précision mais qu'un Baseline 'stupide' fait 89%, le modèle complexe ne vaut peut-être pas la peine d'être déployé."
+  },
+  {
+    "question": "Que permet de réaliser la fonction 'df.info()' sur un DataFrame Pandas ?",
+    "options": [
+      "Calculer la corrélation entre les variables",
+      "Afficher les statistiques descriptives (moyenne, médiane) des variables numériques",
+      "Afficher le nom des colonnes, le type des données (int, float, object) et le nombre de valeurs non-nulles pour chaque colonne",
+      "Tracer automatiquement un histogramme"
+    ],
+    "answer": "Afficher le nom des colonnes, le type des données (int, float, object) et le nombre de valeurs non-nulles pour chaque colonne",
+    "explanation": "C'est souvent la première commande à lancer lors d'une EDA pour repérer d'un coup d'œil les valeurs manquantes et les types erronés."
+  },
+  {
+    "question": "Dans le cadre de Git, à quoi sert le 'Pair Programming' (Programmation en binôme) souvent encouragé dans les équipes ?",
+    "options": [
+      "À diviser le salaire par deux",
+      "À ce que deux développeurs travaillent sur le même code simultanément (un qui tape, l'autre qui observe et conseille) pour améliorer la qualité du code et partager la connaissance",
+      "À créer deux dépôts Git miroirs",
+      "À écrire des tests unitaires deux fois plus vite"
+    ],
+    "answer": "À ce que deux développeurs travaillent sur le même code simultanément (un qui tape, l'autre qui observe et conseille) pour améliorer la qualité du code et partager la connaissance",
+    "explanation": "Cela permet de réduire les bugs, d'harmoniser les pratiques et d'éviter les silos de connaissance au sein d'un projet MLOps/Data Science."
+  }
+]

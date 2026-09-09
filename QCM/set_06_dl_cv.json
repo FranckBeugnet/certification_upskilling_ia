@@ -1,0 +1,112 @@
+[
+  {
+    "question": "Quel est le rôle principal d'une couche de 'Pooling' (ex: MaxPooling) dans un CNN ?",
+    "options": [
+      "Ajouter des couleurs à l'image",
+      "Réduire la dimension spatiale (largeur et hauteur) pour diminuer le nombre de paramètres et extraire les caractéristiques dominantes",
+      "Connecter tous les neurones ensemble",
+      "Calculer la fonction de perte"
+    ],
+    "answer": "Réduire la dimension spatiale (largeur et hauteur) pour diminuer le nombre de paramètres et extraire les caractéristiques dominantes",
+    "explanation": "Le pooling permet de compresser l'information et rend le réseau plus robuste aux petites translations dans l'image."
+  },
+  {
+    "question": "En Deep Learning, qu'est-ce qu'un 'Epoch' ?",
+    "options": [
+      "Un passage complet de l'ensemble des données d'entraînement à travers le réseau de neurones",
+      "Le temps de calcul total",
+      "Un type de couche d'activation",
+      "Un lot (batch) de données"
+    ],
+    "answer": "Un passage complet de l'ensemble des données d'entraînement à travers le réseau de neurones",
+    "explanation": "L'entraînement se fait généralement sur plusieurs epochs pour permettre au réseau d'ajuster ses poids progressivement."
+  },
+  {
+    "question": "Que résout la technique de 'Dropout' dans un réseau de neurones ?",
+    "options": [
+      "Le problème du manque de données",
+      "Le problème du surapprentissage (overfitting) en désactivant aléatoirement certains neurones pendant l'entraînement",
+      "La lenteur du chargement des images",
+      "L'incompatibilité avec le GPU"
+    ],
+    "answer": "Le problème du surapprentissage (overfitting) en désactivant aléatoirement certains neurones pendant l'entraînement",
+    "explanation": "Le Dropout force le réseau à ne pas se reposer sur quelques neurones spécifiques, le rendant ainsi plus généraliste."
+  },
+  {
+    "question": "À quoi sert la fonction d'activation 'Softmax' ?",
+    "options": [
+      "À générer des images aléatoires",
+      "À normaliser les sorties d'un réseau de neurones pour obtenir une distribution de probabilités (somme = 1) en classification multiclasse",
+      "À accélérer le calcul sur GPU",
+      "À détecter les contours dans une image"
+    ],
+    "answer": "À normaliser les sorties d'un réseau de neurones pour obtenir une distribution de probabilités (somme = 1) en classification multiclasse",
+    "explanation": "La couche Softmax est souvent placée à la toute fin d'un modèle pour classer une entrée parmi plusieurs catégories exclusives."
+  },
+  {
+    "question": "Qu'est-ce que le 'Fine-Tuning' dans le cadre du Transfer Learning ?",
+    "options": [
+      "Désinstaller Python et le réinstaller",
+      "Ajuster légèrement les poids d'un modèle pré-entraîné (généralement les dernières couches) sur un nouveau jeu de données spécifique",
+      "Changer la couleur de l'interface utilisateur",
+      "Traduire le modèle en C++"
+    ],
+    "answer": "Ajuster légèrement les poids d'un modèle pré-entraîné (généralement les dernières couches) sur un nouveau jeu de données spécifique",
+    "explanation": "On 'dégèle' (unfreeze) souvent les dernières couches pour qu'elles apprennent les particularités de notre nouveau problème, tout en gardant les couches basses inchangées."
+  },
+  {
+    "question": "En vision par ordinateur, que représente un 'Filtre' (ou Kernel) dans une convolution ?",
+    "options": [
+      "Un écran de protection pour la caméra",
+      "Une petite matrice de poids qui glisse sur l'image pour détecter des motifs locaux (bords, textures)",
+      "Un outil de nettoyage de données Pandas",
+      "Une métrique d'évaluation"
+    ],
+    "answer": "Une petite matrice de poids qui glisse sur l'image pour détecter des motifs locaux (bords, textures)",
+    "explanation": "Ces filtres sont appris par le réseau durant l'entraînement pour identifier les éléments visuels importants."
+  },
+  {
+    "question": "Qu'est-ce qu'un 'Autoencodeur' ?",
+    "options": [
+      "Un modèle de voiture autonome",
+      "Un réseau de neurones non supervisé qui apprend à compresser (encoder) les données puis à les reconstruire (décoder)",
+      "Un outil de formatage de code (comme Black)",
+      "Un système de traduction automatique de langues"
+    ],
+    "answer": "Un réseau de neurones non supervisé qui apprend à compresser (encoder) les données puis à les reconstruire (décoder)",
+    "explanation": "Ils sont souvent utilisés pour la réduction de dimension, le débruitage d'images ou la détection d'anomalies."
+  },
+  {
+    "question": "Quelle est la principale caractéristique de l'architecture 'Transformer' (utilisée par BERT, GPT) par rapport aux RNN traditionnels ?",
+    "options": [
+      "Elle traite les mots séquentiellement, un par un",
+      "Elle utilise le mécanisme d'attention (Self-Attention) pour traiter l'ensemble de la séquence en parallèle",
+      "Elle ne fonctionne que sur des images",
+      "Elle ne possède pas de poids modifiables"
+    ],
+    "answer": "Elle utilise le mécanisme d'attention (Self-Attention) pour traiter l'ensemble de la séquence en parallèle",
+    "explanation": "L'attention permet de comprendre le contexte global d'un mot et de traiter les données en parallèle, accélérant énormément l'entraînement par rapport aux RNN."
+  },
+  {
+    "question": "Quel problème l'algorithme 'Gradient Clipping' (écrêtage du gradient) permet-il d'éviter ?",
+    "options": [
+      "Le problème de l'explosion du gradient (gradients qui deviennent infinis/NaN)",
+      "Le problème du manque de GPU",
+      "Les erreurs de syntaxe Python",
+      "La disparition de l'espace disque"
+    ],
+    "answer": "Le problème de l'explosion du gradient (gradients qui deviennent infinis/NaN)",
+    "explanation": "En limitant la valeur maximale des gradients, on évite que les poids du réseau ne soient mis à jour de manière trop extrême et ne fassent diverger le modèle."
+  },
+  {
+    "question": "Quel est le format d'enregistrement de modèle standardisé utilisé par HuggingFace Transformers ?",
+    "options": [
+      "Fichiers Excel (.xlsx)",
+      "Des fichiers Safetensors ou PyTorch (.bin/.pt) accompagnés de fichiers de configuration JSON",
+      "Des images PNG",
+      "Des conteneurs Docker bruts"
+    ],
+    "answer": "Des fichiers Safetensors ou PyTorch (.bin/.pt) accompagnés de fichiers de configuration JSON",
+    "explanation": "HuggingFace sauvegarde l'architecture dans un fichier de configuration et les poids dans des formats optimisés pour les tenseurs."
+  }
+]

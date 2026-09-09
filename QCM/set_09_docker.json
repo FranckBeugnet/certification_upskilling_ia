@@ -1,0 +1,112 @@
+[
+  {
+    "question": "Dans un fichier Dockerfile, à quoi sert l'instruction 'FROM' ?",
+    "options": [
+      "À définir le port sur lequel l'application écoute",
+      "À spécifier l'image de base (ex: python:3.11-slim) sur laquelle construire la nouvelle image",
+      "À copier des fichiers depuis la machine hôte vers le conteneur",
+      "À définir l'auteur du conteneur"
+    ],
+    "answer": "À spécifier l'image de base (ex: python:3.11-slim) sur laquelle construire la nouvelle image",
+    "explanation": "Toute image Docker commence par une instruction FROM, qui fournit le système d'exploitation et parfois les bibliothèques de base (comme Python)."
+  },
+  {
+    "question": "Pourquoi privilégie-t-on souvent une image Docker de type '-slim' (ex: python:3.11-slim) pour la production ?",
+    "options": [
+      "Parce qu'elle contient tous les outils de compilation (gcc, make)",
+      "Parce qu'elle est plus légère (moins d'espace disque et téléchargement plus rapide) et réduit la surface d'attaque sécuritaire",
+      "Parce qu'elle exécute le code Python plus rapidement",
+      "Parce qu'elle intègre une base de données PostgreSQL par défaut"
+    ],
+    "answer": "Parce qu'elle est plus légère (moins d'espace disque et téléchargement plus rapide) et réduit la surface d'attaque sécuritaire",
+    "explanation": "Les images slim suppriment les outils de build superflus en production, ce qui diminue la taille de l'image de plusieurs centaines de Mo."
+  },
+  {
+    "question": "Quelle commande Docker Compose permet d'arrêter et de supprimer les conteneurs, réseaux et volumes définis dans le fichier YAML ?",
+    "options": [
+      "docker-compose stop",
+      "docker-compose down",
+      "docker-compose rm -f",
+      "docker-compose kill"
+    ],
+    "answer": "docker-compose down",
+    "explanation": "Contrairement à 'stop' qui ne fait que mettre en pause, 'down' nettoie entièrement l'environnement créé par 'up'."
+  },
+  {
+    "question": "Dans Docker, à quoi sert le fichier '.dockerignore' ?",
+    "options": [
+      "À masquer le code source aux utilisateurs du conteneur",
+      "À éviter de copier des fichiers inutiles (comme le dossier .venv, .git, ou __pycache__) dans l'image lors du build",
+      "À ignorer les erreurs lors de l'exécution du conteneur",
+      "À empêcher les autres conteneurs de communiquer avec celui-ci"
+    ],
+    "answer": "À éviter de copier des fichiers inutiles (comme le dossier .venv, .git, ou __pycache__) dans l'image lors du build",
+    "explanation": "Cela accélère le temps de build et empêche de surcharger l'image Docker avec des éléments locaux non nécessaires en production."
+  },
+  {
+    "question": "Que signifie le mapping de ports '8000:80' dans un fichier docker-compose.yml ?",
+    "options": [
+      "Que le conteneur a 8000 Mo de RAM et 80 % de CPU",
+      "Que le port 8000 de la machine hôte (ton PC) est redirigé vers le port 80 à l'intérieur du conteneur",
+      "Que le port 80 de la machine hôte est redirigé vers le port 8000 du conteneur",
+      "Que l'application écoute sur 8000 instances différentes"
+    ],
+    "answer": "Que le port 8000 de la machine hôte (ton PC) est redirigé vers le port 80 à l'intérieur du conteneur",
+    "explanation": "La syntaxe est toujours `HOST_PORT:CONTAINER_PORT`."
+  },
+  {
+    "question": "Dans un Dockerfile Python, pourquoi est-il recommandé de copier le fichier 'requirements.txt' et de lancer 'pip install' AVANT de copier le reste du code source ?",
+    "options": [
+      "Pour que pip s'installe plus vite",
+      "Pour tirer parti du cache des couches (layers) de Docker : ainsi, si seul le code source change, Docker ne réinstalle pas toutes les dépendances",
+      "Parce que c'est imposé par l'instruction COPY",
+      "Pour éviter que le code source ne soit écrasé par les bibliothèques"
+    ],
+    "answer": "Pour tirer parti du cache des couches (layers) de Docker : ainsi, si seul le code source change, Docker ne réinstalle pas toutes les dépendances",
+    "explanation": "Chaque instruction dans un Dockerfile crée une couche. Si on copie le code avant, toute modification du code invalide le cache des couches suivantes, forçant la réinstallation de Pandas, FastAPI, etc."
+  },
+  {
+    "question": "Quel est le but des 'Volumes' dans Docker ?",
+    "options": [
+      "Régler le son des alertes du conteneur",
+      "Persister des données (comme une base de données) sur la machine hôte pour éviter qu'elles ne soient perdues si le conteneur est supprimé",
+      "Allouer plus d'espace disque temporaire",
+      "Compresser les images Docker"
+    ],
+    "answer": "Persister des données (comme une base de données) sur la machine hôte pour éviter qu'elles ne soient perdues si le conteneur est supprimé",
+    "explanation": "Les conteneurs sont éphémères par nature. Un volume permet de sauvegarder l'état (logs, base de données) indépendamment du cycle de vie du conteneur."
+  },
+  {
+    "question": "Dans l'écosystème Docker Compose, comment les conteneurs d'un même projet communiquent-ils entre eux ?",
+    "options": [
+      "Ils ne peuvent pas communiquer pour des raisons de sécurité",
+      "Ils utilisent le nom du service (ex: 'db', 'api') comme nom de domaine réseau interne, géré par un serveur DNS intégré à Docker",
+      "Ils doivent utiliser l'adresse IP publique de la machine",
+      "Ils partagent tous le même port"
+    ],
+    "answer": "Ils utilisent le nom du service (ex: 'db', 'api') comme nom de domaine réseau interne, géré par un serveur DNS intégré à Docker",
+    "explanation": "Docker Compose crée automatiquement un réseau bridge partagé. L'API peut se connecter à la base de données en tapant simplement `http://db:5432`."
+  },
+  {
+    "question": "Qu'est-ce que l'instruction 'CMD' dans un Dockerfile ?",
+    "options": [
+      "Elle donne accès à l'invite de commande Windows",
+      "Elle définit la commande par défaut qui s'exécutera lors du lancement (run) du conteneur",
+      "Elle crée un nouvel utilisateur administrateur",
+      "Elle compile le code Python en binaire"
+    ],
+    "answer": "Elle définit la commande par défaut qui s'exécutera lors du lancement (run) du conteneur",
+    "explanation": "Par exemple `CMD [\"uvicorn\", \"main:app\", \"--host\", \"0.0.0.0\"]`. Contrairement à RUN qui s'exécute lors du *build* de l'image."
+  },
+  {
+    "question": "Que signifie le concept de conteneurisation ?",
+    "options": [
+      "Empaqueter le code informatique dans un fichier ZIP",
+      "Empaqueter une application et toutes ses dépendances (système, bibliothèques, code) dans une unité standardisée, pour qu'elle s'exécute de manière identique partout",
+      "Héberger l'application sur un cloud public",
+      "Créer une interface web"
+    ],
+    "answer": "Empaqueter une application et toutes ses dépendances (système, bibliothèques, code) dans une unité standardisée, pour qu'elle s'exécute de manière identique partout",
+    "explanation": "La conteneurisation (Docker) résout le fameux problème du 'Ça marche sur ma machine !'."
+  }
+]

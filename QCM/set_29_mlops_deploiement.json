@@ -1,0 +1,112 @@
+[
+  {
+    "question": "La discipline DevOps gère du code. Qu'est-ce que le MLOps gère en plus qui crée de nouvelles contraintes (comme le Data Drift) ?",
+    "options": [
+      "Des contrats commerciaux",
+      "Le Code + Les Données + Le Modèle, trois éléments qui évoluent indépendamment",
+      "Le front-end et le back-end",
+      "Les ressources humaines"
+    ],
+    "answer": "Le Code + Les Données + Le Modèle, trois éléments qui évoluent indépendamment",
+    "explanation": "C'est cette triade qui oblige à ajouter des pratiques spécifiques comme le Model Registry, la détection de dérive et les pipelines de réentraînement."
+  },
+  {
+    "question": "En MLOps, qu'est-ce qu'un 'Contract Test' (Test de Contrat) avant le déploiement d'un modèle ?",
+    "options": [
+      "Un test juridique du contrat SaaS",
+      "Un test automatisé vérifiant que le modèle prend bien les entrées attendues (ex: 5 colonnes float) et renvoie une sortie au format strict prévu, sans crasher",
+      "Un test mesurant si le modèle a une meilleure Accuracy que l'ancien",
+      "Un test de charge réseau"
+    ],
+    "answer": "Un test automatisé vérifiant que le modèle prend bien les entrées attendues (ex: 5 colonnes float) et renvoie une sortie au format strict prévu, sans crasher",
+    "explanation": "C'est une vérification de l'interface informatique du modèle (signature I/O). Évaluer si le modèle est 'intelligent' relève de l'évaluation continue."
+  },
+  {
+    "question": "Dans le cycle CI/CD MLOps, qu'est-ce que la 'Promotion Conditionnelle' ?",
+    "options": [
+      "Un déploiement qui ne se fait que les jours fériés",
+      "Le fait qu'un modèle fraîchement réentraîné ne passe en production QUE s'il bat les performances de l'ancien modèle sur un jeu de test de référence",
+      "L'augmentation de salaire du développeur",
+      "La duplication de l'API sur plusieurs serveurs"
+    ],
+    "answer": "Le fait qu'un modèle fraîchement réentraîné ne passe en production QUE s'il bat les performances de l'ancien modèle sur un jeu de test de référence",
+    "explanation": "Jamais de mise en production aveugle. Le réentraînement automatisé peut échouer et produire un modèle pire qu'avant."
+  },
+  {
+    "question": "Dans le monitoring de modèle (Grafana), quelles sont les 3 grandes questions auxquelles on doit répondre en temps réel ?",
+    "options": [
+      "Qui l'a codé ? En quel langage ? Depuis quand ?",
+      "Le service est-il en vie ? Est-il rapide (latence) ? Prédit-il toujours bien (distribution des prédictions, dérive) ?",
+      "A-t-il coûté cher ? Combien de RAM ? Combien de ROM ?",
+      "Où est la base de données ? Quel mot de passe ? Quel port ?"
+    ],
+    "answer": "Le service est-il en vie ? Est-il rapide (latence) ? Prédit-il toujours bien (distribution des prédictions, dérive) ?",
+    "explanation": "Le monitoring métier (qualité de la prédiction via l'analyse du PSI ou du drift) est la particularité indispensable du MLOps par rapport au DevOps web classique."
+  },
+  {
+    "question": "Comment s'appelle l'outil industriel dédié à l'orchestration complexe de dizaines de tâches interdépendantes (ex: Extraction → Nettoyage → Entraînement) souvent remplacé par un simple cron local pour démarrer ?",
+    "options": [
+      "Airflow (ou Prefect)",
+      "Docker Compose",
+      "GitHub Actions",
+      "FastAPI"
+    ],
+    "answer": "Airflow (ou Prefect)",
+    "explanation": "Airflow gère les DAGs (Directed Acyclic Graphs). C'est puissant mais complexe. Pour un MVP simple, un script lancé par une tâche planifiée OS (cron) est un bon début."
+  },
+  {
+    "question": "Qu'est-ce qu'une boucle de rétroaction (Feedback Loop) dans l'industrialisation d'une IA ?",
+    "options": [
+      "Un micro hurlant dans un haut-parleur",
+      "Le mécanisme par lequel on collecte a posteriori la véritable issue d'une prédiction (la 'vérité terrain', ex: le client a-t-il vraiment remboursé son crédit ?) pour mesurer la perf réelle et réentraîner",
+      "Le fait de demander aux développeurs de revoir leur code",
+      "Le processus de redémarrage automatique d'un conteneur planté"
+    ],
+    "answer": "Le mécanisme par lequel on collecte a posteriori la véritable issue d'une prédiction (la 'vérité terrain', ex: le client a-t-il vraiment remboursé son crédit ?) pour mesurer la perf réelle et réentraîner",
+    "explanation": "Sans feedback loop, l'IA devient aveugle en production. C'est le carburant essentiel du Continuous Training (CT)."
+  },
+  {
+    "question": "Qu'est-ce qu'un Runbook d'astreinte en MLOps ?",
+    "options": [
+      "Un livre sur le marathon",
+      "Un document technique listant les procédures explicites et détaillées (Que vérifier ? Que taper ?) pour réparer rapidement un incident en production à 3h du matin",
+      "Un registre des modèles entraînés",
+      "Un script de base de données"
+    ],
+    "answer": "Un document technique listant les procédures explicites et détaillées (Que vérifier ? Que taper ?) pour réparer rapidement un incident en production à 3h du matin",
+    "explanation": "Un Runbook MLOps contient notamment les actions à prendre en cas de 'Métrique modèle dégradée' (ex: rollback immédiat vers le modèle précédent)."
+  },
+  {
+    "question": "À quoi sert un 'Model Registry' comme celui de MLflow dans la chaîne de déploiement ?",
+    "options": [
+      "À stocker le code source HTML du dashboard",
+      "À figer une version spécifique d'un modèle (avec ses artefacts), et à suivre son état d'avancement de manière lisible (ex: Transition de 'Staging' vers 'Production')",
+      "À supprimer les anciens modèles",
+      "À créer des graphiques 3D"
+    ],
+    "answer": "À figer une version spécifique d'un modèle (avec ses artefacts), et à suivre son état d'avancement de manière lisible (ex: Transition de 'Staging' vers 'Production')",
+    "explanation": "Le Model Registry garantit qu'on déploie le bon fichier binaire au bon endroit, et qu'on sait exactement ce qui tourne actuellement en production."
+  },
+  {
+    "question": "Dans le contexte des outils d'entreprise, à quoi sert l'outil 'Evidently AI' (croisé en culture d'embauche) ?",
+    "options": [
+      "À générer des mots de passe",
+      "C'est un outil très pointu dédié spécifiquement à la détection outillée et visuelle du Data Drift et Concept Drift sur les modèles ML en production",
+      "À faire du load balancing HTTP",
+      "À traduire le code Python en Go"
+    ],
+    "answer": "C'est un outil très pointu dédié spécifiquement à la détection outillée et visuelle du Data Drift et Concept Drift sur les modèles ML en production",
+    "explanation": "Evidently automatise ce que l'on calcule manuellement avec les tests statistiques comme PSI ou Kolmogorov-Smirnov (KS)."
+  },
+  {
+    "question": "Quel est le risque de l'automatisation totale du réentraînement (Continuous Training) sans garde-fous ?",
+    "options": [
+      "Ça n'existe pas",
+      "L'ingestion automatique de données corrompues, biaisées, ou d'attaques adversariales empoisonnant le nouveau modèle de production à l'insu de l'équipe",
+      "Que le code Python soit effacé",
+      "Que l'interface web change de couleur"
+    ],
+    "answer": "L'ingestion automatique de données corrompues, biaisées, ou d'attaques adversariales empoisonnant le nouveau modèle de production à l'insu de l'équipe",
+    "explanation": "Une bonne MLOps impose des filtres drastiques sur les données entrantes (ex: Data Validation) avant de lancer la machine de réentraînement automatique."
+  }
+]

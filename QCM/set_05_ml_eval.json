@@ -1,0 +1,112 @@
+[
+  {
+    "question": "Quelle est l'utilité du R-carré (R2) en régression ?",
+    "options": [
+      "Calculer la probabilité d'erreur du modèle",
+      "Mesurer la proportion de la variance de la variable dépendante expliquée par le modèle",
+      "Pénaliser les grandes erreurs (outliers)",
+      "Convertir des classes catégorielles en valeurs numériques"
+    ],
+    "answer": "Mesurer la proportion de la variance de la variable dépendante expliquée par le modèle",
+    "explanation": "Le R2 varie généralement entre 0 et 1 (bien qu'il puisse être négatif) ; un R2 proche de 1 indique un très bon ajustement du modèle aux données."
+  },
+  {
+    "question": "En quoi consiste l'Analyse Exploratoire des Données (EDA) ?",
+    "options": [
+      "Déployer un modèle sur AWS",
+      "Analyser, résumer et visualiser les principales caractéristiques d'un jeu de données avant modélisation",
+      "Chiffrer les données sensibles",
+      "Créer une API REST avec FastAPI"
+    ],
+    "answer": "Analyser, résumer et visualiser les principales caractéristiques d'un jeu de données avant modélisation",
+    "explanation": "L'EDA est l'étape cruciale pour comprendre les distributions, les corrélations et identifier les valeurs aberrantes ou manquantes."
+  },
+  {
+    "question": "Dans le contexte de Scikit-Learn, que fait 'fit_transform' par rapport à 'fit' puis 'transform' ?",
+    "options": [
+      "Il fait exactement la même chose mais de manière plus optimisée en une seule étape",
+      "Il est utilisé uniquement sur le jeu de test",
+      "Il supprime les valeurs aberrantes",
+      "Il sauvegarde le modèle sur le disque"
+    ],
+    "answer": "Il fait exactement la même chose mais de manière plus optimisée en une seule étape",
+    "explanation": "'fit_transform' calcule les paramètres (ex: moyenne pour un StandardScaler) et applique la transformation immédiatement sur le jeu d'entraînement."
+  },
+  {
+    "question": "Pourquoi ne faut-il jamais utiliser 'fit' ou 'fit_transform' sur le jeu de test ?",
+    "options": [
+      "Parce que cela prendrait trop de temps",
+      "Pour éviter la fuite de données (Data Leakage) depuis le jeu de test vers le modèle",
+      "Parce que Scikit-Learn renvoie une erreur",
+      "Parce que le jeu de test ne contient pas de valeurs manquantes"
+    ],
+    "answer": "Pour éviter la fuite de données (Data Leakage) depuis le jeu de test vers le modèle",
+    "explanation": "Le modèle (ou le scaler) doit utiliser uniquement les statistiques apprises sur le jeu d'entraînement. Sur le test, on utilise uniquement 'transform'."
+  },
+  {
+    "question": "En classification, qu'est-ce que le 'Rappel' (Recall) ?",
+    "options": [
+      "La capacité du modèle à ne pas faire d'erreur quand il prédit la classe positive",
+      "La proportion d'individus positifs réels que le modèle a correctement identifiés",
+      "Le nombre total de prédictions correctes divisé par le total",
+      "La moyenne entre la précision et l'accuracy"
+    ],
+    "answer": "La proportion d'individus positifs réels que le modèle a correctement identifiés",
+    "explanation": "Un rappel élevé signifie que le modèle 'ne rate presque aucun' cas positif (ex: détection de maladie), quitte à faire des faux positifs."
+  },
+  {
+    "question": "Qu'est-ce qu'une matrice de confusion ?",
+    "options": [
+      "Un tableau permettant de visualiser les Vrais Positifs, Faux Positifs, Vrais Négatifs et Faux Négatifs",
+      "Une matrice remplie de valeurs aléatoires pour initialiser un réseau de neurones",
+      "Un fichier de configuration erroné",
+      "Une méthode de réduction de dimension"
+    ],
+    "answer": "Un tableau permettant de visualiser les Vrais Positifs, Faux Positifs, Vrais Négatifs et Faux Négatifs",
+    "explanation": "Elle permet de comprendre exactement où le modèle se trompe, au lieu de se fier uniquement à l'Accuracy globale."
+  },
+  {
+    "question": "Quelle méthode permet d'optimiser les hyperparamètres en testant toutes les combinaisons possibles ?",
+    "options": [
+      "RandomizedSearchCV",
+      "GridSearchCV",
+      "KMeans",
+      "Gradient Boosting"
+    ],
+    "answer": "GridSearchCV",
+    "explanation": "La recherche par grille (GridSearchCV) teste exhaustivement toutes les combinaisons fournies, contrairement à la recherche aléatoire (RandomizedSearchCV)."
+  },
+  {
+    "question": "Que mesure le 'Silhouette Score' en Machine Learning non supervisé ?",
+    "options": [
+      "La performance d'un modèle de classification binaire",
+      "La qualité d'un clustering (à quel point les objets sont similaires à leur propre cluster et différents des autres)",
+      "La rapidité de l'entraînement",
+      "Le décalage de la distribution temporelle"
+    ],
+    "answer": "La qualité d'un clustering (à quel point les objets sont similaires à leur propre cluster et différents des autres)",
+    "explanation": "Ce score varie de -1 à 1. Un score proche de 1 indique des clusters bien denses et bien séparés."
+  },
+  {
+    "question": "Qu'est-ce que la régularisation (ex: Lasso, Ridge) en Machine Learning ?",
+    "options": [
+      "Une technique pour ajouter des termes de pénalité à la fonction de perte afin de réduire l'overfitting",
+      "Une méthode pour équilibrer les classes d'un dataset",
+      "Un outil pour standardiser les données (moyenne = 0, variance = 1)",
+      "Un format de sérialisation"
+    ],
+    "answer": "Une technique pour ajouter des termes de pénalité à la fonction de perte afin de réduire l'overfitting",
+    "explanation": "La régularisation L1 (Lasso) ou L2 (Ridge) contraint le modèle à avoir des poids plus petits ou nuls, ce qui limite la complexité du modèle."
+  },
+  {
+    "question": "Qu'est-ce que l'apprentissage ensembliste (Ensemble Learning) ?",
+    "options": [
+      "Entraîner le modèle avec tous les algorithmes existants",
+      "Combiner les prédictions de plusieurs modèles (ex: Random Forest, Gradient Boosting) pour obtenir un résultat plus robuste et précis",
+      "Apprendre à un modèle à coder en Python",
+      "Héberger plusieurs modèles sur le même serveur"
+    ],
+    "answer": "Combiner les prédictions de plusieurs modèles (ex: Random Forest, Gradient Boosting) pour obtenir un résultat plus robuste et précis",
+    "explanation": "Les méthodes ensemblistes, comme le Bagging et le Boosting, sont souvent plus performantes car elles réduisent la variance ou le biais des modèles individuels."
+  }
+]

@@ -1,0 +1,112 @@
+[
+  {
+    "question": "En Python, que fait l'instruction 'yield' au lieu de 'return' dans le contexte d'une dépendance FastAPI ?",
+    "options": [
+      "Elle génère une erreur",
+      "Elle met la fonction en pause, retourne la valeur au client, puis reprend l'exécution après la requête (idéal pour fermer une connexion BDD ou un fichier)",
+      "Elle crypte la réponse HTTP",
+      "Elle transforme la fonction en coroutine asynchrone"
+    ],
+    "answer": "Elle met la fonction en pause, retourne la valeur au client, puis reprend l'exécution après la requête (idéal pour fermer une connexion BDD ou un fichier)",
+    "explanation": "Le 'yield' transforme la fonction en générateur. Le code avant le yield s'exécute au début de la requête, et le code après s'exécute à la fin pour nettoyer les ressources."
+  },
+  {
+    "question": "Qu'est-ce que le 'Data Leakage' (Fuite de données) pendant le preprocessing ?",
+    "options": [
+      "Le vol de données par un tiers",
+      "Le calcul de statistiques (comme la moyenne pour le StandardScaler) sur l'ensemble complet (train + test) avant le découpage, faussant l'évaluation",
+      "La perte de colonnes lors d'une jointure",
+      "L'export d'un DataFrame Pandas dans un mauvais format"
+    ],
+    "answer": "Le calcul de statistiques (comme la moyenne pour le StandardScaler) sur l'ensemble complet (train + test) avant le découpage, faussant l'évaluation",
+    "explanation": "C'est une erreur classique : l'algorithme 'apprend' indirectement des informations sur le jeu de test, ses performances seront surestimées."
+  },
+  {
+    "question": "Quel est le principal cas d'usage d'un RNN (Recurrent Neural Network) ?",
+    "options": [
+      "La classification d'images",
+      "Le traitement de données séquentielles (texte, séries temporelles, audio) où l'ordre des éléments a une importance",
+      "La compression de fichiers CSV",
+      "La création de graphiques interactifs"
+    ],
+    "answer": "Le traitement de données séquentielles (texte, séries temporelles, audio) où l'ordre des éléments a une importance",
+    "explanation": "Contrairement aux réseaux denses ou CNN, les RNN possèdent une 'mémoire' interne qui conserve l'état des entrées précédentes dans la séquence."
+  },
+  {
+    "question": "Dans le contexte de MLOps, qu'est-ce qu'un 'Runbook' ?",
+    "options": [
+      "Un livre expliquant comment courir",
+      "Un document technique détaillant les procédures étape par étape pour résoudre un incident spécifique en production",
+      "Le script Python d'entraînement",
+      "Un format de sérialisation de données"
+    ],
+    "answer": "Un document technique détaillant les procédures étape par étape pour résoudre un incident spécifique en production",
+    "explanation": "Les runbooks sont indispensables pour l'ingénieur d'astreinte, afin de réparer un système cassé (ex: API tombée) de manière fiable, à 3h du matin sous stress."
+  },
+  {
+    "question": "Pourquoi préfère-t-on souvent utiliser des modèles pré-entraînés (Transfer Learning) plutôt que d'entraîner un modèle de zéro (From Scratch) ?",
+    "options": [
+      "Parce que c'est obligatoire en Python",
+      "Pour gagner énormément de temps de calcul et obtenir de bonnes performances même si l'on a très peu de données annotées",
+      "Parce que les modèles pré-entraînés sont toujours sans aucun biais",
+      "Pour réduire la taille du modèle en mémoire"
+    ],
+    "answer": "Pour gagner énormément de temps de calcul et obtenir de bonnes performances même si l'on a très peu de données annotées",
+    "explanation": "Entraîner un modèle de vision ou de NLP de l'état de l'art demande des millions d'images/textes et des centaines de GPU."
+  },
+  {
+    "question": "Qu'est-ce qu'un 'Pipeline' dans le framework Scikit-Learn ?",
+    "options": [
+      "Un script shell pour déployer le code",
+      "Un objet permettant d'enchaîner séquentiellement plusieurs étapes de transformation de données, puis un modèle final",
+      "Une connexion réseau vers une base de données",
+      "Un outil de monitoring"
+    ],
+    "answer": "Un objet permettant d'enchaîner séquentiellement plusieurs étapes de transformation de données, puis un modèle final",
+    "explanation": "Le Pipeline évite le Data Leakage en garantissant que les transformations calculées sur le train sont appliquées à l'identique sur le test."
+  },
+  {
+    "question": "Quel composant d'Airflow permet de définir la fréquence d'exécution d'un DAG ?",
+    "options": [
+      "Le paramètre 'schedule_interval' (souvent défini via une expression Cron)",
+      "Le fichier 'docker-compose.yml'",
+      "La commande 'git commit'",
+      "La méthode 'model.predict()'"
+    ],
+    "answer": "Le paramètre 'schedule_interval' (souvent défini via une expression Cron)",
+    "explanation": "L'orchestrateur déclenche automatiquement le pipeline de données selon cet intervalle (ex: `@daily` ou `0 2 * * *` pour 2h du matin)."
+  },
+  {
+    "question": "Dans Pandas, quelle méthode utiliser pour traiter les valeurs manquantes (NaN) en les remplaçant par une valeur spécifique ?",
+    "options": [
+      "df.dropna()",
+      "df.fillna()",
+      "df.replace()",
+      "df.isnull()"
+    ],
+    "answer": "df.fillna()",
+    "explanation": "Alors que `dropna()` supprime les lignes, `fillna()` permet l'imputation (ex: remplacer par la moyenne, ou par 0)."
+  },
+  {
+    "question": "Comment FastAPI génère-t-il automatiquement la documentation interactive (Swagger UI) de l'API ?",
+    "options": [
+      "En scannant les commentaires dans le code source",
+      "En utilisant les annotations de types Python (Type Hints) et les modèles Pydantic pour déduire le schéma JSON (OpenAPI)",
+      "L'utilisateur doit écrire un fichier XML manuellement",
+      "En exécutant les tests unitaires"
+    ],
+    "answer": "En utilisant les annotations de types Python (Type Hints) et les modèles Pydantic pour déduire le schéma JSON (OpenAPI)",
+    "explanation": "C'est la grande force de FastAPI : le code (types + Pydantic) FAIT la documentation. Elle n'est donc jamais obsolète."
+  },
+  {
+    "question": "En analyse de données, qu'est-ce qu'un graphique en boîte (Boxplot) ?",
+    "options": [
+      "Un graphique 3D complexe",
+      "Une représentation visuelle permettant de repérer facilement la médiane, les quartiles et les valeurs aberrantes (outliers) d'une distribution",
+      "Un tableau croisé dynamique",
+      "Un graphique montrant l'évolution temporelle"
+    ],
+    "answer": "Une représentation visuelle permettant de repérer facilement la médiane, les quartiles et les valeurs aberrantes (outliers) d'une distribution",
+    "explanation": "Les points situés au-delà des 'moustaches' du boxplot sont généralement considérés comme des valeurs atypiques à analyser."
+  }
+]

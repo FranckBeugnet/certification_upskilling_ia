@@ -1,0 +1,112 @@
+[
+  {
+    "question": "En Machine Learning, qu'est-ce que l'Hyperparamètre 'Learning Rate' (Taux d'apprentissage) ?",
+    "options": [
+      "La vitesse à laquelle la carte graphique lit les données",
+      "Un paramètre contrôlant la taille des pas (mises à jour) que fait l'optimiseur pour ajuster les poids du modèle lors de la minimisation de la fonction de perte",
+      "Le pourcentage de données réservées pour le test",
+      "Le temps maximum en secondes accordé à l'entraînement"
+    ],
+    "answer": "Un paramètre contrôlant la taille des pas (mises à jour) que fait l'optimiseur pour ajuster les poids du modèle lors de la minimisation de la fonction de perte",
+    "explanation": "Si le learning rate est trop grand, le modèle va 'sauter' au-dessus de l'optimum et diverger. S'il est trop petit, le modèle mettra une éternité à converger."
+  },
+  {
+    "question": "Qu'est-ce que l'algorithme 'K-Means' ?",
+    "options": [
+      "Un algorithme de classification binaire supervisée",
+      "Un algorithme d'apprentissage non supervisé qui regroupe les données en K clusters (groupes) selon leur similarité (distance euclidienne)",
+      "Un modèle Deep Learning pour la génération de texte",
+      "Un outil de monitoring d'API"
+    ],
+    "answer": "Un algorithme d'apprentissage non supervisé qui regroupe les données en K clusters (groupes) selon leur similarité (distance euclidienne)",
+    "explanation": "Dans cet algorithme, l'utilisateur doit définir le nombre de clusters (K) à l'avance. C'est idéal pour la segmentation client."
+  },
+  {
+    "question": "Qu'est-ce que le 'Data Augmentation' (Augmentation de données) en Computer Vision ?",
+    "options": [
+      "Acheter des disques durs plus grands",
+      "Appliquer des transformations aléatoires (rotations, zooms, symétries) aux images d'entraînement pour augmenter artificiellement la taille et la diversité du jeu de données",
+      "Créer de faux labels pour les images",
+      "Passer l'image en noir et blanc pour gagner de l'espace"
+    ],
+    "answer": "Appliquer des transformations aléatoires (rotations, zooms, symétries) aux images d'entraînement pour augmenter artificiellement la taille et la diversité du jeu de données",
+    "explanation": "C'est une excellente technique pour lutter contre l'overfitting, obligeant le réseau (CNN) à reconnaître un objet peu importe sa position."
+  },
+  {
+    "question": "Dans le contexte de DevOps, à quoi sert le 'Blue-Green Deployment' ?",
+    "options": [
+      "Changer le thème de couleur de l'interface utilisateur",
+      "Maintenir deux environnements de production identiques (Blue et Green), router le trafic vers le nouveau (Green) une fois qu'il est prêt, permettant un retour arrière immédiat en cas de bug",
+      "Déployer le code uniquement pendant les heures creuses",
+      "Recycler les serveurs anciens"
+    ],
+    "answer": "Maintenir deux environnements de production identiques (Blue et Green), router le trafic vers le nouveau (Green) une fois qu'il est prêt, permettant un retour arrière immédiat en cas de bug",
+    "explanation": "C'est l'une des stratégies de déploiement Zero-Downtime (sans interruption de service) les plus sûres en industrie."
+  },
+  {
+    "question": "Quelle est la principale fonction d'un 'Orchestrateur' de conteneurs comme Kubernetes ?",
+    "options": [
+      "Écrire le code Dockerfile à la place du développeur",
+      "Gérer automatiquement le déploiement, la mise à l'échelle (scaling), la répartition de charge et la résilience de milliers de conteneurs Docker sur un cluster de machines",
+      "Chiffrer le code source",
+      "Former des modèles Machine Learning"
+    ],
+    "answer": "Gérer automatiquement le déploiement, la mise à l'échelle (scaling), la répartition de charge et la résilience de milliers de conteneurs Docker sur un cluster de machines",
+    "explanation": "Là où Docker Compose gère un seul PC, Kubernetes orchestre tout un centre de données en s'assurant que les services restent toujours en ligne."
+  },
+  {
+    "question": "Qu'est-ce qu'une attaque 'Adversarial' (Exemple adverse) sur un modèle d'IA ?",
+    "options": [
+      "Un pirate devinant le mot de passe de l'API",
+      "Une modification minime et calculée d'une entrée (ex: bruit quasi invisible sur une image de panneau Stop) qui force le modèle à faire une prédiction complètement fausse",
+      "Une injection SQL classique",
+      "Un blocage du serveur par trop de connexions simultanées"
+    ],
+    "answer": "Une modification minime et calculée d'une entrée (ex: bruit quasi invisible sur une image de panneau Stop) qui force le modèle à faire une prédiction complètement fausse",
+    "explanation": "C'est un défi de sécurité majeur pour les IA autonomes. Un bruit calculé spécifiquement trompe l'IA, même si l'humain ne voit aucune différence."
+  },
+  {
+    "question": "En analyse de biais, qu'est-ce que le 'Proxy Bias' (Biais de proxy) ?",
+    "options": [
+      "Un biais réseau causé par un serveur mandataire (proxy)",
+      "Une situation où le modèle discrimine en utilisant une variable apparemment neutre (ex: le code postal) qui est fortement corrélée à une variable sensible protégée (ex: la race ou la religion)",
+      "Un bug dans le calcul de la précision",
+      "Une erreur d'arrondi"
+    ],
+    "answer": "Une situation où le modèle discrimine en utilisant une variable apparemment neutre (ex: le code postal) qui est fortement corrélée à une variable sensible protégée (ex: la race ou la religion)",
+    "explanation": "C'est pour cela qu'il ne suffit pas de 'supprimer la colonne genre' pour rendre un algorithme équitable. L'IA la reconstituera via les corrélations."
+  },
+  {
+    "question": "Dans MLflow, qu'est-ce qui caractérise l'état 'Staging' dans le Model Registry ?",
+    "options": [
+      "Le modèle a échoué à tous les tests",
+      "Le modèle est actuellement en cours d'évaluation et de test (pré-production) avant son approbation finale pour la production",
+      "Le modèle est obsolète et ne doit plus être utilisé",
+      "Le modèle est déployé mondialement"
+    ],
+    "answer": "Le modèle est actuellement en cours d'évaluation et de test (pré-production) avant son approbation finale pour la production",
+    "explanation": "Le cycle de vie classique dans MLflow est : `None` -> `Staging` -> `Production` -> `Archived`."
+  },
+  {
+    "question": "Pourquoi utilise-t-on le type `int` ou `float` dans une annotation de type Pydantic au lieu de `str` ?",
+    "options": [
+      "Parce que c'est plus joli à lire",
+      "Pydantic va automatiquement tenter de convertir l'entrée reçue (parsing), puis générera une erreur 422 si la conversion mathématique échoue",
+      "Pydantic ignore complètement ces annotations",
+      "Pour que le code compile en langage machine"
+    ],
+    "answer": "Pydantic va automatiquement tenter de convertir l'entrée reçue (parsing), puis générera une erreur 422 si la conversion mathématique échoue",
+    "explanation": "Si vous envoyez `'10'` (string) pour un champ `age: int`, Pydantic le convertira en `10`. S'il reçoit `'dix'`, il lèvera une ValidationError."
+  },
+  {
+    "question": "Qu'est-ce que la technique 'TF-IDF' (Term Frequency - Inverse Document Frequency) en NLP ?",
+    "options": [
+      "Une méthode de chiffrement des textes sensibles",
+      "Une technique de vectorisation qui évalue l'importance d'un mot pour un document dans un corpus, en pénalisant les mots trop fréquents (ex: 'le', 'de')",
+      "Un modèle Deep Learning",
+      "Une fonction de perte pour les images"
+    ],
+    "answer": "Une technique de vectorisation qui évalue l'importance d'un mot pour un document dans un corpus, en pénalisant les mots trop fréquents (ex: 'le', 'de')",
+    "explanation": "Historiquement très utilisée pour l'extraction de mots-clés et les moteurs de recherche, bien qu'elle soit concurrencée aujourd'hui par les embeddings denses."
+  }
+]

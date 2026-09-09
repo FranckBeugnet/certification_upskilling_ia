@@ -1,0 +1,112 @@
+[
+  {
+    "question": "Selon les conventions de commit du parcours, quel est le format standard exigé pour un message de commit ?",
+    "options": [
+      "description: type(scope)",
+      "type(scope): description",
+      "scope[type] - description",
+      "type: scope: description"
+    ],
+    "answer": "type(scope): description",
+    "explanation": "C'est le format Conventional Commits. Exemple : `feat(api): add /predict endpoint`."
+  },
+  {
+    "question": "Dans les conventions de commit, quel type utiliseriez-vous pour l'ajout ou la modification exclusive de tests (sans toucher au code de l'application) ?",
+    "options": [
+      "feat",
+      "fix",
+      "test",
+      "chore"
+    ],
+    "answer": "test",
+    "explanation": "Le type `test` indique clairement aux autres développeurs que ce commit n'impacte pas la logique métier en production, mais seulement la couverture de tests."
+  },
+  {
+    "question": "À quoi correspond le type de commit 'chore' ?",
+    "options": [
+      "À la correction d'une erreur critique en production",
+      "À la réorganisation du code source",
+      "À des tâches de maintenance (mise à jour du .gitignore, modification du requirements.txt, configuration du projet)",
+      "À la documentation"
+    ],
+    "answer": "À des tâches de maintenance (mise à jour du .gitignore, modification du requirements.txt, configuration du projet)",
+    "explanation": "Les 'chores' (corvées) sont nécessaires au projet mais ne modifient ni le code métier (feat/fix) ni les tests."
+  },
+  {
+    "question": "Quelle est la règle d'or concernant le temps du verbe dans la description d'un commit selon la convention pro ?",
+    "options": [
+      "Il doit être au passé composé (ex: 'added')",
+      "Il doit être à l'impératif présent (ex: 'add', 'fix', 'update')",
+      "Il doit être au futur (ex: 'will add')",
+      "Peu importe, tant que c'est compréhensible"
+    ],
+    "answer": "Il doit être à l'impératif présent (ex: 'add', 'fix', 'update')",
+    "explanation": "C'est une convention universelle (notamment initiée par Git lui-même) : on ordonne au code de changer son état. Par exemple : 'add API endpoint' (et non 'added' ou 'adds')."
+  },
+  {
+    "question": "Quel est le problème avec ce message de commit : 'feat(api): added new endpoint.' ?",
+    "options": [
+      "Il manque le scope",
+      "Le type 'feat' est incorrect",
+      "La description utilise le participe passé ('added') au lieu de l'impératif ('add') et se termine par un point final",
+      "Il est écrit en anglais"
+    ],
+    "answer": "La description utilise le participe passé ('added') au lieu de l'impératif ('add') et se termine par un point final",
+    "explanation": "La bonne pratique est : `feat(api): add new endpoint` (impératif et pas de ponctuation à la fin de la ligne de sujet)."
+  },
+  {
+    "question": "Dans le mini-cours sur la Comparaison Économique, quelle affirmation est vraie concernant l'évaluation de plusieurs approches (ex: CNN from scratch vs CLIP) ?",
+    "options": [
+      "Il faut obligatoirement coder toutes les approches avant de décider",
+      "On peut utiliser une combinaison de mesures réelles (sur l'option codée) et d'estimations argumentées (benchmarks publics, extrapolation) pour les autres",
+      "L'option avec la meilleure 'Accuracy' gagne toujours automatiquement",
+      "Il ne faut évaluer que le coût du cloud AWS"
+    ],
+    "answer": "On peut utiliser une combinaison de mesures réelles (sur l'option codée) et d'estimations argumentées (benchmarks publics, extrapolation) pour les autres",
+    "explanation": "Un consultant IA doit pouvoir évaluer la viabilité économique d'une piste sans avoir besoin d'y passer 3 semaines de développement."
+  },
+  {
+    "question": "Lors d'un entretien client, quelle est l'utilité principale de poser des questions sur les 'Sources et formats' (ex: 'Qui produit ces données ? Sous quel format ?') ?",
+    "options": [
+      "Pour vérifier si le client sait utiliser un ordinateur",
+      "Pour estimer le temps qui sera perdu à nettoyer et unifier les données (ex: extraire des PDF vs requêter une API REST) avant même de faire du Machine Learning",
+      "Pour vendre une formation SQL au client",
+      "Pour bloquer techniquement le projet"
+    ],
+    "answer": "Pour estimer le temps qui sera perdu à nettoyer et unifier les données (ex: extraire des PDF vs requêter une API REST) avant même de faire du Machine Learning",
+    "explanation": "C'est un classique : le client pense que ses données sont prêtes, alors qu'elles sont dispersées dans des fichiers Excel non standardisés. L'intégration (ETL) représente souvent 80% du projet."
+  },
+  {
+    "question": "Quel conseil est donné concernant l'utilisation de 'git add .' à l'aveugle dans un projet MLOps ?",
+    "options": [
+      "C'est fortement recommandé pour aller plus vite",
+      "Il faut toujours l'utiliser pour être sûr de ne rien oublier",
+      "C'est une mauvaise pratique car on risque d'embarquer des fichiers secrets (.env), de gros modèles (.joblib) ou des fichiers inutiles qui devraient être dans le .gitignore",
+      "Cela supprime le dépôt distant"
+    ],
+    "answer": "C'est une mauvaise pratique car on risque d'embarquer des fichiers secrets (.env), de gros modèles (.joblib) ou des fichiers inutiles qui devraient être dans le .gitignore",
+    "explanation": "Il faut privilégier le `git status` puis le `git add fichier1 fichier2` ciblé pour créer des commits atomiques et propres."
+  },
+  {
+    "question": "Si vous modifiez l'architecture de votre réseau de neurones sans changer la manière dont l'utilisateur appelle l'API, quel devrait être le type de votre commit ?",
+    "options": [
+      "docs(model)",
+      "feat(model)",
+      "refactor(model)",
+      "chore(api)"
+    ],
+    "answer": "refactor(model)",
+    "explanation": "Le type `refactor` s'applique quand on réorganise ou optimise le code sans ajouter de nouvelle fonctionnalité métier visible ni corriger un bug existant."
+  },
+  {
+    "question": "Pourquoi la Grille de décision C4 insiste-t-elle sur les 'cas hypothétiques' (ex: 'Si la latence devient critique, changeriez-vous de modèle ?') ?",
+    "options": [
+      "Pour perdre du temps en réunion",
+      "Pour prouver que l'on maîtrise les compromis (trade-offs) et que l'on ne choisit pas aveuglément le modèle avec la plus haute métrique sans comprendre ses limites",
+      "Parce que le client change toujours d'avis à la fin",
+      "Pour justifier un salaire de consultant"
+    ],
+    "answer": "Pour prouver que l'on maîtrise les compromis (trade-offs) et que l'on ne choisit pas aveuglément le modèle avec la plus haute métrique sans comprendre ses limites",
+    "explanation": "Un bon ingénieur ML sait qu'il n'y a pas de 'meilleur' modèle absolu. Tout dépend des contraintes du moment (volume, latence, explicabilité)."
+  }
+]

@@ -1,0 +1,112 @@
+[
+  {
+    "question": "En MLOps, quelle est l'utilité d'un Feature Store ?",
+    "options": [
+      "Stocker le code source",
+      "Centraliser, gérer et servir les features pour l'entraînement et l'inférence afin d'éviter la duplication",
+      "Héberger des modèles pré-entraînés",
+      "Stocker les logs d'erreurs"
+    ],
+    "answer": "Centraliser, gérer et servir les features pour l'entraînement et l'inférence afin d'éviter la duplication",
+    "explanation": "Le Feature Store permet de garantir la cohérence des calculs de variables (features) entre l'entraînement en batch et l'inférence en temps réel."
+  },
+  {
+    "question": "Quel composant de CI/CD permet d'automatiser des tâches sur GitHub ?",
+    "options": [
+      "GitHub Actions",
+      "GitHub Pages",
+      "GitHub Copilot",
+      "Git Clone"
+    ],
+    "answer": "GitHub Actions",
+    "explanation": "GitHub Actions permet de créer des workflows automatisés (CI/CD) pour compiler, tester et déployer du code à chaque commit."
+  },
+  {
+    "question": "Qu'est-ce qu'un 'Shadow Deployment' (déploiement fantôme) ?",
+    "options": [
+      "Un déploiement secret sans documentation",
+      "Faire tourner le nouveau modèle en production en parallèle de l'ancien pour observer ses prédictions sans impacter les utilisateurs",
+      "Un déploiement sur un environnement de développement local",
+      "Un déploiement nocturne"
+    ],
+    "answer": "Faire tourner le nouveau modèle en production en parallèle de l'ancien pour observer ses prédictions sans impacter les utilisateurs",
+    "explanation": "Cela permet de tester la fiabilité d'un nouveau modèle sur des données réelles (Safe Rollout) avant de lui faire prendre de vraies décisions."
+  },
+  {
+    "question": "Quel format est le plus adapté pour stocker efficacement un modèle Scikit-Learn lourd en tableaux NumPy ?",
+    "options": [
+      "JSON",
+      "Joblib",
+      "Pickle",
+      "CSV"
+    ],
+    "answer": "Joblib",
+    "explanation": "Joblib est souvent privilégié par rapport à Pickle standard car il est optimisé pour stocker efficacement de grands tableaux NumPy."
+  },
+  {
+    "question": "Pourquoi utiliser une graine aléatoire (random_state ou seed) lors du split des données ?",
+    "options": [
+      "Pour améliorer la précision",
+      "Pour chiffrer les données",
+      "Pour garantir la reproductibilité du split à chaque exécution",
+      "Pour exécuter le code plus vite"
+    ],
+    "answer": "Pour garantir la reproductibilité du split à chaque exécution",
+    "explanation": "Fixer le random_state garantit que le jeu d'entraînement et de test seront toujours les mêmes, facilitant le debug et la comparaison de modèles."
+  },
+  {
+    "question": "Dans le contexte de Git, que fait la commande 'git rebase' ?",
+    "options": [
+      "Elle fusionne les branches avec un commit de merge",
+      "Elle réécrit l'historique en appliquant les commits par-dessus une autre branche, créant un historique linéaire",
+      "Elle supprime la branche courante",
+      "Elle annule le dernier commit"
+    ],
+    "answer": "Elle réécrit l'historique en appliquant les commits par-dessus une autre branche, créant un historique linéaire",
+    "explanation": "'git rebase' évite le commit de merge et garde un historique plus propre, mais doit être utilisé avec précaution sur les branches partagées."
+  },
+  {
+    "question": "Qu'est-ce que l'idempotence pour un script d'ingestion de données ?",
+    "options": [
+      "L'exécution répétée du script produit le même état final sans dupliquer les données",
+      "Le script s'exécute de manière asynchrone",
+      "Le script supprime les données avant de les ingérer",
+      "Le script nécessite des permissions root"
+    ],
+    "answer": "L'exécution répétée du script produit le même état final sans dupliquer les données",
+    "explanation": "L'idempotence assure la robustesse d'un pipeline de données : si un job échoue au milieu, le relancer ne causera pas de doublons."
+  },
+  {
+    "question": "Quel outil est un duo classique pour l'observabilité (monitoring) ?",
+    "options": [
+      "Docker et Kubernetes",
+      "Prometheus et Grafana",
+      "Flask et Django",
+      "Pandas et Numpy"
+    ],
+    "answer": "Prometheus et Grafana",
+    "explanation": "Prometheus stocke les métriques (bases de données orientée séries temporelles) et Grafana permet de les visualiser sous forme de tableaux de bord."
+  },
+  {
+    "question": "Qu'est-ce qu'une Astreinte (On-call) ?",
+    "options": [
+      "Un outil d'intégration continue",
+      "Une période où un ingénieur doit être disponible pour intervenir en cas d'incident critique",
+      "Un fichier de configuration YAML",
+      "Une pénalité pour code non testé"
+    ],
+    "answer": "Une période où un ingénieur doit être disponible pour intervenir en cas d'incident critique",
+    "explanation": "Le développeur d'astreinte est responsable de la résolution des incidents en production pour garantir la disponibilité du service."
+  },
+  {
+    "question": "Quel est le principal avantage de Loguru en Python par rapport à logging ?",
+    "options": [
+      "Il est développé par Microsoft",
+      "Il exécute le code C++ sous-jacent",
+      "Il est prêt à l'emploi (zéro configuration), avec coloration native et gestion simplifiée",
+      "Il est obligatoire pour FastAPI"
+    ],
+    "answer": "Il est prêt à l'emploi (zéro configuration), avec coloration native et gestion simplifiée",
+    "explanation": "Loguru remplace la configuration verbeuse du module logging standard par une approche intuitive ('from loguru import logger')."
+  }
+]

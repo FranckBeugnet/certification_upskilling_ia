@@ -1,0 +1,112 @@
+[
+  {
+    "question": "Qu'est-ce que l'overfitting (surapprentissage) en Machine Learning ?",
+    "options": [
+      "Le fait de ne pas entraîner le modèle assez longtemps",
+      "Une situation où le modèle apprend 'par cœur' les données d'entraînement (y compris le bruit) et devient incapable de généraliser sur de nouvelles données",
+      "Le fait de fournir trop de données au modèle",
+      "Une erreur due à un manque de RAM"
+    ],
+    "answer": "Une situation où le modèle apprend 'par cœur' les données d'entraînement (y compris le bruit) et devient incapable de généraliser sur de nouvelles données",
+    "explanation": "Un modèle en overfitting a généralement d'excellentes performances sur le jeu d'entraînement, mais des performances médiocres sur le jeu de test."
+  },
+  {
+    "question": "Comment l'utilisation d'une forêt aléatoire (Random Forest) aide-t-elle à limiter l'overfitting par rapport à un simple arbre de décision (Decision Tree) ?",
+    "options": [
+      "La Random Forest entraîne un seul arbre très profond",
+      "La Random Forest moyenne les prédictions de nombreux arbres distincts (construits sur des sous-ensembles aléatoires de données et de variables), ce qui réduit la variance globale",
+      "La Random Forest utilise des réseaux de neurones pour régulariser l'arbre",
+      "La Random Forest supprime automatiquement les variables non pertinentes"
+    ],
+    "answer": "La Random Forest moyenne les prédictions de nombreux arbres distincts (construits sur des sous-ensembles aléatoires de données et de variables), ce qui réduit la variance globale",
+    "explanation": "C'est le principe du Bagging : l'agrégation de multiples modèles 'faibles' (et peu corrélés) crée un modèle d'ensemble très robuste."
+  },
+  {
+    "question": "Dans MLflow, quelle commande permet d'enregistrer les artefacts d'un modèle (fichiers, métriques, etc.) au sein d'un bloc d'exécution (run) ?",
+    "options": [
+      "mlflow.start_run()",
+      "with mlflow.start_run(): mlflow.log_metric(), mlflow.log_artifact()",
+      "docker-compose run mlflow",
+      "git commit -m 'mlflow'"
+    ],
+    "answer": "with mlflow.start_run(): mlflow.log_metric(), mlflow.log_artifact()",
+    "explanation": "Le gestionnaire de contexte `with mlflow.start_run():` permet d'encapsuler toutes les opérations de logging (métriques, hyperparamètres, modèle) dans une seule exécution traçable."
+  },
+  {
+    "question": "Pourquoi est-il important de scaler (standardiser ou normaliser) les données avant d'utiliser des algorithmes comme la régression logistique, les SVM ou les réseaux de neurones ?",
+    "options": [
+      "Pour convertir le texte en chiffres",
+      "Pour que toutes les variables aient le même ordre de grandeur, permettant à l'algorithme d'optimisation (ex: gradient descent) de converger plus rapidement et d'éviter qu'une variable ne domine les autres",
+      "Pour réduire l'espace de stockage",
+      "Ce n'est jamais nécessaire, c'est optionnel"
+    ],
+    "answer": "Pour que toutes les variables aient le même ordre de grandeur, permettant à l'algorithme d'optimisation (ex: gradient descent) de converger plus rapidement et d'éviter qu'une variable ne domine les autres",
+    "explanation": "Sans scaling, une variable variant de 0 à 1 000 000 (ex: salaire) écrasera totalement l'influence d'une variable variant de 0 à 1 (ex: taux)."
+  },
+  {
+    "question": "Qu'est-ce qu'une fonction de perte (Loss Function) dans le contexte du Machine Learning ?",
+    "options": [
+      "Une fonction qui supprime des données aléatoirement pour éviter l'overfitting",
+      "Une métrique mathématique que l'algorithme cherche à minimiser pendant l'entraînement, quantifiant l'écart entre ses prédictions et la réalité",
+      "Une erreur générée par Python lors d'une division par zéro",
+      "Un algorithme de clustering"
+    ],
+    "answer": "Une métrique mathématique que l'algorithme cherche à minimiser pendant l'entraînement, quantifiant l'écart entre ses prédictions et la réalité",
+    "explanation": "Exemples : MSE (Mean Squared Error) pour la régression, ou Cross-Entropy pour la classification."
+  },
+  {
+    "question": "En Python, que signifie le fait qu'une méthode de DataFrame s'applique 'inplace=True' ?",
+    "options": [
+      "La méthode est exécutée sur un serveur distant",
+      "La modification se fait directement sur l'objet original en mémoire, sans renvoyer un nouveau DataFrame copié",
+      "L'opération s'exécute en parallèle",
+      "L'opération est annulable (undo)"
+    ],
+    "answer": "La modification se fait directement sur l'objet original en mémoire, sans renvoyer un nouveau DataFrame copié",
+    "explanation": "Cela permet d'économiser de la mémoire vive (RAM) car Pandas ne crée pas un duplicata des données, mais il faut être prudent car l'objet original est altéré."
+  },
+  {
+    "question": "Quel est le but d'un fichier '.gitignore' dans un dépôt Git ?",
+    "options": [
+      "Lister les développeurs autorisés à modifier le code",
+      "Spécifier les fichiers et dossiers (ex: secrets, mots de passe, fichiers temporaires, gros datasets) que Git ne doit JAMAIS versionner ni envoyer sur le dépôt distant",
+      "Supprimer automatiquement les fichiers inutiles",
+      "Ignorer les messages d'erreur lors du push"
+    ],
+    "answer": "Spécifier les fichiers et dossiers (ex: secrets, mots de passe, fichiers temporaires, gros datasets) que Git ne doit JAMAIS versionner ni envoyer sur le dépôt distant",
+    "explanation": "C'est essentiel pour la sécurité (ne pas commiter un `.env` contenant des clés API) et l'hygiène du dépôt (ne pas commiter les `__pycache__` ou les modèles `.joblib` lourds)."
+  },
+  {
+    "question": "Que permet de faire 'Uvicorn' ?",
+    "options": [
+      "Entraîner des modèles ML",
+      "Servir l'application FastAPI en production, c'est un serveur web asynchrone (ASGI) ultra-rapide",
+      "Créer des dashboards interactifs",
+      "Faire du scraping web"
+    ],
+    "answer": "Servir l'application FastAPI en production, c'est un serveur web asynchrone (ASGI) ultra-rapide",
+    "explanation": "FastAPI est le framework web, Uvicorn est le serveur web sous-jacent qui reçoit les requêtes réseau et les passe à l'application."
+  },
+  {
+    "question": "En NLP, qu'est-ce que le 'Word Embedding' (Plongement lexical) ?",
+    "options": [
+      "Intégrer du texte dans une image",
+      "Une technique représentant chaque mot par un vecteur dense de nombres réels, capturant ainsi les relations sémantiques entre les mots",
+      "Un algorithme qui corrige les fautes d'orthographe",
+      "Un système de base de données relationnelle pour le texte"
+    ],
+    "answer": "Une technique représentant chaque mot par un vecteur dense de nombres réels, capturant ainsi les relations sémantiques entre les mots",
+    "explanation": "Les embeddings (comme Word2Vec, GloVe ou ceux des Transformers) permettent à l'algorithme de comprendre mathématiquement que 'roi' est proche de 'reine'."
+  },
+  {
+    "question": "Dans le contexte de MLOps, à quoi sert principalement CI/CD (Continuous Integration / Continuous Deployment) ?",
+    "options": [
+      "À développer des interfaces graphiques",
+      "À automatiser les tests, la construction (build) et le déploiement du code et des modèles en production à chaque modification du dépôt",
+      "À générer des données synthétiques",
+      "À facturer les clients"
+    ],
+    "answer": "À automatiser les tests, la construction (build) et le déploiement du code et des modèles en production à chaque modification du dépôt",
+    "explanation": "Des outils comme GitHub Actions ou GitLab CI permettent d'éviter les erreurs humaines lors des mises en production et de livrer rapidement des correctifs."
+  }
+]

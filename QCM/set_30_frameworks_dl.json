@@ -1,0 +1,112 @@
+[
+  {
+    "question": "Quelle est la particularité fondamentale de 'scikit-learn' vis-à-vis du Deep Learning ?",
+    "options": [
+      "C'est le seul outil capable de faire du Deep Learning",
+      "Ce n'est PAS un framework de Deep Learning. C'est l'outil roi du ML classique (tabulaire), très performant sur CPU, mais il ne gère pas les réseaux de neurones complexes sur GPU",
+      "Il a été racheté par OpenAI",
+      "Il ne fonctionne que sur Mac"
+    ],
+    "answer": "Ce n'est PAS un framework de Deep Learning. C'est l'outil roi du ML classique (tabulaire), très performant sur CPU, mais il ne gère pas les réseaux de neurones complexes sur GPU",
+    "explanation": "Pour 80% des cas d'usage en entreprise (données structurées tabulaires), scikit-learn (et XGBoost/LightGBM) est la solution de production de référence, plus légère et souvent plus précise que le DL."
+  },
+  {
+    "question": "Qui a développé et maintient le framework open-source PyTorch, devenu aujourd'hui le standard dans la recherche et les modèles récents ?",
+    "options": [
+      "Google",
+      "Meta (anciennement Facebook AI Research), avant de le donner à la fondation Linux",
+      "Microsoft",
+      "Amazon AWS"
+    ],
+    "answer": "Meta (anciennement Facebook AI Research), avant de le donner à la fondation Linux",
+    "explanation": "PyTorch s'est imposé face à TensorFlow grâce à sa souplesse (graphe de calcul dynamique) très appréciée des chercheurs pour déboguer le code."
+  },
+  {
+    "question": "Quelle affirmation résume le mieux la place de la plateforme 'Hugging Face' (transformers) par rapport à PyTorch ?",
+    "options": [
+      "C'est un concurrent qui remplace totalement PyTorch",
+      "Hugging Face est un catalogue et une couche d'abstraction de haut niveau. Sous le capot, ses bibliothèques (comme transformers) exécutent des calculs moteurs en utilisant PyTorch ou TensorFlow",
+      "C'est un outil payant de Microsoft",
+      "C'est une base de données SQL optimisée pour l'image"
+    ],
+    "answer": "Hugging Face est un catalogue et une couche d'abstraction de haut niveau. Sous le capot, ses bibliothèques (comme transformers) exécutent des calculs moteurs en utilisant PyTorch ou TensorFlow",
+    "explanation": "Dire 'Je consomme un modèle sur Hugging Face qui tourne grâce au moteur PyTorch' décrit parfaitement la réalité technique."
+  },
+  {
+    "question": "Quelle est l'histoire et la place de 'TensorFlow / Keras' aujourd'hui en entreprise ?",
+    "options": [
+      "Il vient d'être inventé en 2024",
+      "Développé par Google (2015), c'était le standard industriel des années 2010. Aujourd'hui en perte de vitesse face à PyTorch, on le croise surtout sur du code historique (legacy) à maintenir ou de l'embarqué",
+      "Il n'est utilisé que pour créer des interfaces graphiques web",
+      "C'est le framework exclusif d'Apple"
+    ],
+    "answer": "Développé par Google (2015), c'était le standard industriel des années 2010. Aujourd'hui en perte de vitesse face à PyTorch, on le croise surtout sur du code historique (legacy) à maintenir ou de l'embarqué",
+    "explanation": "Keras reste cependant une API haut-niveau très élégante. À noter : Keras 3 est devenu 'multi-backend' et peut tourner sur PyTorch."
+  },
+  {
+    "question": "Quel est le but d'un format comme 'ONNX' (Open Neural Network Exchange) ?",
+    "options": [
+      "Chiffrer le code de l'application",
+      "Offrir un format d'échange standard permettant d'entraîner un modèle en PyTorch et de le déployer/servir sur un environnement (runtime) optimisé C++ ou Java, par exemple",
+      "Accélérer le téléchargement des images",
+      "Créer des bases de données orientées graphes"
+    ],
+    "answer": "Offrir un format d'échange standard permettant d'entraîner un modèle en PyTorch et de le déployer/servir sur un environnement (runtime) optimisé C++ ou Java, par exemple",
+    "explanation": "ONNX détache l'entraînement du modèle (souvent en Python) de son exécution en production, optimisant fortement la latence."
+  },
+  {
+    "question": "En MLOps, quelle différence fondamentale faites-vous entre l''Étage de création/entraînement' et l''Étage de serving/déploiement' ?",
+    "options": [
+      "Il n'y en a aucune",
+      "L'entraînement crée le poids des réseaux (ex: via PyTorch), tandis que le serving (ex: FastAPI, TorchServe) se contente de charger ces poids figés pour répondre à des requêtes HTTP réseau en production",
+      "Le serving nécessite obligatoirement des GPUs",
+      "L'entraînement se fait toujours sur le navigateur client"
+    ],
+    "answer": "L'entraînement crée le poids des réseaux (ex: via PyTorch), tandis que le serving (ex: FastAPI, TorchServe) se contente de charger ces poids figés pour répondre à des requêtes HTTP réseau en production",
+    "explanation": "Le travail typique de l'ingénieur/intégrateur IA se situe majoritairement sur la partie consommation et serving des modèles existants."
+  },
+  {
+    "question": "Dans quel cas réel est-il pertinent d'entraîner un énorme modèle de Deep Learning (CNN, Transformer) 'From Scratch' (de zéro) en entreprise ?",
+    "options": [
+      "Dans tous les projets, c'est la seule façon d'être innovant",
+      "Seulement si l'entreprise dispose d'un volume colossal de données extrêmement spécifiques (non couvertes par le pré-entraîné public), d'un fort budget GPU et d'une équipe de chercheurs dédiée",
+      "Dès qu'on utilise un fichier CSV",
+      "Pour faire un test unitaire"
+    ],
+    "answer": "Seulement si l'entreprise dispose d'un volume colossal de données extrêmement spécifiques (non couvertes par le pré-entraîné public), d'un fort budget GPU et d'une équipe de chercheurs dédiée",
+    "explanation": "Dans 95% des autres cas industriels (images, texte standard), le Transfer Learning ou l'usage de modèles Foundation pré-entraînés via HuggingFace écrasera le 'from scratch' en coût et précision."
+  },
+  {
+    "question": "Que sont les outils 'XGBoost' et 'LightGBM' par rapport à la carte des algorithmes ?",
+    "options": [
+      "Des frameworks de réseaux de neurones pour l'image",
+      "Des bibliothèques ultra-optimisées de 'Gradient Boosting' (des arbres de décision), redoutables et dominantes sur les problématiques de données tabulaires (Kaggle), complétant souvent scikit-learn",
+      "Des outils d'interface graphique",
+      "Des formats de compression vidéo"
+    ],
+    "answer": "Des bibliothèques ultra-optimisées de 'Gradient Boosting' (des arbres de décision), redoutables et dominantes sur les problématiques de données tabulaires (Kaggle), complétant souvent scikit-learn",
+    "explanation": "Le Boosting est la méthode reine pour traiter des données structurées complexes comportant de la donnée hétérogène et beaucoup de variables."
+  },
+  {
+    "question": "Si vous tombez sur du code Python avec une boucle `for epoch in range(...)` contenant l'instruction `loss.backward()`, vous êtes très probablement en train de lire du code écrit avec :",
+    "options": [
+      "Pandas",
+      "Scikit-Learn",
+      "PyTorch",
+      "Flask"
+    ],
+    "answer": "PyTorch",
+    "explanation": "C'est la syntaxe typique (impérative et bas niveau) de la boucle d'entraînement PyTorch (calcul du gradient avec backward)."
+  },
+  {
+    "question": "En entretien d'embauche, on vous demande : 'Faut-il systématiquement un GPU pour faire de l'IA aujourd'hui ?'. Que répondez-vous ?",
+    "options": [
+      "Oui, sinon le code Python crashe instantanément",
+      "Non. Le GPU est vital pour ENTRAÎNER des modèles profonds volumineux. Mais pour l'INFÉRENCE (servir) de modèles légers (XGBoost, DistilBERT, ou même du RAG avec API distante), de bons CPU suffisent largement",
+      "Non, le GPU ne sert qu'à afficher des images",
+      "Oui, car le cloud ne propose plus de serveurs CPU"
+    ],
+    "answer": "Non. Le GPU est vital pour ENTRAÎNER des modèles profonds volumineux. Mais pour l'INFÉRENCE (servir) de modèles légers (XGBoost, DistilBERT, ou même du RAG avec API distante), de bons CPU suffisent largement",
+    "explanation": "Cela démontre votre compréhension de l'architecture physique du déploiement (M5/M8) et de la notion de sobriété."
+  }
+]

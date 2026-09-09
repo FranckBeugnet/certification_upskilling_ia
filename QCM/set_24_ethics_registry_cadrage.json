@@ -1,0 +1,112 @@
+[
+  {
+    "question": "Dans le contexte de l'éthique IA, qu'est-ce que l'initiative 'Datasheets for Datasets' proposée par Timnit Gebru ?",
+    "options": [
+      "Une loi européenne punissant les algorithmes",
+      "Un cadre de documentation standardisé accompagnant chaque jeu de données (créateur, but, biais potentiels, recommandations d'usage) à l'image des notices techniques en électronique",
+      "Un logiciel de nettoyage automatique de données",
+      "Un format de fichier remplaçant le CSV"
+    ],
+    "answer": "Un cadre de documentation standardisé accompagnant chaque jeu de données (créateur, but, biais potentiels, recommandations d'usage) à l'image des notices techniques en électronique",
+    "explanation": "Cette pratique favorise la transparence et permet aux futurs data scientists de savoir immédiatement si le dataset est adapté ou risqué pour leur cas d'usage."
+  },
+  {
+    "question": "Qu'est-ce que la métrique 'Recall' (Rappel) cherche principalement à minimiser ?",
+    "options": [
+      "Les Vrais Positifs",
+      "Les Faux Positifs",
+      "Les Faux Négatifs",
+      "Le temps d'inférence"
+    ],
+    "answer": "Les Faux Négatifs",
+    "explanation": "Le rappel (Vrais Positifs / (Vrais Positifs + Faux Négatifs)) est crucial quand rater un cas positif est très grave (ex: ne pas détecter un cancer ou une fraude massive)."
+  },
+  {
+    "question": "Que signifie le paramètre 'ge=0' dans l'annotation Pydantic 'Field(..., ge=0)' pour FastAPI ?",
+    "options": [
+      "Global Environment = 0",
+      "Greater than or Equal to 0 (supérieur ou égal à zéro) : cela rejette automatiquement les valeurs négatives avec une erreur 422",
+      "Generate Error 0",
+      "Le champ est optionnel"
+    ],
+    "answer": "Greater than or Equal to 0 (supérieur ou égal à zéro) : cela rejette automatiquement les valeurs négatives avec une erreur 422",
+    "explanation": "C'est un excellent moyen de protéger le modèle de Machine Learning contre des aberrations (ex: un âge de -5 ans) sans écrire de code de validation manuel."
+  },
+  {
+    "question": "Quel est le rôle d'un 'Model Registry' (Registre de Modèles) ?",
+    "options": [
+      "Enregistrer les utilisateurs de l'API",
+      "Agir comme un magasin central versionné où les modèles validés sont stockés, gérant leur transition entre différents états (Staging, Production, Archive)",
+      "Payer les frais de cloud computing",
+      "Traduire le code Python en JavaScript"
+    ],
+    "answer": "Agir comme un magasin central versionné où les modèles validés sont stockés, gérant leur transition entre différents états (Staging, Production, Archive)",
+    "explanation": "MLflow Model Registry permet d'avoir une vue claire sur 'Quel modèle tourne actuellement en production ?' et 'Quel modèle est en cours de test ?'."
+  },
+  {
+    "question": "En MLOps, quelle pratique permet de vérifier qu'une nouvelle version de l'API ou du modèle ne casse pas le code des utilisateurs existants ?",
+    "options": [
+      "Les tests de non-régression",
+      "Le formatage du code",
+      "Le nettoyage des données",
+      "Le gradient boosting"
+    ],
+    "answer": "Les tests de non-régression",
+    "explanation": "Exécutés automatiquement lors de la CI (intégration continue), ces tests garantissent que les fonctionnalités qui marchaient hier marchent toujours aujourd'hui."
+  },
+  {
+    "question": "Qu'est-ce qu'une 'Note de cadrage' (ou Note d'identification) dans la gestion d'un projet IA ?",
+    "options": [
+      "La facture envoyée au client",
+      "Un document très synthétique rédigé au tout début du projet pour aligner les parties prenantes sur le vrai besoin métier, les données, les contraintes et les critères de succès",
+      "Un manuel d'installation de Python",
+      "Un rapport de bugs"
+    ],
+    "answer": "Un document très synthétique rédigé au tout début du projet pour aligner les parties prenantes sur le vrai besoin métier, les données, les contraintes et les critères de succès",
+    "explanation": "Ce livrable (souvent consécutif à l'entretien client) est fondamental pour éviter de coder pendant 6 mois un modèle qui ne répond pas à l'attente du sponsor."
+  },
+  {
+    "question": "Dans le cycle de déploiement (Docker), qu'est-ce que la commande 'docker build -t mon_api:v1 .' réalise ?",
+    "options": [
+      "Elle détruit le conteneur",
+      "Elle lit le Dockerfile dans le dossier courant (.), exécute les instructions et crée une image nommée 'mon_api' avec le tag 'v1'",
+      "Elle télécharge l'image depuis internet",
+      "Elle teste l'application"
+    ],
+    "answer": "Elle lit le Dockerfile dans le dossier courant (.), exécute les instructions et crée une image nommée 'mon_api' avec le tag 'v1'",
+    "explanation": "Le flag `-t` (tag) permet de nommer et versionner l'image pour la retrouver facilement."
+  },
+  {
+    "question": "Comment appelle-t-on le concept qui consiste à traiter l'Infrastructure (serveurs, réseaux, BDD) sous forme de fichiers de code versionnés ?",
+    "options": [
+      "SaaS (Software as a Service)",
+      "IaC (Infrastructure as Code)",
+      "PaaS (Platform as a Service)",
+      "Machine Learning"
+    ],
+    "answer": "IaC (Infrastructure as Code)",
+    "explanation": "Grâce à des outils comme Terraform, l'IaC permet de déployer et détruire des environnements complexes de manière automatisée et sans clics manuels dans une interface web."
+  },
+  {
+    "question": "Pourquoi la méthode 'iterrows()' de Pandas est-elle fortement déconseillée pour modifier un gros jeu de données ?",
+    "options": [
+      "Parce qu'elle chiffre les données",
+      "Parce qu'elle itère ligne par ligne en Python pur, ce qui est extrêmement lent comparé aux opérations vectorisées de NumPy/Pandas",
+      "Parce qu'elle supprime la première ligne automatiquement",
+      "Parce qu'elle nécessite une connexion internet"
+    ],
+    "answer": "Parce qu'elle itère ligne par ligne en Python pur, ce qui est extrêmement lent comparé aux opérations vectorisées de NumPy/Pandas",
+    "explanation": "En Data Science, il faut toujours privilégier la vectorisation ou l'utilisation de `apply()` pour des performances optimales."
+  },
+  {
+    "question": "Qu'est-ce que l'apprentissage 'Supervisé' par opposition au 'Non-supervisé' ?",
+    "options": [
+      "L'apprentissage supervisé est effectué par un humain, le non-supervisé par une machine",
+      "Dans l'apprentissage supervisé, le jeu de données d'entraînement contient déjà les étiquettes cibles (la vérité terrain) que le modèle doit apprendre à prédire",
+      "L'apprentissage supervisé ne fonctionne que sur du texte",
+      "L'apprentissage non-supervisé nécessite toujours un GPU"
+    ],
+    "answer": "Dans l'apprentissage supervisé, le jeu de données d'entraînement contient déjà les étiquettes cibles (la vérité terrain) que le modèle doit apprendre à prédire",
+    "explanation": "Exemple supervisé : prédire le prix d'une maison en ayant l'historique des prix de vente. Non-supervisé : regrouper des clients par comportement (clustering) sans label préétabli."
+  }
+]

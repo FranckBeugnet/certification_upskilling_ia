@@ -1,0 +1,112 @@
+[
+  {
+    "question": "À quoi sert la technique SMOTE (Synthetic Minority Over-sampling Technique) en Machine Learning ?",
+    "options": [
+      "À supprimer les colonnes inutiles",
+      "À rééquilibrer un jeu de données en générant des exemples synthétiques de la classe minoritaire (par interpolation mathématique entre les voisins)",
+      "À anonymiser les noms propres",
+      "À compresser le modèle"
+    ],
+    "answer": "À rééquilibrer un jeu de données en générant des exemples synthétiques de la classe minoritaire (par interpolation mathématique entre les voisins)",
+    "explanation": "SMOTE aide les algorithmes (comme RandomForest) à ne pas ignorer la classe minoritaire (ex: les fraudes) lors de l'apprentissage."
+  },
+  {
+    "question": "Quelle est l'erreur FATALE à ne surtout pas faire lors de l'utilisation de SMOTE (ou de tout autre algorithme de sur-échantillonnage) ?",
+    "options": [
+      "L'utiliser avec Python 3",
+      "L'appliquer AVANT le découpage (train_test_split) : cela provoque une fuite de données (Data Leakage) car des points interpolés du train se retrouveront dans le test",
+      "L'appliquer sur des variables continues",
+      "Oublier de le mettre en cache"
+    ],
+    "answer": "L'appliquer AVANT le découpage (train_test_split) : cela provoque une fuite de données (Data Leakage) car des points interpolés du train se retrouveront dans le test",
+    "explanation": "Le sur-échantillonnage ne doit être appliqué **que** sur les données d'entraînement. Le jeu de test doit rester strictement fidèle au monde réel (donc déséquilibré)."
+  },
+  {
+    "question": "Quel outil Python est couramment utilisé pour générer des données factices tabulaires très réalistes (noms, adresses, dates) dans un but de test ou de démo ?",
+    "options": [
+      "Faker",
+      "TensorFlow",
+      "Keras",
+      "SQLAlchemy"
+    ],
+    "answer": "Faker",
+    "explanation": "Faker est excellent pour créer de grandes bases de données sans exposer la moindre donnée personnelle (PII), idéal pour tester un pipeline ETL."
+  },
+  {
+    "question": "En Computer Vision, en quoi consiste la 'Data Augmentation' sur des images existantes ?",
+    "options": [
+      "Coloriser des photos noir et blanc avec un réseau antagoniste",
+      "Créer de nouvelles variantes plausibles des images réelles en appliquant des rotations, retournements (flips) ou recadrages (crops) pour démultiplier le jeu de données d'entraînement",
+      "Acheter des images sur internet",
+      "Augmenter la résolution des images en 4K"
+    ],
+    "answer": "Créer de nouvelles variantes plausibles des images réelles en appliquant des rotations, retournements (flips) ou recadrages (crops) pour démultiplier le jeu de données d'entraînement",
+    "explanation": "C'est la méthode de référence pour forcer un modèle CNN à devenir robuste (invariant) aux changements de taille ou d'angle de l'objet."
+  },
+  {
+    "question": "Quelle est la principale différence de philosophie entre SMOTE/Faker et la Data Augmentation classique (image/texte) ?",
+    "options": [
+      "Ils s'exécutent sur des processeurs différents",
+      "Générer du neuf (SMOTE, Faker) invente des exemples qui n'existent pas mathématiquement, alors que l'augmentation crée des variantes ancrées sur des exemples réels existants",
+      "Il n'y en a aucune",
+      "Faker est payant"
+    ],
+    "answer": "Générer du neuf (SMOTE, Faker) invente des exemples qui n'existent pas mathématiquement, alors que l'augmentation crée des variantes ancrées sur des exemples réels existants",
+    "explanation": "L'augmentation (variante du réel) est souvent considérée comme plus sûre et moins sujette à amplifier des biais artificiels que la génération pure."
+  },
+  {
+    "question": "Qu'est-ce que la 'Confidentialité Différentielle' (Differential Privacy) ?",
+    "options": [
+      "Un mot de passe aléatoire",
+      "Une garantie mathématique qui, par l'injection de bruit calibré, assure que le résultat d'une analyse ne permet pas de déduire si une personne spécifique était présente ou non dans la base de données",
+      "Un algorithme de chiffrement asymétrique",
+      "Une loi RGPD de 2024"
+    ],
+    "answer": "Une garantie mathématique qui, par l'injection de bruit calibré, assure que le résultat d'une analyse ne permet pas de déduire si une personne spécifique était présente ou non dans la base de données",
+    "explanation": "Concept très pointu utilisé par Apple ou Google pour extraire des statistiques d'usage globales sans jamais compromettre un individu spécifique."
+  },
+  {
+    "question": "Quel est l'un des plus grands pièges de l'utilisation de données générées (synthétiques) pour entraîner un modèle ?",
+    "options": [
+      "Le format de fichier est souvent incompatible",
+      "Le synthétique copie, voire amplifie, les biais déjà existants dans la base de départ, offrant une fausse illusion de robustesse",
+      "Les modèles refusent de s'entraîner sur des données parfaites",
+      "Elles nécessitent un GPU surpuissant"
+    ],
+    "answer": "Le synthétique copie, voire amplifie, les biais déjà existants dans la base de départ, offrant une fausse illusion de robustesse",
+    "explanation": "Générer plus de données biaisées ne règle pas le biais. Et tester un modèle sur les mêmes données synthétiques conduit à d'excellents scores totalement trompeurs."
+  },
+  {
+    "question": "Pour vérifier un code Python manipulant des données textuelles, on peut utiliser la 'Back-translation' comme technique d'augmentation de données. Qu'est-ce que c'est ?",
+    "options": [
+      "Écrire le texte à l'envers",
+      "Traduire une phrase du Français vers l'Anglais, puis de l'Anglais vers le Français, obtenant ainsi une reformulation naturelle de la phrase initiale",
+      "Traduire du Python vers du Java",
+      "Traduire un texte en phonétique"
+    ],
+    "answer": "Traduire une phrase du Français vers l'Anglais, puis de l'Anglais vers le Français, obtenant ainsi une reformulation naturelle de la phrase initiale",
+    "explanation": "C'est une astuce très efficace en NLP pour augmenter un dataset de classification d'intentions sans payer des annotateurs humains."
+  },
+  {
+    "question": "Dans scikit-learn, à quoi sert la fonction 'make_classification()' ?",
+    "options": [
+      "Elle classifie automatiquement n'importe quelle image",
+      "Elle génère un dataset jouet (tabulaire) contrôlé (nombre d'échantillons, nombre de classes, bruit, déséquilibre) parfait pour tester un pipeline ML sans attendre de vraies données",
+      "Elle installe un réseau de neurones",
+      "Elle génère un rapport PDF"
+    ],
+    "answer": "Elle génère un dataset jouet (tabulaire) contrôlé (nombre d'échantillons, nombre de classes, bruit, déséquilibre) parfait pour tester un pipeline ML sans attendre de vraies données",
+    "explanation": "Très utile en TDD ou pour s'assurer que le code d'ingénierie (API, MLflow, Docker) fonctionne avant que la Data Science soit terminée."
+  },
+  {
+    "question": "Pourquoi est-il crucial de fixer une 'seed' (graine aléatoire, ex: random_state=42) lors de la génération de données synthétiques ?",
+    "options": [
+      "Pour que le code compile",
+      "Pour garantir la reproductibilité : n'importe quel membre de l'équipe (ou un script CI) obtiendra exactement les mêmes données factices à chaque exécution",
+      "Pour accélérer la génération",
+      "C'est imposé par la loi"
+    ],
+    "answer": "Pour garantir la reproductibilité : n'importe quel membre de l'équipe (ou un script CI) obtiendra exactement les mêmes données factices à chaque exécution",
+    "explanation": "La reproductibilité est la base d'une démarche scientifique et d'ingénierie saine. Sans cela, un bug pourrait être impossible à recréer."
+  }
+]

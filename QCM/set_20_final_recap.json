@@ -1,0 +1,112 @@
+[
+  {
+    "question": "En Machine Learning, quelle est la fonction de la courbe 'ROC' (Receiver Operating Characteristic) ?",
+    "options": [
+      "Mesurer la vitesse du processeur GPU",
+      "Visualiser la performance d'un classifieur binaire en traçant le taux de Vrais Positifs (Recall) par rapport au taux de Faux Positifs, pour tous les seuils de décision possibles",
+      "Optimiser les hyperparamètres",
+      "Trouver les valeurs manquantes dans un jeu de données"
+    ],
+    "answer": "Visualiser la performance d'un classifieur binaire en traçant le taux de Vrais Positifs (Recall) par rapport au taux de Faux Positifs, pour tous les seuils de décision possibles",
+    "explanation": "L'aire sous cette courbe (l'AUC) permet d'évaluer la qualité du modèle indépendamment d'un seuil de décision arbitraire fixé à 50%."
+  },
+  {
+    "question": "Dans le domaine de l'éthique IA, qu'est-ce qu'une 'Human-in-the-loop' (Homme dans la boucle) ?",
+    "options": [
+      "L'insertion d'une puce neuronale chez l'homme",
+      "Une conception de système où l'algorithme n'a pas le dernier mot sur une décision critique ; une vérification et une validation humaine sont requises",
+      "Un algorithme qui génère des visages humains",
+      "Un algorithme d'apprentissage par renforcement"
+    ],
+    "answer": "Une conception de système où l'algorithme n'a pas le dernier mot sur une décision critique ; une vérification et une validation humaine sont requises",
+    "explanation": "C'est une exigence réglementaire (ex: AI Act, RGPD) pour de nombreux systèmes à haut risque (santé, justice, crédit), afin d'éviter les prises de décision entièrement automatisées et préjudiciables."
+  },
+  {
+    "question": "Dans Scikit-Learn, que fait l'objet 'StandardScaler' ?",
+    "options": [
+      "Il remplace les valeurs manquantes par la moyenne",
+      "Il standardise les variables en soustrayant la moyenne et en divisant par l'écart-type, ramenant ainsi chaque colonne à une moyenne de 0 et une variance de 1",
+      "Il crée de nouvelles variables aléatoires",
+      "Il supprime les valeurs extrêmes (outliers)"
+    ],
+    "answer": "Il standardise les variables en soustrayant la moyenne et en divisant par l'écart-type, ramenant ainsi chaque colonne à une moyenne de 0 et une variance de 1",
+    "explanation": "C'est une étape de preprocessing indispensable pour de nombreux algorithmes basés sur la distance (ex: KNN, SVM) ou sur le gradient."
+  },
+  {
+    "question": "Qu'est-ce qu'un 'Microservice' ?",
+    "options": [
+      "Un très petit modèle de Machine Learning pour les téléphones",
+      "Une approche architecturale où une grande application est découpée en de nombreux petits services indépendants, communiquant entre eux (souvent via des API HTTP)",
+      "Un service cloud gratuit",
+      "Un fichier de configuration pour Docker"
+    ],
+    "answer": "Une approche architecturale où une grande application est découpée en de nombreux petits services indépendants, communiquant entre eux (souvent via des API HTTP)",
+    "explanation": "L'avantage principal est de pouvoir mettre à jour, de faire évoluer et de scaler chaque microservice indépendamment des autres (parfait pour isoler un modèle ML de la base de données client)."
+  },
+  {
+    "question": "Que signifie la notion de 'Stateless' (sans état) pour une API REST comme FastAPI ?",
+    "options": [
+      "Que l'API ne retourne aucun statut HTTP",
+      "Que l'API ne conserve aucune information sur l'historique de l'utilisateur en mémoire vive (RAM) entre deux requêtes ; chaque requête doit contenir toutes les informations nécessaires",
+      "Que l'API ne peut pas écrire dans une base de données",
+      "Que le serveur ne sait pas dans quel pays il se trouve"
+    ],
+    "answer": "Que l'API ne conserve aucune information sur l'historique de l'utilisateur en mémoire vive (RAM) entre deux requêtes ; chaque requête doit contenir toutes les informations nécessaires",
+    "explanation": "C'est une condition sine qua non pour pouvoir dupliquer (scaler horizontalement) l'API sur de multiples conteneurs sans perturber le client."
+  },
+  {
+    "question": "Quel problème le format d'image WebP ou l'utilisation de CDN (Content Delivery Network) cherche-t-il à résoudre pour une application web (ou Streamlit) ?",
+    "options": [
+      "Améliorer la précision de l'intelligence artificielle",
+      "Optimiser la vitesse de chargement et l'expérience utilisateur en réduisant la taille des médias et en les distribuant géographiquement",
+      "Chiffrer les données sensibles",
+      "Détecter les bugs de l'API"
+    ],
+    "answer": "Optimiser la vitesse de chargement et l'expérience utilisateur en réduisant la taille des médias et en les distribuant géographiquement",
+    "explanation": "L'optimisation des assets front-end est tout aussi importante que l'optimisation back-end pour un projet MLOps livré à des utilisateurs."
+  },
+  {
+    "question": "Comment appelle-t-on le processus de traduction du code compréhensible par l'humain vers un exécutable lisible par la machine ?",
+    "options": [
+      "Déploiement",
+      "Compilation (ou Interprétation dans le cas de Python)",
+      "Vectorisation",
+      "Serialization"
+    ],
+    "answer": "Compilation (ou Interprétation dans le cas de Python)",
+    "explanation": "Python étant interprété, le code est traduit 'à la volée' (ou en bytecode intermédiaire) à l'exécution, contrairement au C++ qui est compilé en binaire avant exécution."
+  },
+  {
+    "question": "Dans le contexte des modèles de langage (NLP), qu'est-ce qu'un 'Token' ?",
+    "options": [
+      "Une clé d'authentification secrète de l'API (ex: JWT)",
+      "Un morceau de texte (qui peut être un mot, un sous-mot, ou même une lettre) qui constitue l'unité fondamentale de traitement pour un réseau de neurones",
+      "Le score final d'un modèle d'évaluation",
+      "Un format de fichier binaire"
+    ],
+    "answer": "Un morceau de texte (qui peut être un mot, un sous-mot, ou même une lettre) qui constitue l'unité fondamentale de traitement pour un réseau de neurones",
+    "explanation": "Les modèles comme GPT ne voient pas des 'mots' complets, mais des tokens. C'est pourquoi un mot complexe peut être découpé en plusieurs tokens par le Tokenizer."
+  },
+  {
+    "question": "Quelle est la principale caractéristique d'une base de données NoSQL (comme MongoDB ou Cassandra) par rapport à une base SQL (comme PostgreSQL) ?",
+    "options": [
+      "Elle n'utilise pas de mot de passe",
+      "Elle est conçue pour être flexible (schéma dynamique) et offrir une très grande évolutivité horizontale, souvent en sacrifiant certaines contraintes relationnelles strictes (ACID)",
+      "Elle est interdite en MLOps",
+      "Elle est uniquement en lecture seule"
+    ],
+    "answer": "Elle est conçue pour être flexible (schéma dynamique) et offrir une très grande évolutivité horizontale, souvent en sacrifiant certaines contraintes relationnelles strictes (ACID)",
+    "explanation": "Le NoSQL est souvent choisi pour gérer des volumes de données non structurées (comme des documents JSON) très importants, typiques dans les architectures Big Data."
+  },
+  {
+    "question": "Félicitations pour ces 20 QCMs ! Quelle est la règle numéro 1 en MLOps pour réussir sa mise en production (le fil rouge de toute la certification) ?",
+    "options": [
+      "Utiliser le Deep Learning coûte que coûte",
+      "Le monitoring, l'automatisation, la version rigoureuse des données/code/modèles, et une architecture propre valent beaucoup plus qu'un modèle parfait tournant uniquement sur un ordinateur portable",
+      "Ne jamais écouter les exigences métier",
+      "Toujours utiliser Windows pour héberger le code en prod"
+    ],
+    "answer": "Le monitoring, l'automatisation, la version rigoureuse des données/code/modèles, et une architecture propre valent beaucoup plus qu'un modèle parfait tournant uniquement sur un ordinateur portable",
+    "explanation": "C'est l'essence même du MLOps : industrialiser l'IA pour qu'elle apporte de la valeur en continu et en toute sécurité dans le monde réel."
+  }
+]

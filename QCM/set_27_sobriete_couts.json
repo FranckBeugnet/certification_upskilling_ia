@@ -1,0 +1,112 @@
+[
+  {
+    "question": "Selon la cheatsheet sur la sobriété, quelle bibliothèque Python est recommandée pour mesurer rigoureusement l'utilisation de la mémoire RAM (RSS) par un modèle ?",
+    "options": [
+      "pandas",
+      "psutil",
+      "numpy",
+      "matplotlib"
+    ],
+    "answer": "psutil",
+    "explanation": "La méthode `psutil.Process().memory_info().rss` permet d'obtenir des métriques chiffrées précises au lieu de dire vaguement 'ça consomme beaucoup'."
+  },
+  {
+    "question": "Quel est le garde-fou central de la certification IA ATOS concernant le choix des solutions ?",
+    "options": [
+      "Toujours proposer du Deep Learning",
+      "Recommander la solution la plus simple/légère qui résout le besoin, et ne monter en complexité (LLM, DL) que si un gain est prouvé et chiffré",
+      "Toujours héberger l'IA sur le cloud AWS",
+      "Choisir le modèle qui est sorti le mois dernier"
+    ],
+    "answer": "Recommander la solution la plus simple/légère qui résout le besoin, et ne monter en complexité (LLM, DL) que si un gain est prouvé et chiffré",
+    "explanation": "L'ingénierie sobre est la plus défendable face aux coûts, à l'empreinte carbone et aux réglementations."
+  },
+  {
+    "question": "Lorsqu'on estime le coût financier d'une API LLM, quelle composante est souvent facturée plus chère par les fournisseurs (comme OpenAI ou Mistral) ?",
+    "options": [
+      "Les tokens d'entrée (input / prompt)",
+      "Les tokens de sortie (output / génération)",
+      "Le stockage du modèle",
+      "Le nombre d'utilisateurs connectés"
+    ],
+    "answer": "Les tokens de sortie (output / génération)",
+    "explanation": "Il faut donc calculer `(tokens_in * prix_in) + (tokens_out * prix_out) * volume` pour avoir un ordre de grandeur crédible du coût."
+  },
+  {
+    "question": "Lequel de ces coûts est considéré comme un 'coût caché' et représente souvent la véritable dette opérationnelle d'un système complexe (RAG / Agents) ?",
+    "options": [
+      "Le prix d'achat du nom de domaine",
+      "La maintenance (plus de briques à déboguer), la latence dégradant l'UX et la dépendance au fournisseur d'API",
+      "L'abonnement à GitHub",
+      "Le salaire du développeur front-end"
+    ],
+    "answer": "La maintenance (plus de briques à déboguer), la latence dégradant l'UX et la dépendance au fournisseur d'API",
+    "explanation": "Le calcul pur (compute) est souvent l'arbre qui cache la forêt des coûts d'observabilité et d'ingénierie MLOps."
+  },
+  {
+    "question": "Que signifie l'avertissement 'Faux précis interdit' lors d'une estimation de coût (ex: M7-B2) ?",
+    "options": [
+      "Ne pas utiliser de calculatrice",
+      "Donner un résultat du type '487,32 €/mois' décrédibilise l'estimation, car elle repose sur des hypothèses de volume floues. Il faut parler en 'ordres de grandeur' (ex: ~500 €/mois)",
+      "Ne jamais donner de chiffres, seulement des mots",
+      "Toujours doubler le prix par sécurité"
+    ],
+    "answer": "Donner un résultat du type '487,32 €/mois' décrédibilise l'estimation, car elle repose sur des hypothèses de volume floues. Il faut parler en 'ordres de grandeur' (ex: ~500 €/mois)",
+    "explanation": "Un consultant doit toujours montrer que son estimation est liée à une hypothèse de volume, qui peut elle-même varier."
+  },
+  {
+    "question": "Par rapport à un modèle classique (ex: XGBoost hébergé en local), quel est l'ordre de grandeur indicatif du surcoût d'un LLM en API pour une tâche simple ?",
+    "options": [
+      "C'est souvent moins cher",
+      "Une API LLM coûte environ 10 fois plus cher (et est beaucoup plus lente) pour un gain souvent nul sur de la classification tabulaire",
+      "Le prix est strictement identique",
+      "Il est impossible d'estimer un surcoût"
+    ],
+    "answer": "Une API LLM coûte environ 10 fois plus cher (et est beaucoup plus lente) pour un gain souvent nul sur de la classification tabulaire",
+    "explanation": "C'est pour cela qu'il faut un 'gain métier justifié' (ex: analyse sémantique profonde) pour accepter cette facture."
+  },
+  {
+    "question": "Quel est le meilleur argument pour justifier l'empreinte carbone / énergétique lors du choix d'un modèle (sans faire de greenwashing) ?",
+    "options": [
+      "Inventer un chiffre précis de CO2 sauvé",
+      "Démontrer qu'un modèle plus petit (ex: 100 Mo vs 15 Go) effectue ~10x moins de calculs mathématiques à chaque prédiction, ce qui, multiplié par le volume, garantit une vraie sobriété",
+      "Planter un arbre pour chaque prédiction",
+      "Utiliser Python 3.11 au lieu de 3.9"
+    ],
+    "answer": "Démontrer qu'un modèle plus petit (ex: 100 Mo vs 15 Go) effectue ~10x moins de calculs mathématiques à chaque prédiction, ce qui, multiplié par le volume, garantit une vraie sobriété",
+    "explanation": "L'énergie est proportionnelle au nombre de FLOPS (opérations). Moins de paramètres = moins d'opérations = moins de Watts."
+  },
+  {
+    "question": "En monitoring, qu'est-ce qui change radicalement quand on passe d'un modèle ML classique à un LLM en production ?",
+    "options": [
+      "Le LLM ne fait jamais d'erreurs",
+      "La latence devient très variable (dépend du nb de tokens générés), le coût marginal n'est plus nul, et la qualité (génération ouverte) ne peut être qu'échantillonnée",
+      "On n'a plus besoin d'un dashboard Grafana",
+      "L'API ne tourne plus en HTTP"
+    ],
+    "answer": "La latence devient très variable (dépend du nb de tokens générés), le coût marginal n'est plus nul, et la qualité (génération ouverte) ne peut être qu'échantillonnée",
+    "explanation": "Le LLM introduit le concept d'échec de format (JSON cassé) et force à surveiller de près les 'Tokens par requête' pour repérer l'inflation budgétaire."
+  },
+  {
+    "question": "Qu'est-ce que la métrique 'Latence p95' (percentile 95) en monitoring ?",
+    "options": [
+      "La latence des 95% de requêtes les plus rapides",
+      "Une mesure signifiant que 95% des requêtes s'exécutent sous ce seuil de temps (ex: p95 = 200ms). Elle reflète l'expérience réelle des pires requêtes mieux qu'une simple moyenne",
+      "Une latence pénalisée par 95 erreurs",
+      "Un paramètre Pydantic"
+    ],
+    "answer": "Une mesure signifiant que 95% des requêtes s'exécutent sous ce seuil de temps (ex: p95 = 200ms). Elle reflète l'expérience réelle des pires requêtes mieux qu'une simple moyenne",
+    "explanation": "La moyenne cache les valeurs extrêmes. Surveiller le p95 (ou p99) permet de voir si les utilisateurs les plus malchanceux subissent un service inutilisable."
+  },
+  {
+    "question": "Quelle est la conclusion principale à retenir de la fiche 'Sobriété et coûts' ?",
+    "options": [
+      "Le DevOps et le MLOps sont deux métiers identiques",
+      "Le plus simple qui résout le besoin est toujours le meilleur choix ; le mot 'moderne' n'est pas un argument technique valable",
+      "Il faut toujours déléguer les données à OpenAI",
+      "Seul le prix du cloud importe, pas le temps de maintenance"
+    ],
+    "answer": "Le plus simple qui résout le besoin est toujours le meilleur choix ; le mot 'moderne' n'est pas un argument technique valable",
+    "explanation": "Un docker-compose avec SQLite et un arbre de décision bien tuné est une victoire d'ingénieur si cela suffit au besoin."
+  }
+]

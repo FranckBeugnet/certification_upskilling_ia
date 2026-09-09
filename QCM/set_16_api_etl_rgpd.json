@@ -1,0 +1,112 @@
+[
+  {
+    "question": "Qu'est-ce qu'une API REST (Representational State Transfer) ?",
+    "options": [
+      "Un langage de programmation asynchrone",
+      "Un style d'architecture logicielle permettant à des applications de communiquer via le protocole HTTP en utilisant des méthodes standards (GET, POST, PUT, DELETE)",
+      "Une base de données orientée graphe",
+      "Un modèle de Machine Learning génératif"
+    ],
+    "answer": "Un style d'architecture logicielle permettant à des applications de communiquer via le protocole HTTP en utilisant des méthodes standards (GET, POST, PUT, DELETE)",
+    "explanation": "C'est la norme industrielle pour exposer des services web, comme la prédiction d'un modèle de Machine Learning."
+  },
+  {
+    "question": "À quoi sert la 'Validation' croisée (Cross-Validation) ?",
+    "options": [
+      "À compiler le code Python en langage machine",
+      "À obtenir une estimation plus robuste et fiable des performances d'un modèle en le testant sur différentes parties du jeu de données, réduisant ainsi la dépendance à un seul split Train/Test",
+      "À sécuriser l'API avec un token JWT",
+      "À chiffrer les mots de passe"
+    ],
+    "answer": "À obtenir une estimation plus robuste et fiable des performances d'un modèle en le testant sur différentes parties du jeu de données, réduisant ainsi la dépendance à un seul split Train/Test",
+    "explanation": "En divisant le dataset en K 'plis', chaque observation sert K-1 fois pour l'entraînement et 1 fois pour le test."
+  },
+  {
+    "question": "Dans le cycle de vie de la donnée (Data Engineering), que signifie l'acronyme ETL ?",
+    "options": [
+      "Extra Time Limit",
+      "Extract, Transform, Load (Extraire, Transformer, Charger)",
+      "Encode, Test, Learn",
+      "Execute Task Locally"
+    ],
+    "answer": "Extract, Transform, Load (Extraire, Transformer, Charger)",
+    "explanation": "C'est le processus consistant à récupérer les données de plusieurs sources brutes, les nettoyer/formater (Transformer), puis les insérer dans un Data Warehouse (Load)."
+  },
+  {
+    "question": "En Deep Learning, à quoi sert la Rétropropagation (Backpropagation) ?",
+    "options": [
+      "À faire reculer un robot autonome",
+      "À calculer le gradient de la fonction de perte par rapport à chaque poids du réseau pour permettre leur mise à jour par l'optimiseur (descente de gradient)",
+      "À annuler le dernier epoch d'entraînement en cas de surapprentissage",
+      "À traduire le texte d'une langue cible vers la langue source"
+    ],
+    "answer": "À calculer le gradient de la fonction de perte par rapport à chaque poids du réseau pour permettre leur mise à jour par l'optimiseur (descente de gradient)",
+    "explanation": "C'est l'algorithme mathématique fondamental (basé sur la règle de dérivation en chaîne) qui permet aux réseaux de neurones profonds d'apprendre."
+  },
+  {
+    "question": "Dans le contexte RGPD et éthique, quel principe impose de ne collecter que les données strictement nécessaires à l'objectif du modèle ?",
+    "options": [
+      "Le principe de minimisation des données",
+      "Le principe de disparate impact",
+      "Le principe d'idempotence",
+      "La règle des 4/5"
+    ],
+    "answer": "Le principe de minimisation des données",
+    "explanation": "Le RGPD (Art. 5) impose que les données à caractère personnel soient 'adéquates, pertinentes et limitées à ce qui est nécessaire au regard des finalités pour lesquelles elles sont traitées'."
+  },
+  {
+    "question": "Dans un modèle de régression linéaire, que représentent les coefficients (les poids) ?",
+    "options": [
+      "La marge d'erreur du modèle",
+      "L'impact ou l'importance de chaque variable d'entrée sur la variable cible prédite",
+      "Le nombre d'arbres de décision",
+      "Le taux d'apprentissage"
+    ],
+    "answer": "L'impact ou l'importance de chaque variable d'entrée sur la variable cible prédite",
+    "explanation": "Un coefficient positif de 2 pour la variable X indique que si X augmente de 1, la cible prédite Y augmente de 2 (toutes choses égales par ailleurs)."
+  },
+  {
+    "question": "Dans Pytest, comment exécuter uniquement les tests dont le nom de fonction contient le mot 'predict' ?",
+    "options": [
+      "pytest --run predict",
+      "pytest -k predict",
+      "pytest --filter=predict",
+      "pytest tests.py/predict"
+    ],
+    "answer": "pytest -k predict",
+    "explanation": "L'option `-k` permet d'exécuter un sous-ensemble de tests en filtrant sur une expression ou un mot-clé présent dans le nom du test ou de la classe."
+  },
+  {
+    "question": "Qu'est-ce que l'Hyperparameter Tuning (Optimisation des hyperparamètres) ?",
+    "options": [
+      "Le processus de nettoyage des valeurs aberrantes du jeu de données",
+      "La recherche de la configuration optimale des paramètres externes au modèle (ex: profondeur d'un arbre, learning rate) qui ne sont pas appris automatiquement lors de l'entraînement",
+      "L'accélération matérielle avec un GPU",
+      "L'ajout de nouvelles colonnes dans Pandas"
+    ],
+    "answer": "La recherche de la configuration optimale des paramètres externes au modèle (ex: profondeur d'un arbre, learning rate) qui ne sont pas appris automatiquement lors de l'entraînement",
+    "explanation": "Des techniques comme GridSearchCV ou RandomSearchCV automatisent cette recherche fastidieuse pour trouver la meilleure combinaison."
+  },
+  {
+    "question": "Pourquoi utiliser la méthode `model.predict_proba(X)` plutôt que `model.predict(X)` en classification ?",
+    "options": [
+      "Pour prédire plus vite",
+      "Pour obtenir la probabilité (la confiance) d'appartenance à chaque classe, au lieu d'obtenir uniquement la décision binaire finale",
+      "Parce que `predict(X)` n'existe pas dans Scikit-Learn",
+      "Pour éviter l'overfitting"
+    ],
+    "answer": "Pour obtenir la probabilité (la confiance) d'appartenance à chaque classe, au lieu d'obtenir uniquement la décision binaire finale",
+    "explanation": "Avoir la probabilité permet au métier d'ajuster le seuil de décision (ex: bloquer la transaction seulement si probabilité de fraude > 90%)."
+  },
+  {
+    "question": "Qu'est-ce que la métrique 'F1-Score' ?",
+    "options": [
+      "La moyenne arithmétique de l'Accuracy et du Rappel",
+      "La moyenne harmonique entre la Précision et le Rappel, particulièrement utile lorsque les classes sont très déséquilibrées",
+      "Le pourcentage de variance expliquée",
+      "La distance entre deux distributions (Drift)"
+    ],
+    "answer": "La moyenne harmonique entre la Précision et le Rappel, particulièrement utile lorsque les classes sont très déséquilibrées",
+    "explanation": "Le F1-Score (de 0 à 1) pénalise fortement un modèle qui a un bon Rappel mais une mauvaise Précision (ou inversement), offrant une métrique d'évaluation robuste et équilibrée."
+  }
+]

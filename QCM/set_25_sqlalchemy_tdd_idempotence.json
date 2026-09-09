@@ -1,0 +1,112 @@
+[
+  {
+    "question": "Quelle méthode SQLAlchemy est utilisée pour créer une session de communication avec la base de données ?",
+    "options": [
+      "sessionmaker()",
+      "create_engine()",
+      "Base.metadata.create_all()",
+      "db.connect()"
+    ],
+    "answer": "sessionmaker()",
+    "explanation": "La fonction `sessionmaker()` configure une 'usine à sessions' (souvent couplée au moteur créé par `create_engine()`) permettant de manipuler l'ORM de manière transactionnelle."
+  },
+  {
+    "question": "Qu'est-ce que le framework 'PyArrow' apporte à l'écosystème Python / Pandas ?",
+    "options": [
+      "Il dessine des flèches sur les graphiques",
+      "Il gère la mémoire en format colonne (Apache Arrow) permettant des transferts et lectures ultra-rapides, notamment pour le format Parquet",
+      "Il traduit le code Python en Rust",
+      "Il est le moteur de rendu de FastAPI"
+    ],
+    "answer": "Il gère la mémoire en format colonne (Apache Arrow) permettant des transferts et lectures ultra-rapides, notamment pour le format Parquet",
+    "explanation": "L'utilisation conjointe de Pandas avec le backend PyArrow (au lieu de numpy) réduit drastiquement l'empreinte mémoire des gros DataFrames."
+  },
+  {
+    "question": "Lors d'un audit éthique (Disparate Impact), pourquoi est-il crucial de regarder les 'croisements' de variables sensibles (ex: Femmes x Origine Asiatique) ?",
+    "options": [
+      "Pour faire de beaux graphiques 3D",
+      "Pour détecter l'intersectionnalité des biais : un sous-groupe très spécifique peut être lourdement discriminé alors que le biais global sur les femmes ou les asiatiques semble mineur",
+      "Pour augmenter le nombre de lignes du jeu de données",
+      "C'est inutile et déconseillé par le RGPD"
+    ],
+    "answer": "Pour détecter l'intersectionnalité des biais : un sous-groupe très spécifique peut être lourdement discriminé alors que le biais global sur les femmes ou les asiatiques semble mineur",
+    "explanation": "L'intersectionnalité révèle les biais structurels cachés qui pénalisent de manière disproportionnée des minorités multiples."
+  },
+  {
+    "question": "En Machine Learning, qu'est-ce que le 'Data Imputation' (Imputation de données) ?",
+    "options": [
+      "Accuser le jeu de données d'être corrompu",
+      "Remplacer les valeurs manquantes (NaN) par des valeurs estimées, comme la moyenne, la médiane, ou une prédiction d'un autre modèle",
+      "Convertir un texte en vecteur",
+      "Transférer les données vers le cloud"
+    ],
+    "answer": "Remplacer les valeurs manquantes (NaN) par des valeurs estimées, comme la moyenne, la médiane, ou une prédiction d'un autre modèle",
+    "explanation": "La plupart des algorithmes mathématiques de scikit-learn (comme la régression logistique) ne peuvent pas fonctionner s'il y a des 'trous' dans les données."
+  },
+  {
+    "question": "Que signifie le concept de 'Zero-Shot Classification' utilisé avec le modèle CLIP d'OpenAI ?",
+    "options": [
+      "Il prend exactement zéro seconde pour prédire",
+      "Le modèle peut classifier des images dans des catégories textuelles qu'il n'a jamais explicitement apprises pendant son entraînement (aucun exemple fourni pour cette nouvelle tâche)",
+      "Le modèle possède zéro paramètre",
+      "Le modèle s'exécute sans GPU"
+    ],
+    "answer": "Le modèle peut classifier des images dans des catégories textuelles qu'il n'a jamais explicitement apprises pendant son entraînement (aucun exemple fourni pour cette nouvelle tâche)",
+    "explanation": "En projetant les images et les textes dans un espace mathématique commun, CLIP comprend la sémantique et n'a pas besoin de 'fine-tuning' systématique."
+  },
+  {
+    "question": "Quel est l'avantage du 'Dropout' dans un réseau de neurones ?",
+    "options": [
+      "Il déconnecte automatiquement le réseau Wi-Fi",
+      "Il force le réseau à être plus robuste et réduit l'overfitting en désactivant (mettant à zéro) aléatoirement un certain pourcentage de neurones à chaque passage d'entraînement",
+      "Il réduit la taille du fichier du modèle sur le disque dur",
+      "Il convertit les images en noir et blanc"
+    ],
+    "answer": "Il force le réseau à être plus robuste et réduit l'overfitting en désactivant (mettant à zéro) aléatoirement un certain pourcentage de neurones à chaque passage d'entraînement",
+    "explanation": "Cela empêche le réseau de créer des co-adaptations trop fortes entre certains neurones, forçant chaque neurone à apprendre des caractéristiques utiles indépendamment."
+  },
+  {
+    "question": "Dans le contexte de FastAPI et des API REST, que veut dire CORS (Cross-Origin Resource Sharing) ?",
+    "options": [
+      "Un protocole militaire",
+      "Un mécanisme de sécurité des navigateurs web empêchant une page web hébergée sur un domaine A de faire des requêtes API vers un domaine B non autorisé",
+      "Une erreur Python",
+      "Un système de base de données partagée"
+    ],
+    "answer": "Un mécanisme de sécurité des navigateurs web empêchant une page web hébergée sur un domaine A de faire des requêtes API vers un domaine B non autorisé",
+    "explanation": "Pour qu'un frontend (ex: application React) puisse appeler votre API FastAPI hébergée ailleurs, vous devez explicitement autoriser l'origine du frontend via un middleware CORS."
+  },
+  {
+    "question": "Qu'est-ce que le 'Test-Driven Development' (TDD) ?",
+    "options": [
+      "Une approche où les développeurs ne font que tester et ne codent jamais",
+      "Une méthodologie où l'on écrit le test unitaire AVANT d'écrire le code de l'application censé faire passer ce test",
+      "Le fait de tester l'application en production uniquement",
+      "Un outil de monitoring"
+    ],
+    "answer": "Une méthodologie où l'on écrit le test unitaire AVANT d'écrire le code de l'application censé faire passer ce test",
+    "explanation": "Le cycle TDD est : Red (le test échoue), Green (on code juste assez pour qu'il passe), Refactor (on nettoie le code)."
+  },
+  {
+    "question": "À quoi sert un fichier `.env` dans un projet logiciel ?",
+    "options": [
+      "À générer l'environnement virtuel Python",
+      "À stocker les variables d'environnement locales et les secrets (clés d'API, mots de passe BDD) afin qu'ils ne soient pas codés en dur dans le code source",
+      "À définir l'URL du dépôt Git",
+      "À empaqueter le projet en format ZIP"
+    ],
+    "answer": "À stocker les variables d'environnement locales et les secrets (clés d'API, mots de passe BDD) afin qu'ils ne soient pas codés en dur dans le code source",
+    "explanation": "Ce fichier est indispensable pour la sécurité et doit systématiquement être ignoré par Git (ajouté au `.gitignore`) pour ne pas fuiter en ligne."
+  },
+  {
+    "question": "Pour conclure, pourquoi l'idempotence est-elle une caractéristique vitale des pipelines de données (ETL) ?",
+    "options": [
+      "Pour garantir que l'exécution du code soit toujours instantanée",
+      "Pour s'assurer que si un script est lancé 10 fois par erreur ou après un crash, le résultat final dans la base de données reste exactement le même qu'après 1 exécution (pas de doublons)",
+      "Pour chiffrer les données de bout en bout",
+      "Parce que c'est imposé par la licence open-source"
+    ],
+    "answer": "Pour s'assurer que si un script est lancé 10 fois par erreur ou après un crash, le résultat final dans la base de données reste exactement le même qu'après 1 exécution (pas de doublons)",
+    "explanation": "Un pipeline idempotent permet de relancer sereinement un travail échoué au milieu de la nuit sans craindre de corrompre toute l'architecture de données."
+  }
+]

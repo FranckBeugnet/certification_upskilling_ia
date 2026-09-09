@@ -1,0 +1,112 @@
+[
+  {
+    "question": "En Data Engineering, quel est l'avantage principal d'un format orienté colonne comme Parquet par rapport au CSV ?",
+    "options": [
+      "Il est modifiable directement dans le bloc-notes",
+      "Il compresse fortement les données et ne lit que les colonnes nécessaires lors d'une requête",
+      "Il supporte nativement les vidéos",
+      "Il est obligatoire pour utiliser Python"
+    ],
+    "answer": "Il compresse fortement les données et ne lit que les colonnes nécessaires lors d'une requête",
+    "explanation": "Les données de même type étant stockées ensemble (colonne par colonne), la compression est très efficace et les requêtes analytiques sont accélérées."
+  },
+  {
+    "question": "Qu'est-ce qu'un Data Lake par rapport à un Data Warehouse ?",
+    "options": [
+      "Un Data Lake stocke des données très structurées prêtes à l'emploi, le Warehouse stocke des données brutes",
+      "Un Data Lake stocke une vaste quantité de données brutes (non structurées ou semi-structurées), tandis qu'un Warehouse stocke des données structurées et filtrées pour l'analytique",
+      "Ce sont deux mots pour désigner exactement la même chose",
+      "Un Data Lake est uniquement utilisé pour stocker des images"
+    ],
+    "answer": "Un Data Lake stocke une vaste quantité de données brutes (non structurées ou semi-structurées), tandis qu'un Warehouse stocke des données structurées et filtrées pour l'analytique",
+    "explanation": "Le Data Lake agit comme un grand réservoir où l'on déverse toutes les données telles quelles, sans schéma imposé à l'écriture."
+  },
+  {
+    "question": "Quelle méthode Pandas est la plus efficace pour appliquer une fonction sur chaque ligne d'un très grand DataFrame ?",
+    "options": [
+      "Utiliser une boucle for itérant sur iterrows()",
+      "Utiliser la méthode apply() ou mieux, la vectorisation native de Numpy/Pandas",
+      "Exporter en CSV et utiliser Excel",
+      "Utiliser la méthode sum()"
+    ],
+    "answer": "Utiliser la méthode apply() ou mieux, la vectorisation native de Numpy/Pandas",
+    "explanation": "La vectorisation est la méthode la plus rapide en Python, car elle utilise des opérations optimisées en C sous le capot. `iterrows()` est à proscrire pour les gros volumes."
+  },
+  {
+    "question": "Qu'est-ce que le 'Data Leakage' (Fuite de données) en Machine Learning ?",
+    "options": [
+      "Le vol de la base de données par des hackers",
+      "Le fait d'utiliser des informations du jeu de test (ou du futur) lors de l'entraînement du modèle, faussant artificiellement ses performances",
+      "Une perte de données lors de l'ingestion",
+      "Une erreur de syntaxe dans le code"
+    ],
+    "answer": "Le fait d'utiliser des informations du jeu de test (ou du futur) lors de l'entraînement du modèle, faussant artificiellement ses performances",
+    "explanation": "Cela arrive souvent si on fait un scaler (StandardScaler) sur tout le dataset avant de faire le train_test_split."
+  },
+  {
+    "question": "Que permet de faire la bibliothèque 'PyArrow' en Python ?",
+    "options": [
+      "Créer des flèches graphiques dans Matplotlib",
+      "Manipuler des données en mémoire de manière extrêmement performante et interagir nativement avec le format Parquet",
+      "Entraîner des réseaux de neurones récurrents",
+      "Générer des requêtes SQL automatiquement"
+    ],
+    "answer": "Manipuler des données en mémoire de manière extrêmement performante et interagir nativement avec le format Parquet",
+    "explanation": "PyArrow est l'interface Python pour Apache Arrow, un format de données en mémoire orienté colonne."
+  },
+  {
+    "question": "En monitoring MLOps, quelle métrique utilise-t-on couramment pour détecter le Data Drift ?",
+    "options": [
+      "Le F1-Score",
+      "Le Population Stability Index (PSI)",
+      "L'Accuracy",
+      "La MAE (Mean Absolute Error)"
+    ],
+    "answer": "Le Population Stability Index (PSI)",
+    "explanation": "Le PSI permet de comparer la distribution d'une variable au moment de l'entraînement avec celle en production pour déclencher une alerte si elles diffèrent trop."
+  },
+  {
+    "question": "Qu'est-ce qu'une table de 'Faits' (Fact table) dans une modélisation en étoile (Data Warehouse) ?",
+    "options": [
+      "Une table qui stocke des textes libres",
+      "Une table centrale contenant les événements ou transactions mesurables (ex: les ventes) et des clés étrangères vers les tables de dimensions",
+      "Une table qui décrit les clients",
+      "Une table temporaire supprimée à chaque requête"
+    ],
+    "answer": "Une table centrale contenant les événements ou transactions mesurables (ex: les ventes) et des clés étrangères vers les tables de dimensions",
+    "explanation": "Les tables de faits contiennent les indicateurs de performance, entourées par les tables de dimensions (temps, géographie, produit) qui donnent le contexte."
+  },
+  {
+    "question": "Quel est le but d'un 'DAG' (Directed Acyclic Graph) dans un orchestrateur comme Apache Airflow ?",
+    "options": [
+      "Modéliser un réseau de neurones convolutif",
+      "Représenter l'enchaînement et les dépendances des tâches d'un pipeline de données sans créer de boucle infinie",
+      "Gérer le routage réseau des conteneurs",
+      "Créer des arbres de décision en Machine Learning"
+    ],
+    "answer": "Représenter l'enchaînement et les dépendances des tâches d'un pipeline de données sans créer de boucle infinie",
+    "explanation": "Le DAG garantit que la tâche B ne s'exécutera que lorsque la tâche A sera terminée, et que l'exécution a un début et une fin clairs."
+  },
+  {
+    "question": "Pourquoi préfère-t-on souvent utiliser SQLAlchemy 'ORM' plutôt que 'Core' pour les petites applications ?",
+    "options": [
+      "Parce que c'est plus lent",
+      "Parce qu'il permet de manipuler les lignes de la BDD comme de simples objets Python (classes), rendant le code plus lisible et orienté objet",
+      "Parce qu'il génère du code HTML",
+      "Parce qu'il est obligatoire pour PostgreSQL"
+    ],
+    "answer": "Parce qu'il permet de manipuler les lignes de la BDD comme de simples objets Python (classes), rendant le code plus lisible et orienté objet",
+    "explanation": "L'ORM abstrait la complexité du SQL. SQLAlchemy Core reste toutefois utilisé pour des requêtes très complexes ou des besoins de très haute performance."
+  },
+  {
+    "question": "En Pandas, que fait la méthode `df.merge()` ?",
+    "options": [
+      "Elle fusionne deux DataFrames horizontalement, un peu comme une jointure SQL (JOIN)",
+      "Elle ajoute les lignes de l'un à la suite de l'autre",
+      "Elle supprime les colonnes dupliquées",
+      "Elle mélange aléatoirement l'ordre des lignes"
+    ],
+    "answer": "Elle fusionne deux DataFrames horizontalement, un peu comme une jointure SQL (JOIN)",
+    "explanation": "La méthode merge permet de combiner des données en spécifiant les clés de jointure (ex: `on='id_client'`)."
+  }
+]

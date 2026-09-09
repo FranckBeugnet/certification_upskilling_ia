@@ -1,0 +1,112 @@
+[
+  {
+    "question": "En analyse d'images (Vision par ordinateur), quel type de réseau de neurones est historiquement le plus utilisé ?",
+    "options": [
+      "Les Réseaux de Neurones Récurrents (RNN)",
+      "Les Réseaux de Neurones Convolutifs (CNN)",
+      "Les Autoencodeurs",
+      "Les Réseaux de Neurones Denses basiques (MLP)"
+    ],
+    "answer": "Les Réseaux de Neurones Convolutifs (CNN)",
+    "explanation": "Les CNN (Convolutional Neural Networks) sont conçus pour traiter des données sous forme de grille, comme des images, grâce à des filtres qui détectent les formes et textures."
+  },
+  {
+    "question": "Qu'est-ce que le Transfer Learning en Deep Learning ?",
+    "options": [
+      "Transférer les données d'un cloud à un autre.",
+      "Réutiliser un modèle pré-entraîné sur une grande base de données pour l'adapter à une nouvelle tâche avec moins de données.",
+      "Convertir un modèle Python vers un langage comme C++.",
+      "Entraîner le même modèle plusieurs fois."
+    ],
+    "answer": "Réutiliser un modèle pré-entraîné sur une grande base de données pour l'adapter à une nouvelle tâche avec moins de données.",
+    "explanation": "Le Transfer Learning permet d'économiser du temps et des ressources en s'appuyant sur les connaissances (les poids) déjà apprises par un modèle."
+  },
+  {
+    "question": "Dans le contexte de l'éthique en IA, qu'est-ce que le 'Disparate Impact' (Impact Disparate) ?",
+    "options": [
+      "Le fait qu'un modèle soit très gourmand en énergie.",
+      "Une situation où un système discrimine de manière disproportionnée et non justifiée un groupe de personnes, même si l'algorithme est neutre en apparence.",
+      "La différence de performance entre le train et le test.",
+      "L'impact économique d'un modèle en production."
+    ],
+    "answer": "Une situation où un système discrimine de manière disproportionnée et non justifiée un groupe de personnes, même si l'algorithme est neutre en apparence.",
+    "explanation": "Le Disparate Impact est une notion juridique et éthique mesurant si les résultats d'un algorithme affectent négativement un groupe protégé (ex: genre, race)."
+  },
+  {
+    "question": "À quoi sert un Datasheet (comme le propose Timnit Gebru) pour un jeu de données ?",
+    "options": [
+      "À documenter les caractéristiques, l'origine, les biais potentiels et l'utilisation recommandée d'un dataset.",
+      "À compresser les données pour les stocker plus facilement.",
+      "À chiffrer les données sensibles.",
+      "À créer un tableau de bord Excel pour la direction."
+    ],
+    "answer": "À documenter les caractéristiques, l'origine, les biais potentiels et l'utilisation recommandée d'un dataset.",
+    "explanation": "Le concept de 'Datasheets for Datasets' permet d'améliorer la transparence et la responsabilité en IA en fournissant une 'notice' standardisée."
+  },
+  {
+    "question": "La bibliothèque HuggingFace Transformers est principalement connue pour simplifier l'utilisation de :",
+    "options": [
+      "Bases de données graphiques.",
+      "Modèles de langage de grande taille (LLMs) et d'architectures Transformers (BERT, GPT, etc.).",
+      "Systèmes d'exploitation embarqués.",
+      "Réseaux de neurones convolutifs from scratch."
+    ],
+    "answer": "Modèles de langage de grande taille (LLMs) et d'architectures Transformers (BERT, GPT, etc.).",
+    "explanation": "HuggingFace est devenu le hub de référence pour partager et utiliser des modèles pré-entraînés basés sur l'architecture Transformer en NLP, Vision et Audio."
+  },
+  {
+    "question": "Que signifie la technique 'Zero-Shot' dans des modèles comme CLIP ou certains LLMs ?",
+    "options": [
+      "Entraîner le modèle en zéro seconde grâce aux GPUs.",
+      "Prédire sur de nouvelles classes ou tâches sans avoir fourni le moindre exemple d'entraînement spécifique.",
+      "Supprimer les zéros d'une matrice pour accélérer le calcul (Sparse matrix).",
+      "Un modèle qui a zéro paramètre."
+    ],
+    "answer": "Prédire sur de nouvelles classes ou tâches sans avoir fourni le moindre exemple d'entraînement spécifique.",
+    "explanation": "Le Zero-Shot learning permet à un modèle très généraliste d'accomplir une tâche (ex: classifier des images de chiens et chats) en utilisant seulement ses connaissances préalables (ex: via le texte)."
+  },
+  {
+    "question": "Quel outil NLP est souvent utilisé pour extraire et anonymiser des entités nommées (NER) et des PII (données personnelles) en Python ?",
+    "options": [
+      "BeautifulSoup",
+      "spaCy (ou Microsoft Presidio qui l'utilise sous le capot)",
+      "Matplotlib",
+      "SQLAlchemy"
+    ],
+    "answer": "spaCy (ou Microsoft Presidio qui l'utilise sous le capot)",
+    "explanation": "spaCy est une bibliothèque NLP industrielle très performante pour la reconnaissance d'entités nommées (NER), étape clé pour détecter et masquer les données sensibles (PII)."
+  },
+  {
+    "question": "En Deep Learning, à quoi sert la phase de 'Calibration' d'un modèle de classification ?",
+    "options": [
+      "À régler la luminosité des images d'entraînement.",
+      "À s'assurer que la probabilité prédite par le modèle reflète la fréquence réelle d'occurrence (confiance vs exactitude).",
+      "À augmenter le nombre de neurones dans la dernière couche.",
+      "À équilibrer le jeu de données d'apprentissage."
+    ],
+    "answer": "À s'assurer que la probabilité prédite par le modèle reflète la fréquence réelle d'occurrence (confiance vs exactitude).",
+    "explanation": "Un modèle bien calibré qui prédit une classe avec 80% de probabilité aura effectivement raison 80% du temps dans la réalité."
+  },
+  {
+    "question": "Pourquoi la gestion des risques RGPD est-elle complexe lors de l'ingestion multisources en IA ?",
+    "options": [
+      "Parce que Python ne gère pas la sécurité.",
+      "Parce que le RGPD n'autorise pas l'utilisation de l'Intelligence Artificielle.",
+      "Parce que le croisement de différentes sources de données anonymes peut permettre de ré-identifier des individus de manière indirecte.",
+      "Parce qu'il faut obligatoirement héberger les serveurs aux États-Unis."
+    ],
+    "answer": "Parce que le croisement de différentes sources de données anonymes peut permettre de ré-identifier des individus de manière indirecte.",
+    "explanation": "Même si chaque source est pseudonymisée ou anonymisée, l'intersection de plusieurs datasets (ex: âge + ville + emploi) peut mener à la ré-identification d'une personne."
+  },
+  {
+    "question": "Quel framework Python est très populaire pour créer rapidement des interfaces web interactives pour des projets de Data Science ?",
+    "options": [
+      "Django",
+      "Flask",
+      "Streamlit",
+      "React"
+    ],
+    "answer": "Streamlit",
+    "explanation": "Streamlit permet aux Data Scientists de construire des applications web et des dashboards très rapidement en pur Python, sans avoir besoin d'écrire du HTML/JS/CSS."
+  }
+]

@@ -1,0 +1,112 @@
+[
+  {
+    "question": "Quel est le rôle principal de Streamlit en Data Science ?",
+    "options": [
+      "Créer des bases de données SQL",
+      "Permettre la création rapide d'interfaces web interactives (dashboards, apps) en pur Python, sans compétences frontend (HTML/JS)",
+      "Entraîner des réseaux de neurones",
+      "Orchestrer des conteneurs Docker"
+    ],
+    "answer": "Permettre la création rapide d'interfaces web interactives (dashboards, apps) en pur Python, sans compétences frontend (HTML/JS)",
+    "explanation": "Streamlit ré-exécute le script Python de haut en bas à chaque interaction utilisateur, mettant à jour l'interface dynamiquement."
+  },
+  {
+    "question": "Dans Streamlit, à quoi sert le décorateur '@st.cache_data' ?",
+    "options": [
+      "À chiffrer les données",
+      "À mettre en cache le résultat d'une fonction coûteuse (comme le chargement d'un gros fichier CSV) pour éviter de la refaire à chaque interaction de l'utilisateur",
+      "À supprimer le cache du navigateur web",
+      "À cacher un bouton secret"
+    ],
+    "answer": "À mettre en cache le résultat d'une fonction coûteuse (comme le chargement d'un gros fichier CSV) pour éviter de la refaire à chaque interaction de l'utilisateur",
+    "explanation": "Le cache est vital car Streamlit relance le script en entier à chaque clic. Sans cache, l'application serait très lente."
+  },
+  {
+    "question": "Quelle commande permet de lancer une application Streamlit en local ?",
+    "options": [
+      "python run app.py",
+      "streamlit run app.py",
+      "fastapi start app.py",
+      "uvicorn app:main"
+    ],
+    "answer": "streamlit run app.py",
+    "explanation": "Streamlit intègre son propre serveur web de développement."
+  },
+  {
+    "question": "Dans Pytest, qu'est-ce qu'une 'Fixture' ?",
+    "options": [
+      "Une erreur de syntaxe introuvable",
+      "Une fonction (décorée par @pytest.fixture) permettant de fournir un contexte ou des données réutilisables pour les tests (ex: connexion BDD, client API de test)",
+      "Un module pour faire des requêtes HTTP",
+      "Une méthode de nettoyage de code"
+    ],
+    "answer": "Une fonction (décorée par @pytest.fixture) permettant de fournir un contexte ou des données réutilisables pour les tests (ex: connexion BDD, client API de test)",
+    "explanation": "Les fixtures Pytest permettent de séparer l'initialisation de l'environnement (setup) de la logique du test."
+  },
+  {
+    "question": "Comment le TestClient de FastAPI se comporte-t-il pendant les tests unitaires ?",
+    "options": [
+      "Il déploie l'application sur un serveur cloud",
+      "Il permet d'appeler directement les routes de l'application via Python de manière synchrone et très rapide, sans ouvrir un vrai port réseau Uvicorn",
+      "Il nécessite obligatoirement Docker pour fonctionner",
+      "Il ne permet de tester que la route /health"
+    ],
+    "answer": "Il permet d'appeler directement les routes de l'application via Python de manière synchrone et très rapide, sans ouvrir un vrai port réseau Uvicorn",
+    "explanation": "Basé sur HTTPX, le TestClient court-circuite le réseau pour appeler le code ASGI directement."
+  },
+  {
+    "question": "Si vous voulez simuler (Mocker) le modèle de Machine Learning dans un test Pytest pour éviter de le charger, que devez-vous faire ?",
+    "options": [
+      "Ignorer le test avec @pytest.mark.skip",
+      "Utiliser unittest.mock.patch (ou le monkeypatch de Pytest) pour remplacer la méthode `predict` du modèle par une fausse fonction retournant une valeur prédéfinie",
+      "Supprimer le fichier .joblib du projet",
+      "Fermer les yeux et espérer que ça passe"
+    ],
+    "answer": "Utiliser unittest.mock.patch (ou le monkeypatch de Pytest) pour remplacer la méthode `predict` du modèle par une fausse fonction retournant une valeur prédéfinie",
+    "explanation": "Le mocking permet de tester la logique de l'API (validation, format de réponse) de manière unitaire et immédiate, sans la lourdeur du chargement du vrai modèle."
+  },
+  {
+    "question": "À quoi sert la notion de paramétrisation dans Pytest ('@pytest.mark.parametrize') ?",
+    "options": [
+      "À lire les paramètres depuis un fichier JSON",
+      "À exécuter le même test de nombreuses fois avec des jeux de données d'entrée et de sortie attendus différents, évitant de dupliquer le code du test",
+      "À mesurer le temps d'exécution",
+      "À définir les variables d'environnement"
+    ],
+    "answer": "À exécuter le même test de nombreuses fois avec des jeux de données d'entrée et de sortie attendus différents, évitant de dupliquer le code du test",
+    "explanation": "C'est la fonctionnalité phare de Pytest pour vérifier les cas limites de manière concise."
+  },
+  {
+    "question": "Que faut-il vérifier en priorité dans le retour d'une requête '/predict' lors d'un test Pytest de l'API ?",
+    "options": [
+      "La couleur de fond de l'API",
+      "Le code statut HTTP (ex: 200) et la structure/valeur du payload JSON en réponse (ex: 'prediction' in response.json())",
+      "L'adresse IP du serveur",
+      "Le temps de latence réseau"
+    ],
+    "answer": "Le code statut HTTP (ex: 200) et la structure/valeur du payload JSON en réponse (ex: 'prediction' in response.json())",
+    "explanation": "Un test d'intégration d'API s'assure du bon fonctionnement du contrat de l'interface (statut HTTP et contenu de la réponse)."
+  },
+  {
+    "question": "En Streamlit, comment gère-t-on l'état d'une variable qui ne doit pas être réinitialisée à chaque clic de l'utilisateur (ex: un compteur) ?",
+    "options": [
+      "En utilisant une variable globale classique",
+      "En utilisant le dictionnaire 'st.session_state'",
+      "En sauvegardant dans un fichier texte",
+      "Streamlit ne permet pas de faire cela"
+    ],
+    "answer": "En utilisant le dictionnaire 'st.session_state'",
+    "explanation": "Puisque le script se recharge à chaque interaction, seules les variables stockées dans `st.session_state` survivent au rechargement de la page."
+  },
+  {
+    "question": "Que mesure le paramètre de couverture de code ('Code Coverage') lors de l'exécution de Pytest ?",
+    "options": [
+      "Le pourcentage de lignes de code de l'application qui ont été exécutées par au moins un test unitaire",
+      "Le nombre d'utilisateurs simultanés que l'API peut gérer",
+      "Le pourcentage de bugs corrigés",
+      "La précision du modèle de Machine Learning"
+    ],
+    "answer": "Le pourcentage de lignes de code de l'application qui ont été exécutées par au moins un test unitaire",
+    "explanation": "Une couverture de code élevée (ex: > 80%) indique que l'essentiel du code a été validé par les tests, bien qu'elle ne garantisse pas l'absence totale de bugs logiques."
+  }
+]

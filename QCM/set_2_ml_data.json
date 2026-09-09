@@ -1,0 +1,112 @@
+[
+  {
+    "question": "En Machine Learning, quelle est la différence principale entre un Data Drift et un Concept Drift ?",
+    "options": [
+      "Le Data Drift concerne les variables d'entrée (X), le Concept Drift concerne la relation entre les variables d'entrée (X) et la cible (y).",
+      "Le Data Drift concerne la cible (y), le Concept Drift concerne les variables d'entrée (X).",
+      "Ce sont deux termes pour désigner le même phénomène.",
+      "Le Data Drift est lié aux valeurs manquantes, le Concept Drift aux valeurs aberrantes."
+    ],
+    "answer": "Le Data Drift concerne les variables d'entrée (X), le Concept Drift concerne la relation entre les variables d'entrée (X) et la cible (y).",
+    "explanation": "Le Data Drift (ou Covariate Shift) est un changement dans la distribution des données en entrée, tandis que le Concept Drift est un changement dans ce qu'on essaie de prédire."
+  },
+  {
+    "question": "Dans Scikit-Learn, à quoi sert principalement le ColumnTransformer ?",
+    "options": [
+      "À supprimer des colonnes d'un DataFrame Pandas.",
+      "À appliquer différentes transformations de preprocessing à différentes sous-parties des colonnes (ex: variables numériques vs catégorielles).",
+      "À renommer des colonnes.",
+      "À entraîner plusieurs modèles en parallèle."
+    ],
+    "answer": "À appliquer différentes transformations de preprocessing à différentes sous-parties des colonnes (ex: variables numériques vs catégorielles).",
+    "explanation": "Le ColumnTransformer permet de créer un pipeline de preprocessing complexe où chaque type de donnée subit la transformation adéquate avant d'être concaténé."
+  },
+  {
+    "question": "Quelle métrique est souvent privilégiée pour évaluer un modèle de classification sur un jeu de données très déséquilibré ?",
+    "options": [
+      "L'Accuracy (Exactitude)",
+      "Le R-carré (R2)",
+      "Le F1-Score ou l'AUC-ROC",
+      "La MAE (Mean Absolute Error)"
+    ],
+    "answer": "Le F1-Score ou l'AUC-ROC",
+    "explanation": "L'Accuracy est trompeuse si les classes sont déséquilibrées (ex: 99% d'une classe). Le F1-Score prend en compte la Précision et le Rappel."
+  },
+  {
+    "question": "Quand devez-vous utiliser un split temporel (Time Series Split) plutôt qu'un split stratifié ?",
+    "options": [
+      "Quand le jeu de données contient des images.",
+      "Quand on veut s'assurer d'avoir le même pourcentage de chaque classe dans le train et le test.",
+      "Quand l'ordre chronologique des données est important pour éviter les fuites de données du futur vers le passé.",
+      "Quand le jeu de données est très petit."
+    ],
+    "answer": "Quand l'ordre chronologique des données est important pour éviter les fuites de données du futur vers le passé.",
+    "explanation": "Dans les séries temporelles, un split aléatoire (même stratifié) permettrait au modèle d'apprendre sur des données futures par rapport à ce qu'il est censé prédire (Data Leakage)."
+  },
+  {
+    "question": "En régression, que pénalise le plus fortement la métrique RMSE (Root Mean Squared Error) ?",
+    "options": [
+      "Les petites erreurs",
+      "Les grandes erreurs (outliers)",
+      "Les prédictions parfaites",
+      "Le nombre de variables dans le modèle"
+    ],
+    "answer": "Les grandes erreurs (outliers)",
+    "explanation": "L'erreur au carré amplifie mathématiquement les écarts importants entre la prédiction et la réalité."
+  },
+  {
+    "question": "Pour sauvegarder (persister) un modèle Scikit-Learn sur le disque, quelle bibliothèque est classiquement recommandée et très performante pour les gros numpy arrays ?",
+    "options": [
+      "json",
+      "sqlite3",
+      "joblib",
+      "requests"
+    ],
+    "answer": "joblib",
+    "explanation": "Joblib est optimisé pour sérialiser les objets Python contenant de grands tableaux NumPy, typiques dans les modèles Scikit-Learn."
+  },
+  {
+    "question": "Dans le contexte de l'audit qualité Pandas, comment vérifier rapidement les valeurs manquantes d'un DataFrame 'df' ?",
+    "options": [
+      "df.head()",
+      "df.isnull().sum()",
+      "df.describe()",
+      "df.shape()"
+    ],
+    "answer": "df.isnull().sum()",
+    "explanation": "La méthode isnull() crée un masque booléen, et sum() l'agrège par colonne pour donner le nombre total de valeurs manquantes."
+  },
+  {
+    "question": "Qu'est-ce que la métrique PSI (Population Stability Index) ?",
+    "options": [
+      "Une métrique de performance pour les réseaux de neurones.",
+      "Un score mesurant le degré d'anonymisation des données.",
+      "Un indicateur permettant de mesurer le décalage (drift) entre la distribution d'une variable dans deux échantillons différents (ex: train vs production).",
+      "Un algorithme d'optimisation des hyperparamètres."
+    ],
+    "answer": "Un indicateur permettant de mesurer le décalage (drift) entre la distribution d'une variable dans deux échantillons différents (ex: train vs production).",
+    "explanation": "Le PSI est très utilisé en risque de crédit et monitoring MLOps pour détecter si la population a changé significativement au fil du temps."
+  },
+  {
+    "question": "À quoi correspond le paramètre 'n_estimators' dans un RandomForest ?",
+    "options": [
+      "La profondeur maximale de chaque arbre.",
+      "Le nombre d'arbres de décision dans la forêt.",
+      "Le taux d'apprentissage (learning rate).",
+      "Le nombre de features considérées à chaque séparation (split)."
+    ],
+    "answer": "Le nombre d'arbres de décision dans la forêt.",
+    "explanation": "C'est l'hyperparamètre principal qui définit la taille de l'ensemble (la forêt) ; un nombre plus grand augmente la robustesse mais coûte plus cher en calcul."
+  },
+  {
+    "question": "Quel est le format de fichier binaire orienté colonne très utilisé pour la manipulation performante de gros volumes de données en Data Engineering / ML ?",
+    "options": [
+      "CSV",
+      "JSON",
+      "Parquet (via PyArrow)",
+      "XML"
+    ],
+    "answer": "Parquet (via PyArrow)",
+    "explanation": "Le format Parquet permet une compression efficace et une lecture rapide, notamment lorsqu'on ne souhaite lire que quelques colonnes."
+  }
+]
