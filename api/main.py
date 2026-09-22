@@ -21,14 +21,24 @@ from api.schemas import (
     HealthCheckOutput
 )
 
-# Inliner extract_text pour la désérialisation Joblib
+# Inliner extract_text et extract_geo_rome_features pour la désérialisation Joblib
 def extract_text(X):
     if hasattr(X, "iloc"):
         return X.iloc[:, 0].fillna("").astype(str)
     return pd.Series(X).fillna("").astype(str)
 
+def extract_geo_rome_features(df_input):
+    df_out = df_input.copy()
+    if hasattr(df_out, "columns"):
+        if "code_insee_commune" in df_out.columns:
+            df_out["departement"] = df_out["code_insee_commune"].astype(str).str[:2]
+        if "code_rome_vise" in df_out.columns:
+            df_out["famille_rome"] = df_out["code_rome_vise"].astype(str).str[0]
+    return df_out
+
 import __main__
 setattr(__main__, "extract_text", extract_text)
+setattr(__main__, "extract_geo_rome_features", extract_geo_rome_features)
 
 # Configuration des chemins
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -94,11 +104,8 @@ LABELS_MAPPING = {
 SEUIL_CONFIDENCE = 0.65
 
 def prepare_input_dataframe(data: UsagerInput) -> pd.DataFrame:
-    """Transforme un UsagerInput en DataFrame compatible avec le pipeline S2."""
-    df = pd.DataFrame([data.model_dump()])
-    df["departement"] = df["code_insee_commune"].astype(str).str[:2]
-    df["famille_rome"] = df["code_rome_vise"].astype(str).str[0]
-    return df
+    """Transforme un UsagerInput en DataFrame brut (le Feature Engineering est intégré au Pipeline)."""
+    return pd.DataFrame([data.model_dump()])
 
 @app.get("/health", response_model=HealthCheckOutput)
 def health_check():
