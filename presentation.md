@@ -563,11 +563,16 @@ li { margin-bottom: 5px; font-size: 14.5px; line-height: 1.35; }
     </ul>
   </div>
   <div>
-    <div class="tech-box" style="font-size: 14.5px; margin: 0; padding: 10px 12px; line-height: 1.35;">
-      <b>Fonctionnement du Filet de Sécurité :</b><br>
-      • Si $\max(P) &ge; 65\%$ $\rightarrow$ Recommandation affichée.<br>
-      • Si $\max(P) &lt; 65\%$ $\rightarrow$ L'API renvoie <code>fallback: true</code>.<br>
-      • L'IHM invite le conseiller à qualifier le dossier en autonomie (*Human-In-The-Loop* effectif).
+    <div style="background: #ffffff; border: 2px solid #1565c0; border-radius: 8px; padding: 12px; box-shadow: 2px 2px 8px rgba(0,0,0,0.06);">
+      <b style="font-size: 15px; color: #0d47a1; display: block; margin-bottom: 8px;">Logique du Filet de Sécurité (API)</b>
+      <div style="background: #f1f8e9; border-left: 4px solid #2e7d32; padding: 6px 10px; margin-bottom: 8px; border-radius: 4px;">
+        <span style="font-weight: bold; color: #1b5e20; font-size: 13.5px;">🟢 Confiance &ge; 65% : Feu Vert</span><br>
+        <span style="font-size: 13px; color: #333;">L'IA affiche la recommandation d'orientation au conseiller.</span>
+      </div>
+      <div style="background: #fff3e0; border-left: 4px solid #e65100; padding: 6px 10px; border-radius: 4px;">
+        <span style="font-weight: bold; color: #bf360c; font-size: 13.5px;">🟡 Confiance &lt; 65% : Abstention (Fallback)</span><br>
+        <span style="font-size: 13px; color: #333;">L'API renvoie <code>fallback: true</code>. L'IHM invite le conseiller à décider en autonomie (<i>Human-In-The-Loop</i>).</span>
+      </div>
     </div>
   </div>
 </div>
