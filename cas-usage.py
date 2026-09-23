@@ -846,7 +846,7 @@ print("✅ Pipelines de pré-traitement (S1, S2, S3, S4) sauvegardés avec succ�
 # | Random Forest | ensemble (Bagging) | robuste, gère bien les non-linéarités, peu de tuning | moyen / faible | moyenne (feature importance) |
 # | LightGBM | ensemble (Boosting) | très performant sur tabulaire, gère nativement matrices creuses TF-IDF | moyen / faible | moyenne (feature importance) |
 
-# ### 5.3 Benchmark des models
+# ### 5.3 Benchmark des modèles
 
 # > **Note méthodologique (Choix de la Boussole Unique)** : 
 # > Lors de la phase de benchmark (ci-dessous) et de recherche d'hyperparamètres, nous utilisons **une seule métrique d'évaluation : le F1-Macro**.
@@ -900,16 +900,16 @@ display(df_cv_results)
 # 
 # > Le tableau ci-dessus résume les résultats de la validation croisée en 5 blocs (*5-fold CV*) avec deux indicateurs : la **Moyenne** du F1-Macro (niveau global de performance) et l'**Écart-type** (stabilité des prédictions d'un bloc à l'autre).
 # 
-# 1. **LightGBM (Meilleure performance moyenne)** : Il affiche le meilleur score moyen (~0.68), montrant une bonne capacité à exploiter à la fois les variables tabulaires et le texte TF-IDF. Son écart-type reste modéré (~0.014).
-# 2. **Random Forest (Meilleure stabilité)** : Bien que son F1 moyen soit légèrement en retrait (~0.65), il présente la dispersion la plus faible (~0.012), ce qui témoigne d'une grande régularité face aux variations du jeu de données.
-# 3. **Régression Logistique (Baseline linéaire)** : Son score moyen (~0.66) est honorable pour un modèle simple, mais sa dispersion est plus marquée.
+# 1. **LightGBM (Meilleure performance moyenne)** : Il affiche le meilleur score moyen (environ 0.68), montrant une bonne capacité à exploiter à la fois les variables tabulaires et le texte TF-IDF. Son écart-type reste modéré (environ 0.014).
+# 2. **Random Forest (Meilleure stabilité)** : Bien que son F1 moyen soit légèrement en retrait (environ 0.65), il présente la dispersion la plus faible (environ 0.012), ce qui témoigne d'une grande régularité face aux variations du jeu de données.
+# 3. **Régression Logistique (Baseline linéaire)** : Son score moyen (environ 0.66) est honorable pour un modèle simple, mais sa dispersion est plus marquée.
 # 
 # **Orientation pour l'étape suivante** : 
 # Afin de ne pas conclure prématurément sur des modèles aux paramètres par défaut, nous conservons les deux approches les plus prometteuses — **LightGBM** et **Random Forest** — pour l'étape d'optimisation des hyperparamètres (§5.4). Le choix final du modèle s'appuiera sur les résultats post-optimisation.
 
 # ### 5.4 Optimisation des hyperparamètres
 # 
-# Notre jeu de données est "petit" (~2500 lignes) mais très "large" en raison de l'analyse NLP (`TF-IDF` crée des centaines de colonnes). Si on laisse les modèles avec leurs paramètres par défaut, ils vont mémoriser les dossiers par cœur (Surapprentissage / Overfitting) mais échoueront en conditions réelles.
+# Notre jeu de données est de taille modeste (environ 2500 lignes) mais très large en raison de l'analyse NLP (`TF-IDF` crée des centaines de colonnes). Si on laisse les modèles avec leurs paramètres par défaut, ils vont mémoriser les dossiers par cœur (surapprentissage / *overfitting*) mais échoueront en conditions réelles.
 # 
 # Voici pourquoi nous avons choisi cette grille de test (le "filet de sécurité") :
 # 

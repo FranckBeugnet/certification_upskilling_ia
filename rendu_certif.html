@@ -9772,16 +9772,13 @@ Par souci de lisibilité et de conformité au principe KISS (Keep It Simple, Stu
 Plutôt que d'appliquer des transformations <code>pandas</code> en vrac sur l'ensemble du dataset, nous avons encapsulé toute la logique d'imputation, de mise à l'échelle et de vectorisation textuelle au sein d'un <code>ColumnTransformer</code> de <code>scikit-learn</code>. Couplé au <code>train_test_split</code> préalable, cela garantit une étanchéité parfaite : le modèle n'a aucune vision sur la distribution des données de test. C'est une condition <em>sine qua non</em> pour une industrialisation robuste.</p>
 </li>
 <li><p><strong>Maîtrise de la dimensionnalité (Feature Engineering)</strong> :
-Les variables <code>code_insee_commune</code> (plus de 2000 modalités) et <code>code_rome_vise</code> posaient un risque de sur-apprentissage (curse of dimensionality). En extrayant les métadonnées de plus haut niveau (le numéro de département et la grande famille de métier), nous réduisons drastiquement la cardinalité tout en conservant le signal géographique et sectoriel. De même, le NLP via <code>TfidfVectorizer</code> a été plafonné à 1000 features pour garantir un temps d'inférence compatible avec le temps réel (une contrainte opérationnelle forte pour les conseillers).</p>
+Les variables <code>code_insee_commune</code> (plus de 2000 modalités) et <code>code_rome_vise</code> posaient un risque de sur-apprentissage (<em>curse of dimensionality</em>). En extrayant les métadonnées de plus haut niveau (le numéro de département et la grande famille de métier), nous réduisons drastiquement la cardinalité tout en conservant le signal géographique et sectoriel. De même, le NLP via <code>TfidfVectorizer</code> a été plafonné à 1000 features pour garantir un temps d'inférence compatible avec le temps réel (une contrainte opérationnelle forte pour les conseillers).</p>
 </li>
 <li><p><strong>Prise en compte du contexte déséquilibré</strong> :
 L'utilisation du paramètre <code>stratify=y</code> n'est pas qu'un détail technique. Sachant que l'enjeu métier principal est de ne rater aucun usager en risque de chômage longue durée (Faux Négatifs), il est impératif que cette classe minoritaire soit représentée avec exactitude dans nos jeux de test pour que les futures métriques de validation (F1-Score, Recall) soient fiables.</p>
 </li>
 <li><p><strong>Construction d'une démarche d'audit éthique</strong> :
 Enfin, la structuration formelle de nos 4 scénarios d'entraînement est la base de notre future analyse critique (Section 6). Le scénario <strong>S2 (Éthique)</strong>, en retirant l'âge et la nationalité, nous permettra de comparer les performances brutes avec les performances 'sans biais potentiel', répondant ainsi directement aux exigences réglementaires de l'AI Act et au principe de non-discrimination algorithmique.</p>
-</li>
-<li><p><strong>Filtrage du bruit sémantique (NLP)</strong> :
-L'injection d'une liste de Stop Words français dans le TF-IDF a permis d'éliminer le bruit de fond (les mots de liaison) qui polluait l'espace vectoriel. Cela a considérablement amélioré la pertinence des mots-clés extraits, garantissant une meilleure explicabilité finale du modèle.</p>
 </li>
 <li><p><strong>Filtrage du bruit sémantique (NLP)</strong> :
 L'injection d'une liste de Stop Words français dans le TF-IDF a permis d'éliminer le bruit de fond (les mots de liaison) qui polluait l'espace vectoriel. Cela a considérablement amélioré la pertinence des mots-clés extraits, garantissant une meilleure explicabilité finale du modèle.</p>
@@ -9866,7 +9863,7 @@ L'injection d'une liste de Stop Words français dans le TF-IDF a permis d'élimi
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="5.3-Benchmark-des-models">5.3 Benchmark des models<a class="anchor-link" href="#5.3-Benchmark-des-models">¶</a></h3>
+<h3 id="5.3-Benchmark-des-mod%C3%A8les">5.3 Benchmark des modèles<a class="anchor-link" href="#5.3-Benchmark-des-mod%C3%A8les">¶</a></h3>
 </div>
 </div>
 </div>
@@ -9999,9 +9996,9 @@ Lors de la phase de benchmark (ci-dessous) et de recherche d'hyperparamètres, n
 <p>Le tableau ci-dessus résume les résultats de la validation croisée en 5 blocs (<em>5-fold CV</em>) avec deux indicateurs : la <strong>Moyenne</strong> du F1-Macro (niveau global de performance) et l'<strong>Écart-type</strong> (stabilité des prédictions d'un bloc à l'autre).</p>
 </blockquote>
 <ol>
-<li><strong>LightGBM (Meilleure performance moyenne)</strong> : Il affiche le meilleur score moyen (~0.68), montrant une bonne capacité à exploiter à la fois les variables tabulaires et le texte TF-IDF. Son écart-type reste modéré (~0.014).</li>
-<li><strong>Random Forest (Meilleure stabilité)</strong> : Bien que son F1 moyen soit légèrement en retrait (~0.65), il présente la dispersion la plus faible (~0.012), ce qui témoigne d'une grande régularité face aux variations du jeu de données.</li>
-<li><strong>Régression Logistique (Baseline linéaire)</strong> : Son score moyen (~0.66) est honorable pour un modèle simple, mais sa dispersion est plus marquée.</li>
+<li><strong>LightGBM (Meilleure performance moyenne)</strong> : Il affiche le meilleur score moyen (environ 0.68), montrant une bonne capacité à exploiter à la fois les variables tabulaires et le texte TF-IDF. Son écart-type reste modéré (environ 0.014).</li>
+<li><strong>Random Forest (Meilleure stabilité)</strong> : Bien que son F1 moyen soit légèrement en retrait (environ 0.65), il présente la dispersion la plus faible (environ 0.012), ce qui témoigne d'une grande régularité face aux variations du jeu de données.</li>
+<li><strong>Régression Logistique (Baseline linéaire)</strong> : Son score moyen (environ 0.66) est honorable pour un modèle simple, mais sa dispersion est plus marquée.</li>
 </ol>
 <p><strong>Orientation pour l'étape suivante</strong> :
 Afin de ne pas conclure prématurément sur des modèles aux paramètres par défaut, nous conservons les deux approches les plus prometteuses — <strong>LightGBM</strong> et <strong>Random Forest</strong> — pour l'étape d'optimisation des hyperparamètres (§5.4). Le choix final du modèle s'appuiera sur les résultats post-optimisation.</p>
@@ -10015,7 +10012,7 @@ Afin de ne pas conclure prématurément sur des modèles aux paramètres par dé
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="5.4-Optimisation-des-hyperparam%C3%A8tres">5.4 Optimisation des hyperparamètres<a class="anchor-link" href="#5.4-Optimisation-des-hyperparam%C3%A8tres">¶</a></h3><p>Notre jeu de données est "petit" (~2500 lignes) mais très "large" en raison de l'analyse NLP (<code>TF-IDF</code> crée des centaines de colonnes). Si on laisse les modèles avec leurs paramètres par défaut, ils vont mémoriser les dossiers par cœur (Surapprentissage / Overfitting) mais échoueront en conditions réelles.</p>
+<h3 id="5.4-Optimisation-des-hyperparam%C3%A8tres">5.4 Optimisation des hyperparamètres<a class="anchor-link" href="#5.4-Optimisation-des-hyperparam%C3%A8tres">¶</a></h3><p>Notre jeu de données est de taille modeste (environ 2500 lignes) mais très large en raison de l'analyse NLP (<code>TF-IDF</code> crée des centaines de colonnes). Si on laisse les modèles avec leurs paramètres par défaut, ils vont mémoriser les dossiers par cœur (surapprentissage / <em>overfitting</em>) mais échoueront en conditions réelles.</p>
 <p>Voici pourquoi nous avons choisi cette grille de test (le "filet de sécurité") :</p>
 <p><strong>Pour le LightGBM :</strong></p>
 <ol>
@@ -11562,7 +11559,7 @@ Si un conseiller fatigué, gérant un flux massif de dossiers, voit l'IA affiche
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=13bc8d6a">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=02a6e25b">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -11589,7 +11586,7 @@ Si un conseiller fatigué, gérant un flux massif de dossiers, voit l'IA affiche
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=010b56f2">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=dde8b0e9">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -11614,7 +11611,7 @@ Si un conseiller fatigué, gérant un flux massif de dossiers, voit l'IA affiche
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b431cf10">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=76704393">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -11639,7 +11636,7 @@ Si un conseiller fatigué, gérant un flux massif de dossiers, voit l'IA affiche
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ba5dbbce">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7c508b67">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -11664,7 +11661,7 @@ Si un conseiller fatigué, gérant un flux massif de dossiers, voit l'IA affiche
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a269785b">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3bc79fe6">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -11688,7 +11685,7 @@ Si un conseiller fatigué, gérant un flux massif de dossiers, voit l'IA affiche
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=722fa343">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0b82bb3c">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -11715,7 +11712,7 @@ Si un conseiller fatigué, gérant un flux massif de dossiers, voit l'IA affiche
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=119acc3b">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e2eef6ad">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -11742,7 +11739,7 @@ Si un conseiller fatigué, gérant un flux massif de dossiers, voit l'IA affiche
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f04f782d">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f2c3e9a8">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -11767,7 +11764,7 @@ Si un conseiller fatigué, gérant un flux massif de dossiers, voit l'IA affiche
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=045c4095">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f80258a3">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -11794,7 +11791,7 @@ Si un conseiller fatigué, gérant un flux massif de dossiers, voit l'IA affiche
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b0035fda">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=09f72176">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -11820,7 +11817,7 @@ Si un conseiller fatigué, gérant un flux massif de dossiers, voit l'IA affiche
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6e18b083">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b563a0e4">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -11845,7 +11842,7 @@ Si un conseiller fatigué, gérant un flux massif de dossiers, voit l'IA affiche
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2c0bc07f">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=06695184">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -11872,7 +11869,7 @@ Si un conseiller fatigué, gérant un flux massif de dossiers, voit l'IA affiche
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c61e8b73">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=862bfd00">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -11898,7 +11895,7 @@ Si un conseiller fatigué, gérant un flux massif de dossiers, voit l'IA affiche
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5ff69497">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=70cb52a2">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>

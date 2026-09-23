@@ -131,15 +131,16 @@ li { margin-bottom: 4px; }
 
 ## Cadre Réglementaire, RGPD & Responsabilité Juridique
 
-<style scoped> section { font-size: 20px; } </style>
+<style scoped> section { font-size: 19px; padding-top: 75px; } </style>
 
 L'usage de l'IA dans l'orientation professionnelle impose un cadre de conformité strict :
 
 1. **AI Act Européen (Classification Haut Risque — Annexe III) :**
    - Les systèmes d'IA utilisés dans l'emploi et l'orientation relèvent de la catégorie **Haut Risque**.
    - Exigences impératives : traçabilité des données, explicabilité, gouvernance des biais et **supervision humaine obligatoire (*Human-In-The-Loop*)**.
-2. **Loi pour une République Numérique (Art. L311-3-1) :**
+2. **Loi pour une République Numérique (Art. L311-3-1) & RGPD :**
    - Droit pour l'usager à l'information et à l'explicabilité individuelle des règles algorithmiques appliquées.
+   - **Précision juridique RGPD :** L'âge et la nationalité sont des *données personnelles ordinaires* (Art. 4), mais constituent des critères protégés majeurs contre la discrimination au travail. Le texte libre (`synthese_entretien`) est surveillé pour éviter les données sensibles au sens strict de l'Art. 9 (santé, handicap).
 3. **Responsabilité Juridique & Notion de "Perte de Chance" :**
    - Si un usager vulnérable est mal orienté (classé en retour rapide par erreur), il subit un préjudice (privation d'aides ou de formations). Devant le Tribunal Administratif, la **perte de chance** engage la responsabilité de l'administration.
    - **Protection juridique par conception :** L'outil est strictement qualifié d'**aide à la décision consultative**. L'agent public valide et endosse souverainement la décision finale.
@@ -169,7 +170,7 @@ Dérivation du <b>Département</b> (2 premiers caractères du code INSEE) et de 
 ## La Sélection des Variables : Éthique & Biais (AI Act)
 
 <style scoped>
-section { font-size: 20px; }
+section { font-size: 19px; padding-top: 75px; }
 ul { margin: 6px 0 10px 0; }
 li { margin-bottom: 3px; }
 </style>
@@ -177,10 +178,10 @@ li { margin-bottom: 3px; }
 - **Biais historiques constatés (EDA) :**
   - **Âge :** 29% des seniors (45-65 ans) en risque long vs 9% des 25-45 ans.
   - **Nationalité hors UE :** 38% en risque long vs 15% pour les ressortissants UE.
-- **Risque légal (Disparate Impact) :** Risque de discrimination algorithmique sanctionnée par l'AI Act et la *Loi pour une République Numérique*.
+- **Indicateur d'équité (Disparate Impact) :** Utilisation de la règle des 4/5 (issue de l'EEOC américaine) comme repère statistique empirique pour évaluer les disparités de traitement.
 - **Transparence :** Rédaction d'une **Datasheet for Datasets** (*Gebru et al.*) dans `data/DATASHEET.md`.
 
-<div class="tech-box" style="font-size: 17px; margin-top: 8px; padding: 8px 12px; line-height: 1.35;">
+<div class="tech-box" style="font-size: 16px; margin-top: 8px; padding: 8px 12px; line-height: 1.35;">
 <b>Décision Stratégique (Privacy by Design — Scénario S2) :</b> Retrait de l'Âge et de la Nationalité pour forcer le modèle à chercher les causes objectives (freins textuels, secteur, parcours).<br>
 <b>Constat lucide (Échec du <i>Fairness through Blindness</i>) :</b> Les variables proxy (département, diplôme) réintroduisent un biais résiduel. D'où l'impératif du filet humain (HITL).
 </div>
@@ -202,7 +203,7 @@ li { margin-bottom: 3px; }
 
 Nous avons retenu l'approche **TF-IDF filtrée** pour trois raisons déterminantes :
 
-1. **Obligation Légale & Transparence (AI Act) :** Système 100% explicable. Chaque mot possède un poids direct traçable (ex: "barrière", "santé", "complexe").
+1. **Transparence & Interprétabilité (AI Act) :** Architecture explicable par conception. Chaque mot possède un poids direct traçable via TF-IDF (ex: "barrière", "santé", "complexe").
 2. **Robustesse sur Petit Volume :** Aucun risque d'explosion paramétrique contrairement aux réseaux de neurones. Espace vectoriel plafonné à 1 000 features avec filtrage `max_df=0.85` et stopwords français.
 3. **Green IT & Temps Réel (Principe KISS) :** Inférence en moins de **0.1 ms sur simple CPU**, sans aucune dépendance à des infrastructures GPU coûteuses et énergivores.
 
@@ -312,19 +313,26 @@ Classer un profil en risque (2) en retour rapide (0) est bien plus grave qu'une 
 
 Duel final entre **Random Forest** et **LightGBM** avec régularisation ciblée pour contrer l'overfitting :
 
-- **Hyperparamètres retenus (LightGBM vainqueur) :**
+- **Hyperparamètres retenus (LightGBM sélectionné) :**
   - `n_estimators = 100` : Nombre d'arbres maîtrisé.
   - `learning_rate = 0.05` : Apprentissage doux pour une meilleure généralisation.
   - `num_leaves = 15` & `min_child_samples = 20` : Interdiction formelle de créer des branches pour un groupe d'usagers trop restreint.
   - `class_weight = 'balanced'` : Protection active de la classe minoritaire.
 
-<div class="tech-box">
-<b>Gouvernance MLOps :</b> Tous les hyperparamètres, scores CV et artefacts ont été journalisés sous l'expérience <code>certif_ia_modelisation</code> dans MLflow.
+<div class="tech-box" style="font-size: 17px;">
+<b>Gouvernance MLOps & Limite POC :</b> Paramètres optimisés sur S1 et conservés sur les 4 scénarios pour isoler l'effet des variables sans introduire de variance. En V2 industrielle, un <code>GridSearchCV</code> dédié spécifiquement à S2 sera reconduit.
 </div>
 
 ---
 
-## Analyse Comparée des 4 Scénarios (Cœur du Sujet)
+## Analyse Comparée des 4 Scénarios 
+
+<style scoped>
+section { font-size: 19px; padding-top: 75px; }
+table { font-size: 16px; margin-bottom: 8px; }
+table th, table td { padding: 4px 10px; }
+.tech-box { font-size: 16px; padding: 6px 12px; margin-top: 6px; }
+</style>
 
 | Scénario | Périmètre | F1-Macro | FN (Classe 2) | Disparate Impact | Conformité AI Act | Verdict |
 | :--- | :--- | :---: | :---: | :---: | :---: | :---: |
@@ -333,7 +341,7 @@ Duel final entre **Random Forest** et **LightGBM** avec régularisation ciblée 
 | **S3 (NLP seul)** | Synthèse entretien seule | 0.637 | 32 | 1.62 (Biais verbatims) | ⚠️ Trop fragile | Rejeté prod |
 | **S4 (Tabulaire)** | Sans analyse textuelle | 0.614 | 39 | 2.40 (Biais âge/territoire)| ❌ Aveugle aux freins | Rejeté prod |
 
-<div class="tech-box" style="font-size: 18px;">
+<div class="tech-box">
 <b>L'arbitrage responsable :</b> Nous assumons le "coût de l'éthique" (9 erreurs supplémentaires entre S1 et S2) comme une <b>prime d'assurance réglementaire</b>, sécurisée par notre filet d'escalade humaine.
 </div>
 
@@ -356,7 +364,7 @@ li { margin-bottom: 4px; font-size: 14.5px; line-height: 1.35; }
         <ul>
           <li><b>Ancienneté d'inscription :</b> Ancre administrative n°1 (forte ancienneté $\rightarrow$ pousse vers le risque long).</li>
           <li><b>Mots-clés NLP (TF-IDF) :</b> Les termes signalant des freins périphériques déclenchent l'alerte.</li>
-          <li><b>Non-discrimination prouvée :</b> Zéro variable démographique sensible dans la décision.</li>
+          <li><b>Minimisation des données (Privacy by Design) :</b> Zéro variable démographique discriminatoire (âge, nationalité) dans les entrées du modèle.</li>
         </ul>
       </li>
       <li><b>Explicabilité Locale (UI Streamlit) :</b><br>
@@ -519,8 +527,14 @@ Le projet intègre un cycle d'ingénierie logicielle continu automatisé sur Git
 
 ## Le Monitoring en Temps Réel (Prometheus & Grafana)
 
+<style scoped>
+section { font-size: 19px; padding-top: 75px; }
+ul { margin: 4px 0; }
+li { margin-bottom: 4px; font-size: 15px; }
+</style>
+
 <div class="columns">
-  <div style="font-size: 21px;">
+  <div style="font-size: 18px;">
     Architecture conteneurisée via <b>Docker-Compose</b> intégrant nativement la métrologie :
     <br><br>
     <ul>
@@ -536,7 +550,7 @@ Le projet intègre un cycle d'ingénierie logicielle continu automatisé sur Git
     </ul>
   </div>
   <div align="center">
-    <img src="assets/architecture_mlops.png" alt="Architecture MLOps" width="380"/>
+    <img src="assets/architecture_mlops.png" alt="Architecture MLOps" width="360"/>
   </div>
 </div>
 
@@ -555,11 +569,13 @@ li { margin-bottom: 5px; font-size: 14.5px; line-height: 1.35; }
 
 <div class="columns">
   <div>
-    <b style="font-size: 16px; color: #0d47a1;">Pourquoi fixer le seuil à 65% ?</b>
+    <b style="font-size: 16px; color: #0d47a1;">Pourquoi fixer le seuil à 65% ? (Calibration)</b>
     <ul>
-      <li><b>Hasard pur à 33% (3 classes) :</b> À 65% de certitude, l'IA accorde deux fois plus de poids à la classe prédite qu'aux deux autres réunies.</li>
-      <li><b>Filet de sécurité du modèle S2 :</b> Le modèle éthique ayant un Recall de 63% sur le risque, ce seuil conservateur évite de trancher sur les cas limites.</li>
-      <li><b>Consigne ergonomique :</b> Possibilité de masquer la jauge brute pour obliger l'agent à exercer son esprit critique.</li>
+      <li><b>Seuil de coupure opérationnel :</b> Les scores <code>predict_proba</code> d'un modèle d'arbres ne sont pas des probabilités calibrées pures (Brier Score = 0.48). Le seuil agit comme filtre de sécurité.</li>
+      <li><b>Efficacité empirique mesurée :</b><br>
+        • Score &ge; 65% : <b>76% d'exactitude</b> (automatisation sûre).<br>
+        • Score &lt; 65% : <b>46% d'exactitude</b> (l'IA doute &rarr; escalade).</li>
+      <li><b>Perspective V2 :</b> Calibration formelle via <code>CalibratedClassifierCV</code> pour aligner scores et probabilités.</li>
     </ul>
   </div>
   <div>
