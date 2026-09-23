@@ -528,15 +528,15 @@ plt.show()
 
 
 # > **Analyse du contenu textuel (NLP)** :  
-# > Le graphique montre que le vocabulaire utilisé par le conseiller est **le prédicteur le plus puissant** du jeu de données !  
-# > - Les textes mentionnant "*Cumul de difficultés*", "*Freins périphériques majeurs*" ou "*Perte de confiance*" sont quasi exclusivement associés à la **Classe 2** (Risque de longue durée).  
-# > - À l'inverse, les termes "*Candidat très dynamique*", "*Excellente présentation*" ou "*Profil autonome*" prédisent fortement la **Classe 0** (Rapide).  
+# > Le graphique montre que le vocabulaire utilisé par le conseiller apporte un signal prédictif particulièrement marqué :
+# > - Les notes évoquant un "*Cumul de difficultés*", des "*Freins périphériques majeurs*" ou une "*Perte de confiance*" sont très majoritairement associées à la **Classe 2** (Risque de longue durée).  
+# > - À l'inverse, les mentions de type "*Candidat très dynamique*", "*Excellente présentation*" ou "*Profil autonome*" coïncident souvent avec la **Classe 0** (Rapide).  
 # > 
 # > **Choix de la stratégie NLP pour la modélisation** :  
-# > Pour transformer ce texte libre en données mathématiques pour notre algorithme, 3 approches ont été envisagées :
-# > 1. **Bag of Words (Comptage simple)** : Compte les apparitions de chaque mot. *Écarté* car les mots vides ("le", "et") domineraient les mots rares mais prédictifs.
-# > 2. **Deep Learning (Word Embeddings / CamemBERT)** : Comprend le sens sémantique de la phrase. *Écarté* car c'est une approche "boîte noire", techniquement lourde et disproportionnée pour des phrases courtes et stéréotypées. La perte d'explicabilité poserait problème vis-à-vis de l'AI Act.
-# > 3. **TF-IDF (Term Frequency-Inverse Document Frequency) (Choix retenu)** : Pondère les mots en fonction de leur rareté globale mais de leur fréquence locale. C'est le meilleur compromis : très performant, facilement intégrable dans un `ColumnTransformer` Scikit-Learn, et **100% explicable** (on pourra dire précisément quel mot a influencé la décision de l'IA).
+# > Pour transformer ce texte libre en variables exploitables par nos algorithmes, 3 approches ont été envisagées :
+# > 1. **Bag of Words (Comptage simple)** : Compte les apparitions de chaque mot. *Écarté* car les mots très fréquents masquent les termes plus rares mais porteurs de sens.
+# > 2. **Deep Learning (Word Embeddings / CamemBERT)** : Capte le contexte sémantique complexe. *Écarté* à ce stade car plus lourd à déployer, plus gourmand en ressources et moins directement explicable sur un petit corpus de 2500 phrases courtes.
+# > 3. **TF-IDF (Term Frequency-Inverse Document Frequency) (Option retenue)** : Pondère les mots selon leur fréquence locale et leur rareté globale. C'est un bon compromis pour ce POC : rapide, léger, intégrable dans un `ColumnTransformer` Scikit-Learn et facilement interprétable (les mots clés ayant influencé le modèle peuvent être directement identifiés).
 # 
 
 # ### 3.6 Analyse des biais & variables sensibles
@@ -849,12 +849,12 @@ print("✅ Pipelines de pré-traitement (S1, S2, S3, S4) sauvegardés avec succ�
 # ### 5.3 Benchmark des models
 
 # > **Note méthodologique (Choix de la Boussole Unique)** : 
-# > Lors de la phase de benchmark (ci-dessous) et de recherche d'hyperparamètres, nous n'utilisons **qu'une seule métrique d'évaluation : le F1-Macro**.
+# > Lors de la phase de benchmark (ci-dessous) et de recherche d'hyperparamètres, nous utilisons **une seule métrique d'évaluation : le F1-Macro**.
 # > 
 # > Pourquoi ne pas calculer toutes les métriques (Précision, Rappel, etc.) dès maintenant ?
-# > 1. **Boussole unique** : Pour faciliter le choix du meilleur modèle via un seul score mathématique clair à maximiser.
-# > 2. **Efficacité algorithmique** : Réduit considérablement le temps de calcul lors des dizaines de boucles d'entraînement croisées.
-# > 3. **Analyse ciblée** : Le F1-Macro est la métrique la plus sévère face au déséquilibre de nos données. Les détails (Matrice de confusion, Précision et Rappel par classe) seront étudiés au microscope *uniquement* sur le modèle gagnant lors de l'évaluation finale (Section 5.6).
+# > 1. **Boussole unique** : Comparer objectivement les candidats selon un critère unique et équilibré.
+# > 2. **Efficacité algorithmique** : Réduit considérablement le temps de calcul lors des boucles de validation croisée.
+# > 3. **Analyse ciblée** : Le F1-Macro est la métrique la plus exigeante face au déséquilibre de nos données. Les détails fins (Matrice de confusion, Précision et Rappel par classe) seront analysés en détail sur le modèle sélectionné lors de l'évaluation finale (Section 5.6).
 
 # In[83]:
 
@@ -898,13 +898,14 @@ display(df_cv_results)
 
 # ### Bilan du Benchmark 
 # 
-# > Nous venons de faire passer 5 examens (validation croisée) à nos trois algorithmes. Le tableau ci-dessus résume leurs résultats avec deux critères : la **Moyenne** de leur note F1-Macro (plus elle est haute, meilleur est le modèle), et l'**Écart-type** (plus il est bas, plus le modèle a des notes régulières à chaque examen). 
+# > Le tableau ci-dessus résume les résultats de la validation croisée en 5 blocs (*5-fold CV*) avec deux indicateurs : la **Moyenne** du F1-Macro (niveau global de performance) et l'**Écart-type** (stabilité des prédictions d'un bloc à l'autre).
 # 
-# 1. **Le grand gagnant de la performance (LightGBM)** : Il obtient la **Meilleure Moyenne** (~0.68), prouvant qu'il réussit le mieux à détecter les dossiers complexes. Cependant, il a n'a pas **Écart-type le plus faible** (~0.014), ce qui signifie que ses notes varient un peu plus selon l'examen. Il prend des risques payants mais est un peu moins régulier.
-# 2. **Le véritable challenger (Random Forest)** : Bien que sa Moyenne globale (~0.660) soit mathématiquement un cheveu en dessous de la Régression Logistique, il possède l'**Écart-type le plus bas de tous** (~0.012). Cette stabilité (ses notes ne varient presque pas d'un examen à l'autre) en fait un choix industriellement plus sûr et fiable que le modèle basique.
-# 3. **Le modèle basique (Régression Logistique)** : Sa Moyenne (~0.664) est bonne mais son Écart-type est le plus élevé, il manque de régularité face à la complexité de nos données.
+# 1. **LightGBM (Meilleure performance moyenne)** : Il affiche le meilleur score moyen (~0.68), montrant une bonne capacité à exploiter à la fois les variables tabulaires et le texte TF-IDF. Son écart-type reste modéré (~0.014).
+# 2. **Random Forest (Meilleure stabilité)** : Bien que son F1 moyen soit légèrement en retrait (~0.65), il présente la dispersion la plus faible (~0.012), ce qui témoigne d'une grande régularité face aux variations du jeu de données.
+# 3. **Régression Logistique (Baseline linéaire)** : Son score moyen (~0.66) est honorable pour un modèle simple, mais sa dispersion est plus marquée.
 # 
-# **Décision** : Face au compromis entre la performance brute du **LightGBM** et la stabilité infaillible du **Random Forest**, nous n'allons en éliminer aucun ! Nous conservons ces deux modèles pour l'étape suivante (Optimisation des hyperparamètres). C'est à l'issue de ces réglages que nous couronnerons le vainqueur absolu.
+# **Orientation pour l'étape suivante** : 
+# Afin de ne pas conclure prématurément sur des modèles aux paramètres par défaut, nous conservons les deux approches les plus prometteuses — **LightGBM** et **Random Forest** — pour l'étape d'optimisation des hyperparamètres (§5.4). Le choix final du modèle s'appuiera sur les résultats post-optimisation.
 
 # ### 5.4 Optimisation des hyperparamètres
 # 
@@ -1072,11 +1073,11 @@ with mlflow.start_run(run_name="Evaluation_Finale_TestSet"):
 
 # ### 5.7 Analyse et Comparaison Économique (ROI)
 # 
-# Bien que la performance technique (F1-score) soit cruciale, le choix d'un modèle en production doit se justifier économiquement. Voici la comparaison entre notre vainqueur technique (LightGBM) et son concurrent direct (Random Forest) sous l'angle du **Retour sur Investissement (ROI)** et des **Coûts Opérationnels**.
+# Bien que la performance technique (F1-score) soit cruciale, le choix d'un modèle en production doit se justifier économiquement. Voici la comparaison entre le modèle sélectionné (LightGBM) et son principal challenger (Random Forest) sous l'angle du **Retour sur Investissement (ROI)** et des **Coûts Opérationnels**.
 # 
 # #### 1. Coûts d'Inférence et Empreinte Serveur (Le "Run")
 # * **LightGBM** : Étant basé sur des histogrammes et un apprentissage par gradient, il est nativement optimisé pour l'inférence rapide. Il requiert très peu de RAM en production et peut traiter des milliers de prédictions par seconde sur un simple CPU (coût serveur minimal).
-# * **Random Forest** : Pour atteindre des performances similaires, le Random Forest nécessite un très grand nombre d'arbres profonds (ici `n_estimators=200`, `max_depth=None`). Cela entraîne une consommation de RAM nettement plus importante en production pour stocker la forêt complète, et une latence de prédiction plus longue. Le coût de l'infrastructure de "Run" est potentiellement 2 à 3 fois plus élevé.
+# * **Random Forest** : Pour atteindre des performances comparables, le Random Forest nécessite un nombre d'arbres plus important et plus profonds (ici `n_estimators=200`). Cela entraîne une consommation de mémoire supérieure et une latence d'inférence plus élevée en production.
 # 
 # #### 2. L'Économie de l'Erreur (Coût des Faux Positifs vs Faux Négatifs)
 # Notre modèle agit comme un système de triage préventif. Modélisons l'impact économique des erreurs :
@@ -1084,7 +1085,9 @@ with mlflow.start_run(run_name="Evaluation_Finale_TestSet"):
 # * **Coût d'un Faux Négatif (Risque raté)** : Le modèle passe à côté d'un usager vulnérable. Cet usager ne reçoit pas d'accompagnement renforcé et bascule dans le chômage de longue durée. Le coût économique et sociétal est colossal : des mois d'indemnisation supplémentaires (milliers d'euros), perte de cotisations, et nécessité de dispositifs de réinsertion lourds.
 # 
 # **Conclusion Économique** : 
-# Le choix du **LightGBM optimisé** (avec `class_weight='balanced'`) est doublement justifié économiquement. D'une part, son architecture légère **minimise la facture Cloud (FinOps)**. D'autre part, son calibrage garantit un Recall élevé sur la classe "Risque", acceptant de générer des Faux Positifs "bon marché" pour éviter à tout prix des Faux Négatifs dont **le coût d'inaction est exorbitant**. Le modèle maximise ainsi la valeur créée pour France Travail.
+# Le choix du **LightGBM optimisé** (avec `class_weight='balanced'`) s'avère avantageux à deux niveaux :
+# 1. Son architecture sobre limite la facture d'hébergement (*FinOps*).
+# 2. Son paramétrage équilibré favorise la détection des profils à risque (Recall de 73% sur la Classe 2), préférant générer quelques fausses alertes peu coûteuses pour éviter des situations de non-assistance beaucoup plus onéreuses pour la collectivité.
 # 
 
 # ### 5.8 Model Card (Fiche d'identité du Modèle)
@@ -1211,14 +1214,12 @@ plt.show()
 
 # ### 6.4 Preuve d'Explicabilité (C8) : Feature Importance du Modèle S2
 # 
-# Conformément aux exigences de transparence, le graphique ci-dessous "ouvre le capot" de notre algorithme retenu (S2). 
+# Conformément aux exigences de transparence, le graphique ci-dessous présente l'importance relative des variables dans le modèle retenu (S2). 
 # 
-# **Observation clé** : Le graphique reflète parfaitement l'hybridation réussie de notre Scénario S2. Le modèle s'appuie massivement sur des "ancres de robustesse" administratives (L'Ancienneté en tête absolue, suivie du Niveau de diplôme, du statut d'allocataire et des catégories métiers ROME). Mais au milieu de ce socle structuré, on voit émerger des variables textuelles à fort pouvoir prédictif (comme "barrière", "complexe", "desservie") issues des notes du conseiller.
-# 
-# Cela valide techniquement et métier notre paradoxe S3 et notre choix S2 :
-# 1. Les données administratives (ancienneté, diplôme, secteur) assurent la stabilité et la sécurité du modèle face à des saisies textuelles de mauvaise qualité.
-# 2. L'algorithme se comporte ensuite comme un "super lecteur" pour venir affiner sa prédiction grâce aux signaux d'alerte sémantiques (la complexité du dossier, les barrières à l'emploi, etc.).
-# 3. Le modèle n'est absolument pas une "boîte noire" (respect de la compétence C8) : l'impact conjoint des variables d'état et du texte est parfaitement limpide.
+# **Observation clé** : Le graphique reflète l'articulation entre données administratives et données textuelles dans le scénario S2 :
+# 1. Les variables administratives (l'ancienneté au poste en tête, suivie du niveau de diplôme, du statut d'allocataire et des catégories ROME) constituent le socle structurel du modèle.
+# 2. Des variables textuelles issues du TF-IDF (telles que "barrière", "complexe", "desservie") émergent nettement dans le haut du classement, ce qui confirme que les notes du conseiller apportent un complément d'information déterminant pour affiner la prédiction.
+# 3. Cette structure arborescente permet de retracer explicitement les critères de décision (conformité aux objectifs de transparence de l'AI Act).
 # 
 
 # In[81]:

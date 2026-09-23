@@ -8985,17 +8985,17 @@ Le fait qu'il n'y ait pas de lien <em>simple</em> ne veut pas dire qu'il n'y a p
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <blockquote>
 <p><strong>Analyse du contenu textuel (NLP)</strong> :<br/>
-Le graphique montre que le vocabulaire utilisé par le conseiller est <strong>le prédicteur le plus puissant</strong> du jeu de données !</p>
+Le graphique montre que le vocabulaire utilisé par le conseiller apporte un signal prédictif particulièrement marqué :</p>
 <ul>
-<li>Les textes mentionnant "<em>Cumul de difficultés</em>", "<em>Freins périphériques majeurs</em>" ou "<em>Perte de confiance</em>" sont quasi exclusivement associés à la <strong>Classe 2</strong> (Risque de longue durée).</li>
-<li>À l'inverse, les termes "<em>Candidat très dynamique</em>", "<em>Excellente présentation</em>" ou "<em>Profil autonome</em>" prédisent fortement la <strong>Classe 0</strong> (Rapide).</li>
+<li>Les notes évoquant un "<em>Cumul de difficultés</em>", des "<em>Freins périphériques majeurs</em>" ou une "<em>Perte de confiance</em>" sont très majoritairement associées à la <strong>Classe 2</strong> (Risque de longue durée).</li>
+<li>À l'inverse, les mentions de type "<em>Candidat très dynamique</em>", "<em>Excellente présentation</em>" ou "<em>Profil autonome</em>" coïncident souvent avec la <strong>Classe 0</strong> (Rapide).</li>
 </ul>
 <p><strong>Choix de la stratégie NLP pour la modélisation</strong> :<br/>
-Pour transformer ce texte libre en données mathématiques pour notre algorithme, 3 approches ont été envisagées :</p>
+Pour transformer ce texte libre en variables exploitables par nos algorithmes, 3 approches ont été envisagées :</p>
 <ol>
-<li><strong>Bag of Words (Comptage simple)</strong> : Compte les apparitions de chaque mot. <em>Écarté</em> car les mots vides ("le", "et") domineraient les mots rares mais prédictifs.</li>
-<li><strong>Deep Learning (Word Embeddings / CamemBERT)</strong> : Comprend le sens sémantique de la phrase. <em>Écarté</em> car c'est une approche "boîte noire", techniquement lourde et disproportionnée pour des phrases courtes et stéréotypées. La perte d'explicabilité poserait problème vis-à-vis de l'AI Act.</li>
-<li><strong>TF-IDF (Term Frequency-Inverse Document Frequency) (Choix retenu)</strong> : Pondère les mots en fonction de leur rareté globale mais de leur fréquence locale. C'est le meilleur compromis : très performant, facilement intégrable dans un <code>ColumnTransformer</code> Scikit-Learn, et <strong>100% explicable</strong> (on pourra dire précisément quel mot a influencé la décision de l'IA).</li>
+<li><strong>Bag of Words (Comptage simple)</strong> : Compte les apparitions de chaque mot. <em>Écarté</em> car les mots très fréquents masquent les termes plus rares mais porteurs de sens.</li>
+<li><strong>Deep Learning (Word Embeddings / CamemBERT)</strong> : Capte le contexte sémantique complexe. <em>Écarté</em> à ce stade car plus lourd à déployer, plus gourmand en ressources et moins directement explicable sur un petit corpus de 2500 phrases courtes.</li>
+<li><strong>TF-IDF (Term Frequency-Inverse Document Frequency) (Option retenue)</strong> : Pondère les mots selon leur fréquence locale et leur rareté globale. C'est un bon compromis pour ce POC : rapide, léger, intégrable dans un <code>ColumnTransformer</code> Scikit-Learn et facilement interprétable (les mots clés ayant influencé le modèle peuvent être directement identifiés).</li>
 </ol>
 </blockquote>
 </div>
@@ -9879,12 +9879,12 @@ L'injection d'une liste de Stop Words français dans le TF-IDF a permis d'élimi
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <blockquote>
 <p><strong>Note méthodologique (Choix de la Boussole Unique)</strong> :
-Lors de la phase de benchmark (ci-dessous) et de recherche d'hyperparamètres, nous n'utilisons <strong>qu'une seule métrique d'évaluation : le F1-Macro</strong>.</p>
+Lors de la phase de benchmark (ci-dessous) et de recherche d'hyperparamètres, nous utilisons <strong>une seule métrique d'évaluation : le F1-Macro</strong>.</p>
 <p>Pourquoi ne pas calculer toutes les métriques (Précision, Rappel, etc.) dès maintenant ?</p>
 <ol>
-<li><strong>Boussole unique</strong> : Pour faciliter le choix du meilleur modèle via un seul score mathématique clair à maximiser.</li>
-<li><strong>Efficacité algorithmique</strong> : Réduit considérablement le temps de calcul lors des dizaines de boucles d'entraînement croisées.</li>
-<li><strong>Analyse ciblée</strong> : Le F1-Macro est la métrique la plus sévère face au déséquilibre de nos données. Les détails (Matrice de confusion, Précision et Rappel par classe) seront étudiés au microscope <em>uniquement</em> sur le modèle gagnant lors de l'évaluation finale (Section 5.6).</li>
+<li><strong>Boussole unique</strong> : Comparer objectivement les candidats selon un critère unique et équilibré.</li>
+<li><strong>Efficacité algorithmique</strong> : Réduit considérablement le temps de calcul lors des boucles de validation croisée.</li>
+<li><strong>Analyse ciblée</strong> : Le F1-Macro est la métrique la plus exigeante face au déséquilibre de nos données. Les détails fins (Matrice de confusion, Précision et Rappel par classe) seront analysés en détail sur le modèle sélectionné lors de l'évaluation finale (Section 5.6).</li>
 </ol>
 </blockquote>
 </div>
@@ -9996,14 +9996,15 @@ Lors de la phase de benchmark (ci-dessous) et de recherche d'hyperparamètres, n
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h3 id="Bilan-du-Benchmark">Bilan du Benchmark<a class="anchor-link" href="#Bilan-du-Benchmark">¶</a></h3><blockquote>
-<p>Nous venons de faire passer 5 examens (validation croisée) à nos trois algorithmes. Le tableau ci-dessus résume leurs résultats avec deux critères : la <strong>Moyenne</strong> de leur note F1-Macro (plus elle est haute, meilleur est le modèle), et l'<strong>Écart-type</strong> (plus il est bas, plus le modèle a des notes régulières à chaque examen).</p>
+<p>Le tableau ci-dessus résume les résultats de la validation croisée en 5 blocs (<em>5-fold CV</em>) avec deux indicateurs : la <strong>Moyenne</strong> du F1-Macro (niveau global de performance) et l'<strong>Écart-type</strong> (stabilité des prédictions d'un bloc à l'autre).</p>
 </blockquote>
 <ol>
-<li><strong>Le grand gagnant de la performance (LightGBM)</strong> : Il obtient la <strong>Meilleure Moyenne</strong> (~0.68), prouvant qu'il réussit le mieux à détecter les dossiers complexes. Cependant, il a n'a pas <strong>Écart-type le plus faible</strong> (~0.014), ce qui signifie que ses notes varient un peu plus selon l'examen. Il prend des risques payants mais est un peu moins régulier.</li>
-<li><strong>Le véritable challenger (Random Forest)</strong> : Bien que sa Moyenne globale (~0.65) soit mathématiquement un cheveu en dessous de la Régression Logistique, il possède l'<strong>Écart-type le plus bas de tous</strong> (~0.012). Cette stabilité (ses notes ne varient presque pas d'un examen à l'autre) en fait un choix industriellement plus sûr et fiable que le modèle basique.</li>
-<li><strong>Le modèle basique (Régression Logistique)</strong> : Sa Moyenne (~0.66) est bonne mais son Écart-type est le plus élevé, il manque de régularité face à la complexité de nos données.</li>
+<li><strong>LightGBM (Meilleure performance moyenne)</strong> : Il affiche le meilleur score moyen (~0.68), montrant une bonne capacité à exploiter à la fois les variables tabulaires et le texte TF-IDF. Son écart-type reste modéré (~0.014).</li>
+<li><strong>Random Forest (Meilleure stabilité)</strong> : Bien que son F1 moyen soit légèrement en retrait (~0.65), il présente la dispersion la plus faible (~0.012), ce qui témoigne d'une grande régularité face aux variations du jeu de données.</li>
+<li><strong>Régression Logistique (Baseline linéaire)</strong> : Son score moyen (~0.66) est honorable pour un modèle simple, mais sa dispersion est plus marquée.</li>
 </ol>
-<p><strong>Décision</strong> : Face au compromis entre la performance brute du <strong>LightGBM</strong> et la stabilité infaillible du <strong>Random Forest</strong>, nous n'allons en éliminer aucun ! Nous conservons ces deux modèles pour l'étape suivante (Optimisation des hyperparamètres). C'est à l'issue de ces réglages que nous couronnerons le vainqueur absolu.</p>
+<p><strong>Orientation pour l'étape suivante</strong> :
+Afin de ne pas conclure prématurément sur des modèles aux paramètres par défaut, nous conservons les deux approches les plus prometteuses — <strong>LightGBM</strong> et <strong>Random Forest</strong> — pour l'étape d'optimisation des hyperparamètres (§5.4). Le choix final du modèle s'appuiera sur les résultats post-optimisation.</p>
 </div>
 </div>
 </div>
@@ -10266,10 +10267,10 @@ Le comportement du modèle répond exactement au cahier des charges Pôle Emploi
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="5.7-Analyse-et-Comparaison-%C3%89conomique-(ROI)">5.7 Analyse et Comparaison Économique (ROI)<a class="anchor-link" href="#5.7-Analyse-et-Comparaison-%C3%89conomique-(ROI)">¶</a></h3><p>Bien que la performance technique (F1-score) soit cruciale, le choix d'un modèle en production doit se justifier économiquement. Voici la comparaison entre notre vainqueur technique (LightGBM) et son concurrent direct (Random Forest) sous l'angle du <strong>Retour sur Investissement (ROI)</strong> et des <strong>Coûts Opérationnels</strong>.</p>
+<h3 id="5.7-Analyse-et-Comparaison-%C3%89conomique-(ROI)">5.7 Analyse et Comparaison Économique (ROI)<a class="anchor-link" href="#5.7-Analyse-et-Comparaison-%C3%89conomique-(ROI)">¶</a></h3><p>Bien que la performance technique (F1-score) soit cruciale, le choix d'un modèle en production doit se justifier économiquement. Voici la comparaison entre le modèle sélectionné (LightGBM) et son principal challenger (Random Forest) sous l'angle du <strong>Retour sur Investissement (ROI)</strong> et des <strong>Coûts Opérationnels</strong>.</p>
 <h4 id="1.-Co%C3%BBts-d'Inf%C3%A9rence-et-Empreinte-Serveur-(Le-%22Run%22)">1. Coûts d'Inférence et Empreinte Serveur (Le "Run")<a class="anchor-link" href="#1.-Co%C3%BBts-d'Inf%C3%A9rence-et-Empreinte-Serveur-(Le-%22Run%22)">¶</a></h4><ul>
 <li><strong>LightGBM</strong> : Étant basé sur des histogrammes et un apprentissage par gradient, il est nativement optimisé pour l'inférence rapide. Il requiert très peu de RAM en production et peut traiter des milliers de prédictions par seconde sur un simple CPU (coût serveur minimal).</li>
-<li><strong>Random Forest</strong> : Pour atteindre des performances similaires, le Random Forest nécessite un très grand nombre d'arbres profonds (ici <code>n_estimators=200</code>, <code>max_depth=None</code>). Cela entraîne une consommation de RAM nettement plus importante en production pour stocker la forêt complète, et une latence de prédiction plus longue. Le coût de l'infrastructure de "Run" est potentiellement 2 à 3 fois plus élevé.</li>
+<li><strong>Random Forest</strong> : Pour atteindre des performances comparables, le Random Forest nécessite un nombre d'arbres plus important et plus profonds (ici <code>n_estimators=200</code>). Cela entraîne une consommation de mémoire supérieure et une latence d'inférence plus élevée en production.</li>
 </ul>
 <h4 id="2.-L'%C3%89conomie-de-l'Erreur-(Co%C3%BBt-des-Faux-Positifs-vs-Faux-N%C3%A9gatifs)">2. L'Économie de l'Erreur (Coût des Faux Positifs vs Faux Négatifs)<a class="anchor-link" href="#2.-L'%C3%89conomie-de-l'Erreur-(Co%C3%BBt-des-Faux-Positifs-vs-Faux-N%C3%A9gatifs)">¶</a></h4><p>Notre modèle agit comme un système de triage préventif. Modélisons l'impact économique des erreurs :</p>
 <ul>
@@ -10277,7 +10278,11 @@ Le comportement du modèle répond exactement au cahier des charges Pôle Emploi
 <li><strong>Coût d'un Faux Négatif (Risque raté)</strong> : Le modèle passe à côté d'un usager vulnérable. Cet usager ne reçoit pas d'accompagnement renforcé et bascule dans le chômage de longue durée. Le coût économique et sociétal est colossal : des mois d'indemnisation supplémentaires (milliers d'euros), perte de cotisations, et nécessité de dispositifs de réinsertion lourds.</li>
 </ul>
 <p><strong>Conclusion Économique</strong> :
-Le choix du <strong>LightGBM optimisé</strong> (avec <code>class_weight='balanced'</code>) est doublement justifié économiquement. D'une part, son architecture légère <strong>minimise la facture Cloud (FinOps)</strong>. D'autre part, son calibrage garantit un Recall élevé sur la classe "Risque", acceptant de générer des Faux Positifs "bon marché" pour éviter à tout prix des Faux Négatifs dont <strong>le coût d'inaction est exorbitant</strong>. Le modèle maximise ainsi la valeur créée pour France Travail.</p>
+Le choix du <strong>LightGBM optimisé</strong> (avec <code>class_weight='balanced'</code>) s'avère avantageux à deux niveaux :</p>
+<ol>
+<li>Son architecture sobre limite la facture d'hébergement (<em>FinOps</em>).</li>
+<li>Son paramétrage équilibré favorise la détection des profils à risque (Recall de 73% sur la Classe 2), préférant générer quelques fausses alertes peu coûteuses pour éviter des situations de non-assistance beaucoup plus onéreuses pour la collectivité.</li>
+</ol>
 </div>
 </div>
 </div>
@@ -10602,13 +10607,12 @@ Le choix du <strong>LightGBM optimisé</strong> (avec <code>class_weight='balanc
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="6.4-Preuve-d'Explicabilit%C3%A9-:-Feature-Importance-du-Mod%C3%A8le-S2">6.4 Preuve d'Explicabilité : Feature Importance du Modèle S2<a class="anchor-link" href="#6.4-Preuve-d'Explicabilit%C3%A9-:-Feature-Importance-du-Mod%C3%A8le-S2">¶</a></h3><p>Conformément aux exigences de transparence, le graphique ci-dessous "ouvre le capot" de notre algorithme retenu (S2).</p>
-<p><strong>Observation clé</strong> : Le graphique reflète parfaitement l'hybridation réussie de notre Scénario S2. Le modèle s'appuie massivement sur des "ancres de robustesse" administratives (L'Ancienneté en tête absolue, suivie du Niveau de diplôme, du statut d'allocataire et des catégories métiers ROME). Mais au milieu de ce socle structuré, on voit émerger des variables textuelles à fort pouvoir prédictif (comme "barrière", "complexe", "desservie") issues des notes du conseiller.</p>
-<p>Cela valide techniquement et métier notre paradoxe S3 et notre choix S2 :</p>
+<h3 id="6.4-Preuve-d'Explicabilit%C3%A9-:-Feature-Importance-du-Mod%C3%A8le-S2">6.4 Preuve d'Explicabilité : Feature Importance du Modèle S2<a class="anchor-link" href="#6.4-Preuve-d'Explicabilit%C3%A9-:-Feature-Importance-du-Mod%C3%A8le-S2">¶</a></h3><p>Conformément aux exigences de transparence, le graphique ci-dessous présente l'importance relative des variables dans le modèle retenu (S2).</p>
+<p><strong>Observation clé</strong> : Le graphique reflète l'articulation entre données administratives et données textuelles dans le scénario S2 :</p>
 <ol>
-<li>Les données administratives (ancienneté, diplôme, secteur) assurent la stabilité et la sécurité du modèle face à des saisies textuelles de mauvaise qualité.</li>
-<li>L'algorithme se comporte ensuite comme un "super lecteur" pour venir affiner sa prédiction grâce aux signaux d'alerte sémantiques (la complexité du dossier, les barrières à l'emploi, etc.).</li>
-<li>Le modèle n'est absolument pas une "boîte noire" : l'impact conjoint des variables d'état et du texte est parfaitement limpide.</li>
+<li>Les variables administratives (l'ancienneté au poste en tête, suivie du niveau de diplôme, du statut d'allocataire et des catégories ROME) constituent le socle structurel du modèle.</li>
+<li>Des variables textuelles issues du TF-IDF (telles que "barrière", "complexe", "desservie") émergent nettement dans le haut du classement, ce qui confirme que les notes du conseiller apportent un complément d'information déterminant pour affiner la prédiction.</li>
+<li>Cette structure arborescente permet de retracer explicitement les critères de décision (conformité aux objectifs de transparence de l'AI Act).</li>
 </ol>
 </div>
 </div>
@@ -11558,7 +11562,7 @@ Si un conseiller fatigué, gérant un flux massif de dossiers, voit l'IA affiche
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9aa9a961">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=13bc8d6a">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -11585,7 +11589,7 @@ Si un conseiller fatigué, gérant un flux massif de dossiers, voit l'IA affiche
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=06b9432d">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=010b56f2">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -11610,7 +11614,7 @@ Si un conseiller fatigué, gérant un flux massif de dossiers, voit l'IA affiche
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=bc4604c5">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b431cf10">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -11635,7 +11639,7 @@ Si un conseiller fatigué, gérant un flux massif de dossiers, voit l'IA affiche
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=965ac6b4">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ba5dbbce">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -11660,7 +11664,7 @@ Si un conseiller fatigué, gérant un flux massif de dossiers, voit l'IA affiche
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0f6c9cf7">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a269785b">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -11684,7 +11688,7 @@ Si un conseiller fatigué, gérant un flux massif de dossiers, voit l'IA affiche
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=336414d0">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=722fa343">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -11711,7 +11715,7 @@ Si un conseiller fatigué, gérant un flux massif de dossiers, voit l'IA affiche
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=77447b11">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=119acc3b">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -11738,7 +11742,7 @@ Si un conseiller fatigué, gérant un flux massif de dossiers, voit l'IA affiche
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2f709e0b">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f04f782d">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -11763,7 +11767,7 @@ Si un conseiller fatigué, gérant un flux massif de dossiers, voit l'IA affiche
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1e2e7697">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=045c4095">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -11790,7 +11794,7 @@ Si un conseiller fatigué, gérant un flux massif de dossiers, voit l'IA affiche
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=45d53b5a">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b0035fda">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -11816,7 +11820,7 @@ Si un conseiller fatigué, gérant un flux massif de dossiers, voit l'IA affiche
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d262f03a">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6e18b083">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -11841,7 +11845,7 @@ Si un conseiller fatigué, gérant un flux massif de dossiers, voit l'IA affiche
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e68b1515">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2c0bc07f">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -11868,7 +11872,7 @@ Si un conseiller fatigué, gérant un flux massif de dossiers, voit l'IA affiche
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a56e7e55">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c61e8b73">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -11894,7 +11898,7 @@ Si un conseiller fatigué, gérant un flux massif de dossiers, voit l'IA affiche
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ea337295">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5ff69497">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
