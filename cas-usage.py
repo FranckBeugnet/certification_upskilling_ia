@@ -1185,6 +1185,14 @@ plt.show()
 # 
 # > 🍃 **Bilan Green IT (Impact Environnemental)** : L'entraînement du modèle complet prend quelques secondes sur un CPU standard. En production, la latence mesurée est inférieure à **0.2 millisecondes par prédiction**. Ce modèle est d'une très grande *sobriété numérique* et ne nécessite aucune infrastructure cloud GPU coûteuse ou polluante (contrairement aux LLMs). Il respecte parfaitement les objectifs de développement durable des services publics.
 # 
+# > 💡 **En clair : Comment avons-nous comparé ces 4 scénarios ? (Limites de l'exercice)**
+# > * **Même modèle, mêmes réglages pour tout le monde** : Pour comparer équitablement les 4 scénarios, nous avons utilisé exactement le même algorithme (**LightGBM**) avec les mêmes hyperparamètres trouvés au chapitre 5 (100 arbres, taux d'apprentissage de 0.05).
+# > * **Pourquoi ce choix ?** Cela permet de mesurer uniquement l'impact du **retrait des données sensibles** (l'âge et la nationalité), sans fausser le test en changeant les réglages en cours de route.
+# > * **Les limites à avoir en tête :**
+# >   1. *Des réglages taillés pour S1* : Ces hyperparamètres avaient été réglés sur le scénario complet S1. Ils ne sont donc pas forcément parfaits pour S2 ou S3 (qui contiennent beaucoup de texte).
+# >   2. *Pas de re-tuning en 6.6* : Lors de l'entraînement final de S2 pour la production (§6.6), nous avons réutilisé directement ces réglages pour garder le projet simple et rapide.
+# >   3. *Piste d'amélioration (V2)* : Dans une version industrielle, il sera intéressant de refaire un `GridSearchCV` dédié à S2, voire de tester une Régression Logistique sur les données textuelles, pour aller chercher encore un peu plus de précision.
+# 
 # ### 6.2 Recommandation finale au client
 # 
 # Nous recommandons la mise en production du modèle basé sur le **Scénario S2 (Éthique)**. 
@@ -1489,28 +1497,54 @@ plt.show()
 # # 2. **La puissance du texte (TF-IDF)** : Plusieurs mots-clés issus des notes des conseillers dominent le top 10. La présence de ces mots spécifiques dans le dossier d'un usager déclenche instantanément l'alerte du modèle.
 # # 3. **Absence de biais direct** : Le graphique confirme visuellement que l'algorithme ne s'appuie plus sur des critères démographiques sensibles (âge, nationalité), prouvant l'efficacité de notre démarche éthique initiée dans le scénario S2.
 
-# ### 7.2 Analyse des erreurs et stratégies de fallback (Incertitude)
+# ### 7.2 Analyse des erreurs, calibration & stratégies de fallback (Incertitude)
 # 
-# L'algorithme ne doit pas prendre de décision à l'aveugle. Nous avons 3 classes, le hasard pur est à 33%. 
-# Nous fixons notre **Seuil de Rejet (Rejection Threshold) à 65%**. 
+# L'algorithme ne doit pas prendre de décision à l'aveugle. Face à un problème à 3 classes (hasard à 33%), nous définissons un **seuil d'alerte (seuil de rejet) à 65%**.
 # 
-# *Pourquoi 65% ?* C'est un choix volontairement très prudent. Ce seuil exige que l'algorithme soit très confiant pour statuer seul. S'il n'atteint pas ces 65% de certitude, il passe la main. Ce seuil conservateur pourra être revu à la baisse (ex: 55%) après une période d'observation en production (Monitoring) si on constate que le modèle est fiable sur ces zones d'incertitude.
+# *Pourquoi 65% ?* C'est une règle de prudence : pour qu'une recommandation soit acceptée automatiquement, une classe doit nettement se détacher (au moins 65% de score, laissant au plus 35% aux deux autres). Si le modèle hésite et n'atteint pas 65%, il passe la main au conseiller.
+# 
+# > 💡 **En clair : Que signifie le chiffre « 65% » ? (Note sur la calibration)**
+# > * **Score du modèle $\neq$ certitude absolue** : Un modèle d'arbres comme LightGBM donne un score de classement (entre 0 et 1), mais ce n'est pas une probabilité mathématique parfaite. Un score affiché de 65% ne garantit pas que le modèle aura raison exactement 65 fois sur 100.
+# > * **Ce que l'on vérifie en pratique sur nos tests** :
+# >   - Quand le modèle dépasse 65%, il a en réalité raison dans **76% des cas** : la décision automatique est donc fiable.
+# >   - Quand il est sous les 65%, son exactitude tombe à **46%** : il hésite beaucoup, ce qui prouve que le seuil joue parfaitement son rôle de filtre de sécurité.
+# >   - Le **Brier Score** (qui mesure l'écart entre le score donné et la réalité, 0 étant la perfection) est de **0.48**, ce qui confirme une incertitude normale sur ce type de dossiers.
+# > * **Piste d'amélioration (V2)** : Dans une version future, on pourra ajouter une étape de réglage appelée « calibration » (outil `CalibratedClassifierCV`) pour aligner au millimètre le pourcentage affiché avec le taux réel de réussite sur le terrain.
 
 # In[ ]:
 
 
 import numpy as np
+import pandas as pd
+from sklearn.metrics import brier_score_loss
 
 # Récupération des probabilités
 y_proba = pipe_s2.predict_proba(X_test)
 max_probas = np.max(y_proba, axis=1)
+y_pred_s2 = pipe_s2.predict(X_test)
 
 seuil_rejet = 0.65
-dossiers_incertains = np.sum(max_probas < seuil_rejet)
+mask_rejet = max_probas < seuil_rejet
+dossiers_incertains = np.sum(mask_rejet)
 pourcentage_incertains = (dossiers_incertains / len(X_test)) * 100
 
-print(f"--- Stratégie de Fallback (Seuil à {seuil_rejet*100}%) ---")
+print(f"--- Stratégie de Fallback (Seuil à {seuil_rejet*100:.0f}%) ---")
 print(f"Nombre de dossiers sous le seuil de confiance : {dossiers_incertains} sur {len(X_test)} ({pourcentage_incertains:.1f}%)")
+
+# Évaluation empirique de la calibration et pertinence du filtre
+mask_accept = ~mask_rejet
+acc_accept = np.mean(y_pred_s2[mask_accept] == y_test[mask_accept]) * 100
+acc_reject = np.mean(y_pred_s2[mask_rejet] == y_test[mask_rejet]) * 100
+
+y_test_oh = pd.get_dummies(y_test).values
+brier_multi = np.mean(np.sum((y_proba - y_test_oh)**2, axis=1))
+brier_c2 = brier_score_loss((y_test == 2).astype(int), y_proba[:, 2])
+
+print(f"\n--- Diagnostic de Calibration & Efficacité du Seuil ---")
+print(f"Brier Score global (multiclasse) : {brier_multi:.4f} (plus c'est bas, mieux c'est)")
+print(f"Brier Score Classe 2 (Risque)   : {brier_c2:.4f}")
+print(f"Exactitude empirique si score >= {seuil_rejet*100:.0f}% : {acc_accept:.1f}% ({np.sum(mask_accept)} dossiers automatisés)")
+print(f"Exactitude empirique si score <  {seuil_rejet*100:.0f}% : {acc_reject:.1f}% ({dossiers_incertains} dossiers transférés aux conseillers)")
 
 # Documentation de la stratégie d'intégration API
 print("\nStratégie API pour ces dossiers :")
