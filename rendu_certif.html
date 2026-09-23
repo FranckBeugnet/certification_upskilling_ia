@@ -8100,7 +8100,7 @@ Dataset      : Trajectoire et Retour à l'Emploi (source=Extraction SI Agence Na
 <th>Type</th>
 <th>Plage / valeurs</th>
 <th>Cible ?</th>
-<th>Sensible ?</th>
+<th>Statut éthique / RGPD</th>
 </tr>
 </thead>
 <tbody>
@@ -8110,7 +8110,7 @@ Dataset      : Trajectoire et Retour à l'Emploi (source=Extraction SI Agence Na
 <td>ID</td>
 <td></td>
 <td>❌</td>
-<td>❌</td>
+<td>Donnée personnelle ordinaire (anonymisée)</td>
 </tr>
 <tr>
 <td><code>age</code></td>
@@ -8118,7 +8118,7 @@ Dataset      : Trajectoire et Retour à l'Emploi (source=Extraction SI Agence Na
 <td>Numérique</td>
 <td></td>
 <td>❌</td>
-<td>✅</td>
+<td>⚠️ Facteur de discrimination potentielle (âgisme)</td>
 </tr>
 <tr>
 <td><code>niveau_diplome</code></td>
@@ -8126,7 +8126,7 @@ Dataset      : Trajectoire et Retour à l'Emploi (source=Extraction SI Agence Na
 <td>Catégoriel</td>
 <td>Sans diplôme, Bac, Bac+2, Bac+5</td>
 <td>❌</td>
-<td>❌</td>
+<td>Donnée personnelle ordinaire</td>
 </tr>
 <tr>
 <td><code>anciennete_poste_ans</code></td>
@@ -8134,7 +8134,7 @@ Dataset      : Trajectoire et Retour à l'Emploi (source=Extraction SI Agence Na
 <td>Numérique</td>
 <td></td>
 <td>❌</td>
-<td>❌</td>
+<td>Donnée professionnelle ordinaire</td>
 </tr>
 <tr>
 <td><code>code_rome_vise</code></td>
@@ -8142,7 +8142,7 @@ Dataset      : Trajectoire et Retour à l'Emploi (source=Extraction SI Agence Na
 <td>Catégoriel</td>
 <td></td>
 <td>❌</td>
-<td>❌</td>
+<td>Donnée professionnelle ordinaire</td>
 </tr>
 <tr>
 <td><code>code_insee_commune</code></td>
@@ -8150,7 +8150,7 @@ Dataset      : Trajectoire et Retour à l'Emploi (source=Extraction SI Agence Na
 <td>Catégoriel</td>
 <td></td>
 <td>❌</td>
-<td>⚠️ (Proxy)</td>
+<td>⚠️ Proxy géographique potentiel</td>
 </tr>
 <tr>
 <td><code>est_allocataire</code></td>
@@ -8158,7 +8158,7 @@ Dataset      : Trajectoire et Retour à l'Emploi (source=Extraction SI Agence Na
 <td>Booléen</td>
 <td>0, 1</td>
 <td>❌</td>
-<td>❌</td>
+<td>Donnée administrative ordinaire</td>
 </tr>
 <tr>
 <td><code>nationalite_hors_ue</code></td>
@@ -8166,7 +8166,7 @@ Dataset      : Trajectoire et Retour à l'Emploi (source=Extraction SI Agence Na
 <td>Booléen</td>
 <td>0, 1</td>
 <td>❌</td>
-<td>✅</td>
+<td>⚠️ Facteur de discrimination potentielle (origine)</td>
 </tr>
 <tr>
 <td><code>synthese_entretien</code></td>
@@ -8174,7 +8174,7 @@ Dataset      : Trajectoire et Retour à l'Emploi (source=Extraction SI Agence Na
 <td>Texte</td>
 <td></td>
 <td>❌</td>
-<td>⚠️ (PII)</td>
+<td>⚠️ Texte libre (risque de PII / données sensibles Art. 9)</td>
 </tr>
 <tr>
 <td><code>classe_retour_emploi</code></td>
@@ -8182,15 +8182,22 @@ Dataset      : Trajectoire et Retour à l'Emploi (source=Extraction SI Agence Na
 <td>Cible (0,1,2)</td>
 <td>0: &lt;6m, 1: 6-12m, 2: &gt;12m</td>
 <td>✅</td>
-<td>❌</td>
+<td>Donnée d'évaluation métier</td>
 </tr>
 </tbody>
 </table>
 <blockquote>
+<p>💡 <strong>Précision juridique (RGPD vs Anti-discrimination) :</strong></p>
+<ul>
+<li>Au sens strict de l'<strong>Article 9 du RGPD</strong>, les « données sensibles » (catégories particulières) concernent l'origine raciale ou ethnique, les opinions politiques, convictions religieuses, données de santé, biométriques, etc. L'<strong>âge</strong> et la <strong>nationalité</strong> sont juridiquement des <strong>données personnelles ordinaires</strong>, non des données sensibles Art. 9.</li>
+<li>En revanche, au regard du <strong>droit de la non-discrimination</strong> et des exigences de l'<strong>AI Act</strong> sur les systèmes à haut risque, l'âge et la nationalité constituent des critères protégés majeurs présentant un risque fort de discrimination algorithmique (âgisme, préférence nationale).</li>
+</ul>
+</blockquote>
+<blockquote>
 <p><strong>Le Code ROME</strong> : Le Répertoire Opérationnel des Métiers et des Emplois (ROME) est la nomenclature utilisée par France Travail pour classer les métiers. Il est composé d'une lettre (grande famille) et de 4 chiffres. C'est une information clé mais à forte cardinalité.</p>
 </blockquote>
-<h3 id="2.5-Synth%C3%A8se-acquisition">2.5 Synthèse acquisition<a class="anchor-link" href="#2.5-Synth%C3%A8se-acquisition">¶</a></h3><p>Jeu de données hybride de 2500 échantillons avec présence confirmée de données sensibles (<code>nationalite_hors_ue</code>, <code>age</code>) et potentiellement identifiantes (<code>synthese_entretien</code>). Une vigilance sera apportée sur les valeurs manquantes (ex: <code>niveau_diplome</code>).</p>
-<p><strong>Conformité Éthique</strong> : Des mesures techniques spécifiques (comme le calcul du <em>Disparate Impact</em>) devront être implémentées sur les variables sensibles afin de prévenir et mitiger tout risque de discrimination algorithmique (en accord avec l'AI Act).</p>
+<h3 id="2.5-Synth%C3%A8se-acquisition">2.5 Synthèse acquisition<a class="anchor-link" href="#2.5-Synth%C3%A8se-acquisition">¶</a></h3><p>Jeu de données hybride de 2500 échantillons avec présence de variables à risque discriminatoire (<code>nationalite_hors_ue</code>, <code>age</code>) et d'un champ texte libre susceptible de contenir des PII (<code>synthese_entretien</code>). Une vigilance sera apportée sur les valeurs manquantes (ex: <code>niveau_diplome</code>).</p>
+<p><strong>Conformité Éthique</strong> : Des mesures techniques spécifiques (comme le calcul du <em>Disparate Impact</em>) devront être implémentées sur ces variables à risque afin de prévenir et mitiger tout biais algorithmique (en accord avec l'AI Act).</p>
 </div>
 </div>
 </div>
@@ -10788,8 +10795,8 @@ Le modèle compense l'absence de la variable 'nationalité' en utilisant des 'pr
 <li>L'adresse (Dpt) et le niveau de diplôme sont historiquement corrélés à l'origine.</li>
 </ul>
 <p>Conclusion :
-S2 respecte la conformité légale stricte (Privacy by Design) en ne traitant pas la donnée sensible.
-Toutefois, pour atteindre une véritable équité mathématique, il faudrait implémenter des techniques avancées très complexe qui dépassent le cadre de ce POC.</p>
+S2 respecte une démarche de minimisation des données (<em>Privacy by Design</em>) en retirant ces facteurs directs de discrimination.
+Toutefois, pour atteindre une véritable équité mathématique, il faudrait implémenter des techniques avancées de dé-biaisage très complexes qui dépassent le cadre de ce POC.</p>
 </div>
 </div>
 </div>
@@ -11551,7 +11558,7 @@ Si un conseiller fatigué, gérant un flux massif de dossiers, voit l'IA affiche
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c0e2eec1">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9aa9a961">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -11578,7 +11585,7 @@ Si un conseiller fatigué, gérant un flux massif de dossiers, voit l'IA affiche
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3537beb9">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=06b9432d">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -11603,7 +11610,7 @@ Si un conseiller fatigué, gérant un flux massif de dossiers, voit l'IA affiche
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=597c4823">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=bc4604c5">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -11628,7 +11635,7 @@ Si un conseiller fatigué, gérant un flux massif de dossiers, voit l'IA affiche
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=75e75a46">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=965ac6b4">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -11653,7 +11660,7 @@ Si un conseiller fatigué, gérant un flux massif de dossiers, voit l'IA affiche
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=92408150">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0f6c9cf7">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -11677,7 +11684,7 @@ Si un conseiller fatigué, gérant un flux massif de dossiers, voit l'IA affiche
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b391a3e1">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=336414d0">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -11704,7 +11711,7 @@ Si un conseiller fatigué, gérant un flux massif de dossiers, voit l'IA affiche
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=458942e4">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=77447b11">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -11731,7 +11738,7 @@ Si un conseiller fatigué, gérant un flux massif de dossiers, voit l'IA affiche
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a75c8770">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2f709e0b">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -11756,7 +11763,7 @@ Si un conseiller fatigué, gérant un flux massif de dossiers, voit l'IA affiche
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b8e8dbd0">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1e2e7697">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -11783,7 +11790,7 @@ Si un conseiller fatigué, gérant un flux massif de dossiers, voit l'IA affiche
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=fa44cf64">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=45d53b5a">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -11809,7 +11816,7 @@ Si un conseiller fatigué, gérant un flux massif de dossiers, voit l'IA affiche
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=96a3182d">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d262f03a">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -11834,7 +11841,7 @@ Si un conseiller fatigué, gérant un flux massif de dossiers, voit l'IA affiche
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=948d9611">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e68b1515">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -11861,7 +11868,7 @@ Si un conseiller fatigué, gérant un flux massif de dossiers, voit l'IA affiche
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1490bb70">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a56e7e55">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -11887,7 +11894,7 @@ Si un conseiller fatigué, gérant un flux massif de dossiers, voit l'IA affiche
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=26469bd8">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ea337295">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>

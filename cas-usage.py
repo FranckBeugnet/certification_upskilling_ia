@@ -273,19 +273,22 @@ df.shape, df.columns.tolist()
 
 # ### 2.3 Dictionnaire de variables
 # 
-# | Variable | Description | Type | Plage / valeurs | Cible ? | Sensible ? |
+# | Variable | Description | Type | Plage / valeurs | Cible ? | Statut éthique / RGPD |
 # |---|---|---|---|---|---|
-# | `usager_id` | Identifiant unique | ID | | ❌ | ❌ |
-# | `age` | Âge de l'usager (en années) | Numérique | | ❌ | ✅ |
-# | `niveau_diplome` | Plus haut diplôme obtenu | Catégoriel | Sans diplôme, Bac, Bac+2, Bac+5 | ❌ | ❌ |
-# | `anciennete_poste_ans`| Expérience dans le dernier emploi (en années) | Numérique | | ❌ | ❌ |
-# | `code_rome_vise` | Code emploi ROME (5 chars) | Catégoriel | | ❌ | ❌ |
-# | `code_insee_commune` | Code géo INSEE | Catégoriel | | ❌ | ⚠️ (Proxy) |
-# | `est_allocataire` | Statut d'indemnisation | Booléen | 0, 1 | ❌ | ❌ |
-# | `nationalite_hors_ue` | Origine hors UE | Booléen | 0, 1 | ❌ | ✅ |
-# | `synthese_entretien` | Notes textuelles du conseiller | Texte | | ❌ | ⚠️ (PII) |
-# | `classe_retour_emploi`| Délai de retour à l'emploi | Cible (0,1,2) | 0: <6m, 1: 6-12m, 2: >12m | ✅ | ❌ |
+# | `usager_id` | Identifiant unique | ID | | ❌ | Donnée personnelle ordinaire (anonymisée) |
+# | `age` | Âge de l'usager (en années) | Numérique | | ❌ | ⚠️ Facteur de discrimination potentielle (âgisme) |
+# | `niveau_diplome` | Plus haut diplôme obtenu | Catégoriel | Sans diplôme, Bac, Bac+2, Bac+5 | ❌ | Donnée personnelle ordinaire |
+# | `anciennete_poste_ans`| Expérience dans le dernier emploi (en années) | Numérique | | ❌ | Donnée professionnelle ordinaire |
+# | `code_rome_vise` | Code emploi ROME (5 chars) | Catégoriel | | ❌ | Donnée professionnelle ordinaire |
+# | `code_insee_commune` | Code géo INSEE | Catégoriel | | ❌ | ⚠️ Proxy géographique potentiel |
+# | `est_allocataire` | Statut d'indemnisation | Booléen | 0, 1 | ❌ | Donnée administrative ordinaire |
+# | `nationalite_hors_ue` | Origine hors UE | Booléen | 0, 1 | ❌ | ⚠️ Facteur de discrimination potentielle (origine) |
+# | `synthese_entretien` | Notes textuelles du conseiller | Texte | | ❌ | ⚠️ Texte libre (risque de PII / données sensibles Art. 9) |
+# | `classe_retour_emploi`| Délai de retour à l'emploi | Cible (0,1,2) | 0: <6m, 1: 6-12m, 2: >12m | ✅ | Donnée d'évaluation métier |
 # 
+# > 💡 **Précision juridique (RGPD vs Anti-discrimination) :**
+# > * Au sens strict de l'**Article 9 du RGPD**, les « données sensibles » (catégories particulières) concernent l'origine raciale ou ethnique, les opinions politiques, convictions religieuses, données de santé, biométriques, etc. L'**âge** et la **nationalité** sont juridiquement des **données personnelles ordinaires**, non des données sensibles Art. 9.
+# > * En revanche, au regard du **droit de la non-discrimination** et des exigences de l'**AI Act** sur les systèmes à haut risque, l'âge et la nationalité constituent des critères protégés majeurs présentant un risque fort de discrimination algorithmique (âgisme, préférence nationale).
 # 
 # > 💡 **Le Code ROME** : Le Répertoire Opérationnel des Métiers et des Emplois (ROME) est la nomenclature utilisée par France Travail pour classer les métiers. Il est composé d'une lettre (grande famille) et de 4 chiffres. C'est une information clé mais à forte cardinalité.
 # 
@@ -1307,7 +1310,7 @@ display(df_biais)
 # - L'adresse (Dpt) et le niveau de diplôme sont historiquement corrélés à l'origine.
 # 
 # Conclusion :
-# S2 respecte la conformité légale stricte (Privacy by Design) en ne traitant pas la donnée sensible. 
+# S2 respecte une démarche de minimisation des données (Privacy by Design) en retirant ces facteurs directs de discrimination. 
 # Toutefois, pour atteindre une véritable équité mathématique, il faudrait implémenter des techniques avancées très complexe qui dépassent le cadre de ce POC.
 
 # ---

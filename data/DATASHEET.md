@@ -26,21 +26,23 @@ Ce dataset est fourni pour prototyper un cas d'usage d'orientation et de tri mul
 | Nombre de colonnes | 10 colonnes |
 | Cible | `classe_retour_emploi` : `0` (< 6 mois), `1` (6-12 mois), `2` (> 12 mois) |
 | Distribution cible | `0` : 44.0 % / `1` : 38.0 % / `2` : 18.0 % (déséquilibre) |
-| Variables sensibles | `age` ⚠️ (âgisme), `nationalite_hors_ue` ⚠️ (origine), `synthese_entretien` ⚠️ (PII) |
+| Variables à risque éthique / RGPD | `age` ⚠️ (discrimination liée à l'âge), `nationalite_hors_ue` ⚠️ (discrimination liée à l'origine), `synthese_entretien` ⚠️ (texte libre avec risque PII) |
 | Valeurs manquantes | `niveau_diplome` (imputées par modalité majoritaire) |
+
+> 💡 **Précision juridique (RGPD vs AI Act)** : Au sens strict de l'Article 9 du RGPD, l'âge et la nationalité sont des données personnelles ordinaires (seule « l'origine raciale ou ethnique » constitue une donnée sensible Art. 9). Toutefois, au regard de l'AI Act et du droit du travail, ces deux variables sont des critères protégés soumis à un risque fort de discrimination algorithmique.
 
 **Schéma des colonnes** :
 
 | Colonne | Type | Modalités / range | Note |
 |---|---|---|---|
 | `usager_id` | Identifiant | String / UUID | Exclu du pipeline de modélisation |
-| `age` | Numérique | 18 — 64 ans | Variable sensible (âgisme) |
+| `age` | Numérique | 18 — 64 ans | Facteur de discrimination potentielle (âgisme) |
 | `niveau_diplome` | Catégorielle ordonnée | Sans diplôme, Bac, Bac+2, Bac+5 | Encodée en ordinal |
 | `anciennete_poste_ans` | Numérique | 0 — 40 ans | Expérience dans le dernier emploi |
 | `code_rome_vise` | Catégorielle | Code ROME 5 chars | Réduit à la famille ROME (1er char) |
 | `code_insee_commune` | Catégorielle | Code géo INSEE 5 chars | Réduit au département (2 1ers chars) |
 | `est_allocataire` | Catégorielle / Booléen | 0, 1 | Statut d'indemnisation |
-| `nationalite_hors_ue` | Catégorielle / Booléen | 0, 1 | Variable sensible (origine) |
+| `nationalite_hors_ue` | Catégorielle / Booléen | 0, 1 | Facteur de discrimination potentielle (origine) |
 | `synthese_entretien` | Texte libre | Notes du conseiller | Traitement NLP (TF-IDF 1000 features) |
 | `classe_retour_emploi` | Cible multiclasse | 0 (< 6m), 1 (6-12m), 2 (> 12m) | Déséquilibre sur la classe 2 (18 %) |
 
