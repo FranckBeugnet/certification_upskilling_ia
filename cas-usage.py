@@ -1255,13 +1255,16 @@ plt.tight_layout()
 plt.show()
 
 
-# ### 6.5 Preuve Éthique (AI Act) : Disparate Impact et l'illusion du "Fairness through Blindness"
+# ### 6.5 Analyse d'équité : Disparate Impact et l'illusion du « Fairness through Blindness »
 # 
-# > **Rappel de la règle des 80% (0.80)** : Un *Disparate Impact* (DI) en dehors de l'intervalle [0.80, 1.25] est considéré comme un signal de discrimination algorithmique (sur-représentation d'une classe).
+# > 💡 **En clair : Qu'est-ce que la « règle des 4/5 » (ou des 80%) ?**
+# > * **Origine** : Cette règle des 4/5 (ratio de sélection devant être compris entre 0.80 et 1.25) est issue du **droit du travail américain** (*EEOC*, 1978).
+# > * **Usage avec l'AI Act européen** : Ce seuil de 80% **n'est pas un critère légal de l'AI Act**. En Europe, la réglementation impose de surveiller et de corriger les biais discriminatoires, sans fixer ce seuil mathématique précis.
+# > * **Notre utilisation** : Nous l'utilisons donc comme un **indicateur statistique pratique** (un signal d'alerte métier pour repérer d'éventuels déséquilibres), et non comme une contrainte juridique officielle.
 # 
 # Nous avons initialement justifié le choix de S2 par le retrait de l'âge et de la nationalité. **Cependant, le test de Disparate Impact ci-dessous révèle une vérité fondamentale en éthique de l'IA : supprimer les variables sensibles ne suffit pas toujours à supprimer le biais.** 
 # 
-# Même "aveugle" (blindness), l'algorithme réussit à recréer le biais indirectement grâce à des **variables proxy** (corrélations cachées dans le département de résidence, le diplôme, ou les mots spécifiques de la synthèse texte).
+# Même "aveugle" (*blindness*), l'algorithme réussit à recréer le biais indirectement grâce à des **variables proxy** (corrélations cachées dans le département de résidence, le diplôme, ou les mots spécifiques de la synthèse texte).
 # 
 
 # In[82]:
