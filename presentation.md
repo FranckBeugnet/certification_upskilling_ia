@@ -99,31 +99,119 @@ style: |
 ## Le Constat Métier
 
 <style scoped>
-section { font-size: 20px; padding-top: 70px; }
-.columns { display: grid; grid-template-columns: 1fr 1.25fr; gap: 1.5rem; align-items: center; margin-top: 5px; }
-ul { margin: 0 0 10px 0; padding-left: 20px; }
-li { margin-bottom: 4px; }
+section { font-size: 18px; padding-top: 52px; padding-bottom: 45px; }
+.hero-context {
+  background: #f0f4f8;
+  border-left: 4px solid #1565c0;
+  padding: 5px 12px;
+  margin-bottom: 10px;
+  font-size: 15px;
+  line-height: 1.3;
+  border-radius: 0 5px 5px 0;
+  color: #0d47a1;
+}
+.main-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  gap: 1rem;
+  align-items: stretch;
+}
+.meta-card {
+  background: #ffffff;
+  border: 1.5px solid #cfd8dc;
+  border-radius: 6px;
+  padding: 8px 12px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.matrix-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 4px;
+  font-size: 13px;
+  text-align: center;
+  margin: 0;
+}
+.matrix-table th, .matrix-table td {
+  padding: 5px 5px;
+  border-radius: 4px;
+}
 </style>
 
-<div class="columns">
-  <div>
-    <ul>
-      <li><b>Contexte :</b> Flux massif d'usagers au 1<sup>er</sup> entretien.</li>
-      <li><b>Objectif :</b> Aiguiller tôt vers l'accompagnement renforcé.</li>
-      <li><b>Solution IA :</b> Modèle multimodal (tabulaire + <b>synthèse textuelle</b>).</li>
-      <li><b>Cible (3 classes) :</b><br>
-        • <b>0 (Rapide &lt; 6m) :</b> 37%<br>
-        • <b>1 (Moyen 6-12m) :</b> 44%<br>
-        • <b>2 (Risque long &gt; 12m) :</b> 18% <i>(critique)</i>
-      </li>
-    </ul>
-    <div class="tech-box" style="font-size: 16px; margin-top: 8px; padding: 8px 10px; line-height: 1.3;">
-      <b>Doctrine "No Mercy" sur le Risque :</b><br>
-      Priorité absolue au <b>Rappel sur la classe 2</b> plutôt qu'à l'Accuracy. Prédire 0 pour un vrai 2 est une perte de chance humaine et financière inacceptable.
+<div class="hero-context">
+  <b>Contexte métier :</b> Au sein du service public de l'emploi, le premier entretien d'aiguillage est un moment décisif où le conseiller doit identifier au plus tôt les situations vulnérables afin de mobiliser immédiatement le bon accompagnement.
+</div>
+
+<div class="main-grid">
+  <div class="meta-card">
+    <div>
+      <div style="font-weight: bold; color: #1565c0; margin-bottom: 6px; font-size: 15.5px;">
+        🎯 Le Défi Opérationnel au Guichet
+      </div>
+      <ul style="margin: 0; padding-left: 18px; line-height: 1.35; font-size: 14px;">
+        <li style="margin-bottom: 4px;"><b>Flux massif d'usagers :</b> Temps d'échange limité pour déceler les freins périphériques.</li>
+        <li style="margin-bottom: 4px;"><b>Solution IA Multimodale :</b> Fusion des critères administratifs et des notes textuelles du conseiller.</li>
+        <li><b>Répartition de la cible terrain :</b><br>
+          • <b>Classe 0 (Rapide &lt; 6m) :</b> 37% <i>(autonomie)</i><br>
+          • <b>Classe 1 (Moyen 6-12m) :</b> 44% <i>(parcours standard)</i><br>
+          • <b>Classe 2 (Risque &gt; 12m) :</b> <b style="color: #c62828;">18% (critique)</b>
+        </li>
+      </ul>
+    </div>
+    <div style="margin-top: 8px; padding: 6px 10px; background: #eef2f6; border-left: 3px solid #1565c0; border-radius: 4px; font-size: 12.5px; color: #263238; line-height: 1.3;">
+      <b>Objectif opérationnel :</b> Déclencher l'accompagnement renforcé dès le 1<sup>er</sup> jour pour éviter l'enlisement dans le chômage longue durée.
     </div>
   </div>
-  <div align="center">
-    <img src="assets/no_mercy_matrix.png" alt="No Mercy" width="460" style="max-width: 100%; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);"/>
+
+  <div class="meta-card">
+    <div style="font-weight: bold; color: #1565c0; margin-bottom: 4px; font-size: 15px;">
+      ⚖️ Matrice d'Impact Métier & Asymétrie des Coûts
+    </div>
+<table class="matrix-table">
+  <thead>
+    <tr>
+      <th style="width: 32%; background: transparent; border: none;"></th>
+      <th style="background: #e3f2fd; color: #0d47a1; font-weight: bold; font-size: 12.5px;">L'IA prédit "Risque"</th>
+      <th style="background: #f5f5f5; color: #424242; font-weight: bold; font-size: 12.5px;">L'IA prédit "Rapide"</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="background: #ffebee; color: #b71c1c; font-weight: bold; font-size: 12.5px;">
+        Réel : Risque Long<br><span style="font-size: 10.5px; font-weight: normal; color: #666;">(Classe 2 — 18%)</span>
+      </td>
+      <td style="background: #e8f5e9; border: 1.5px solid #2e7d32; color: #1b5e20;">
+        <b>Vrai Positif (VP)</b><br>
+        <span style="font-size: 11.5px;">✅ Usager orienté & sauvé</span>
+      </td>
+      <td style="background: #ffebee; border: 2px solid #c62828; color: #b71c1c;">
+        <b>Faux Négatif (FN)</b><br>
+        <span style="font-size: 11.5px; font-weight: bold;">🚨 DANGER ABSOLU</span><br>
+        <span style="font-size: 10.5px;">Perte de chance critique</span>
+      </td>
+    </tr>
+    <tr>
+      <td style="background: #e8f5e9; color: #1b5e20; font-weight: bold; font-size: 12.5px;">
+        Réel : Retour Rapide<br><span style="font-size: 10.5px; font-weight: normal; color: #666;">(Classe 0 — 37%)</span>
+      </td>
+      <td style="background: #fff8e1; border: 1.5px solid #f57c00; color: #e65100;">
+        <b>Faux Positif (FP)</b><br>
+        <span style="font-size: 11.5px;">⚠️ Aide inutile</span><br>
+        <span style="font-size: 10.5px;">Coût financier acceptable</span>
+      </td>
+      <td style="background: #e8f5e9; border: 1.5px solid #2e7d32; color: #1b5e20;">
+        <b>Vrai Négatif (VN)</b><br>
+        <span style="font-size: 11.5px;">✅ Usager autonome</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div style="font-size: 12px; margin-top: 4px; padding: 5px 8px; line-height: 1.25; border-left: 3px solid #c62828; background-color: #fff5f5; border-radius: 3px;">
+  <b style="color: #b71c1c;">Doctrine "No Mercy" sur le Risque (Priorité au Rappel Classe 2) :</b><br>
+  Prédire 0 pour un vrai 2 prive l'usager d'aides vitales. Notre modèle sur-pénalise les Faux Négatifs : mieux vaut accompagner préventivement que d'abandonner un usager à risque.
+</div>
   </div>
 </div>
 
@@ -151,18 +239,85 @@ L'usage de l'IA dans l'orientation professionnelle impose un cadre de conformit�
 
 ---
 
-## Le Défi de la Donnée : "Small Data", Cardinalité & Qualité
+## Le Défi de la Donnée : "Small Data", Cardinalité & Prétraitement
 
-- **Jeu de données :** 2 500 profils usagers historiques, 10 variables, présence de valeurs manquantes (âge, diplôme, allocataire, texte).
-- **Problème technique (Malédiction de la dimensionnalité) :**
-  - `code_insee_commune` : > 2 400 communes distinctes pour 2 500 lignes.
-  - `code_rome_vise` : > 50 métiers distincts.
-  - Entraîner sur ces données brutes conduirait à un sur-apprentissage (*overfitting*) immédiat.
+<style scoped>
+section { font-size: 17px; padding-top: 52px; padding-bottom: 45px; }
+.top-box {
+  background: #f0f4f8;
+  border-left: 4px solid #1565c0;
+  padding: 5px 12px;
+  margin-bottom: 8px;
+  font-size: 14.5px;
+  line-height: 1.3;
+  color: #0d47a1;
+}
+.prep-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.9rem;
+  margin-top: 4px;
+}
+.prep-card {
+  background: #ffffff;
+  border: 1.5px solid #cfd8dc;
+  border-radius: 6px;
+  padding: 8px 10px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.prep-card h3 {
+  margin: 0 0 5px 0;
+  font-size: 14.5px;
+  color: #1565c0;
+  border-bottom: 1.5px solid #e0e0e0;
+  padding-bottom: 3px;
+}
+ul { margin: 0; padding-left: 17px; font-size: 13.5px; line-height: 1.3; }
+li { margin-bottom: 3px; }
+</style>
 
-<div class="tech-box">
-<b>Décision Technique : Extraction de Macro-Tendances</b><br>
-Dérivation du <b>Département</b> (2 premiers caractères du code INSEE) et de la <b>Famille ROME</b> (1ère lettre).<br>
-<b>Limites assumées de l'échantillon (2 500 lignes) :</b> En agrégeant par département, on sacrifie la granularité du bassin d'emploi local (pôle dynamique vs zone rurale isolée), compromis nécessaire pour éviter la mémorisation par cœur.
+<div class="top-box">
+  <b>Jeu de données & contraintes :</b> 2 500 usagers, 10 variables, valeurs manquantes (âge, diplôme, allocataire, texte). Défi majeur : cardinalité extrême (2 400 communes, 50 métiers) ➔ Risque d'overfitting immédiat.
+</div>
+
+<div class="prep-grid">
+  <div class="prep-card">
+    <h3>1. Feature Engineering (Macro-Tendances)</h3>
+    <ul>
+      <li><b>Département :</b> 2 premiers chiffres du code INSEE (réduit de 2 400 à ~95 catégories).</li>
+      <li><b>Famille ROME :</b> 1<sup>ère</sup> lettre du code ROME (réduit à 14 grands secteurs).</li>
+      <li><b>Compromis assumé :</b> On sacrifie l'hyper-local pour garantir la capacité de généralisation sur 2 500 profils.</li>
+    </ul>
+  </div>
+
+  <div class="prep-card">
+    <h3>2. Variables Numériques (Âge, Ancienneté)</h3>
+    <ul>
+      <li><b>Cases vides (Imputation) :</b> Remplacement par la valeur médiane pour ne pas être faussé par les cas extrêmes.</li>
+      <li><b>Mise à la même échelle (Standardisation) :</b> Ajuste l'âge et les années d'expérience sur un pied d'égalité, évitant qu'un grand chiffre n'écrase les autres données.</li>
+    </ul>
+  </div>
+
+  <div class="prep-card">
+    <h3>3. Catégorielles Ordinales (Diplôme)</h3>
+    <ul>
+      <li><b>Ordre d'études respecté :</b> Traduction en score croissant selon le niveau :<br>
+        <i>Sans diplôme (0) &lt; Bac (1) &lt; Bac+2 (2) &lt; Bac+5 (3)</i>.</li>
+      <li><b>Valeurs manquantes ou imprévues :</b> Remplacées par le diplôme le plus fréquent, avec filet de sécurité si un profil inédit arrive.</li>
+    </ul>
+  </div>
+
+  <div class="prep-card">
+    <h3>4. Catégorielles Nominales (OHE)</h3>
+    <ul>
+      <li><b>Variables :</b> Allocataire, nationalité, département, famille ROME.</li>
+      <li><b>Conversion en cases à cocher (0 ou 1) :</b> Chaque choix devient une option binaire indépendante, sans créer de doublon d'information ni bloquer si une nouvelle option apparaît.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="tech-box" style="font-size: 12.5px; margin-top: 6px; padding: 5px 10px; line-height: 1.25;">
+  <b>Architecture Scikit-Learn :</b> Toutes ces briques sont isolées dans un <code>ColumnTransformer</code> unifié, combiné au NLP (TF-IDF), garantissant <b>zéro fuite de données (Data Leakage)</b> entre Train et Test.
 </div>
 
 ---
@@ -188,35 +343,230 @@ li { margin-bottom: 3px; }
 
 ---
 
-## Analyse du Texte (NLP) : Problématique et Possibilités
+## Analyse du Texte (NLP) : Problématique & Benchmark des Approches
 
-- **La Problématique :** La `synthese_entretien` est un champ libre, non structuré. C'est le **prédicteur n°1** du jeu de données (mots-clés : <i>freins périphériques, perte de confiance, autonome</i>).
-- **Le Défi :** Transformer des notes hétérogènes en représentations numériques exploitables en temps réel.
-- **Les Possibilités techniques :**
-  1. *Bag of Words (Comptage brut)* : Bruit statistique, domination des mots vides.
-  2. *Deep Learning (CamemBERT / Embeddings / LLM)* : Très lourd, approche "boîte noire", risque d'overfitting sur 2 500 textes courts, non aligné sur la sobriété numérique.
-  3. *TF-IDF (Term Frequency - Inverse Document Frequency)* : Pondération de la rareté des termes.
+<style scoped>
+section { font-size: 17px; padding-top: 50px; padding-bottom: 45px; }
+.top-box {
+  background: #f0f4f8;
+  border-left: 4px solid #1565c0;
+  padding: 5px 12px;
+  margin-bottom: 8px;
+  font-size: 14px;
+  line-height: 1.3;
+  color: #0d47a1;
+}
+.nlp-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.8rem;
+  margin-top: 4px;
+}
+.nlp-card {
+  background: #ffffff;
+  border: 1.5px solid #cfd8dc;
+  border-radius: 6px;
+  padding: 8px 10px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.nlp-card h3 {
+  margin: 0 0 5px 0;
+  font-size: 14px;
+  padding-bottom: 3px;
+  border-bottom: 1.5px solid #e0e0e0;
+}
+ul { margin: 0; padding-left: 16px; font-size: 12.8px; line-height: 1.3; }
+li { margin-bottom: 3px; }
+.badge {
+  display: inline-block;
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+</style>
 
----
+<div class="top-box">
+  <b>La Problématique Métier :</b> Le champ libre <code>synthese_entretien</code> est le <b>prédicteur n°1</b> du jeu de données (signaux faibles : <i>"freins périphériques", "perte de confiance", "autonome"</i>). Le défi : convertir ces verbatims hétérogènes en représentations exploitables en temps réel.
+</div>
 
-## Notre Choix NLP : TF-IDF avec Stop Words Français
+<div class="nlp-grid">
+  <div class="nlp-card">
+    <div>
+      <span class="badge" style="background: #ffebee; color: #c62828;">❌ Écarté : Trop naïf</span>
+      <h3 style="color: #c62828;">1. Bag of Words (Comptage brut)</h3>
+      <ul>
+        <li><b>Principe :</b> Simple comptage de la fréquence brute des mots.</li>
+        <li><b>Limite majeure :</b> Les mots fréquents et vides ("le", "de", "usager") écrasent le signal utile.</li>
+        <li><b>Impact :</b> Bruit statistique massif, faible discrimination des situations fragiles.</li>
+      </ul>
+    </div>
+    <div style="font-size: 11.5px; color: #757575; border-top: 1px dashed #ccc; padding-top: 4px; margin-top: 4px;">
+      <i>Inadapté aux textes courts et bruités.</i>
+    </div>
+  </div>
 
-Nous avons retenu l'approche **TF-IDF filtrée** pour trois raisons déterminantes :
+  <div class="nlp-card">
+    <div>
+      <span class="badge" style="background: #fff3e0; color: #e65100;">⚠️ Écarté : Surdimensionné</span>
+      <h3 style="color: #e65100;">2. Deep Learning (CamemBERT / LLM)</h3>
+      <ul>
+        <li><b>Principe :</b> Plongements sémantiques contextuels denses (Transformers).</li>
+        <li><b>Forces :</b> Analyse fine des nuances linguistiques et des négations.</li>
+        <li><b>Obstacles :</b> "Boîte noire" difficilement explicable (AI Act), sur-apprentissage sur 2 500 textes courts, coût GPU prohibitif.</li>
+      </ul>
+    </div>
+    <div style="font-size: 11.5px; color: #757575; border-top: 1px dashed #ccc; padding-top: 4px; margin-top: 4px;">
+      <i>À réévaluer sur &gt; 500k textes avec GPU.</i>
+    </div>
+  </div>
 
-1. **Transparence & Interprétabilité (AI Act) :** Architecture explicable par conception. Chaque mot possède un poids direct traçable via TF-IDF (ex: "barrière", "santé", "complexe").
-2. **Robustesse sur Petit Volume :** Aucun risque d'explosion paramétrique contrairement aux réseaux de neurones. Espace vectoriel plafonné à 1 000 features avec filtrage `max_df=0.85` et stopwords français.
-3. **Green IT & Temps Réel (Principe KISS) :** Inférence en moins de **0.1 ms sur simple CPU**, sans aucune dépendance à des infrastructures GPU coûteuses et énergivores.
+  <div class="nlp-card" style="border: 2px solid #2e7d32; background: #f9fbe7;">
+    <div>
+      <span class="badge" style="background: #e8f5e9; color: #2e7d32;">✅ Retenu : Le Compromis Idéal</span>
+      <h3 style="color: #1b5e20;">3. TF-IDF avec Stopwords</h3>
+      <ul>
+        <li><b>Principe :</b> Valorise les mots discriminants et pénalise les termes banals.</li>
+        <li><b>Explicabilité totale (AI Act) :</b> Poids direct et traçable pour chaque mot-clé (ex: <i>"barrière", "santé"</i>).</li>
+        <li><b>Sobriété (Green IT) :</b> Inférence ultra-rapide (&lt; 0.1 ms sur CPU simple), 0 surcoût infra.</li>
+      </ul>
+    </div>
+    <div style="font-size: 11.5px; color: #1b5e20; border-top: 1px dashed #a5d6a7; padding-top: 4px; margin-top: 4px; font-weight: 500;">
+      <i>Intégration directe dans le ColumnTransformer.</i>
+    </div>
+  </div>
+</div>
+
+<div class="tech-box" style="font-size: 12.5px; margin-top: 6px; padding: 5px 10px; line-height: 1.25;">
+  <b>Bilan de l'arbitrage NLP :</b> Conformément au principe KISS et aux exigences de transparence publique, le TF-IDF surpasse les modèles complexes en garantissant auditabilité immédiate, sobriété énergétique et robustesse sur un petit corpus.
+</div>
 
 ---
 
 ## Le Pipeline Scikit-Learn End-to-End (Anti-Data Leakage)
 
-Toute la chaîne est encapsulée dans un `Pipeline` Scikit-Learn sérialisé, assurant une **herméticité totale** et une utilisation immédiate en production :
+<style scoped>
+section { font-size: 17px; padding-top: 52px; padding-bottom: 45px; }
+.pipe-flow {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin: 10px 0 12px 0;
+}
+.pipe-step {
+  flex: 1;
+  background: #ffffff;
+  border: 1.5px solid #cfd8dc;
+  border-radius: 6px;
+  padding: 8px 10px;
+  text-align: center;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.pipe-step h4 {
+  margin: 0 0 4px 0;
+  font-size: 13.5px;
+  color: #1565c0;
+}
+.pipe-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: #1565c0;
+  font-weight: bold;
+}
+.pillar-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.8rem;
+}
+.pillar-card {
+  background: #f8fafc;
+  border: 1.5px solid #d0d7de;
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 12.8px;
+  line-height: 1.35;
+}
+.pillar-card b {
+  color: #0d47a1;
+}
+</style>
 
-$$\text{Données Brutes Usager} \longrightarrow \underbrace{\text{Feature Engineering}}_{\text{FunctionTransformer}} \longrightarrow \underbrace{\text{ColumnTransformer}}_{\text{Imputers, Scaler, OHE, TF-IDF}} \longrightarrow \underbrace{\text{Estimateur}}_{\text{LightGBM}}$$
+<div class="pipe-flow">
+  <div class="pipe-step" style="border-left: 4px solid #546e7a;">
+    <div>
+      <h4>1. Données Brutes</h4>
+      <div style="font-size: 11.5px; color: #455a64;">JSON usager direct</div>
+    </div>
+    <div style="font-size: 11px; background: #eceff1; padding: 3px 5px; border-radius: 4px; margin-top: 4px;">
+      INSEE, ROME, Âge, Notes textuelles
+    </div>
+  </div>
 
-- **Zéro Data Leakage :** Préparé et ajusté strictement après le `train_test_split` stratifié.
-- **Entrées brutes acceptées :** L'API et les services aval injectent directement `code_insee_commune` et `code_rome_vise` sans prétraitement externe.
+  <div class="pipe-arrow">➔</div>
+
+  <div class="pipe-step" style="border-left: 4px solid #1e88e5;">
+    <div>
+      <h4>2. Feature Eng.</h4>
+      <div style="font-size: 11.5px; color: #1565c0;">FunctionTransformer</div>
+    </div>
+    <div style="font-size: 11px; background: #e3f2fd; padding: 3px 5px; border-radius: 4px; margin-top: 4px;">
+      Département (95) + Famille ROME (14)
+    </div>
+  </div>
+
+  <div class="pipe-arrow">➔</div>
+
+  <div class="pipe-step" style="border-left: 4px solid #8e24aa;">
+    <div>
+      <h4>3. Prétraitement</h4>
+      <div style="font-size: 11.5px; color: #6a1b9a;">ColumnTransformer</div>
+    </div>
+    <div style="font-size: 11px; background: #f3e5f5; padding: 3px 5px; border-radius: 4px; margin-top: 4px;">
+      Scaler + Ordinal + OHE + TF-IDF
+    </div>
+  </div>
+
+  <div class="pipe-arrow">➔</div>
+
+  <div class="pipe-step" style="border-left: 4px solid #2e7d32; background: #f9fbe7;">
+    <div>
+      <h4>4. Modèle IA</h4>
+      <div style="font-size: 11.5px; color: #2e7d32;">LightGBM Classifier</div>
+    </div>
+    <div style="font-size: 11px; background: #e8f5e9; padding: 3px 5px; border-radius: 4px; margin-top: 4px;">
+      Probabilités [0, 1, 2] + Décision
+    </div>
+  </div>
+</div>
+
+<div class="pillar-grid">
+  <div class="pillar-card">
+    <b>🛡️ Zéro Fuite (Data Leakage) :</b><br>
+    La chaîne est entraînée (<code>fit</code>) strictement sur le jeu d'entraînement après split stratifié. Les statistiques (médianes, échelles, IDF) ne voient jamais le jeu de test.
+  </div>
+  <div class="pillar-card">
+    <b>📦 Artefact Unique (555 Ko) :</b><br>
+    L'intégralité du traitement et de l'estimateur est sérialisée dans <code>pipeline_production.joblib</code>. Finis les scripts annexes de nettoyage en vrac.
+  </div>
+  <div class="pillar-card">
+    <b>🚀 Prêt pour la Production :</b><br>
+    L'API FastAPI reçoit la requête HTTP brute, l'injecte dans le pipeline en 1 ligne (<code>pipeline.predict_proba()</code>) et renvoie la prédiction en <b>&lt; 1 ms</b>.
+  </div>
+</div>
+
+<div class="tech-box" style="font-size: 12.5px; margin-top: 8px; padding: 5px 10px; line-height: 1.25;">
+  <b>Garantie logicielle :</b> En encapsulant feature engineering, imputations, encodages et inférence dans un seul objet standardisé, nous éliminons tout écart entre l'expérimentation en notebook et le service déployé en production.
+</div>
 
 ---
 
@@ -227,30 +577,86 @@ $$\text{Données Brutes Usager} \longrightarrow \underbrace{\text{Feature Engine
 ## Le Défi du Déséquilibre : La Réalité des Données
 
 <style scoped>
-section { font-size: 21px; padding-top: 75px; }
-.columns { display: grid; grid-template-columns: 1fr 1.25fr; gap: 1.5rem; align-items: center; }
-ul { margin: 0 0 10px 0; padding-left: 20px; }
-li { margin-bottom: 5px; }
+section { font-size: 17.5px; padding-top: 52px; padding-bottom: 45px; }
+.hero-box {
+  background: #f0f4f8;
+  border-left: 4px solid #1565c0;
+  padding: 5px 12px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  line-height: 1.3;
+  color: #0d47a1;
+}
+.imbalance-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 1.1rem;
+  align-items: stretch;
+}
+.stat-card {
+  background: #ffffff;
+  border: 1.5px solid #cfd8dc;
+  border-radius: 6px;
+  padding: 8px 10px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.stat-card h3 {
+  margin: 0 0 5px 0;
+  font-size: 14px;
+  color: #1565c0;
+  border-bottom: 1.5px solid #e0e0e0;
+  padding-bottom: 3px;
+}
+.chart-card {
+  background: #ffffff;
+  border: 1.5px solid #cfd8dc;
+  border-radius: 6px;
+  padding: 8px 10px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
 </style>
 
-<div class="columns">
-  <div>
-    <ul>
-      <li><b>Répartition de la cible (3 classes) :</b><br>
-        • <b>Classe 0 (Rapide &lt; 6m) :</b> 37%<br>
-        • <b>Classe 1 (Moyen 6-12m) :</b> 44%<br>
-        • <b>Classe 2 (Risque &gt; 12m) :</b> <b>18%</b> <i>(critique)</i>
-      </li>
-      <li><b>Le Piège de l'Accuracy :</b> Un modèle naïf prédisant 0 ou 1 obtient 81% d'Accuracy en abandonnant 100% des personnes à risque !</li>
-    </ul>
-    <div class="tech-box" style="font-size: 15px; margin-top: 8px; padding: 8px 10px; line-height: 1.35;">
-      <b>Boussole unique (F1-Score Macro) :</b><br>
-      C'est la note moyenne obtenue sur les 3 classes en donnant le même poids à chacune : si l'IA oublie la classe minoritaire à risque, sa note globale s'effondre.
+<div class="hero-box">
+  <b>Constat terrain :</b> Les situations de vulnérabilité extrême ne représentent qu'une minorité des usagers. L'enjeu data science est d'empêcher l'algorithme d'optimiser une performance de façade en ignorant les plus fragiles.
+</div>
+
+<div class="imbalance-grid">
+  <div style="display: flex; flex-direction: column; justify-content: space-between; gap: 8px;">
+    <div class="stat-card" style="border-left: 4px solid #c62828;">
+      <h3 style="color: #c62828;">⚠️ Le Piège de l'Accuracy (81% de fausse réussite)</h3>
+      <div style="font-size: 13px; line-height: 1.35; color: #263238;">
+        Dans un jeu à 3 classes déséquilibré, un modèle paresseux qui prédirait <b>systématiquement un retour rapide ou moyen (0 ou 1)</b> afficherait un taux de bonne prédiction de <b>81%</b>... tout en abandonnant <b>100% des personnes en détresse</b> !
+      </div>
+    </div>
+    <div class="stat-card" style="border-left: 4px solid #2e7d32;">
+      <h3 style="color: #1b5e20;">🧭 Notre Boussole : Le F1-Score Macro</h3>
+      <div style="font-size: 13px; line-height: 1.35; color: #263238;">
+        Moyenne arithmétique non pondérée des scores F1 des 3 classes :
+        <div style="text-align: center; margin: 3px 0; font-weight: bold; color: #0d47a1; font-size: 13px;">
+          F1-Macro = (F1_0 + F1_1 + F1_2) / 3
+        </div>
+        Chaque classe pèse exactement <b>33.3%</b> dans la note finale : si l'IA sacrifie la classe minoritaire à risque (2), le score global s'effondre.
+      </div>
     </div>
   </div>
-  <div align="center">
-    <img src="assets/imbalance_pie.png" alt="Déséquilibre" width="460" style="max-width: 100%; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);"/>
+
+  <div class="chart-card">
+    <div style="width: 100%; font-size: 13px; font-weight: bold; color: #1565c0; text-align: left; margin-bottom: 2px;">
+      📊 Répartition Réelle des Usagers (N = 2 500)
+    </div>
+    <img src="assets/imbalance_pie.png" alt="Déséquilibre" width="370" style="max-width: 100%; border-radius: 4px;"/>
+    <div style="font-size: 12px; color: #546e7a; text-align: center; line-height: 1.25; margin-top: 2px;">
+      La <b>Classe 2 (18.4%)</b> requiert un sur-échantillonnage de pénalité (<code>class_weight='balanced'</code>).
+    </div>
   </div>
+</div>
+
+<div class="tech-box" style="font-size: 12.5px; margin-top: 7px; padding: 5px 10px; line-height: 1.25;">
+  <b>Règle de conduite MLOps :</b> L'Accuracy globale est formellement bannie comme critère de sélection de nos modèles au profit exclusif du <b>F1-Score Macro</b> et du <b>Rappel sur la Classe 2</b>.
 </div>
 
 ---
