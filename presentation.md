@@ -71,24 +71,182 @@ style: |
 ---
 
 <!-- _class: lead -->
-# Projet de Certification IA
-## Système d'Orientation et de Prévention du Chômage Longue Durée
+<style scoped>
+section {
+  text-align: center;
+  padding-top: 100px;
+}
+.hero-title {
+  color: #0d47a1;
+  font-size: 42px;
+  margin-bottom: 8px;
+  font-weight: 800;
+}
+.hero-sub {
+  color: #1565c0;
+  font-size: 26px;
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+.hero-author {
+  background: #f0f4f8;
+  border-left: 5px solid #1565c0;
+  border-radius: 8px;
+  display: inline-block;
+  padding: 12px 28px;
+  margin-bottom: 20px;
+  text-align: left;
+}
+.stack-bar {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+.stack-tag {
+  background: #e3f2fd;
+  color: #0d47a1;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 6px;
+  font-size: 15px;
+  border: 1px solid #bbdefb;
+}
+</style>
 
-**Candidat : Franck Beugnet** — *Promo ATOS Atlas IA (Parcours 2 : Pros IT)*  
-*Conception, industrialisation et audit d'un produit Data de bout en bout*
+<div class="hero-title">Projet de Certification IA</div>
+<div class="hero-sub">Système d'Orientation et de Prévention du Chômage Longue Durée</div>
 
-**Stack :** Python 3.12 · Scikit-Learn · LightGBM · FastAPI · Streamlit · MLflow · Prometheus · Docker
+<div class="hero-author">
+  <div style="font-size: 20px; color: #0d47a1; font-weight: bold; margin-bottom: 4px;">
+    🧑‍💻 Franck Beugnet — Promo ATOS Atlas IA (Parcours 2 : Pros IT)
+  </div>
+  <div style="font-size: 16px; color: #455a64;">
+    Conception, industrialisation et audit d'un produit Data de bout en bout
+  </div>
+</div>
+
+<div class="stack-bar">
+  <span class="stack-tag">Python 3.12</span>
+  <span class="stack-tag">Scikit-Learn</span>
+  <span class="stack-tag">LightGBM</span>
+  <span class="stack-tag">FastAPI</span>
+  <span class="stack-tag">Streamlit</span>
+  <span class="stack-tag">MLflow</span>
+  <span class="stack-tag">Prometheus</span>
+  <span class="stack-tag">Docker</span>
+</div>
 
 ---
 
 # Plan de la Soutenance (30 minutes cadencées)
 
-1. **Cadrage Métier, Éthique & Objectifs (AI Act)** `[00:00 - 05:00 | 5 min]`
-2. **Audit, Qualité & Pipeline End-to-End** `[05:00 - 10:00 | 5 min]`
-3. **Modélisation, 4 Scénarios & Explicabilité (SHAP)** `[10:00 - 17:00 | 7 min]`
-4. **Architecture Cible, Flux SI & Déploiement API** `[17:00 - 22:00 | 5 min]`
-5. **Supervision MLOps, CI/CD & Dérive (Drift)** `[22:00 - 27:00 | 5 min]`
-6. **Bilan Économique, Perspectives & Démonstration** `[27:00 - 30:00 | 3 min]`
+<style scoped>
+section { font-size: 19px; padding-top: 55px; padding-bottom: 40px; }
+.plan-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.1rem;
+  margin-top: 14px;
+}
+.plan-card {
+  background: #ffffff;
+  border: 1.5px solid #cfd8dc;
+  border-left: 5px solid #1565c0;
+  border-radius: 8px;
+  padding: 10px 14px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.04);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.plan-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+.plan-num {
+  font-size: 16px;
+  font-weight: bold;
+  color: #0d47a1;
+}
+.plan-badge {
+  background: #e3f2fd;
+  color: #0d47a1;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 13px;
+}
+.plan-title {
+  font-size: 16.5px;
+  font-weight: 700;
+  color: #263238;
+}
+.plan-desc {
+  font-size: 13.5px;
+  color: #607d8b;
+  margin-top: 2px;
+}
+</style>
+
+<div class="plan-grid">
+  <div class="plan-card">
+    <div class="plan-header">
+      <span class="plan-num">Partie 1</span>
+      <span class="plan-badge">⏱️ 5 min (00:00 - 05:00)</span>
+    </div>
+    <div class="plan-title">Cadrage Métier, Éthique & Objectifs</div>
+    <div class="plan-desc">Enjeux du guichet, cible à 3 classes, doctrine No Mercy & conformité AI Act.</div>
+  </div>
+
+  <div class="plan-card" style="border-left-color: #0288d1;">
+    <div class="plan-header">
+      <span class="plan-num" style="color: #0288d1;">Partie 2</span>
+      <span class="plan-badge">⏱️ 5 min (05:00 - 10:00)</span>
+    </div>
+    <div class="plan-title">Audit, Qualité & Pipeline End-to-End</div>
+    <div class="plan-desc">Prétraitements, arbitage NLP TF-IDF vs Deep Learning, étanchéité Scikit-Learn.</div>
+  </div>
+
+  <div class="plan-card" style="border-left-color: #2e7d32;">
+    <div class="plan-header">
+      <span class="plan-num" style="color: #2e7d32;">Partie 3</span>
+      <span class="plan-badge">⏱️ 7 min (10:00 - 17:00)</span>
+    </div>
+    <div class="plan-title">Modélisation, 4 Scénarios & SHAP</div>
+    <div class="plan-desc">Benchmark CV, GridSearchCV, audit d'équité S1 à S4, explicabilité locale/globale.</div>
+  </div>
+
+  <div class="plan-card" style="border-left-color: #e65100;">
+    <div class="plan-header">
+      <span class="plan-num" style="color: #e65100;">Partie 4</span>
+      <span class="plan-badge">⏱️ 5 min (17:00 - 22:00)</span>
+    </div>
+    <div class="plan-title">Architecture Cible, Flux SI & API</div>
+    <div class="plan-desc">Flux guichet unique, contrat FastAPI, dimensionnement infra & souveraineté.</div>
+  </div>
+
+  <div class="plan-card" style="border-left-color: #7b1fa2;">
+    <div class="plan-header">
+      <span class="plan-num" style="color: #7b1fa2;">Partie 5</span>
+      <span class="plan-badge">⏱️ 5 min (22:00 - 27:00)</span>
+    </div>
+    <div class="plan-title">Supervision MLOps & Dérive (Drift)</div>
+    <div class="plan-desc">Métrologie Prometheus/Grafana, seuil de repli (65%), alerte précoce (+20%) & audit PSI.</div>
+  </div>
+
+  <div class="plan-card" style="border-left-color: #c2185b;">
+    <div class="plan-header">
+      <span class="plan-num" style="color: #c2185b;">Partie 6</span>
+      <span class="plan-badge">⏱️ 3 min (27:00 - 30:00)</span>
+    </div>
+    <div class="plan-title">Bilan Économique & Démonstration</div>
+    <div class="plan-desc">ROI financier et sociétal, démo interactive Streamlit & perspectives V2.</div>
+  </div>
+</div>
 
 ---
 
@@ -219,19 +377,106 @@ section { font-size: 18px; padding-top: 52px; padding-bottom: 45px; }
 
 ## Cadre Réglementaire, RGPD & Responsabilité Juridique
 
-<style scoped> section { font-size: 19px; padding-top: 75px; } </style>
+<style scoped>
+section { font-size: 19px; padding-top: 48px; padding-bottom: 40px; }
+.legal-box {
+  background: #f0f4f8;
+  border-left: 5px solid #1565c0;
+  padding: 8px 16px;
+  margin-bottom: 12px;
+  font-size: 16px;
+  line-height: 1.35;
+  color: #0d47a1;
+}
+.legal-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+}
+.legal-card {
+  background: #ffffff;
+  border: 1.5px solid #cfd8dc;
+  border-radius: 8px;
+  padding: 12px 14px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.legal-card h4 {
+  margin: 0 0 6px 0;
+  font-size: 16.5px;
+  color: #1565c0;
+  border-bottom: 1.5px solid #e0e0e0;
+  padding-bottom: 4px;
+}
+.legal-card ul {
+  margin: 0;
+  padding-left: 17px;
+  font-size: 14.5px;
+  line-height: 1.38;
+}
+.legal-card li {
+  margin-bottom: 5px;
+}
+</style>
 
-L'usage de l'IA dans l'orientation professionnelle impose un cadre de conformité strict :
+<div class="legal-box">
+  <b>Exigences réglementaires :</b> L'utilisation d'algorithmes prédictifs dans les politiques publiques de l'emploi impose une conformité stricte et vérifiable sur trois piliers juridiques complémentaires.
+</div>
 
-1. **AI Act Européen (Classification Haut Risque — Annexe III) :**
-   - Les systèmes d'IA utilisés dans l'emploi et l'orientation relèvent de la catégorie **Haut Risque**.
-   - Exigences impératives : traçabilité des données, explicabilité, gouvernance des biais et **supervision humaine obligatoire (*Human-In-The-Loop*)**.
-2. **Loi pour une République Numérique (Art. L311-3-1) & RGPD :**
-   - Droit pour l'usager à l'information et à l'explicabilité individuelle des règles algorithmiques appliquées.
-   - **Précision juridique RGPD :** L'âge et la nationalité sont des *données personnelles ordinaires* (Art. 4), mais constituent des critères protégés majeurs contre la discrimination au travail. Le texte libre (`synthese_entretien`) est surveillé pour éviter les données sensibles au sens strict de l'Art. 9 (santé, handicap).
-3. **Responsabilité Juridique & Notion de "Perte de Chance" :**
-   - Si un usager vulnérable est mal orienté (classé en retour rapide par erreur), il subit un préjudice (privation d'aides ou de formations). Devant le Tribunal Administratif, la **perte de chance** engage la responsabilité de l'administration.
-   - **Protection juridique par conception :** L'outil est strictement qualifié d'**aide à la décision consultative**. L'agent public valide et endosse souverainement la décision finale.
+<div class="legal-grid">
+  <div class="legal-card" style="border-top: 5px solid #c62828;">
+    <div>
+      <h4 style="color: #c62828;">1. AI Act Européen</h4>
+      <div style="font-size: 13.5px; font-weight: bold; color: #b71c1c; margin-bottom: 6px;">
+        Classification Haut Risque (Annexe III)
+      </div>
+      <ul>
+        <li><b>Champ d'application :</b> Systèmes d'IA utilisés dans l'emploi, le recrutement et l'orientation.</li>
+        <li><b>Exigences :</b> Traçabilité des données d'entraînement, audit des biais, explicabilité formelle.</li>
+        <li><b>Obligation clé :</b> <b>Supervision humaine continue</b> (<i>Human-In-The-Loop</i>). Aucune décision automatique sans contrôle.</li>
+      </ul>
+    </div>
+    <div style="font-size: 12.5px; color: #b71c1c; background: #ffebee; padding: 5px 8px; border-radius: 5px; margin-top: 8px; font-weight: 500;">
+      Sanction : jusqu'à 35 M€ ou 7% du CA.
+    </div>
+  </div>
+
+  <div class="legal-card" style="border-top: 5px solid #1565c0;">
+    <div>
+      <h4>2. RGPD & Rép. Numérique</h4>
+      <div style="font-size: 13.5px; font-weight: bold; color: #0d47a1; margin-bottom: 6px;">
+        Transparence & Données Sensibles
+      </div>
+      <ul>
+        <li><b>Loi République Numérique :</b> Droit pour l'usager à l'explicabilité individuelle des motifs.</li>
+        <li><b>Précision juridique :</b> Âge et nationalité sont des <i>données ordinaires</i> (Art. 4) mais des critères protégés majeurs.</li>
+        <li><b>Texte libre surveillé (Art. 9) :</b> Empêcher la captation de données de santé ou handicap.</li>
+      </ul>
+    </div>
+    <div style="font-size: 12.5px; color: #0d47a1; background: #e3f2fd; padding: 5px 8px; border-radius: 5px; margin-top: 8px; font-weight: 500;">
+      Principe : <i>Privacy by Design</i> (S2).
+    </div>
+  </div>
+
+  <div class="legal-card" style="border-top: 5px solid #2e7d32;">
+    <div>
+      <h4 style="color: #1b5e20;">3. Responsabilité & Perte de Chance</h4>
+      <div style="font-size: 13.5px; font-weight: bold; color: #1b5e20; margin-bottom: 6px;">
+        Contentieux Administratif
+      </div>
+      <ul>
+        <li><b>Préjudice de l'usager :</b> Un profil vulnérable classé par erreur en "retour rapide" perd ses aides.</li>
+        <li><b>Responsabilité publique :</b> Devant le juge administratif, cette <b>perte de chance</b> engage l'État.</li>
+        <li><b>Protection par conception :</b> IA qualifiée d'<b>aide consultative</b>. Le conseiller valide souverainement.</li>
+      </ul>
+    </div>
+    <div style="font-size: 12.5px; color: #1b5e20; background: #e8f5e9; padding: 5px 8px; border-radius: 5px; margin-top: 8px; font-weight: 500;">
+      Garantie : Validation humaine systématique.
+    </div>
+  </div>
+</div>
 
 ---
 
@@ -325,20 +570,87 @@ li { margin-bottom: 3px; }
 ## La Sélection des Variables : Éthique & Biais (AI Act)
 
 <style scoped>
-section { font-size: 19px; padding-top: 75px; }
-ul { margin: 6px 0 10px 0; }
-li { margin-bottom: 3px; }
+section { font-size: 17px; padding-top: 50px; padding-bottom: 40px; }
+.top-box {
+  background: #f0f4f8;
+  border-left: 4px solid #1565c0;
+  padding: 5px 12px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  line-height: 1.3;
+  color: #0d47a1;
+}
+.bias-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 8px;
+}
+.bias-card {
+  background: #ffffff;
+  border: 1.5px solid #cfd8dc;
+  border-radius: 8px;
+  padding: 10px 12px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.04);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.bias-card h4 {
+  margin: 0 0 6px 0;
+  font-size: 14.5px;
+  color: #1565c0;
+  border-bottom: 1.5px solid #e0e0e0;
+  padding-bottom: 3px;
+}
+.bias-card ul {
+  margin: 0;
+  padding-left: 17px;
+  font-size: 13.5px;
+  line-height: 1.35;
+}
+.bias-card li {
+  margin-bottom: 4px;
+}
 </style>
 
-- **Biais historiques constatés (EDA) :**
-  - **Âge :** 29% des seniors (45-65 ans) en risque long vs 9% des 25-45 ans.
-  - **Nationalité hors UE :** 38% en risque long vs 15% pour les ressortissants UE.
-- **Indicateur d'équité (Disparate Impact) :** Utilisation de la règle des 4/5 (issue de l'EEOC américaine) comme repère statistique empirique pour évaluer les disparités de traitement.
-- **Transparence :** Rédaction d'une **Datasheet for Datasets** (*Gebru et al.*) dans `data/DATASHEET.md`.
+<div class="top-box">
+  <b>Audit d'Équité & Transparence (AI Act) :</b> L'analyse exploratoire a mis en lumière des disparités structurelles fortes dans les données historiques qu'il est impératif d'auditer et de corriger par conception.
+</div>
 
-<div class="tech-box" style="font-size: 16px; margin-top: 8px; padding: 8px 12px; line-height: 1.35;">
-<b>Décision Stratégique (Privacy by Design — Scénario S2) :</b> Retrait de l'Âge et de la Nationalité pour forcer le modèle à chercher les causes objectives (freins textuels, secteur, parcours).<br>
-<b>Constat lucide (Échec du <i>Fairness through Blindness</i>) :</b> Les variables proxy (département, diplôme) réintroduisent un biais résiduel. D'où l'impératif du filet humain (HITL).
+<div class="bias-grid">
+  <div class="bias-card" style="border-left: 4px solid #c62828;">
+    <div>
+      <h4 style="color: #c62828;">📊 Biais Historiques Constatés (EDA)</h4>
+      <ul>
+        <li><b>Âgisme statistique :</b> <b>29% des seniors (45-65 ans)</b> sont en risque long (Classe 2) contre seulement <b>9%</b> des 25-45 ans.</li>
+        <li><b>Origine géographique :</b> <b>38% des usagers hors UE</b> sont en risque long contre <b>15%</b> pour les ressortissants de l'Union Européenne.</li>
+        <li><b>Indicateur d'équité (Disparate Impact) :</b> Utilisation empirique de la règle des 4/5 de l'EEOC comme signal d'alarme opérationnel face aux déséquilibres.</li>
+      </ul>
+    </div>
+    <div style="font-size: 12px; background: #ffebee; color: #b71c1c; padding: 4px 8px; border-radius: 4px; margin-top: 6px;">
+      Danger : Un modèle naïf apprendrait à discriminer directement sur l'état civil.
+    </div>
+  </div>
+
+  <div class="bias-card" style="border-left: 4px solid #1565c0;">
+    <div>
+      <h4>📋 Gouvernance & Traçabilité des Données</h4>
+      <ul>
+        <li><b>Datasheet for Datasets (Gebru et al.) :</b> Rédaction d'une fiche d'identité complète du jeu de données dans <code>data/DATASHEET.md</code>.</li>
+        <li><b>Objectifs documentés :</b> Motivation de la collecte, composition de l'échantillon, prétraitements appliqués et usages recommandés/interdits.</li>
+        <li><b>Conformité AI Act :</b> Traçabilité vérifiable exigée pour tout système classé à Haut Risque.</li>
+      </ul>
+    </div>
+    <div style="font-size: 12px; background: #e3f2fd; color: #0d47a1; padding: 4px 8px; border-radius: 4px; margin-top: 6px;">
+      Garantie : Auditabilité complète du cycle de vie de la donnée.
+    </div>
+  </div>
+</div>
+
+<div class="tech-box" style="font-size: 13px; margin-top: 6px; padding: 6px 12px; line-height: 1.35;">
+  <b>Décision Stratégique (Privacy by Design — Scénario S2) :</b> Retrait formel de l'Âge et de la Nationalité pour contraindre l'IA à se baser sur les causes objectives (freins textuels, compétences, secteur ROME).<br>
+  <b>Constat lucide (Échec du <i>Fairness through Blindness</i>) :</b> Les corrélations indirectes (territoire, diplôme) réinjectent un biais résiduel, justifiant le rôle central du conseiller humain.
 </div>
 
 ---
@@ -702,31 +1014,242 @@ Classer un profil en risque (2) en retour rapide (0) est bien plus grave qu'une 
 ---
 
 ## Le Benchmark : Duel sous Validation Croisée Stratifiée
-<style scoped> section { font-size: 21px; } </style>
 
-- **Méthodologie :** 5-Fold Stratified Cross-Validation sur `X_train` avec traçabilité complète sous **MLflow**.
-- **Comparatif des familles :**
+<style scoped>
+section { font-size: 16.5px; padding-top: 50px; padding-bottom: 42px; }
+.top-box {
+  background: #f0f4f8;
+  border-left: 4px solid #1565c0;
+  padding: 5px 12px;
+  margin-bottom: 8px;
+  font-size: 13.8px;
+  line-height: 1.3;
+  color: #0d47a1;
+}
+.bench-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 13px;
+  border: 1.5px solid #d0d7de;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+.bench-table th {
+  background: #1565c0;
+  color: #ffffff;
+  padding: 6px 8px;
+  font-weight: 600;
+  text-align: left;
+}
+.bench-table td {
+  padding: 6px 8px;
+  border-top: 1px solid #e0e0e0;
+  vertical-align: middle;
+}
+.badge-bench {
+  display: inline-block;
+  font-size: 10.5px;
+  font-weight: bold;
+  padding: 1px 6px;
+  border-radius: 3px;
+  margin-left: 4px;
+}
+.duel-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+}
+.duel-card {
+  background: #ffffff;
+  border: 1.5px solid #cfd8dc;
+  border-radius: 6px;
+  padding: 7px 10px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+  font-size: 12.8px;
+  line-height: 1.3;
+}
+.duel-card h4 {
+  margin: 0 0 4px 0;
+  font-size: 13.5px;
+}
+</style>
 
-| Modèle | F1-Macro CV (Moyenne) | Écart-type | Atouts | Limites |
-| :--- | :---: | :---: | :--- | :--- |
-| **Régression Logistique** | ~0.664 | 0.016 | Baseline rapide, poids linéaires directs | Moins apte aux interactions non-linéaires |
-| **Random Forest** | ~0.660 | **0.012** | Très stable, robuste aux outliers | Forêt volumineuse en RAM, latence plus élevée |
-| **LightGBM** | **~0.680** | 0.014 | **Meilleure performance**, gestion native matrices creuses | Risque fort de sur-apprentissage (overfitting) sur petit volume |
+<div class="top-box">
+  <b>Méthodologie d'évaluation rigoureuse :</b> 5-Fold Stratified Cross-Validation sur <code>X_train</code> pour préserver strictement la proportion des 3 classes (18% de risque critique). Traçabilité intégrale sous <b>MLflow</b> (paramètres, métriques de chaque pli et courbes).
+</div>
+
+<table class="bench-table">
+  <thead>
+    <tr>
+      <th style="width: 24%;">Modèle & Famille</th>
+      <th style="width: 15%; text-align: center;">F1-Macro CV</th>
+      <th style="width: 15%; text-align: center;">Dispersion ($\sigma$)</th>
+      <th style="width: 25%;">Atouts Opérationnels</th>
+      <th style="width: 21%;">Limites & Risques</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="background: #f9fbe7;">
+      <td>
+        <b>LightGBM</b><br>
+        <span style="font-size: 11px; color: #555;">Gradient Boosting</span>
+        <span class="badge-bench" style="background: #c8e6c9; color: #1b5e20;">🏆 Top F1</span>
+      </td>
+      <td style="text-align: center; font-weight: bold; color: #1b5e20; font-size: 14px;">~0.680</td>
+      <td style="text-align: center; color: #37474f;">0.014</td>
+      <td>Capacité prédictive maximale, gestion native et rapide des matrices creuses TF-IDF</td>
+      <td>Risque élevé d'overfitting sur 2 500 profils (nécessite régularisation)</td>
+    </tr>
+    <tr style="background: #ffffff;">
+      <td>
+        <b>Random Forest</b><br>
+        <span style="font-size: 11px; color: #555;">Bagging d'arbres</span>
+        <span class="badge-bench" style="background: #e3f2fd; color: #0d47a1;">🛡️ Top Stabilité</span>
+      </td>
+      <td style="text-align: center; font-weight: bold; color: #0d47a1; font-size: 14px;">~0.660</td>
+      <td style="text-align: center; font-weight: bold; color: #0d47a1;">0.012</td>
+      <td>Excellente robustesse aux outliers, décision collective lisse et reproductible</td>
+      <td>Artefact lourd en mémoire RAM (&gt; 50 Mo), latence d'inférence plus élevée</td>
+    </tr>
+    <tr style="background: #fafafa;">
+      <td>
+        <b>Régression Logistique</b><br>
+        <span style="font-size: 11px; color: #555;">Linéaire régularisée</span>
+        <span class="badge-bench" style="background: #eeeeee; color: #616161;">⚖️ Baseline</span>
+      </td>
+      <td style="text-align: center; color: #424242; font-size: 13.5px;">~0.664</td>
+      <td style="text-align: center; color: #757575;">0.016</td>
+      <td>Baseline ultra-rapide, explicabilité directe via les coefficients linéaires</td>
+      <td>Rigide : incapable de capturer les interactions croisées complexes (texte × profil)</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="duel-grid">
+  <div class="duel-card" style="border-left: 3px solid #f57c00;">
+    <h4 style="color: #e65100;">🔬 Enseignement du Benchmark</h4>
+    Le texte apporte un gain sensible de séparabilité que les arbres de décision exploitent mieux que les modèles linéaires. La Régression Logistique plafonne et est écartée pour l'inférence cible.
+  </div>
+  <div class="duel-card" style="border-left: 3px solid #2e7d32;">
+    <h4 style="color: #1b5e20;">🎯 Qualification pour le Duel Final (GridSearchCV)</h4>
+    Ne pas éliminer sur paramètres par défaut : qualification conjointe de <b>LightGBM</b> (puissance) et <b>Random Forest</b> (stabilité) pour un réglage fin anti-overfitting monitoré sous MLflow.
+  </div>
+</div>
 
 ---
 
 ## Optimisation des Hyperparamètres (GridSearchCV + MLflow)
 
-Duel final entre **Random Forest** et **LightGBM** avec régularisation ciblée pour contrer l'overfitting :
+<style scoped>
+section { font-size: 16.5px; padding-top: 50px; padding-bottom: 42px; }
+.top-box {
+  background: #f0f4f8;
+  border-left: 4px solid #1565c0;
+  padding: 5px 12px;
+  margin-bottom: 8px;
+  font-size: 13.8px;
+  line-height: 1.3;
+  color: #0d47a1;
+}
+.duel-summary {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 1rem;
+  margin-bottom: 8px;
+}
+.param-card {
+  background: #ffffff;
+  border: 1.5px solid #cfd8dc;
+  border-radius: 6px;
+  padding: 8px 10px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+}
+.param-card h4 {
+  margin: 0 0 5px 0;
+  font-size: 14px;
+  color: #1565c0;
+  border-bottom: 1.5px solid #e0e0e0;
+  padding-bottom: 3px;
+}
+.param-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12.5px;
+}
+.param-table td {
+  padding: 3px 4px;
+  border-bottom: 1px solid #f0f0f0;
+}
+.param-table code {
+  font-weight: bold;
+  color: #0d47a1;
+}
+.mlflow-box {
+  background: #ffffff;
+  border: 1.5px solid #2e7d32;
+  border-radius: 6px;
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.mlflow-box h4 {
+  margin: 0 0 4px 0;
+  font-size: 14px;
+  color: #1b5e20;
+}
+</style>
 
-- **Hyperparamètres retenus (LightGBM sélectionné) :**
-  - `n_estimators = 100` : Nombre d'arbres maîtrisé.
-  - `learning_rate = 0.05` : Apprentissage doux pour une meilleure généralisation.
-  - `num_leaves = 15` & `min_child_samples = 20` : Interdiction formelle de créer des branches pour un groupe d'usagers trop restreint.
-  - `class_weight = 'balanced'` : Protection active de la classe minoritaire.
+<div class="top-box">
+  <b>Duel Final sous MLflow :</b> Exploration systématique par <code>GridSearchCV</code> (5-Fold CV) pour brider le sur-apprentissage induit par les 1 000 features textuelles du TF-IDF sur un petit échantillon (2 500 profils).
+</div>
 
-<div class="tech-box" style="font-size: 17px;">
-<b>Gouvernance MLOps & Limite POC :</b> Paramètres optimisés sur S1 et conservés sur les 4 scénarios pour isoler l'effet des variables sans introduire de variance. En V2 industrielle, un <code>GridSearchCV</code> dédié spécifiquement à S2 sera reconduit.
+<div class="duel-summary">
+  <div class="param-card">
+    <h4>🏆 Réglages Retenus — LightGBM (Vainqueur du Duel)</h4>
+    <table class="param-table">
+      <tr>
+        <td style="width: 42%;"><code>n_estimators = 100</code></td>
+        <td>Nombre d'arbres maîtrisé pour fixer les règles générales sans bruit.</td>
+      </tr>
+      <tr>
+        <td><code>learning_rate = 0.05</code></td>
+        <td>Vitesse douce (vs 0.1 par défaut) forçant une correction prudente.</td>
+      </tr>
+      <tr>
+        <td><code>num_leaves = 15</code></td>
+        <td>Limite le nombre de feuilles (au lieu de 31) pour contrer la dimensionnalité.</td>
+      </tr>
+      <tr>
+        <td><code>min_child_samples = 20</code></td>
+        <td><b>Anti-par cœur :</b> interdit toute règle s'appliquant à moins de 20 usagers.</td>
+      </tr>
+      <tr>
+        <td><code>class_weight = 'balanced'</code></td>
+        <td>Sur-pénalise les erreurs sur la classe 2 (poids $\times 2.4$) contre le déséquilibre.</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="mlflow-box">
+    <div>
+      <h4>📊 Arbitrage Automatisé MLflow</h4>
+      <div style="font-size: 12.8px; line-height: 1.35; color: #263238;">
+        • <b>LightGBM :</b> F1-Macro CV optimisé à <b>~0.70</b> avec une inférence &lt; 0.5 ms.<br>
+        • <b>Random Forest :</b> F1-Macro CV à ~0.67, éliminé pour lourdeur mémoire et moindre captation des signaux TF-IDF.<br>
+        • <b>Traçabilité :</b> Artefacts, hyperparamètres et signatures sérialisés sous <code>mlflow.sklearn</code>.
+      </div>
+    </div>
+    <div style="margin-top: 6px; padding: 4px 8px; background: #e8f5e9; border-radius: 4px; font-size: 11.5px; color: #1b5e20; font-weight: 500;">
+      ✅ Sélectionné comme moteur de prédiction pour les 4 scénarios d'audit.
+    </div>
+  </div>
+</div>
+
+<div class="tech-box" style="font-size: 12.5px; margin-top: 4px; padding: 5px 10px; line-height: 1.25;">
+  <b>Gouvernance MLOps & Limite assumée (POC) :</b> Hyperparamètres calés sur le jeu complet pour comparer équitablement les scénarios sans biaiser par le tuning. En V2 industrielle, un <code>GridSearchCV</code> dédié au scénario S2 sera exécuté avant mise en production.
 </div>
 
 ---
@@ -734,21 +1257,126 @@ Duel final entre **Random Forest** et **LightGBM** avec régularisation ciblée 
 ## Analyse Comparée des 4 Scénarios 
 
 <style scoped>
-section { font-size: 19px; padding-top: 75px; }
-table { font-size: 16px; margin-bottom: 8px; }
-table th, table td { padding: 4px 10px; }
-.tech-box { font-size: 16px; padding: 6px 12px; margin-top: 6px; }
+section { font-size: 19px; padding-top: 50px; padding-bottom: 45px; }
+.top-box {
+  background: #f0f4f8;
+  border-left: 5px solid #1565c0;
+  padding: 8px 16px;
+  margin-bottom: 12px;
+  font-size: 16.5px;
+  line-height: 1.35;
+  color: #0d47a1;
+}
+.scen-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 16.5px;
+  border: 2px solid #cfd8dc;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+.scen-table th {
+  background: #1565c0;
+  color: #ffffff;
+  padding: 10px 12px;
+  font-weight: 600;
+  text-align: left;
+  font-size: 16.5px;
+}
+.scen-table td {
+  padding: 10px 12px;
+  border-top: 1px solid #e0e0e0;
+  vertical-align: middle;
+}
+.verdict-tag {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 5px;
+  font-size: 14.5px;
+  font-weight: bold;
+}
+.insight-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.1rem;
+}
+.insight-card {
+  background: #ffffff;
+  border: 1.5px solid #cfd8dc;
+  border-radius: 8px;
+  padding: 10px 14px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.04);
+  font-size: 15.5px;
+  line-height: 1.4;
+}
+.insight-card h4 {
+  margin: 0 0 6px 0;
+  font-size: 16.5px;
+}
 </style>
 
-| Scénario | Périmètre | F1-Macro | FN (Classe 2) | Disparate Impact | Conformité AI Act | Verdict |
-| :--- | :--- | :---: | :---: | :---: | :---: | :---: |
-| **S1 (Complet)** | Tabulaire + Texte + Variables sensibles | **0.716** | **24** | 2.53 (Fort biais) | ❌ Non conforme | Rejeté prod |
-| **S2 (Éthique)** | S1 **sans âge ni nationalité** | **0.627** | **33** | 1.41 (Proxy réduit) | ✅ Conforme (*PbD*) | 🏆 **Retenu prod** |
-| **S3 (NLP seul)** | Synthèse entretien seule | 0.637 | 32 | 1.62 (Biais verbatims) | ⚠️ Trop fragile | Rejeté prod |
-| **S4 (Tabulaire)** | Sans analyse textuelle | 0.614 | 39 | 2.40 (Biais âge/territoire)| ❌ Aveugle aux freins | Rejeté prod |
+<div class="top-box">
+  <b>Audit d'impact des modalités de données :</b> Évaluation sur le jeu de test ($N = 500$) de l'impact des données sensibles (RGPD) et de l'apport respectif du texte et des données administratives.
+</div>
 
-<div class="tech-box">
-<b>L'arbitrage responsable :</b> Nous assumons le "coût de l'éthique" (9 erreurs supplémentaires entre S1 et S2) comme une <b>prime d'assurance réglementaire</b>, sécurisée par notre filet d'escalade humaine.
+<table class="scen-table">
+  <thead>
+    <tr>
+      <th style="width: 17%;">Scénario</th>
+      <th style="width: 27%;">Périmètre des Features</th>
+      <th style="width: 11%; text-align: center;">F1-Macro</th>
+      <th style="width: 12%; text-align: center;">Erreurs FN (C2)</th>
+      <th style="width: 15%; text-align: center;">Disparate Impact</th>
+      <th style="width: 18%; text-align: center;">Arbitrage</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="background: #fafafa;">
+      <td><b>S1 (Complet)</b></td>
+      <td>Tabulaire + Texte + Âge + Nationalité</td>
+      <td style="text-align: center; font-weight: bold; color: #455a64; font-size: 17.5px;">0.716</td>
+      <td style="text-align: center; font-weight: bold; color: #1b5e20; font-size: 17.5px;">24</td>
+      <td style="text-align: center; color: #c62828; font-weight: 600;">2.53 (Biais fort)</td>
+      <td style="text-align: center;"><span class="verdict-tag" style="background: #ffebee; color: #c62828;">❌ Non conforme</span></td>
+    </tr>
+    <tr style="background: #f9fbe7; border: 2.5px solid #2e7d32;">
+      <td><b>S2 (Éthique)</b></td>
+      <td>S1 <b>sans âge ni nationalité</b></td>
+      <td style="text-align: center; font-weight: bold; color: #1b5e20; font-size: 18.5px;">0.627</td>
+      <td style="text-align: center; font-weight: bold; color: #d84315; font-size: 18.5px;">33</td>
+      <td style="text-align: center; color: #e65100; font-weight: 600;">1.41 (Proxy résiduel)</td>
+      <td style="text-align: center;"><span class="verdict-tag" style="background: #e8f5e9; color: #1b5e20; font-size: 15.5px;">🏆 Retenu Prod</span></td>
+    </tr>
+    <tr style="background: #ffffff;">
+      <td><b>S3 (NLP seul)</b></td>
+      <td>Synthèse entretien seule (TF-IDF)</td>
+      <td style="text-align: center; color: #37474f; font-size: 17.5px;">0.637</td>
+      <td style="text-align: center; color: #e65100; font-size: 17.5px;">32</td>
+      <td style="text-align: center; color: #e65100; font-weight: 600;">1.62 (Biais verbatims)</td>
+      <td style="text-align: center;"><span class="verdict-tag" style="background: #fff3e0; color: #e65100;">⚠️ Trop fragile</span></td>
+    </tr>
+    <tr style="background: #fafafa;">
+      <td><b>S4 (Tabulaire)</b></td>
+      <td>Données contextuelles (sans texte)</td>
+      <td style="text-align: center; color: #757575; font-size: 17.5px;">0.614</td>
+      <td style="text-align: center; color: #c62828; font-size: 17.5px;">39</td>
+      <td style="text-align: center; color: #c62828; font-weight: 600;">2.40 (Biais indirect)</td>
+      <td style="text-align: center;"><span class="verdict-tag" style="background: #ffebee; color: #c62828;">❌ Aveugle freins</span></td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="insight-grid">
+  <div class="insight-card" style="border-left: 4px solid #2e7d32;">
+    <h4 style="color: #1b5e20;">🛡️ Le "Coût de l'Éthique" (Prime d'assurance)</h4>
+    Passer de S1 à S2 coûte <b>9 erreurs critiques de plus</b> (33 FN vs 24). C'est un compromis assumé face au risque juridique : ce différentiel est absorbé par le <b>filet d'escalade humaine (HITL)</b>.
+  </div>
+  <div class="insight-card" style="border-left: 4px solid #e65100;">
+    <h4 style="color: #e65100;">⚖️ L'illusion du « Fairness through Blindness »</h4>
+    Même sans âge ni nationalité, S2 conserve un Disparate Impact de <b>1.41</b>. Les <b>variables proxy</b> (département, diplôme) réinjectent un biais résiduel, rendant l'arbitrage humain indispensable.
+  </div>
 </div>
 
 ---
@@ -756,33 +1384,93 @@ table th, table td { padding: 4px 10px; }
 ## Explicabilité Locale et Globale (SHAP sur S2)
 
 <style scoped>
-section { font-size: 19px; padding-top: 75px; }
-.columns { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 1.2rem; align-items: center; }
-ul { margin: 4px 0 8px 0; padding-left: 20px; }
-li { margin-bottom: 4px; font-size: 14.5px; line-height: 1.35; }
+section { font-size: 14.5px; padding-top: 55px; padding-bottom: 50px; }
+.top-box {
+  background: #f0f4f8;
+  border-left: 4px solid #1565c0;
+  padding: 4px 10px;
+  margin-bottom: 6px;
+  font-size: 12.8px;
+  line-height: 1.25;
+  color: #0d47a1;
+}
+.shap-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 0.8rem;
+  align-items: stretch;
+}
+.shap-card {
+  background: #ffffff;
+  border: 1.5px solid #cfd8dc;
+  border-radius: 6px;
+  padding: 6px 9px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.shap-card h4 {
+  margin: 0 0 3px 0;
+  font-size: 13px;
+  color: #1565c0;
+  border-bottom: 1.5px solid #e0e0e0;
+  padding-bottom: 2px;
+}
+.shap-card ul {
+  margin: 0;
+  padding-left: 15px;
+  font-size: 12px;
+  line-height: 1.25;
+}
+.shap-card li {
+  margin-bottom: 2px;
+}
+.img-container {
+  background: #ffffff;
+  border: 1.5px solid #cfd8dc;
+  border-radius: 6px;
+  padding: 4px 6px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
 </style>
 
-<div class="columns">
-  <div>
-    <b>L'audit TreeExplainer valide l'hybridation :</b>
-    <ul>
-      <li><b>Explicabilité Globale (Population) :</b>
-        <ul>
-          <li><b>Ancienneté d'inscription :</b> Ancre administrative n°1 (forte ancienneté $\rightarrow$ pousse vers le risque long).</li>
-          <li><b>Mots-clés NLP (TF-IDF) :</b> Les termes signalant des freins périphériques déclenchent l'alerte.</li>
-          <li><b>Minimisation des données (Privacy by Design) :</b> Zéro variable démographique discriminatoire (âge, nationalité) dans les entrées du modèle.</li>
-        </ul>
-      </li>
-      <li><b>Explicabilité Locale (UI Streamlit) :</b><br>
-        Restitution unitaire au conseiller (force plot / waterfall) expliquant précisément chaque recommandation (RGPD Art. 22).</li>
-    </ul>
-    <div class="tech-box" style="font-size: 14px; margin-top: 6px; padding: 6px 10px; line-height: 1.3;">
-      <b>Transparence totale (AI Act) :</b> Le modèle n'est plus une boîte noire : chaque prédiction est justifiable mot par mot.
+<div class="top-box">
+  <b>Audit d'Interprétabilité (AI Act Art. 13) :</b> Décomposition des décisions par valeurs de Shapley (<code>TreeExplainer</code>) sur S2. Chaque prédiction devient explicable et justifiable.
+</div>
+
+<div class="shap-grid">
+  <div class="shap-card">
+    <div>
+      <h4>🔍 Enseignements Clés du Summary Plot</h4>
+      <ul>
+        <li><b>Ancienneté au dernier poste :</b> Socle n°1. Les points rouges à droite indiquent qu'une forte ancienneté tire vers le <b>risque long (+SHAP)</b>.</li>
+        <li><b>Mots-clés textuels décisifs :</b> Des termes comme <i>"santé", "barrière", "complexe"</i> ou <i>"isolé"</i> agissent comme des déclencheurs d'alerte.</li>
+        <li><b>Absence de biais direct :</b> Preuve visuelle que l'âge et la nationalité sont totalement absents des facteurs d'influence.</li>
+      </ul>
+    </div>
+    <div style="background: #eef2f6; border-left: 3px solid #1565c0; padding: 4px 8px; border-radius: 4px; font-size: 11.8px; line-height: 1.25; margin-top: 4px;">
+      <b>Explicabilité Locale (Streamlit) :</b> Graphique en cascade (<i>Waterfall plot</i>) unitaire pour chaque dossier, offrant au conseiller un argumentaire opposable.
     </div>
   </div>
-  <div align="center">
-    <img src="assets/shap.png" alt="Graphique SHAP" width="370" style="max-height: 480px; object-fit: contain; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.12);"/>
+
+  <div class="img-container">
+    <div style="width: 100%; font-size: 12px; font-weight: bold; color: #1565c0; text-align: left; margin-bottom: 2px;">
+      📊 Summary Plot SHAP (Classe 2 - Risque)
+    </div>
+    <img src="assets/shap.png" alt="Graphique SHAP" width="280" style="max-width: 100%; max-height: 185px; object-fit: contain; border-radius: 4px;"/>
+    <div style="font-size: 10px; color: #546e7a; text-align: center; line-height: 1.15; margin-top: 1px;">
+      <span style="color: #d32f2f; font-weight: bold;">Rouge = Valeur élevée</span> · <span style="color: #1976d2; font-weight: bold;">Bleu = Valeur basse</span>
+    </div>
   </div>
+</div>
+
+<div class="tech-box" style="font-size: 11.5px; margin-top: 5px; padding: 4px 8px; line-height: 1.2;">
+  <b>Garantie de transparence :</b> L'algorithme n'est plus une boîte noire. Le conseiller dispose pour chaque usager des 3 critères prépondérants motivant la décision.
 </div>
 
 ---
@@ -791,137 +1479,246 @@ li { margin-bottom: 4px; font-size: 14.5px; line-height: 1.35; }
 
 ---
 
-## De la Modélisation à la Production
+## De la Modélisation au Déploiement API (FastAPI & Pydantic)
 
-Le passage de l'expérimentation vers un service industriel sécurisé :
+<style scoped>
+section { font-size: 16px; padding-top: 50px; padding-bottom: 40px; }
+.top-box {
+  background: #f0f4f8;
+  border-left: 5px solid #1565c0;
+  padding: 6px 14px;
+  margin-bottom: 10px;
+  font-size: 14.5px;
+  line-height: 1.35;
+  color: #0d47a1;
+}
+.api-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 1rem;
+  align-items: stretch;
+}
+.api-card {
+  background: #ffffff;
+  border: 1.5px solid #cfd8dc;
+  border-radius: 8px;
+  padding: 10px 12px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.04);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.api-card h4 {
+  margin: 0 0 6px 0;
+  font-size: 15px;
+  color: #1565c0;
+  border-bottom: 1.5px solid #e0e0e0;
+  padding-bottom: 3px;
+}
+.routes-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+.routes-table td {
+  padding: 4px 6px;
+  border-bottom: 1px solid #f0f0f0;
+}
+.routes-table code {
+  font-weight: bold;
+  color: #0d47a1;
+}
+.code-box {
+  background: #263238;
+  color: #eceff1;
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-family: monospace;
+  font-size: 11.5px;
+  line-height: 1.25;
+}
+</style>
 
-1. **Sérialisation unifiée :** Export d'un artefact unique `pipeline_production.joblib` contenant la fonction d'extraction, les transformateurs et le LightGBM entraîné.
-2. **Model Card Technique :** Fichier `pipeline_production.json` traçant les versions d'OS/Python, l'empreinte MD5 du dataset source (`2605ca...`), les hyperparamètres et la matrice de confusion.
-3. **Suite de Tests Automatisée :** 6 tests unitaires et d'intégration validant le chargement du modèle, les formats d'inférence et le rejet des entrées invalides (Pytest).
+<div class="top-box">
+  <b>Passage en production :</b> L'artefact sérialisé <code>pipeline_production.joblib</code> (555 Ko) et sa <b>Model Card</b> (<code>pipeline_production.json</code>) sont exposés via un microservice <b>FastAPI</b> asynchrone, typé et testé (Pytest).
+</div>
+
+<div class="api-grid">
+  <div class="api-card">
+    <div>
+      <h4>🔌 Contrat d'Interface & Routes RESTful</h4>
+      <table class="routes-table">
+        <tr>
+          <td style="width: 44%;"><code>GET /health</code></td>
+          <td>Contrôle de santé du service et présence du modèle en RAM.</td>
+        </tr>
+        <tr>
+          <td><code>POST /predict</code></td>
+          <td>Inférence unitaire, probabilités et décision de <b>Fallback (&lt; 65%)</b>.</td>
+        </tr>
+        <tr>
+          <td><code>POST /predict/batch</code></td>
+          <td>Traitement de masse pour l'alimentation nocturne du SI.</td>
+        </tr>
+        <tr>
+          <td><code>POST /train</code></td>
+          <td>Réentraînement tracé sous MLflow sécurisé par <code>X-API-Key</code>.</td>
+        </tr>
+      </table>
+    </div>
+<div style="background: #eef2f6; border-left: 3px solid #1565c0; padding: 6px 10px; border-radius: 4px; font-size: 12.5px; line-height: 1.3;">
+  <b>Robustesse par conception :</b> Validation stricte Pydantic à l'entrée. Tout champ aberrant (ancienneté &lt; 0, code INSEE $\neq$ 5 car.) renvoie immédiatement une erreur <code>422 Unprocessable Entity</code> documentée.
+</div>
+  </div>
+
+  <div class="api-card" style="border-top: 4px solid #009688;">
+    <div>
+      <h4 style="color: #00796b;">🛡️ Validation de Schéma Pydantic</h4>
+      <div class="code-box">
+<span style="color: #80cbc4;">class</span> <span style="color: #ffcb6b;">UsagerInput</span>(BaseModel):<br>
+&nbsp;&nbsp;anciennete_poste_ans: float = Field(..., ge=0, le=50)<br>
+&nbsp;&nbsp;niveau_diplome: str<br>
+&nbsp;&nbsp;code_insee_commune: str = Field(..., min_length=5, max_length=5)<br>
+&nbsp;&nbsp;code_rome_vise: str = Field(..., min_length=5, max_length=5)<br>
+&nbsp;&nbsp;est_allocataire: int = Field(..., ge=0, le=1)<br>
+&nbsp;&nbsp;synthese_entretien: str = Field(default="")
+      </div>
+    </div>
+    <div style="font-size: 12px; color: #37474f; line-height: 1.3; margin-top: 6px;">
+      ⚡ <b>Performance CPU :</b> Temps d'inférence moyen <b>&lt; 1 ms</b>, parfaitement transparent pour un conseiller en entretien de face-à-face.
+    </div>
+  </div>
+</div>
+
+<div class="tech-box" style="font-size: 12.5px; margin-top: 8px; padding: 5px 12px; line-height: 1.25;">
+  <b>Qualité logicielle :</b> 6 tests d'intégration automatisés (<code>test_api.py</code>, <code>test_pipeline.py</code>) vérifient le rejet d'entrées corrompues et la conformité des prédictions avant tout déploiement.
+</div>
 
 ---
 
-## L'API FastAPI : Typage Strict & Validation Pydantic
+## Intégration SI, IHM Conseiller & CI/CD Docker
 
 <style scoped>
-section { font-size: 18px; padding-top: 65px; }
-.columns { display: grid; grid-template-columns: 1fr 1.05fr; gap: 1rem; align-items: start; margin-top: 4px; }
-ul { margin: 0; padding-left: 18px; }
-li { margin-bottom: 4px; font-size: 13.5px; line-height: 1.3; }
-pre { margin: 0; font-size: 12px; line-height: 1.2; padding: 8px; }
+section { font-size: 16.5px; padding-top: 50px; padding-bottom: 42px; }
+.top-box {
+  background: #f0f4f8;
+  border-left: 5px solid #1565c0;
+  padding: 6px 14px;
+  margin-bottom: 10px;
+  font-size: 14.5px;
+  line-height: 1.35;
+  color: #0d47a1;
+}
+.si-flow {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  margin: 6px 0 12px 0;
+  gap: 8px;
+}
+.si-card {
+  background: #ffffff;
+  border: 1.5px solid #1565c0;
+  border-radius: 8px;
+  padding: 8px 10px;
+  text-align: center;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+.si-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: #0d47a1;
+  font-weight: bold;
+}
+.dual-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.1rem;
+}
+.dual-card {
+  background: #ffffff;
+  border: 1.5px solid #cfd8dc;
+  border-radius: 8px;
+  padding: 10px 14px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.04);
+  font-size: 13.8px;
+  line-height: 1.38;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.dual-card h4 {
+  margin: 0 0 6px 0;
+  font-size: 15.5px;
+  color: #1565c0;
+  border-bottom: 1.5px solid #e0e0e0;
+  padding-bottom: 3px;
+}
+.dual-card ul {
+  margin: 0;
+  padding-left: 17px;
+}
+.dual-card li {
+  margin-bottom: 5px;
+}
 </style>
 
-<div class="columns">
-<div>
-
-<b>4 routes RESTful asynchrones :</b>
-
-- `GET /health` : Diagnostic & disponibilité modèle.
-- `POST /predict` : Inférence unitaire + probas + Fallback.
-- `POST /predict/batch` : Traitement par lot pour le SI.
-- `POST /train` : Réentraînement sécurisé (API Key).
-
-<div class="tech-box" style="font-size: 13.5px; margin-top: 8px; padding: 6px 8px; line-height: 1.25;">
-  <b>Robustesse :</b> Toute donnée non conforme (ex: ancienneté &lt; 0) est rejetée avec un code <code>422 Unprocessable Entity</code>.
+<div class="top-box">
+  <b>Urbanisation du SI & Déploiement :</b> L'application métier s'insère sans rupture dans l'environnement du conseiller, hébergée sur Cloud souverain et industrialisée par un pipeline CI/CD reproductible.
 </div>
-
-</div>
-<div>
-
-```python
-# Validation Pydantic automatique
-class UsagerInput(BaseModel):
-    anciennete_poste_ans: float = Field(..., ge=0, le=50)
-    niveau_diplome: str
-    code_insee_commune: str = Field(..., min_length=5, max_length=5)
-    code_rome_vise: str = Field(..., min_length=5, max_length=5)
-    est_allocataire: int = Field(..., ge=0, le=1)
-    synthese_entretien: str = Field(default="")
-```
-
-</div>
-</div>
-
----
-
-## L'Interface Conseiller (Streamlit) & Intégration SI
-
-<style scoped>
-section { font-size: 17.5px; padding-top: 65px; }
-h2 { margin-bottom: 6px; }
-.si-flow { display: flex; justify-content: space-between; align-items: stretch; margin: 6px 0 10px 0; gap: 6px; }
-.si-card { background: #ffffff; border: 1.5px solid #1565c0; border-radius: 6px; padding: 6px 8px; text-align: center; }
-.si-arrow { display: flex; align-items: center; justify-content: center; font-size: 18px; color: #0d47a1; font-weight: bold; }
-ul { margin: 0; padding-left: 20px; }
-li { margin-bottom: 4px; font-size: 14px; line-height: 1.3; }
-</style>
 
 <div class="si-flow">
-  <div class="si-card" style="flex: 1.1;">
-    <b style="font-size: 13px; color: #0d47a1;">UI Streamlit</b><br>
-    <span style="font-size: 10px; color: #555;">Jauge 65% + SHAP</span>
-  </div>
-  <div class="si-arrow">➔</div>
-  <div class="si-card" style="flex: 1; border-color: #e65100; background: #fff3e0;">
-    <b style="font-size: 13px; color: #bf360c;">Pipeline S2 (.joblib)</b><br>
-    <span style="font-size: 10px; color: #333;">TF-IDF + LightGBM</span>
+  <div class="si-card" style="flex: 1.1; border-color: #1565c0;">
+    <b style="font-size: 14px; color: #0d47a1;">1. UI Streamlit</b><br>
+    <span style="font-size: 11.5px; color: #555;">Saisie profil & notes</span>
   </div>
   <div class="si-arrow">➔</div>
   <div class="si-card" style="flex: 1.2; border-color: #2e7d32; background: #f1f8e9;">
-    <b style="font-size: 13px; color: #1b5e20;">API FastAPI (CPU)</b><br>
-    <span style="font-size: 10px; color: #333;">Pydantic · Inférence &lt; 1ms</span>
+    <b style="font-size: 14px; color: #1b5e20;">2. API FastAPI (CPU)</b><br>
+    <span style="font-size: 11.5px; color: #333;">Inférence S2 &lt; 1 ms</span>
   </div>
   <div class="si-arrow">➔</div>
-  <div class="si-card" style="flex: 1;">
-    <b style="font-size: 13px; color: #0d47a1;">Portail Guichet</b><br>
-    <span style="font-size: 10px; color: #555;">Référentiel National (BDD)</span>
+  <div class="si-card" style="flex: 1.1; border-color: #e65100; background: #fff3e0;">
+    <b style="font-size: 14px; color: #bf360c;">3. Décision & Explication</b><br>
+    <span style="font-size: 11.5px; color: #333;">Jauge 65% + SHAP</span>
+  </div>
+  <div class="si-arrow">➔</div>
+  <div class="si-card" style="flex: 1; border-color: #546e7a;">
+    <b style="font-size: 14px; color: #37474f;">4. BDD & Guichet</b><br>
+    <span style="font-size: 11.5px; color: #555;">Traçabilité décision</span>
   </div>
 </div>
 
-<div class="columns" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 4px;">
-  <div class="tech-box" style="font-size: 13.5px; margin: 0; padding: 8px 10px; line-height: 1.3;">
-    <b>Hébergement Souverain (SecNumCloud) :</b><br>
-    Cloud souverain (OVHcloud, Outscale) pour concilier élasticité, résilience et conformité aux données publiques de l'emploi (vs On-Premise rigide).
+<div class="dual-grid">
+  <div class="dual-card" style="border-left: 4px solid #1565c0;">
+    <div>
+      <h4>🖥️ Expérience Conseiller & Cloud Souverain</h4>
+      <ul>
+        <li><b>Ergonomie & Décision :</b> Code couleur métier (Vert, Orange, Rouge) + alerte visuelle si certitude &lt; 65% (relais humain immédiat).</li>
+        <li><b>Explicabilité intégrée :</b> Restitution des 3 causes majeures (SHAP waterfall) directement sur le poste agent.</li>
+        <li><b>Cloud Souverain (SecNumCloud) :</b> Hébergement français (OVHcloud / Outscale) assurant élasticité et confidentialité des données publiques de l'emploi.</li>
+      </ul>
+    </div>
+    <div style="font-size: 12.5px; color: #0d47a1; background: #e3f2fd; padding: 4px 8px; border-radius: 4px; margin-top: 6px;">
+      Garantie : Outil consultatif préservant la souveraineté de l'agent public.
+    </div>
   </div>
-  <div class="tech-box" style="font-size: 13.5px; margin: 0; padding: 8px 10px; line-height: 1.3; border-left-color: #2e7d32; background-color: #f1f8e9;">
-    <b>IHM Conseiller Ergonomique :</b><br>
-    Code couleur métier (Vert, Orange, Rouge), jauge de confiance et alerte d'escalade humaine immédiate si la confiance est &lt; 65%.
-  </div>
-</div>
 
----
-
-## Démarche CI/CD & Déploiement Reproductible (GitHub Actions)
-
-<style scoped> section { font-size: 21px; } </style>
-
-Le projet intègre un cycle d'ingénierie logicielle continu automatisé sur GitHub Actions :
-
-<div class="columns">
-  <div>
-    <b>Pipeline Automatisé sur <code>master</code> :</b>
-    <ol style="font-size: 15px; margin-top: 6px;">
-      <li><b>Contrôle Qualité & Linting :</b> Analyse statique du code Python via <code>flake8</code> / <code>black</code>.</li>
-      <li><b>Tests Automatisés (Pytest) :</b>
-        <ul style="font-size: 13px;">
-          <li><code>test_api.py</code> : Santé, validation Pydantic (422), batch et réponses unitaires.</li>
-          <li><code>test_pipeline.py</code> : Présence modèle, prédiction probas = 1.0 sur données brutes.</li>
-        </ul>
-      </li>
-      <li><b>Construction Conteneur Docker :</b>
-        <ul style="font-size: 13px;">
-          <li>Multi-stage build Python 3.12-slim (&lt; 300 Mo).</li>
-          <li>Sécurité : exécution non-root, sans cache de build.</li>
-        </ul>
-      </li>
-      <li><b>Orchestration :</b> <code>docker-compose.yml</code> multiservices (FastAPI, Streamlit, Prometheus, Grafana).</li>
-    </ol>
-  </div>
-  <div class="tech-box" style="font-size: 16px;">
-    <b>Garanties pour le Jury :</b><br>
-    ✅ <b>100% Reproductible :</b> Un clone + <code>docker compose up</code> suffit pour monter le SI complet.<br>
-    ✅ <b>Zéro Régression :</b> La CI bloque toute mise en production si un test ou un schéma échoue.<br>
-    ✅ <b>Conformité MLOps :</b> Cycle de vie tracé du code au conteneur.
+  <div class="dual-card" style="border-left: 4px solid #2e7d32;">
+    <div>
+      <h4 style="color: #1b5e20;">🚀 Pipeline CI/CD & Déploiement Reproductible</h4>
+      <ul>
+        <li><b>GitHub Actions sur <code>master</code> :</b> Linting automatique (<code>flake8</code>, <code>black</code>) + 6 tests unitaires/intégration Pytest.</li>
+        <li><b>Image Docker optimisée :</b> Multi-stage build Python 3.12-slim (&lt; 300 Mo), sécurité non-root, sans cache de build.</li>
+        <li><b>Stack complet :</b> <code>docker compose up</code> monte en 1 commande FastAPI, Streamlit, Prometheus et Grafana.</li>
+      </ul>
+    </div>
+    <div style="font-size: 12.5px; color: #1b5e20; background: #e8f5e9; padding: 4px 8px; border-radius: 4px; margin-top: 6px;">
+      Garantie : Zéro régression, 100% reproductible du code à la production.
+    </div>
   </div>
 </div>
 
@@ -934,104 +1731,191 @@ Le projet intègre un cycle d'ingénierie logicielle continu automatisé sur Git
 ## Le Monitoring en Temps Réel (Prometheus & Grafana)
 
 <style scoped>
-section { font-size: 19px; padding-top: 75px; }
-ul { margin: 4px 0; }
-li { margin-bottom: 4px; font-size: 15px; }
+section { font-size: 14.5px; padding-top: 65px; padding-bottom: 45px; }
+.top-box {
+  background: #f0f4f8;
+  border-left: 5px solid #1565c0;
+  padding: 4px 12px;
+  margin-bottom: 6px;
+  font-size: 13px;
+  line-height: 1.25;
+  color: #0d47a1;
+}
+.mon-grid {
+  display: grid;
+  grid-template-columns: 1.12fr 0.88fr;
+  gap: 0.8rem;
+  align-items: stretch;
+}
+.mon-cards {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 5px;
+}
+.card-m {
+  background: #ffffff;
+  border: 1.5px solid #cfd8dc;
+  border-radius: 6px;
+  padding: 5px 9px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+}
+.card-m h4 {
+  margin: 0 0 2px 0;
+  font-size: 13px;
+}
+.card-m ul {
+  margin: 0;
+  padding-left: 15px;
+  font-size: 11.8px;
+  line-height: 1.25;
+}
+.card-m li {
+  margin-bottom: 2px;
+}
+.img-box {
+  background: #ffffff;
+  border: 1.5px solid #cfd8dc;
+  border-radius: 6px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+}
 </style>
 
-<div class="columns">
-  <div style="font-size: 18px;">
-    Architecture conteneurisée via <b>Docker-Compose</b> intégrant nativement la métrologie :
-    <br><br>
-    <ul>
-      <li><b>Métriques Système :</b> Latence p95 (&lt; 100 ms) et taux d'erreurs HTTP.</li>
-      <li><b>Métriques Métier :</b>
-        <ul>
-          <li>Volume de prédictions par classe (détection d'anomalies de répartition).</li>
-          <li>Histogramme des scores de certitude.</li>
-          <li><b>Taux d'escalade (Fallback rate)</b>.</li>
-        </ul>
-      </li>
-      <li><b>Alerting MLOps :</b> Dérive relative &gt; 20% du taux d'abstention sur 4 semaines.</li>
-    </ul>
+<div class="top-box">
+  <b>Supervision continue en production :</b> Stack intégrée dans <code>docker-compose.yml</code> associant <b>Prometheus</b> (métriques temps réel), <b>Grafana</b> (tableaux de bord) et <b>MLflow</b> (registre de modèles).
+</div>
+
+<div class="mon-grid">
+  <div class="mon-cards">
+    <div class="card-m" style="border-left: 4px solid #1565c0;">
+      <h4 style="color: #0d47a1;">⚙️ Métriques Système (Disponibilité & SLAs)</h4>
+      <ul>
+        <li><b>Latence d'inférence (p95) :</b> Temps de réponse &lt; 100 ms sous charge.</li>
+        <li><b>Disponibilité & Codes HTTP :</b> Taux d'erreurs 5xx (&lt; 0.01%) et rejets Pydantic 422.</li>
+        <li><b>Ressources :</b> Consommation CPU/RAM de l'API (empreinte &lt; 200 Mo).</li>
+      </ul>
+    </div>
+    <div class="card-m" style="border-left: 4px solid #2e7d32;">
+      <h4 style="color: #1b5e20;">🎯 Métriques Métier & Santé du Modèle</h4>
+      <ul>
+        <li><b>Distribution des prédictions :</b> Suivi des parts relatives (Classes 0, 1, 2) pour détecter les bascules anormales de population.</li>
+        <li><b>Confiance du modèle :</b> Histogramme glissant des probabilités maximales.</li>
+        <li><b>Taux d'escalade humaine (Fallback) :</b> Part de dossiers où la certitude est &lt; 65% (nominal : ~38-40%).</li>
+      </ul>
+    </div>
   </div>
-  <div align="center">
-    <img src="assets/architecture_mlops.png" alt="Architecture MLOps" width="360"/>
+
+  <div class="img-box">
+    <div style="width: 100%; font-size: 12px; font-weight: bold; color: #1565c0; text-align: left; margin-bottom: 2px;">
+      🏗️ Architecture de Métrologie Conteneurisée
+    </div>
+    <img src="assets/architecture_mlops.png" alt="Architecture MLOps" width="270" style="max-width: 100%; max-height: 175px; object-fit: contain; border-radius: 4px;"/>
+    <div style="font-size: 10px; color: #546e7a; text-align: center; line-height: 1.15; margin-top: 1px;">
+      FastAPI expose <code>/metrics</code> ➔ Scraped par Prometheus ➔ Grafana
+    </div>
   </div>
+</div>
+
+<div class="tech-box" style="font-size: 11px; margin-top: 4px; padding: 4px 10px; line-height: 1.2;">
+  <b>Principe MLOps :</b> Le monitoring ne se limite pas aux pannes serveur ; il surveille en continu la pertinence décisionnelle de l'IA pour garantir un service public équitable.
 </div>
 
 ---
 
-## Le Fallback : Seuil de Rejet (65%) & Biais d'Automatisation
+## Filet Humain (Seuil 65%) & Alerte Dérive Précoce (+20%)
 
 <style scoped>
-section { font-size: 20px; padding-top: 70px; }
-.columns { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; align-items: start; margin-top: 8px; }
-ul { margin: 0; padding-left: 18px; }
-li { margin-bottom: 5px; font-size: 14.5px; line-height: 1.35; }
+section { font-size: 16px; padding-top: 50px; padding-bottom: 40px; }
+.top-box {
+  background: #f0f4f8;
+  border-left: 5px solid #1565c0;
+  padding: 6px 14px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  line-height: 1.35;
+  color: #0d47a1;
+}
+.oper-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.oper-card {
+  background: #ffffff;
+  border: 1.5px solid #cfd8dc;
+  border-radius: 8px;
+  padding: 10px 12px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.oper-card h4 {
+  margin: 0 0 6px 0;
+  font-size: 14.5px;
+  border-bottom: 1.5px solid #e0e0e0;
+  padding-bottom: 3px;
+}
+.oper-card ul {
+  margin: 0;
+  padding-left: 17px;
+  font-size: 13px;
+  line-height: 1.35;
+}
+.oper-card li {
+  margin-bottom: 4px;
+}
 </style>
 
-- **Le Risque UX :** Face à un flux tendu, un conseiller peut subir le *biais d'automatisation* (suivre aveuglément l'avis de la machine).
+<div class="top-box">
+  <b>Garde-fou éthique & Détection temps réel :</b> La vérité terrain (retour à l'emploi) n'étant connue qu'à 6-12 mois, le <b>seuil de rejet à 65%</b> protège l'usager et sert d'<b>indicateur avancé de dérive</b> immédiat.
+</div>
 
-<div class="columns">
-  <div>
-    <b style="font-size: 16px; color: #0d47a1;">Pourquoi fixer le seuil à 65% ? (Calibration)</b>
-    <ul>
-      <li><b>Seuil de coupure opérationnel :</b> Les scores <code>predict_proba</code> d'un modèle d'arbres ne sont pas des probabilités calibrées pures (Brier Score = 0.48). Le seuil agit comme filtre de sécurité.</li>
-      <li><b>Efficacité empirique mesurée :</b><br>
-        • Score &ge; 65% : <b>76% d'exactitude</b> (automatisation sûre).<br>
-        • Score &lt; 65% : <b>46% d'exactitude</b> (l'IA doute &rarr; escalade).</li>
-      <li><b>Perspective V2 :</b> Calibration formelle via <code>CalibratedClassifierCV</code> pour aligner scores et probabilités.</li>
-    </ul>
-  </div>
-  <div>
-    <div style="background: #ffffff; border: 2px solid #1565c0; border-radius: 8px; padding: 12px; box-shadow: 2px 2px 8px rgba(0,0,0,0.06);">
-      <b style="font-size: 15px; color: #0d47a1; display: block; margin-bottom: 8px;">Logique du Filet de Sécurité (API)</b>
-      <div style="background: #f1f8e9; border-left: 4px solid #2e7d32; padding: 6px 10px; margin-bottom: 8px; border-radius: 4px;">
-        <span style="font-weight: bold; color: #1b5e20; font-size: 13.5px;">🟢 Confiance &ge; 65% : Feu Vert</span><br>
-        <span style="font-size: 13px; color: #333;">L'IA affiche la recommandation d'orientation au conseiller.</span>
+<div class="oper-grid">
+  <div class="oper-card" style="border-left: 4px solid #1565c0;">
+    <div>
+      <h4 style="color: #0d47a1;">🛡️ Seuil de Rejet à 65% (Anti-Biais d'Automatisation)</h4>
+      <ul>
+        <li><b>Calibration imparfaite :</b> Les scores <code>predict_proba</code> du LightGBM ne sont pas des probabilités pures (Brier Score = 0.48). Le seuil agit en filtre opérationnel.</li>
+        <li><b>Bascule empirique mesurée :</b><br>
+          • Score $\ge$ 65% : <b>76% d'exactitude</b> (recommandation fiable).<br>
+          • Score &lt; 65% : <b>46% d'exactitude</b> (l'IA doute ➔ abstention).</li>
+      </ul>
+      <div style="margin-top: 6px; display: flex; flex-direction: column; gap: 4px; font-size: 12px;">
+        <div style="background: #e8f5e9; border-left: 3px solid #2e7d32; padding: 3px 6px; border-radius: 3px;">
+          <b>🟢 Confiance $\ge$ 65% :</b> L'IHM affiche le conseil au conseiller.
+        </div>
+        <div style="background: #fff3e0; border-left: 3px solid #e65100; padding: 3px 6px; border-radius: 3px;">
+          <b>🟡 Confiance &lt; 65% :</b> <code>fallback: true</code>, l'agent décide souverainement.
+        </div>
       </div>
-      <div style="background: #fff3e0; border-left: 4px solid #e65100; padding: 6px 10px; border-radius: 4px;">
-        <span style="font-weight: bold; color: #bf360c; font-size: 13.5px;">🟡 Confiance &lt; 65% : Abstention (Fallback)</span><br>
-        <span style="font-size: 13px; color: #333;">L'API renvoie <code>fallback: true</code>. L'IHM invite le conseiller à décider en autonomie (<i>Human-In-The-Loop</i>).</span>
+    </div>
+  </div>
+
+  <div class="oper-card" style="border-left: 4px solid #e65100;">
+    <div>
+      <h4 style="color: #bf360c;">🚨 Alerte Dérive (+20% relatif) & Playbook MLOps</h4>
+      <ul>
+        <li><b>Taux nominal de fallback :</b> En rythme de croisière, ~38-40% des dossiers sont sous 65%.</li>
+        <li><b>Signal précoce (+20%) :</b> Si le taux de rejet dépasse <b>48% sur 4 semaines glissantes</b>, c'est une dérive structurelle (choc économique, changement de verbatims).</li>
+      </ul>
+      <div style="background: #fbe9e7; border-left: 3px solid #d84315; padding: 6px 8px; border-radius: 4px; margin-top: 6px; font-size: 12px; line-height: 1.3;">
+        <b>Playbook d'action gradué :</b><br>
+        1. <b>Contrôle PSI :</b> Identifier les variables d'entrée ayant dérivé.<br>
+        2. <b>Recalibration :</b> Ajuster les scores (Platt/isotonique) sans réentraîner.<br>
+        3. <b>Réentraînement ciblé :</b> Appel <code>POST /train</code> si le drift persiste.
       </div>
     </div>
   </div>
 </div>
 
----
-
-## Alerte Dérive (&gt; 20%) : Le Signal d'Alarme Précoce
-
-<style scoped>
-section { font-size: 20px; padding-top: 70px; }
-.columns { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 1.2rem; align-items: start; margin-top: 8px; }
-ul { margin: 0; padding-left: 18px; }
-li { margin-bottom: 5px; font-size: 14.5px; line-height: 1.35; }
-</style>
-
-La vérité terrain (retour à l'emploi effectif) n'est connue que 6 à 12 mois plus tard. **Comment détecter une panne du modèle dès aujourd'hui ?**
-
-<div class="columns">
-  <div>
-    <b style="font-size: 16px; color: #0d47a1;">Pourquoi une alerte sur une hausse relative de &gt; 20% ?</b>
-    <ul>
-      <li><b>Taux nominal baseline :</b> ~38-40% des dossiers sont sous 65%.</li>
-      <li><b>Filtrage du bruit statistique :</b> Une variation de ±10% est une fluctuation normale (saisonnalité, congés).</li>
-      <li><b>Seuil critique (+20% relatif) :</b> Si le taux de rejet dépasse <b>48% sur 4 semaines glissantes</b>, c'est une dérive structurelle :
-        • <i>Data Drift sémantique :</i> vocabulaire des conseillers qui a changé.<br>
-        • <i>Choc économique :</i> afflux de profils inédits post-crise sectorielle.
-      </li>
-    </ul>
-  </div>
-  <div>
-    <div class="tech-box" style="font-size: 14px; margin: 0; padding: 10px 12px; line-height: 1.35; border-left-color: #e65100; background-color: #fff3e0;">
-      <b>Plan d'Action MLOps (Playbook) :</b><br>
-      1. <b>Contrôle PSI :</b> Vérifier quelles variables d'entrée ont dérivé.<br>
-      2. <b>Recalibration :</b> Ajuster les probabilités (Platt/Isotonique) sans réentraîner si seule la confiance s'est tassée.<br>
-      3. <b>Réentraînement déclenché :</b> Appel de l'endpoint <code>POST /train</code> si le drift persiste.
-    </div>
-  </div>
+<div class="tech-box" style="font-size: 12.5px; margin-top: 8px; padding: 5px 12px; line-height: 1.25;">
+  <b>Bénéfice majeur :</b> Grâce au taux de fallback, l'administration est alertée dès la 3ᵉ semaine d'une anomalie de modèle, sans devoir attendre un an le constat d'échec sur le terrain.
 </div>
 
 ---
@@ -1039,21 +1923,62 @@ La vérité terrain (retour à l'emploi effectif) n'est connue que 6 à 12 mois 
 ## Cycle de Vie : Boucle de Rétroaction & Dérive (Drift)
 
 <style scoped>
-section { font-size: 21px; padding-top: 70px; }
-ul { margin: 6px 0 10px 0; padding-left: 24px; }
-li { margin-bottom: 8px; font-size: 18px; line-height: 1.4; }
+section { font-size: 15.5px; padding-top: 50px; padding-bottom: 40px; }
+.top-box {
+  background: #f0f4f8;
+  border-left: 5px solid #1565c0;
+  padding: 5px 12px;
+  margin-bottom: 8px;
+  font-size: 13.5px;
+  line-height: 1.3;
+  color: #0d47a1;
+}
+.img-wrap {
+  text-align: center;
+  margin: 6px 0 8px 0;
+}
+.drift-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 0.9rem;
+}
+.drift-card {
+  background: #ffffff;
+  border: 1.5px solid #cfd8dc;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 12.8px;
+  line-height: 1.35;
+}
+.drift-card h4 {
+  margin: 0 0 4px 0;
+  font-size: 14px;
+}
 </style>
 
-- **Le Piège de la Prophétie Auto-Réalisatrice :**  
-  L'IA classe un usager en *Risque long* $\rightarrow$ L'agence lui offre un suivi renforcé $\rightarrow$ Il retrouve un emploi en 4 mois.  
-  *Le piège lors du réentraînement :* Le modèle conclut à tort qu'il s'agissait d'un profil "rapide" et le privera d'aide la fois suivante !
-- **Solution par conception :** Enregistrement obligatoire de la variable `a_beneficie_aide_renforcee` pour neutraliser ce biais.
-
-<div align="center" style="margin: 14px 0;">
-  <img src="assets/feedback_loop.png" alt="Boucle de Rétroaction" width="1050" style="max-width: 100%; border-radius: 6px; box-shadow: 0 3px 10px rgba(0,0,0,0.12);"/>
+<div class="top-box">
+  <b>Pérénité du produit IA :</b> Éviter le piège de la prophétie auto-réalisatrice lors des réentraînements et superviser mathématiquement la dérive de distribution des données entrantes.
 </div>
 
-- **Surveillance du Data Drift :** Calcul mensuel du **PSI (Population Stability Index)** sur les données entrantes. Si $PSI > 0.20$ sur les variables clés (métier, vocabulaire), déclenchement d'un réentraînement supervisé.
+<div class="img-wrap">
+  <img src="assets/feedback_loop.png" alt="Boucle de Rétroaction" width="940" style="max-width: 100%; max-height: 195px; object-fit: contain; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);"/>
+</div>
+
+<div class="drift-grid">
+  <div class="drift-card" style="border-left: 4px solid #c62828;">
+    <h4 style="color: #b71c1c;">🔄 Le Piège de la Prophétie Auto-Réalisatrice</h4>
+    Si un usager classé <i>Risque long</i> retrouve un emploi en 4 mois grâce à l'aide renforcée, le modèle naïf le requalifie en "retour rapide" lors du réentraînement et désapprend son utilité !<br>
+    ➔ <b>Solution par conception :</b> Enregistrement obligatoire de la variable <code>a_beneficie_aide_renforcee</code> pour isoler l'effet causal de l'accompagnement.
+  </div>
+
+  <div class="drift-card" style="border-left: 4px solid #2e7d32;">
+    <h4 style="color: #1b5e20;">📈 Surveillance Mathématique du Data Drift (PSI)</h4>
+    Calcul mensuel du <b>Population Stability Index (PSI)</b> sur les entrées :<br>
+    • $PSI &lt; 0.10$ : Distribution stable.<br>
+    • $0.10 \le PSI \le 0.20$ : Dérive modérée sous surveillance.<br>
+    • <b>$PSI &gt; 0.20$ : Dérive critique</b> (déclenchement automatique du réentraînement supervisé sous MLflow).
+  </div>
+</div>
 
 ---
 
@@ -1063,32 +1988,288 @@ li { margin-bottom: 8px; font-size: 18px; line-height: 1.4; }
 
 ## Comparatif Économique & ROI (FinOps & Métier)
 
-1. **Coût d'Inférence & Empreinte Numérique (FinOps) :**
-   - LightGBM + TF-IDF : Consommation RAM &lt; 200 Mo, latence &lt; 1 ms sur simple CPU.
-   - Économie de 80% par rapport à un cluster GPU dédié à des LLMs ou Transformers.
+<style scoped>
+section { font-size: 16px; padding-top: 50px; padding-bottom: 40px; }
+.top-box {
+  background: #f0f4f8;
+  border-left: 5px solid #1565c0;
+  padding: 6px 14px;
+  margin-bottom: 10px;
+  font-size: 14.5px;
+  line-height: 1.35;
+  color: #0d47a1;
+}
+.roi-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.1rem;
+}
+.roi-card {
+  background: #ffffff;
+  border: 1.5px solid #cfd8dc;
+  border-radius: 8px;
+  padding: 12px 14px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.04);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.roi-card h4 {
+  margin: 0 0 8px 0;
+  font-size: 16px;
+  border-bottom: 1.5px solid #e0e0e0;
+  padding-bottom: 4px;
+}
+.roi-card ul {
+  margin: 0;
+  padding-left: 17px;
+  font-size: 13.8px;
+  line-height: 1.38;
+}
+.roi-card li {
+  margin-bottom: 5px;
+}
+</style>
 
-2. **L'Économie de l'Erreur :**
-   - **Faux Positif (Alarme inutile) :** Coût modéré = un entretien approfondi de 30 min (~25€ de temps conseiller).
-   - **Faux Négatif (Risque raté) :** Coût sociétal majeur = 12 à 24 mois d'indemnisation chômage, perte de cotisations et rupture sociale (> 15 000€).
-   - *Le modèle maximise le ROI social en tolérant des fausses alarmes pour éradiquer les abandons.*
+<div class="top-box">
+  <b>Arbitrage Valeur & Sobriété :</b> La viabilité d'un projet IA en service public repose sur deux piliers : la frugalité d'infrastructure (FinOps) et la maximisation du retour sur investissement humain et social.
+</div>
+
+<div class="roi-grid">
+  <div class="roi-card" style="border-left: 5px solid #1565c0;">
+    <div>
+      <h4 style="color: #0d47a1;">⚡ Frugalité Numérique & FinOps (CPU vs GPU)</h4>
+      <ul>
+        <li><b>Empreinte RAM minime :</b> Pipeline complet &lt; 200 Mo en mémoire vive.</li>
+        <li><b>Inférence ultra-rapide sur CPU :</b> Temps de réponse moyen &lt; 1 ms, sans recourir à des accélérateurs matériels énergivores.</li>
+        <li><b>Économie directe &gt; 80% :</b> Zéro dépendance aux clusters GPU coûteux nécessaires aux LLMs ou architectures Transformers lourdes.</li>
+      </ul>
+    </div>
+    <div style="font-size: 12px; color: #0d47a1; background: #e3f2fd; padding: 4px 8px; border-radius: 4px; margin-top: 6px; font-weight: 500;">
+      🌱 Alignement Green IT & sobriété budgétaire publique.
+    </div>
+  </div>
+
+  <div class="roi-card" style="border-left: 5px solid #2e7d32;">
+    <div>
+      <h4 style="color: #1b5e20;">⚖️ L'Économie de l'Erreur & Limites du Rappel</h4>
+      <ul>
+        <li><b>Faux Positif (Sur-accompagnement) :</b> Coût marginal = un entretien approfondi de 30 min (~25€ de temps conseiller).</li>
+        <li><b>Faux Négatif (Risque long ignoré) :</b> Coût sociétal majeur = 12 à 24 mois d'allocation et rupture sociale (<b>&gt; 15 000€</b>).</li>
+        <li><b>Pourquoi ne pas viser 95% de Rappel ?</b><br>
+          Forcer 95% ferait s'effondrer la précision (explosion des faux positifs), saturant les dispositifs renforcés, débordant les conseillers et diluant l'aide pour les vrais cas critiques.</li>
+      </ul>
+    </div>
+    <div style="font-size: 11.5px; color: #1b5e20; background: #e8f5e9; padding: 4px 8px; border-radius: 4px; margin-top: 6px; font-weight: 500;">
+      🎯 Arbitrage réaliste : protection maximale sans saturer les capacités d'accueil.
+    </div>
+  </div>
+</div>
+
+<div class="tech-box" style="font-size: 12px; margin-top: 6px; padding: 4px 10px; line-height: 1.25;">
+  <b>Synthèse économique & opérationnelle :</b> En combinant un coût machine quasi nul et un rappel équilibré (~75-80%), notre modèle protège les demandeurs vulnérables tout en restant soutenable pour les agents et le budget public.
+</div>
 
 ---
 
 ## Perspectives de Passage à l'Échelle (Scale-up)
 
-| Axe | Échelle MVP (2 500 profils) | Échelle Nationale (1 000 000 profils) |
-| :--- | :--- | :--- |
-| **Données Géographiques** | Agrégation par département (anti-overfitting) | Exploitation du code commune INSEE brut (bassins d'emploi fins) |
-| **Analyse NLP** | TF-IDF avec Stop Words (léger, explicable) | Modèles d'embeddings CamemBERT fine-tunés avec surcouche LIME/SHAP |
-| **Pipeline MLOps** | SQLite MLflow local | Feature Store centralisé (Feast), Registry MLflow distant & Model Monitoring en continu |
+<style scoped>
+section { font-size: 16px; padding-top: 50px; padding-bottom: 40px; }
+.top-box {
+  background: #f0f4f8;
+  border-left: 5px solid #1565c0;
+  padding: 6px 14px;
+  margin-bottom: 10px;
+  font-size: 14.5px;
+  line-height: 1.35;
+  color: #0d47a1;
+}
+.scale-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 14px;
+  border: 1.5px solid #cfd8dc;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+.scale-table th {
+  background: #1565c0;
+  color: #ffffff;
+  padding: 8px 12px;
+  font-weight: 600;
+  text-align: left;
+  font-size: 14.5px;
+}
+.scale-table td {
+  padding: 8px 12px;
+  border-top: 1px solid #e0e0e0;
+  vertical-align: middle;
+  line-height: 1.35;
+}
+.scale-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.scale-card {
+  background: #ffffff;
+  border: 1.5px solid #cfd8dc;
+  border-radius: 8px;
+  padding: 8px 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+  font-size: 13px;
+  line-height: 1.35;
+}
+.scale-card h4 {
+  margin: 0 0 4px 0;
+  font-size: 14px;
+}
+</style>
+
+<div class="top-box">
+  <b>Trajectoire d'industrialisation (Scale-up) :</b> Feuille de route technique pour faire évoluer le système du cadre expérimental (2 500 usagers) vers un déploiement national à grande échelle (1 million de profils).
+</div>
+
+<table class="scale-table">
+  <thead>
+    <tr>
+      <th style="width: 22%;">Dimension Clé</th>
+      <th style="width: 38%;">Échelle MVP (2 500 profils) — Actuel</th>
+      <th style="width: 40%;">Échelle Nationale (1 000 000 profils) — Cible</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="background: #fafafa;">
+      <td><b>Données Territoriales</b></td>
+      <td>Agrégation par département (anti-overfitting)</td>
+      <td>Exploitation du code commune INSEE brut (bassins d'emploi fins)</td>
+    </tr>
+    <tr style="background: #f9fbe7;">
+      <td><b>Traitement NLP</b></td>
+      <td>TF-IDF avec stop words (léger, explicable, CPU)</td>
+      <td>Embeddings sémantiques CamemBERT fins avec surcouche LIME/SHAP</td>
+    </tr>
+    <tr style="background: #ffffff;">
+      <td><b>Pipeline MLOps</b></td>
+      <td>SQLite MLflow local + Docker-Compose</td>
+      <td>Feature Store (Feast), Registry MLflow distribué & monitoring continu</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="scale-grid">
+  <div class="scale-card" style="border-left: 4px solid #1565c0;">
+    <h4 style="color: #0d47a1;">🗺️ Granularité Géographique & Bassins d'Emploi</h4>
+    Avec un volume massif, la cardinalité INSEE devient un atout prédictif majeur plutôt qu'un risque de mémorisation par cœur, permettant de modéliser les dynamiques de l'emploi bassin par bassin.
+  </div>
+
+  <div class="scale-card" style="border-left: 4px solid #2e7d32;">
+    <h4 style="color: #1b5e20;">🧠 Richesse Sémantique & Modèles de Langage</h4>
+    Sur 500 000 verbatims, un modèle de type CamemBERT capte les tournures subtiles et les négations tout en restant auditable grâce aux bibliothèques d'explicabilité post-hoc.
+  </div>
+</div>
 
 ---
 
-## Conclusion
+## Conclusion & Bilan de la Soutenance
 
-✅ **Système de bout en bout opérationnel :** Du cadrage métier et audit des données jusqu'à l'API FastAPI, l'UI Streamlit, Docker et la CI/CD GitHub Actions.  
-✅ **Conformité stricte AI Act :** Modèle S2 éthique, explicabilité SHAP prouvée, politique d'abstention sous 65% et supervision humaine garantie.  
-✅ **Pragmatisme d'ingénierie :** Solution sobre (Green IT), réactive (&lt; 1 ms) et alignée sur la réalité du service public de l'emploi.
+<style scoped>
+section { font-size: 16px; padding-top: 50px; padding-bottom: 40px; }
+.top-box {
+  background: #f0f4f8;
+  border-left: 5px solid #1565c0;
+  padding: 6px 14px;
+  margin-bottom: 12px;
+  font-size: 14.5px;
+  line-height: 1.35;
+  color: #0d47a1;
+}
+.concl-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+}
+.concl-card {
+  background: #ffffff;
+  border: 1.5px solid #cfd8dc;
+  border-radius: 8px;
+  padding: 12px 14px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.04);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.concl-card h4 {
+  margin: 0 0 6px 0;
+  font-size: 15.5px;
+  border-bottom: 1.5px solid #e0e0e0;
+  padding-bottom: 3px;
+}
+.concl-card ul {
+  margin: 0;
+  padding-left: 17px;
+  font-size: 13.5px;
+  line-height: 1.35;
+}
+.concl-card li {
+  margin-bottom: 4px;
+}
+</style>
+
+<div class="top-box">
+  <b>Bilan Synthétique du Projet :</b> Réalisation complète, robuste et éthique d'un produit d'IA d'aide à la décision pour le service public de l'emploi, prêt pour l'expérimentation terrain.
+</div>
+
+<div class="concl-grid">
+  <div class="concl-card" style="border-top: 5px solid #1565c0;">
+    <div>
+      <h4 style="color: #0d47a1;">🚀 Produit End-to-End</h4>
+      <ul>
+        <li><b>Chaîne complète :</b> Du cadrage métier et audit des données jusqu'à l'inférence.</li>
+        <li><b>Microservices :</b> API FastAPI asynchrone, UI Streamlit ergonomique et conteneurs Docker.</li>
+        <li><b>Reproductibilité :</b> Pipeline CI/CD GitHub Actions automatisé (100% testé).</li>
+      </ul>
+    </div>
+    <div style="font-size: 12px; color: #0d47a1; background: #e3f2fd; padding: 4px 6px; border-radius: 4px; margin-top: 6px; font-weight: 500;">
+      ✅ Livrable déployable en 1 commande.
+    </div>
+  </div>
+
+  <div class="concl-card" style="border-top: 5px solid #2e7d32;">
+    <div>
+      <h4 style="color: #1b5e20;">🛡️ Éthique & AI Act</h4>
+      <ul>
+        <li><b>Privacy by Design :</b> Retrait préventif de l'âge et de la nationalité (Scénario S2).</li>
+        <li><b>Explicabilité totale :</b> Décomposition unitaire et collective SHAP intégrée à l'IHM.</li>
+        <li><b>Human-In-The-Loop :</b> Seuil de repli à 65% préservant la souveraineté de l'agent public.</li>
+      </ul>
+    </div>
+    <div style="font-size: 12px; color: #1b5e20; background: #e8f5e9; padding: 4px 6px; border-radius: 4px; margin-top: 6px; font-weight: 500;">
+      ✅ Conforme aux normes Haut Risque.
+    </div>
+  </div>
+
+  <div class="concl-card" style="border-top: 5px solid #e65100;">
+    <div>
+      <h4 style="color: #bf360c;">💡 Sobriété & Métier</h4>
+      <ul>
+        <li><b>Frugalité Green IT :</b> Inférence ultra-rapide &lt; 1 ms sur simple CPU sans GPU coûteux.</li>
+        <li><b>Doctrine métier :</b> Priorité absolue au rappel classe 2 pour éradiquer les abandons.</li>
+        <li><b>Supervision MLOps :</b> Détection précoce du drift via le taux de fallback et le PSI.</li>
+      </ul>
+    </div>
+    <div style="font-size: 12px; color: #bf360c; background: #fff3e0; padding: 4px 6px; border-radius: 4px; margin-top: 6px; font-weight: 500;">
+      ✅ Impact public et budgétaire maximisé.
+    </div>
+  </div>
+</div>
+
+<div class="tech-box" style="font-size: 12.5px; margin-top: 8px; padding: 5px 12px; line-height: 1.25;">
+  <b>Message de conclusion :</b> L'intelligence artificielle au service de l'emploi n'a de valeur que si elle conjugue rigueur mathématique, humilité éthique et intégration fluide au service des conseillers humains.
+</div>
 
 ---
 
