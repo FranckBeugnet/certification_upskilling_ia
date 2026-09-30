@@ -2,7 +2,7 @@
 marp: true
 theme: default
 paginate: true
-header: "🎓 **Soutenance de Certification** — Ingénieur IA"
+header: "🎓 **Soutenance de Certification** — Concevoir et Implémenter une solution d'IA"
 footer: "🧑‍💻 **Candidat** : Franck Beugnet | 🚀 **Projet** : IA d'Orientation Professionnelle"
 size: 16:9
 style: |
