@@ -2104,13 +2104,13 @@ footer {
       <li><b>Pondération <code>balanced</code> (Retenu Prod) :</b><br />
         Chute à <b>47 erreurs 2→0 (-34%)</b> : <b>24 demandeurs vulnérables sauvés de l'abandon</b> sans dégrader le F1-Macro (0.640).</li>
       <li><b>Poids sur-mesure ($w_2 = 2.5$) :</b><br />
-        Gain marginal (41 erreurs 2→0), mais <b>+18 fausses alertes C2</b> ($0 \rightarrow 2$ passe de 127 à 137).</li>
+        Gain marginal (41 erreurs 2→0), mais <b>+18 fausses alertes C2</b> (0→2 passe de 127 à 137).</li>
     </ul>
   </div>
   <div class="cost-card">
     <h3>2. En Aval : Seuil de Décision vs Filet Humain</h3>
     <ul>
-      <li><b>Seuil d'alerte testé ($P(C2) \ge 0.25$) :</b><br />
+      <li><b>Seuil d'alerte testé (P(C2) > 0.25) :</b><br />
         Ramène certes les 2→0 à 30, mais <b>explose les fausses alertes C2 (+50%, 454 vs 303)</b> et fait chuter le F1-Macro (0.609). <i>Écarté (fatigue d'alerte).</i></li>
       <li><b>Seuil d'abstention à 65% (HITL retenu) :</b><br />
         ~39% de revue humaine ciblée (capacité agence respectée), <b>rattrape 57% des 2→0</b> (27 sur 47) sans fausses décisions automatiques.</li>
@@ -2613,7 +2613,7 @@ footer {
 <header><img class="emoji" draggable="false" alt="🎓" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f393.svg" data-marp-twemoji=""/> <strong>Soutenance de Certification</strong> — Concevoir et Implémenter une solution d'IA</header>
 <h2 id="analyse-compar%C3%A9e-des-4-sc%C3%A9narios">Analyse Comparée des 4 Scénarios</h2>
 <div class="top-box">
-  <b>Audit d'impact des modalités de données :</b> Évaluation sur le jeu de test ($N = 500$) et distinction fondamentale entre erreurs critiques ($2 \rightarrow 0$) et partielles ($2 \rightarrow 1$).
+  <b>Audit d'impact des modalités de données :</b> Évaluation sur le jeu de test (N = 500) et distinction fondamentale entre erreurs critiques (2->0) et partielles (2->1).
 </div>
 <table class="scen-table">
   <thead>
@@ -2674,7 +2674,7 @@ footer {
 <div class="insight-grid">
   <div class="insight-card">
     <h4>🛡️ Sanctuarisation du 2→0 & Vérité sur les 9 erreurs</h4>
-    L'erreur critique absolue $2 \rightarrow 0$ (abandon sans aide) <b>ne progresse pas : 10 dans S2 vs 11 dans S1</b> ! Les 9 erreurs supplémentaires sont <b>à 100% des reclassements $2 \rightarrow 1$ (23 vs 13)</b> : l'usager reçoit tout de même un accompagnement moyen (6-12m) et reste sous le regard d'un conseiller.
+    L'erreur critique absolue 2->0 (abandon sans aide) <b>ne progresse pas : 10 dans S2 vs 11 dans S1</b> ! Les 9 erreurs supplémentaires sont <b>à 100% des reclassements 2->1 (23 vs 13)</b> : l'usager reçoit tout de même un accompagnement moyen (6-12m) et reste sous le regard d'un conseiller.
   </div>
   <div class="insight-card">
     <h4>⚖️ L'illusion du « Fairness through Blindness »</h4>
@@ -3938,9 +3938,9 @@ footer {
   <div class="drift-card">
     <h4>📈 Surveillance Mathématique du Data Drift (PSI)</h4>
     Calcul mensuel du <b>Population Stability Index (PSI)</b> sur les entrées :<br />
-    • $PSI &lt; 0.10$ : Distribution stable.<br />
-    • $0.10 \le PSI \le 0.20$ : Dérive modérée sous surveillance.<br />
-    • <b>$PSI &gt; 0.20$ : Dérive critique</b> (déclenchement automatique du réentraînement supervisé sous MLflow).
+    • PSI < 0.10 : Distribution stable.<br />
+    • 0.10 < PSI < 0.20 : Dérive modérée sous surveillance.<br />
+    • <b>PSI > 0.20 : Dérive critique</b> (déclenchement automatique du réentraînement supervisé sous MLflow).
   </div>
 </div>
 <footer><img class="emoji" draggable="false" alt="🧑‍💻" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f9d1-200d-1f4bb.svg" data-marp-twemoji=""/> <strong>Candidat</strong> : Franck Beugnet | <img class="emoji" draggable="false" alt="🚀" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f680.svg" data-marp-twemoji=""/> <strong>Projet</strong> : IA d'Orientation Professionnelle</footer>
