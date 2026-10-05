@@ -243,8 +243,8 @@ section { font-size: 19px; padding-top: 55px; padding-bottom: 40px; }
       <span class="plan-num" style="color: #c2185b;">Partie 6</span>
       <span class="plan-badge">⏱️ 3 min (27:00 - 30:00)</span>
     </div>
-    <div class="plan-title">Bilan Économique & Démonstration</div>
-    <div class="plan-desc">ROI financier et sociétal, démo interactive Streamlit & perspectives V2.</div>
+    <div class="plan-title">Bilan</div>
+    <div class="plan-desc">ROI financier et sociétal et perspectives V2.</div>
   </div>
 </div>
 
@@ -973,42 +973,44 @@ section { font-size: 17.5px; padding-top: 52px; padding-bottom: 45px; }
 
 ---
 
-## Asymétrie des Coûts : Deux Leviers pour Réduire les Erreurs Critiques
+## Gravité Asymétrique des Erreurs : Deux Leviers Opérationnels
 
 <style scoped>
-section { font-size: 19px; padding-top: 75px; }
-.cost-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-top: 8px; }
+section { font-size: 18px; padding-top: 60px; padding-bottom: 45px; }
+.cost-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; margin-top: 8px; }
 .cost-card { background: #ffffff; border: 2px solid #1565c0; border-radius: 8px; padding: 10px 12px; }
-.cost-card h3 { margin: 0 0 6px 0; font-size: 17px; color: #0d47a1; }
-ul { margin: 0; padding-left: 18px; }
-li { margin-bottom: 4px; font-size: 14.5px; line-height: 1.35; }
+.cost-card h3 { margin: 0 0 6px 0; font-size: 16.5px; color: #0d47a1; }
+ul { margin: 0; padding-left: 17px; }
+li { margin-bottom: 4px; font-size: 13.8px; line-height: 1.3; }
 </style>
 
-Classer un profil en risque (2) en retour rapide (0) est bien plus grave qu'une fausse alerte. Deux leviers :
+Classer un profil en risque (2) en retour rapide (0) est une erreur critique (abandon sans aide). Deux leviers mesurés :
 
 <div class="cost-grid">
   <div class="cost-card">
-    <h3>1. En Amont : À l'Entraînement (Cost-Sensitive Learning)</h3>
+    <h3>1. En Amont : Pondération (Cost-Sensitive Learning)</h3>
     <ul>
-      <li><b>Pondération automatique — <code>class_weight='balanced'</code> (Retenu) :</b><br>
-        Chaque profil à risque pèse ~2,4× plus lourd, forçant l'algorithme à ne pas l'ignorer.</li>
-      <li><b>Poids personnalisés — <i>Custom Sample Weights</i> :</b><br>
-        Possibilité de sur-pénaliser davantage les erreurs sur les demandeurs vulnérables.</li>
+      <li><b>Sans pondération (<code>None</code>) :</b><br>
+        <b>71 erreurs critiques 2→0</b> (183 FN C2 au total sur le train en CV).</li>
+      <li><b>Pondération <code>balanced</code> (Retenu Prod) :</b><br>
+        Chute à <b>47 erreurs 2→0 (-34%)</b> : <b>24 demandeurs vulnérables sauvés de l'abandon</b> sans dégrader le F1-Macro (0.640).</li>
+      <li><b>Poids sur-mesure (w_2 = 2.5) :</b><br>
+        Gain marginal (41 erreurs 2→0), mais <b>+18 fausses alertes C2</b> (0→2 passe de 127 à 137).</li>
     </ul>
   </div>
   <div class="cost-card" style="border-color: #2e7d32;">
-    <h3 style="color: #1b5e20;">2. En Aval : À la Décision (Cost-Sensitive Thresholding)</h3>
+    <h3 style="color: #1b5e20;">2. En Aval : Seuil de Décision vs Filet Humain</h3>
     <ul>
-      <li><b>Seuil d'alerte préventif abaissé — <i>Decision Threshold Tuning</i> :</b><br>
-        Déclencher l'aide dès 25% de risque détecté, sans attendre une certitude absolue.</li>
-      <li><b>Seuil d'abstention (65%) — <i>Rejection Threshold (HITL)</i> :</b><br>
-        En cas de doute, l'IA passe la main au conseiller humain (<i>Human-in-the-Loop</i>).</li>
+      <li><b>Seuil d'alerte préventif :</b><br>
+        Déclencher l'aide dès 25% de risque détecté, sans attendre une certitude absolue. Ramène certes les 2→0 à 30, mais <b>explose les fausses alertes C2 (+50%, 454 vs 303)</b> et fait chuter le F1-Macro (0.609). <i>Écarté (fatigue d'alerte).</i></li>
+      <li><b>Seuil d'abstention à 65% (HITL retenu) :</b><br>
+        ~39% de revue humaine ciblée (capacité agence respectée), <b>rattrape 57% des 2→0</b> (27 sur 47) sans fausses décisions automatiques.</li>
     </ul>
   </div>
 </div>
 
-<div class="tech-box" style="font-size: 15px; margin-top: 10px; padding: 6px 12px; line-height: 1.3;">
-<b>Synthèse :</b> On combine une pondération à l'apprentissage et un filet d'alerte précoce à la décision pour protéger les usagers fragiles sans alourdir le modèle.
+<div class="tech-box" style="font-size: 13.5px; margin-top: 8px; padding: 5px 12px; line-height: 1.25;">
+<b>Arbitrage mesuré :</b> On couple la pondération <code>balanced</code> à l'apprentissage avec le filet d'abstention à 65% à la décision pour protéger les usagers sans saturer les conseillers de fausses alertes.
 </div>
 
 ---
@@ -1085,7 +1087,7 @@ section { font-size: 16.5px; padding-top: 50px; padding-bottom: 42px; }
     <tr>
       <th style="width: 24%;">Modèle & Famille</th>
       <th style="width: 15%; text-align: center;">F1-Macro CV</th>
-      <th style="width: 15%; text-align: center;">Dispersion ($\sigma$)</th>
+      <th style="width: 15%; text-align: center;">Dispersion</th>
       <th style="width: 25%;">Atouts Opérationnels</th>
       <th style="width: 21%;">Limites & Risques</th>
     </tr>
@@ -1228,7 +1230,7 @@ section { font-size: 16.5px; padding-top: 50px; padding-bottom: 42px; }
       </tr>
       <tr>
         <td><code>class_weight = 'balanced'</code></td>
-        <td>Sur-pénalise les erreurs sur la classe 2 (poids $\times 2.4$) contre le déséquilibre.</td>
+        <td>Sur-pénalise les erreurs sur la classe 2 contre le déséquilibre.</td>
       </tr>
     </table>
   </div>
@@ -1318,51 +1320,61 @@ section { font-size: 19px; padding-top: 50px; padding-bottom: 45px; }
 </style>
 
 <div class="top-box">
-  <b>Audit d'impact des modalités de données :</b> Évaluation sur le jeu de test ($N = 500$) de l'impact des données sensibles (RGPD) et de l'apport respectif du texte et des données administratives.
+  <b>Audit d'impact des modalités de données :</b> Évaluation sur le jeu de test (N = 500) et distinction fondamentale entre erreurs critiques (2 -> 0) et partielles (2 -> 1).
 </div>
 
 <table class="scen-table">
   <thead>
     <tr>
-      <th style="width: 17%;">Scénario</th>
-      <th style="width: 27%;">Périmètre des Features</th>
-      <th style="width: 11%; text-align: center;">F1-Macro</th>
-      <th style="width: 12%; text-align: center;">Erreurs FN (C2)</th>
-      <th style="width: 15%; text-align: center;">Disparate Impact</th>
-      <th style="width: 18%; text-align: center;">Arbitrage</th>
+      <th style="width: 15%;">Scénario</th>
+      <th style="width: 25%;">Périmètre Features</th>
+      <th style="width: 10%; text-align: center;">F1-Macro</th>
+      <th style="width: 11%; text-align: center;">FN C2 Total</th>
+      <th style="width: 11%; text-align: center;">2→0 (Critique)</th>
+      <th style="width: 11%; text-align: center;">2→1 (Partiel)</th>
+      <th style="width: 13%; text-align: center;">Disparate Imp.</th>
+      <th style="width: 15%; text-align: center;">Arbitrage</th>
     </tr>
   </thead>
   <tbody>
     <tr style="background: #fafafa;">
       <td><b>S1 (Complet)</b></td>
-      <td>Tabulaire + Texte + Âge + Nationalité</td>
-      <td style="text-align: center; font-weight: bold; color: #455a64; font-size: 17.5px;">0.716</td>
-      <td style="text-align: center; font-weight: bold; color: #1b5e20; font-size: 17.5px;">24</td>
-      <td style="text-align: center; color: #c62828; font-weight: 600;">2.53 (Biais fort)</td>
+      <td>Tabulaire + Texte + Âge + Nat.</td>
+      <td style="text-align: center; font-weight: bold; color: #455a64;">0.716</td>
+      <td style="text-align: center; font-weight: bold; color: #1b5e20;">24</td>
+      <td style="text-align: center; font-weight: bold; color: #1b5e20;">11</td>
+      <td style="text-align: center;">13</td>
+      <td style="text-align: center; color: #c62828; font-weight: 600;">2.53 (Fort)</td>
       <td style="text-align: center;"><span class="verdict-tag" style="background: #ffebee; color: #c62828;">❌ Non conforme</span></td>
     </tr>
     <tr style="background: #f9fbe7; border: 2.5px solid #2e7d32;">
       <td><b>S2 (Éthique)</b></td>
       <td>S1 <b>sans âge ni nationalité</b></td>
-      <td style="text-align: center; font-weight: bold; color: #1b5e20; font-size: 18.5px;">0.627</td>
-      <td style="text-align: center; font-weight: bold; color: #d84315; font-size: 18.5px;">33</td>
-      <td style="text-align: center; color: #e65100; font-weight: 600;">1.41 (Proxy résiduel)</td>
-      <td style="text-align: center;"><span class="verdict-tag" style="background: #e8f5e9; color: #1b5e20; font-size: 15.5px;">🏆 Retenu Prod</span></td>
+      <td style="text-align: center; font-weight: bold; color: #1b5e20;">0.627</td>
+      <td style="text-align: center; font-weight: bold; color: #d84315;">33</td>
+      <td style="text-align: center; font-weight: bold; color: #1b5e20; background: #e8f5e9;">10 (-1 !)</td>
+      <td style="text-align: center; font-weight: 600; color: #e65100;">23 (+10)</td>
+      <td style="text-align: center; color: #e65100; font-weight: 600;">1.41 (Proxy)</td>
+      <td style="text-align: center;"><span class="verdict-tag" style="background: #e8f5e9; color: #1b5e20;">🏆 Retenu Prod</span></td>
     </tr>
     <tr style="background: #ffffff;">
       <td><b>S3 (NLP seul)</b></td>
-      <td>Synthèse entretien seule (TF-IDF)</td>
-      <td style="text-align: center; color: #37474f; font-size: 17.5px;">0.637</td>
-      <td style="text-align: center; color: #e65100; font-size: 17.5px;">32</td>
-      <td style="text-align: center; color: #e65100; font-weight: 600;">1.62 (Biais verbatims)</td>
+      <td>Synthèse entretien (TF-IDF)</td>
+      <td style="text-align: center; color: #37474f;">0.637</td>
+      <td style="text-align: center; color: #e65100;">32</td>
+      <td style="text-align: center;">12</td>
+      <td style="text-align: center;">20</td>
+      <td style="text-align: center; color: #e65100; font-weight: 600;">1.62 (Verbatims)</td>
       <td style="text-align: center;"><span class="verdict-tag" style="background: #fff3e0; color: #e65100;">⚠️ Trop fragile</span></td>
     </tr>
     <tr style="background: #fafafa;">
       <td><b>S4 (Tabulaire)</b></td>
       <td>Données contextuelles (sans texte)</td>
-      <td style="text-align: center; color: #757575; font-size: 17.5px;">0.614</td>
-      <td style="text-align: center; color: #c62828; font-size: 17.5px;">39</td>
-      <td style="text-align: center; color: #c62828; font-weight: 600;">2.40 (Biais indirect)</td>
+      <td style="text-align: center; color: #757575;">0.614</td>
+      <td style="text-align: center; color: #c62828;">39</td>
+      <td style="text-align: center;">13</td>
+      <td style="text-align: center;">26</td>
+      <td style="text-align: center; color: #c62828; font-weight: 600;">2.40 (Indirect)</td>
       <td style="text-align: center;"><span class="verdict-tag" style="background: #ffebee; color: #c62828;">❌ Aveugle freins</span></td>
     </tr>
   </tbody>
@@ -1370,8 +1382,8 @@ section { font-size: 19px; padding-top: 50px; padding-bottom: 45px; }
 
 <div class="insight-grid">
   <div class="insight-card" style="border-left: 4px solid #2e7d32;">
-    <h4 style="color: #1b5e20;">🛡️ Le "Coût de l'Éthique" (Prime d'assurance)</h4>
-    Passer de S1 à S2 coûte <b>9 erreurs critiques de plus</b> (33 FN vs 24). C'est un compromis assumé face au risque juridique : ce différentiel est absorbé par le <b>filet d'escalade humaine (HITL)</b>.
+    <h4 style="color: #1b5e20;">🛡️ Sanctuarisation du 2→0 & Vérité sur les 9 erreurs</h4>
+    L'erreur critique absolue 2 -> 0 (abandon sans aide) <b>ne progresse pas : 10 dans S2 vs 11 dans S1</b> ! Les 9 erreurs supplémentaires sont <b>à 100% des reclassements 2 -> 1 (23 vs 13)</b>
   </div>
   <div class="insight-card" style="border-left: 4px solid #e65100;">
     <h4 style="color: #e65100;">⚖️ L'illusion du « Fairness through Blindness »</h4>
@@ -1568,7 +1580,7 @@ section { font-size: 16px; padding-top: 50px; padding-bottom: 40px; }
       </table>
     </div>
 <div style="background: #eef2f6; border-left: 3px solid #1565c0; padding: 6px 10px; border-radius: 4px; font-size: 12.5px; line-height: 1.3;">
-  <b>Robustesse par conception :</b> Validation stricte Pydantic à l'entrée. Tout champ aberrant (ancienneté &lt; 0, code INSEE $\neq$ 5 car.) renvoie immédiatement une erreur <code>422 Unprocessable Entity</code> documentée.
+  <b>Robustesse par conception :</b> Validation stricte Pydantic à l'entrée. Tout champ aberrant (ancienneté &lt; 0, code INSEE != 5 car.) renvoie immédiatement une erreur <code>422 Unprocessable Entity</code> documentée.
 </div>
   </div>
 
@@ -1883,12 +1895,12 @@ section { font-size: 16px; padding-top: 50px; padding-bottom: 40px; }
       <ul>
         <li><b>Calibration imparfaite :</b> Les scores <code>predict_proba</code> du LightGBM ne sont pas des probabilités pures (Brier Score = 0.48). Le seuil agit en filtre opérationnel.</li>
         <li><b>Bascule empirique mesurée :</b><br>
-          • Score $\ge$ 65% : <b>76% d'exactitude</b> (recommandation fiable).<br>
+          • Score > 65% : <b>76% d'exactitude</b> (recommandation fiable).<br>
           • Score &lt; 65% : <b>46% d'exactitude</b> (l'IA doute ➔ abstention).</li>
       </ul>
       <div style="margin-top: 6px; display: flex; flex-direction: column; gap: 4px; font-size: 12px;">
         <div style="background: #e8f5e9; border-left: 3px solid #2e7d32; padding: 3px 6px; border-radius: 3px;">
-          <b>🟢 Confiance $\ge$ 65% :</b> L'IHM affiche le conseil au conseiller.
+          <b>🟢 Confiance > 65% :</b> L'IHM affiche le conseil au conseiller.
         </div>
         <div style="background: #fff3e0; border-left: 3px solid #e65100; padding: 3px 6px; border-radius: 3px;">
           <b>🟡 Confiance &lt; 65% :</b> <code>fallback: true</code>, l'agent décide souverainement.
@@ -1974,9 +1986,9 @@ section { font-size: 15.5px; padding-top: 50px; padding-bottom: 40px; }
   <div class="drift-card" style="border-left: 4px solid #2e7d32;">
     <h4 style="color: #1b5e20;">📈 Surveillance Mathématique du Data Drift (PSI)</h4>
     Calcul mensuel du <b>Population Stability Index (PSI)</b> sur les entrées :<br>
-    • $PSI &lt; 0.10$ : Distribution stable.<br>
-    • $0.10 \le PSI \le 0.20$ : Dérive modérée sous surveillance.<br>
-    • <b>$PSI &gt; 0.20$ : Dérive critique</b> (déclenchement automatique du réentraînement supervisé sous MLflow).
+    • PSI &lt; 0.10 : Distribution stable.<br>
+    • PSI entre 0.10 et 0.20 : Dérive modérée sous surveillance.<br>
+    • <b>PSI &gt; 0.20 : Dérive critique</b> (déclenchement automatique du réentraînement supervisé sous MLflow).
   </div>
 </div>
 

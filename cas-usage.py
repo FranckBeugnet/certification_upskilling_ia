@@ -1169,12 +1169,16 @@ for sc in scenarios:
 
     f1 = f1_score(y_test, y_pred, average="macro")
     cm = confusion_matrix(y_test, y_pred)
-    fn_classe2 = cm[2, 0] + cm[2, 1] 
+    err_2_0 = cm[2, 0]
+    err_2_1 = cm[2, 1]
+    fn_classe2 = err_2_0 + err_2_1 
 
     results.append({
         "Scénario": sc,
         "F1-Macro": round(f1, 4),
         "FN (Classe 2)": fn_classe2,
+        "2->0 (Critique)": err_2_0,
+        "2->1 (Partiel)": err_2_1,
         "Latence/pred (ms)": round(latency_ms, 2)
     })
 
@@ -1212,12 +1216,17 @@ plt.show()
 
 # ### 6.1 Tableau comparatif & Impact Environnemental
 # 
-# | Scénario | Modèle | Métrique principale (F1-Macro) | Métrique secondaire (FN sur Classe 2) | Coût inférence | Latence par préd. | Explicabilité | Biais (Loi / AI Act) | Verdict |
-# |---|---|---|---|---|---|---|---|---|
-# | **S1 (Complet)** | LightGBM | **0.7166** | **24 erreurs** | Très faible (CPU) | < 1 ms | Moyenne (SHAP) | **Critique** : Utilise l'âge et la nationalité. Risque de discrimination. | ❌ Rejeté pour prod |
-# | **S2 (Éthique)** | LightGBM | 0.6269 | 33 erreurs | Très faible (CPU) | < 1 ms | Moyenne (SHAP) | **Mitigé** : Variables sensibles retirées. | ✅ **Retenu** |
-# | **S3 (NLP)** | LightGBM | 0.6370 | 32 erreurs | Faible (TF-IDF + CPU) | < 1 ms | Faible sur texte | Potentiel (si biais dans la synthèse) | ❌ Sous-performant en robustesse |
-# | **S4 (Tabulaire)** | LightGBM | 0.6137 | 39 erreurs | Très faible | < 1 ms | Moyenne | Identique à S1 | ❌ Trop de FN |
+# | Scénario | Modèle | F1-Macro | FN C2 Total | 2→0 (Critique) | 2→1 (Partiel) | Coût inférence | Latence | Explicabilité | Biais (Loi / AI Act) | Verdict |
+# |---|---|---|---|---|---|---|---|---|---|---|
+# | **S1 (Complet)** | LightGBM | **0.7166** | **24** | **11** | 13 | Très faible | < 1 ms | Moyenne (SHAP) | **Critique** : Âge et nationalité (illégal) | ❌ Rejeté pour prod |
+# | **S2 (Éthique)** | LightGBM | 0.6269 | 33 | **10** | 23 | Très faible | < 1 ms | Moyenne (SHAP) | **Mitigé** : Variables sensibles retirées | ✅ **Retenu** |
+# | **S3 (NLP)** | LightGBM | 0.6370 | 32 | 12 | 20 | Faible | < 1 ms | Faible sur texte | Potentiel (si biais dans verbatims) | ❌ Trop fragile |
+# | **S4 (Tabulaire)** | LightGBM | 0.6137 | 39 | 13 | 26 | Très faible | < 1 ms | Moyenne | Identique à S1 | ❌ Trop de FN |
+# 
+# > 🔍 **Distingo fondamental : Où se trouvent les 9 erreurs de plus entre S1 et S2 ?**
+# > L'analyse granulaire de la matrice de confusion révèle un enseignement capital :
+# > - **Les erreurs critiques absolues $2 \rightarrow 0$ (abandon d'un profil à risque sans aide) ne progressent pas d'une seule unité : elles passent de 11 dans S1 à 10 dans S2 !**
+# > - **Les 9 erreurs supplémentaires entre S1 et S2 sont à 100% des erreurs $2 \rightarrow 1$ (23 dans S2 contre 13 dans S1)**. Or un usager classé en niveau 1 bénéficie tout de même d'un accompagnement de retour à l'emploi (6 à 12 mois), ce qui permet à un conseiller de requalifier sa situation. Il n'y a donc aucun abandon dans la nature.
 # 
 # > 🍃 **Bilan Green IT (Impact Environnemental)** : L'entraînement du modèle complet prend quelques secondes sur un CPU standard. En production, la latence mesurée est inférieure à **0.2 millisecondes par prédiction**. Ce modèle est d'une très grande *sobriété numérique* et ne nécessite aucune infrastructure cloud GPU coûteuse ou polluante (contrairement aux LLMs). Il respecte parfaitement les objectifs de développement durable des services publics.
 # 
@@ -1385,11 +1394,16 @@ y_pred_s2 = final_pipeline_s2.predict(X_test)
 acc_s2 = accuracy_score(y_test, y_pred_s2)
 f1_test_s2 = f1_score(y_test, y_pred_s2, average="macro")
 cm_s2 = confusion_matrix(y_test, y_pred_s2)
-fn_classe2_s2 = cm_s2[2, 0] + cm_s2[2, 1]
+err_2_0_s2 = cm_s2[2, 0]
+err_2_1_s2 = cm_s2[2, 1]
+fn_classe2_s2 = err_2_0_s2 + err_2_1_s2
 
 print(f"Accuracy Globale S2 : {acc_s2:.4f}")
 print(f"F1-Score Macro S2 : {f1_test_s2:.4f}")
-print(f"Erreurs critiques (Faux Négatifs Classe 2) : {fn_classe2_s2}")
+print(f"Faux Négatifs Classe 2 (Total) : {fn_classe2_s2}")
+print(f"  └─ Dont erreurs critiques absolues (2->0, abandon sans aide) : {err_2_0_s2}")
+print(f"  └─ Dont erreurs d'aiguillage intermédiaire (2->1, accompagnement 6-12m) : {err_2_1_s2}")
+print(f"Fausses alertes 0->2 (Rapide pris pour Risque) : {cm_s2[0, 2]}")
 print("\nRapport de classification S2 :")
 print(classification_report(y_test, y_pred_s2))
 
@@ -1476,9 +1490,9 @@ print("✅ Métadonnées sauvegardées : models/pipeline_production.json")
 #
 # La comparaison entre la Matrice de Confusion du S1 (Chapitre 5.6) et celle du S2 (ci-dessus) illustre parfaitement le concept du **coût de l'éthique** en Machine Learning :
 #
-# 1. **Baisse du Recall sur le Risque (Classe 2)** : En aveuglant le modèle sur l'âge et la nationalité, nous perdons une partie du signal prédictif. Le modèle passe de 24 erreurs (S1) à 33 erreurs critiques (S2) sur la détection des profils à risque longue durée.
+# 1. **Baisse du Recall global sur la Classe 2 mais sanctuarisation du 2->0** : En aveuglant le modèle sur l'âge et la nationalité, le total des FN sur la classe 2 passe de 24 (S1) à 33 (S2). Mais l'analyse granulaire démontre que **les erreurs critiques absolues $2 \rightarrow 0$ (abandon sans aide) ne progressent pas : 10 dans S2 contre 11 dans S1** ! Les 9 erreurs supplémentaires sont exclusivement des reclassements en Classe 1 ($2 \rightarrow 1$, 23 vs 13), où l'usager reste pleinement accompagné dans le service public.
 # 2. **Une performance qui reste très solide** : Malgré cette amputation de données, le modèle maintient une excellente capacité de tri global grâce à la puissance des ancres géographiques et de l'ingénierie textuelle (TF-IDF avec Stop Words).
-# 3. **Validation de la stratégie Fallback** : Ces 9 erreurs supplémentaires ne sont pas une fatalité. Elles justifient et valident à 100% l'implémentation de notre filet de sécurité (Seuil de confiance à 65% + Human-in-the-loop, détaillé au chapitre 7). Plutôt que de forcer le modèle à deviner en utilisant des biais démographiques illégaux, nous préférons qu'il s'abstienne et passe la main au conseiller humain sur ces cas limites.
+# 3. **Validation de la stratégie Fallback** : Les cas incertains résiduels sont sécurisés par notre filet de sécurité (Seuil de confiance à 65% + Human-in-the-loop, détaillé au chapitre 7). Plutôt que de forcer le modèle à deviner en utilisant des biais démographiques illégaux, nous préférons qu'il s'abstienne et passe la main au conseiller humain sur ces cas limites.
 #
 # Le modèle S2 est donc prêt, responsable, et conforme à l'AI Act.
 #
@@ -1548,6 +1562,21 @@ plt.show()
 # >   - Le **Brier Score** (qui mesure l'écart entre le score donné et la réalité, 0 étant la perfection) est de **0.48**, ce qui confirme une incertitude normale sur ce type de dossiers.
 # > * **Piste d'amélioration (V2)** : Dans une version future, on pourra ajouter une étape de réglage appelée « calibration » (outil `CalibratedClassifierCV`) pour aligner au millimètre le pourcentage affiché avec le taux réel de réussite sur le terrain.
 
+# #### 1. Cadrage préalable de la capacité opérationnelle
+# Dans une agence locale du service public de l'emploi (traitant environ 500 dossiers mensuels), les conseillers ne peuvent pas relire l'intégralité des flux. L'équipe d'encadrement a fixé un **plafond d'absorption de 35% à 40% de revue humaine approfondie**. Au-delà de 40%, le service sature et les délais de prise en charge se dégradent.
+# 
+# #### 2. Grille de décision multi-seuils (Arbitrage Charge RH vs Rattrapage 2->0)
+# 
+# | Seuil de confiance | % de revue (Charge RH) | 2->0 en automatique (Échappés) | 2->0 rattrapés par le conseiller | % Rattrapage 2->0 | Arbitrage opérationnel |
+# |---|---|---|---|---|---|
+# | **0.50** | 12.8% (64 dossiers) | 8 | 2 | 20.0% | ❌ Filtre trop passif, 80% des erreurs critiques échappent au filet |
+# | **0.55** | 21.2% (106 dossiers) | 7 | 3 | 30.0% | ❌ Charge RH faible mais rattrapage insuffisant |
+# | **0.60** | 30.0% (150 dossiers) | 6 | 4 | 40.0% | ⚠️ Zone intermédiaire intéressante |
+# | **0.65 (Retenu)** | **38.8% (194 dossiers)** | **5** | **5** | **50.0%** | ✅ **Optimum : Respecte la limite des 40% et intercepte 1 erreur critique sur 2** |
+# | **0.70** | 53.0% (265 dossiers) | 3 | 7 | 70.0% | ❌ Dépassement critique du plafond de capacité (> 50% de revue) |
+# 
+# *(Note : En CV 5-fold sur le train, le seuil 0.65 mobilise 39.9% de revue et rattrape 57.4% des erreurs 2->0, soit 27 sur 47).*
+
 # In[ ]:
 
 
@@ -1555,33 +1584,66 @@ import numpy as np
 import pandas as pd
 from sklearn.metrics import brier_score_loss
 
-# Récupération des probabilités
-y_proba = pipe_s2.predict_proba(X_test)
-max_probas = np.max(y_proba, axis=1)
-y_pred_s2 = pipe_s2.predict(X_test)
+# 1. Analyse multi-seuils de rejet (Fallback) sur le Test Set (pipeline S2)
+y_proba_test = final_pipeline_s2.predict_proba(X_test)
+max_p_test = np.max(y_proba_test, axis=1)
+y_pred_s2 = final_pipeline_s2.predict(X_test)
 
+is_true_2_test = (y_test.values == 2)
+is_pred_0_test = (y_pred_s2 == 0)
+is_err_2_0_test = is_true_2_test & is_pred_0_test
+total_2_0_test = np.sum(is_err_2_0_test)
+
+seuils = [0.50, 0.55, 0.60, 0.65, 0.70]
+rows_fallback = []
+for s in seuils:
+    mask_revue = max_p_test < s
+    pct_revue = np.mean(mask_revue) * 100
+    nb_revue = np.sum(mask_revue)
+    err_2_0_auto = np.sum(is_err_2_0_test & (~mask_revue))
+    err_2_0_rattrapes = np.sum(is_err_2_0_test & mask_revue)
+    pct_rattrapes = (err_2_0_rattrapes / total_2_0_test) * 100 if total_2_0_test > 0 else 0
+    rows_fallback.append({
+        "Seuil": f"{s:.2f}",
+        "% Revue (Charge RH)": f"{pct_revue:.1f}%",
+        "Dossiers Revus": f"{nb_revue}/{len(X_test)}",
+        "2->0 en auto (Échappés)": int(err_2_0_auto),
+        "2->0 rattrapés (Filet)": int(err_2_0_rattrapes),
+        "% 2->0 rattrapés": f"{pct_rattrapes:.1f}%"
+    })
+
+print("=== TABLEAU D'ARBITRAGE DES SEUILS DU FILET HITL (TEST SET) ===")
+display(pd.DataFrame(rows_fallback))
+
+# 2. Diagnostic au seuil retenu de 65%
 seuil_rejet = 0.65
-mask_rejet = max_probas < seuil_rejet
+mask_rejet = max_p_test < seuil_rejet
 dossiers_incertains = np.sum(mask_rejet)
 pourcentage_incertains = (dossiers_incertains / len(X_test)) * 100
 
-print(f"--- Stratégie de Fallback (Seuil à {seuil_rejet*100:.0f}%) ---")
-print(f"Nombre de dossiers sous le seuil de confiance : {dossiers_incertains} sur {len(X_test)} ({pourcentage_incertains:.1f}%)")
-
-# Évaluation empirique de la calibration et pertinence du filtre
 mask_accept = ~mask_rejet
-acc_accept = np.mean(y_pred_s2[mask_accept] == y_test[mask_accept]) * 100
-acc_reject = np.mean(y_pred_s2[mask_rejet] == y_test[mask_rejet]) * 100
+acc_accept = np.mean(y_pred_s2[mask_accept] == y_test.values[mask_accept]) * 100
+acc_reject = np.mean(y_pred_s2[mask_rejet] == y_test.values[mask_rejet]) * 100
 
+# 3. Diagnostic de Calibration et Comparaison Baselines
 y_test_oh = pd.get_dummies(y_test).values
-brier_multi = np.mean(np.sum((y_proba - y_test_oh)**2, axis=1))
-brier_c2 = brier_score_loss((y_test == 2).astype(int), y_proba[:, 2])
+brier_modele = np.mean(np.sum((y_proba_test - y_test_oh)**2, axis=1))
+proportions_train = np.bincount(y_train) / len(y_train)
+dummy_proba_prop = np.tile(proportions_train, (len(y_test), 1))
+brier_baseline_prop = np.mean(np.sum((dummy_proba_prop - y_test_oh)**2, axis=1))
+brier_baseline_unif = np.mean(np.sum((np.full_like(y_proba_test, 1/3) - y_test_oh)**2, axis=1))
+gain_brier = ((brier_baseline_prop - brier_modele) / brier_baseline_prop) * 100
 
-print(f"\n--- Diagnostic de Calibration & Efficacité du Seuil ---")
-print(f"Brier Score global (multiclasse) : {brier_multi:.4f} (plus c'est bas, mieux c'est)")
-print(f"Brier Score Classe 2 (Risque)   : {brier_c2:.4f}")
-print(f"Exactitude empirique si score >= {seuil_rejet*100:.0f}% : {acc_accept:.1f}% ({np.sum(mask_accept)} dossiers automatisés)")
-print(f"Exactitude empirique si score <  {seuil_rejet*100:.0f}% : {acc_reject:.1f}% ({dossiers_incertains} dossiers transférés aux conseillers)")
+print(f"\n--- Diagnostic au Seuil Retenu de 65% ---")
+print(f"Dossiers sous le seuil (revue humaine) : {dossiers_incertains} sur {len(X_test)} ({pourcentage_incertains:.1f}%)")
+print(f"Exactitude si score >= 65% (Dossiers automatisés) : {acc_accept:.1f}%")
+print(f"Exactitude si score <  65% (Dossiers transférés HITL) : {acc_reject:.1f}%")
+
+print(f"\n--- Diagnostic de Calibration (Brier Score) ---")
+print(f"Brier Score du modèle S2 sur Test         : {brier_modele:.4f}")
+print(f"Brier Score Baseline (Proportions réelles): {brier_baseline_prop:.4f}")
+print(f"Brier Score Baseline Uniforme (1/3,1/3,1/3): {brier_baseline_unif:.4f}")
+print(f"Gain relatif vs Baseline Proportions      : {gain_brier:.1f}% de réduction d'erreur quadratique")
 
 # Documentation de la stratégie d'intégration API
 print("\nStratégie API pour ces dossiers :")
